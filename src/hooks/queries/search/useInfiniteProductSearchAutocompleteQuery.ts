@@ -1,4 +1,4 @@
-import { useSuspendedInfiniteQuery } from '../index';
+import { useSuspendedInfiniteQuery } from '..';
 
 import { searchApi } from '@/apis';
 import type { ProductSearchAutocompleteResponse } from '@/types/response';

@@ -1,4 +1,4 @@
-import { useSuspendedInfiniteQuery } from '../index';
+import { useSuspendedInfiniteQuery } from '..';
 
 import { categoryApi } from '@/apis';
 import type { CategoryProductResponse } from '@/types/response';

@@ -1,4 +1,4 @@
-import { useSuspendedQuery } from '../index';
+import { useSuspendedQuery } from '..';
 
 import { rankApi } from '@/apis';
 import type { ProductRankingResponse } from '@/types/response';

@@ -1,4 +1,4 @@
-import { useSuspendedQuery } from '../index';
+import { useSuspendedQuery } from '..';
 
 import { tagApi } from '@/apis';
 import type { ReviewTag } from '@/types/review';

@@ -1,4 +1,4 @@
-import { useSuspendedQuery } from '../index';
+import { useSuspendedQuery } from '..';
 
 import { memberApi } from '@/apis';
 import type { Member } from '@/types/member';

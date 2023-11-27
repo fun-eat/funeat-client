@@ -1,4 +1,4 @@
-import { useSuspendedQuery } from '../index';
+import { useSuspendedQuery } from '..';
 
 import { recipeApi } from '@/apis';
 import type { RecipeDetail } from '@/types/recipe';

@@ -1,4 +1,4 @@
-import { useSuspendedInfiniteQuery } from '../index';
+import { useSuspendedInfiniteQuery } from '..';
 
 import { memberApi } from '@/apis';
 import type { MemberReviewResponse } from '@/types/response';

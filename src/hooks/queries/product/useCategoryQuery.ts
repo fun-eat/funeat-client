@@ -1,4 +1,4 @@
-import { useSuspendedQuery } from '../index';
+import { useSuspendedQuery } from '..';
 
 import { categoryApi } from '@/apis';
 import type { Category, CategoryVariant, Food, Store } from '@/types/common';

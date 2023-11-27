@@ -1,4 +1,4 @@
-import { useSuspendedQuery } from '../index';
+import { useSuspendedQuery } from '..';
 
 import { productApi } from '@/apis';
 import type { ProductDetail } from '@/types/product';

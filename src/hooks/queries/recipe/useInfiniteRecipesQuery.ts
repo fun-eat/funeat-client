@@ -1,4 +1,4 @@
-import { useSuspendedInfiniteQuery } from '../index';
+import { useSuspendedInfiniteQuery } from '..';
 
 import { recipeApi } from '@/apis';
 import type { RecipeResponse } from '@/types/response';

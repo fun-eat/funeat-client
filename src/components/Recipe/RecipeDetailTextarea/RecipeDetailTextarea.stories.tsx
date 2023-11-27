@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { RecipeDetailTextarea } from '../index';
+import { RecipeDetailTextarea } from '..';
 
 import RecipeFormProvider from '@/contexts/RecipeFormContext';
 
