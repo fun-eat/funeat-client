@@ -34,12 +34,10 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: 의존성 설치
-        working-directory: frontend/
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install --pure-lockfile
 
       - name: 테스트 실행
-        working-directory: frontend/
         run: yarn test
         continue-on-error: true
 
