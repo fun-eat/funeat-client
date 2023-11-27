@@ -1,7 +1,7 @@
 ---
 name: ✨ Feature request
 about: feature 이슈 템플릿입니다
-title: '[ALL/FE/BE] '
+title: ''
 labels: ''
 assignees: ''
 ---

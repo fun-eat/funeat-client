@@ -5,9 +5,6 @@ on:
     branches:
       - main
       - develop
-    paths:
-      - '.github/**'
-      - 'frontend/**'
 
 jobs:
   test:
@@ -31,18 +28,16 @@ jobs:
         id: cache
         uses: actions/cache@v3
         with:
-          path: '**/frontend/node_modules'
+          path: '**/node_modules'
           key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-node-
 
       - name: 의존성 설치
-        working-directory: frontend/
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install --pure-lockfile
 
       - name: 테스트 실행
-        working-directory: frontend/
         run: yarn test
         continue-on-error: true
 
@@ -50,13 +45,13 @@ jobs:
         uses: EnricoMi/publish-unit-test-result-action@v2
         if: always()
         with:
-          files: '**/frontend/test-results/results.xml'
+          files: '**/test-results/results.xml'
 
       - name: 테스트 실패 시, 실패한 코드 라인에 Check 코멘트를 등록
         uses: mikepenz/action-junit-report@v3
         if: always()
         with:
-          report_paths: '**/frontend/test-results/results.xml'
+          report_paths: '**/test-results/results.xml'
           token: ${{ github.token }}
 
       - name: build 실패 시 Slack으로 알립니다
