@@ -11,18 +11,13 @@
     "skipLibCheck": true,
     "jsx": "react-jsx",
     "outDir": "./dist",
-    "typeRoots": ["node_modules/@types",
-      "src/types"
-    ],
-    "baseUrl": "./frontend",
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
     "removeComments": false
   },
-  "include": [
-    "src",
-    "__tests__"
-  ],
+  "include": ["src", "__tests__"],
   "exclude": ["node_modules", "dist"]
 }
