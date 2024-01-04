@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -39,12 +39,20 @@ jobs:
       - name: 클라이언트 빌드
         run: yarn build
 
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: AWS CLI 설정
         uses: aws-actions/configure-aws-credentials@v1
         with:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-northeast-2
+
+      - name: S3 이전 파일 삭제
+        run: |
+          aws s3 rm ${{ secrets.AWS_S3_URL }} --recursive
 
       - name: S3에 배포
         run: |
