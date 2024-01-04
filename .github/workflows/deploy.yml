@@ -6,7 +6,7 @@ on:
       - develop
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
@@ -39,10 +39,6 @@ jobs:
       - name: 클라이언트 빌드
         run: yarn build
 
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
       - name: AWS CLI 설정
         uses: aws-actions/configure-aws-credentials@v1
         with:
