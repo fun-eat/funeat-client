@@ -1,0 +1,51 @@
+name: Frontend Deploy
+
+on:
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    permissions:
+      checks: write
+      pull-requests: write
+
+    steps:
+      - name: Repository 체크아웃
+        uses: actions/checkout@v3
+
+      - name: Node 설정
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.1'
+
+      - name: node_modules 캐싱
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: 의존성 설치
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: yarn install --pure-lockfile
+
+      - name: 클라이언트 빌드
+        run: yarn build
+
+      - name: AWS CLI 설정
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-2
+
+      - name: S3에 배포
+        run: |
+          aws s3 sync ./dist ${{ secrets.AWS_S3_URL }}
