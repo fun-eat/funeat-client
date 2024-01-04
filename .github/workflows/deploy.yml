@@ -36,6 +36,11 @@ jobs:
         if: steps.cache.outputs.cache-hit != 'true'
         run: yarn install --pure-lockfile
 
+      - name: .env 파일 생성
+        run: |
+          echo "CHANNEL_TALK_KEY=${{ secrets.CHANNEL_TALK_KEY }}" > .env
+          echo "GOOGLE_ANALYTICS_ID=${{ secrets.GOOGLE_ANALYTICS_ID }}" >> .env
+
       - name: 클라이언트 빌드
         run: yarn build
 
