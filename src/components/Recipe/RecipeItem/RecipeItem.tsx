@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import PreviewImage from '@/assets/plate.svg';
 import { SvgIcon } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import type { MemberRecipe, Recipe } from '@/types/recipe';
 import { getFormattedDate } from '@/utils/date';
 
@@ -30,7 +31,15 @@ const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
           ) : (
             <PreviewImage width={160} height={160} />
           )}
-          {author && <ProfileImage src={author.profileImage} alt={`${author.nickname}의 프로필`} />}
+          {author && (
+            <MemberImage
+              src={author.profileImage}
+              alt={`${author.nickname}의 프로필`}
+              width={60}
+              height={60}
+              css={{ position: `absolute`, bottom: `-20px`, right: `16px` }}
+            />
+          )}
         </ImageWrapper>
       )}
       <RecipeInfoWrapper>
@@ -74,17 +83,6 @@ const RecipeImage = styled.img`
   height: 100%;
   border-radius: 8px;
   object-fit: cover;
-`;
-
-const ProfileImage = styled.img`
-  position: absolute;
-  bottom: -20px;
-  right: 16px;
-  width: 60px;
-  height: 60px;
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.backgroundColors.default};
 `;
 
 const RecipeInfoWrapper = styled.div`
