@@ -2,6 +2,7 @@ import { Spacing, Text, useTheme } from '@fun-eat/design-system';
 import styled from 'styled-components';
 
 import { SvgIcon } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import { useBestReviewQuery } from '@/hooks/queries/rank';
 
 interface BestReviewItemProps {
@@ -29,7 +30,7 @@ const BestReviewItem = ({ productId }: BestReviewItemProps) => {
         <BestReviewItemContainer>
           <ReviewRateFavoriteWrapper>
             <ReviewerInfoWrapper>
-              <ReviewerImage src={profileImage} width={32} height={32} alt={`${userName}의 프로필`} />
+              <MemberImage src={profileImage} width={32} height={32} alt={`${userName}의 프로필`} />
               <div>
                 <Text size="sm" weight="bold">
                   {userName} 님
@@ -80,12 +81,6 @@ const ReviewerInfoWrapper = styled.div`
   display: flex;
   align-items: center;
   column-gap: 10px;
-`;
-
-const ReviewerImage = styled.img`
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
-  object-fit: cover;
 `;
 
 const FavoriteWrapper = styled.div`

@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { SectionTitle, SvgIcon, TagList } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import { PATH } from '@/constants/path';
 import { useReviewDetailQuery } from '@/hooks/queries/review';
 import { getRelativeDate } from '@/utils/date';
@@ -35,7 +36,13 @@ export const ReviewDetailPage = () => {
       <ReviewItemContainer>
         <ReviewerWrapper>
           <ReviewerInfoWrapper>
-            <ReviewerImage src={profileImage} width={40} height={40} alt={`${userName}의 프로필`} />
+            <MemberImage
+              src={profileImage}
+              width={40}
+              height={40}
+              alt={`${userName}의 프로필`}
+              css={{ objectFit: `cover` }}
+            />
             <div>
               <Text weight="bold">{userName}</Text>
               <RatingIconWrapper>
@@ -98,12 +105,6 @@ const ReviewerInfoWrapper = styled.div`
 
 const RebuyBadge = styled(Badge)`
   font-weight: ${({ theme }) => theme.fontWeights.bold};
-`;
-
-const ReviewerImage = styled.img`
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
-  object-fit: cover;
 `;
 
 const RatingIconWrapper = styled.div`
