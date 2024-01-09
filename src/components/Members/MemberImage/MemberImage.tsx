@@ -13,14 +13,21 @@ interface MemberImageProps {
 }
 
 const MemberImage = ({ src, alt, width = 45, height = 45, css }: MemberImageProps) => {
-  const [imageSrc, setImageSrc] = useState(src);
+  const [isError, setIsError] = useState(false);
 
   const handleImageError = () => {
-    setImageSrc(DefaultMemberImage);
+    setIsError(true);
   };
 
   return (
-    <StyledMemberImage src={imageSrc} alt={alt} width={width} height={height} css={css} onError={handleImageError} />
+    <StyledMemberImage
+      src={isError ? DefaultMemberImage : src}
+      alt={alt}
+      width={width}
+      height={height}
+      css={css}
+      onError={handleImageError}
+    />
   );
 };
 
