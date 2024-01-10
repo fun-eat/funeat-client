@@ -1,7 +1,7 @@
 import type { Product } from './product';
 import type { ProductRanking, RecipeRanking, ReviewRanking } from './ranking';
 import type { Comment, MemberRecipe, Recipe } from './recipe';
-import type { Review, ReviewDetail } from './review';
+import type { Review } from './review';
 import type { ProductSearchResult, ProductSearchAutocomplete } from './search';
 
 export interface Page {
@@ -40,7 +40,7 @@ export interface RecipeRankingResponse {
 }
 
 export interface ProductSearchAutocompleteResponse {
-  page: Page;
+  hasNext: boolean;
   products: ProductSearchAutocomplete[];
 }
 
