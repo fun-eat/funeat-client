@@ -30,6 +30,11 @@ export interface ProductRankingResponse {
   products: ProductRanking[];
 }
 
+export interface RecipeSearchResponse {
+  hasNext: boolean;
+  recipes: Recipe[];
+}
+
 export interface RecipeResponse {
   page: Page;
   recipes: Recipe[];
