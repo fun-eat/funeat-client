@@ -45,7 +45,7 @@ export interface ProductSearchAutocompleteResponse {
 }
 
 export interface ProductSearchResultResponse {
-  page: Page;
+  hasNext: boolean;
   products: ProductSearchResult[];
 }
 
