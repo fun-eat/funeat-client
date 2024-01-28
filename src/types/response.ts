@@ -12,14 +12,44 @@ export interface Page {
   requestPage: number;
   requestSize: number;
 }
-
-export interface CategoryProductResponse {
-  hasNext: boolean;
-  products: Product[];
+export interface ErrorResponse {
+  code: number;
+  message: string;
 }
-export interface ProductReviewResponse {
+
+type DataKeys = 'products' | 'reviews' | 'recipes' | 'comments';
+
+type CommonInfiniteQueryResponse<T, K extends DataKeys> = {
   hasNext: boolean;
-  reviews: Review[];
+} & {
+  [P in K]: T[];
+};
+
+export type CategoryProductResponse = CommonInfiniteQueryResponse<Product, 'products'>;
+
+export type ProductReviewResponse = CommonInfiniteQueryResponse<Review, 'reviews'>;
+
+export type RecipeSearchResponse = CommonInfiniteQueryResponse<Recipe, 'recipes'>;
+
+export type ProductSearchAutocompleteResponse = CommonInfiniteQueryResponse<ProductSearchAutocomplete, 'products'>;
+
+export type ProductSearchResultResponse = CommonInfiniteQueryResponse<ProductSearchResult, 'products'>;
+
+export type CommentResponse = CommonInfiniteQueryResponse<Comment, 'comments'> & { totalElements: number | null };
+
+export interface RecipeResponse {
+  page: Page;
+  recipes: Recipe[];
+}
+
+export interface MemberReviewResponse {
+  page: Page;
+  reviews: ReviewRanking[];
+}
+
+export interface MemberRecipeResponse {
+  page: Page;
+  recipes: MemberRecipe[];
 }
 
 export interface ReviewRankingResponse {
@@ -30,47 +60,6 @@ export interface ProductRankingResponse {
   products: ProductRanking[];
 }
 
-export interface RecipeSearchResponse {
-  hasNext: boolean;
-  recipes: Recipe[];
-}
-
-export interface RecipeResponse {
-  page: Page;
-  recipes: Recipe[];
-}
-
 export interface RecipeRankingResponse {
   recipes: RecipeRanking[];
-}
-
-export interface ProductSearchAutocompleteResponse {
-  hasNext: boolean;
-  products: ProductSearchAutocomplete[];
-}
-
-export interface ProductSearchResultResponse {
-  hasNext: boolean;
-  products: ProductSearchResult[];
-}
-
-export interface MemberReviewResponse {
-  page: Page;
-  reviews: ReviewRanking[];
-}
-
-export interface ErrorResponse {
-  code: number;
-  message: string;
-}
-
-export interface MemberRecipeResponse {
-  page: Page;
-  recipes: MemberRecipe[];
-}
-
-export interface CommentResponse {
-  hasNext: boolean;
-  totalElements: number | null;
-  comments: Comment[];
 }
