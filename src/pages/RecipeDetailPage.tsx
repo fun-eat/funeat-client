@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import RecipePreviewImage from '@/assets/plate.svg';
 import { ErrorBoundary, ErrorComponent, Loading, SectionTitle } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';
 import { useRecipeDetailQuery } from '@/hooks/queries/recipe';
 import { getFormattedDate } from '@/utils/date';
@@ -40,7 +41,7 @@ export const RecipeDetailPage = () => {
       <Spacing size={24} />
       <AuthorFavoriteWrapper>
         <AuthorWrapper>
-          <AuthorProfileImage src={author.profileImage} alt={`${author.nickname}님의 프로필`} width={45} height={45} />
+          <MemberImage src={author.profileImage} alt={`${author.nickname}님의 프로필`} width={45} height={45} />
           <div>
             <Text color={theme.textColors.info}>{author.nickname} 님</Text>
             <Text color={theme.textColors.info}> {getFormattedDate(createdAt)}</Text>
@@ -122,11 +123,6 @@ const AuthorWrapper = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
-`;
-
-const AuthorProfileImage = styled.img`
-  border: 1px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
 `;
 
 const RecipeUsedProductsWrapper = styled.div`

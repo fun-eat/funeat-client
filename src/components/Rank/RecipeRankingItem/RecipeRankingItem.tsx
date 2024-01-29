@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 import RecipePreviewImage from '@/assets/plate.svg';
 import { SvgIcon } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import type { RecipeRanking } from '@/types/ranking';
 import { getRelativeDate } from '@/utils/date';
 
@@ -59,7 +60,7 @@ const RecipeRankingItem = ({ rank, recipe }: RecipeRankingItemProps) => {
           </TitleFavoriteWrapper>
         </RankingRecipeWrapper>
         <AuthorWrapper>
-          <AuthorImage src={profileImage} alt={`${nickname} 님의 프로필`} width={40} height={40} />
+          <MemberImage src={profileImage} alt={`${nickname} 님의 프로필`} width={40} height={40} />
           <Text size="sm" color={theme.textColors.sub}>
             {nickname} 님
           </Text>
@@ -113,10 +114,4 @@ const AuthorWrapper = styled.div`
   justify-content: space-around;
   align-items: center;
   height: 100%;
-`;
-
-const AuthorImage = styled.img`
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
-  object-fit: cover;
 `;
