@@ -1,9 +1,9 @@
 name: Frontend Deploy
 
 on:
-  pull_request:
+  push:
     branches:
-      - develop
+      - main
 
 jobs:
   build-and-deploy:
