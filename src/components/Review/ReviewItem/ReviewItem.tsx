@@ -38,7 +38,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
                 <SvgIcon
                   key={`rating-${index}`}
                   variant="star"
-                  color={index < rating ? theme.colors.secondary : theme.colors.gray2}
+                  fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
                   width={16}
                   height={16}
                 />

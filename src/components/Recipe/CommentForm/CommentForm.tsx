@@ -64,7 +64,7 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
             variant="plane"
             width={30}
             height={30}
-            color={commentValue.length === 0 ? theme.colors.gray2 : theme.colors.gray4}
+            fill={commentValue.length === 0 ? theme.colors.gray2 : theme.colors.gray4}
           />
         </SubmitButton>
       </Form>

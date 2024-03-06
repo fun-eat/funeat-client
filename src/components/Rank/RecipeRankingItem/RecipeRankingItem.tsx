@@ -48,7 +48,7 @@ const RecipeRankingItem = ({ rank, recipe }: RecipeRankingItemProps) => {
           <TitleFavoriteWrapper>
             <Text weight="bold">{title}</Text>
             <FavoriteWrapper>
-              <SvgIcon variant="favoriteFilled" width={16} height={16} color="red" />
+              <SvgIcon variant="favoriteFilled" width={16} height={16} fill="red" />
               <Text as="span" size="sm" weight="bold">
                 {favoriteCount}
               </Text>

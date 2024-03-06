@@ -19,7 +19,7 @@ const NavigationBar = () => {
           return (
             <NavigationItem key={variant}>
               <NavigationLink as={RouterLink} to={path}>
-                <SvgIcon variant={variant} color={isSelected ? theme.colors.gray5 : theme.colors.gray3} />
+                <SvgIcon variant={variant} fill={isSelected ? theme.colors.gray5 : theme.colors.gray3} />
                 <Text size="xs" color={isSelected ? theme.colors.gray5 : theme.colors.gray3}>
                   {name}
                 </Text>

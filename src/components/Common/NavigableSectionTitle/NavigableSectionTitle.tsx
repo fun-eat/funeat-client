@@ -16,7 +16,7 @@ const NavigableSectionTitle = ({ title, routeDestination }: NavigableSectionTitl
         {title}
       </Heading>
       <Link as={RouterLink} to={routeDestination}>
-        <ArrowIcon variant="arrow" color={theme.colors.gray5} width={18} height={18} />
+        <ArrowIcon variant="arrow" fill={theme.colors.gray5} width={18} height={18} />
       </Link>
     </NavigableSectionTitleContainer>
   );
