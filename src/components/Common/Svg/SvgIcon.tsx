@@ -64,8 +64,8 @@ const SvgIcon = ({
   variant,
   width = 24,
   height = 24,
-  fill = 'none',
-  stroke = theme.colors.gray4,
+  fill = theme.colors.gray4,
+  stroke = 'none',
   ...props
 }: SvgIconProps) => {
   return (
