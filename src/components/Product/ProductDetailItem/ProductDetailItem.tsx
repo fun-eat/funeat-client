@@ -41,7 +41,7 @@ const ProductDetailItem = ({ category, productDetail }: ProductDetailItemProps) 
         <DescriptionWrapper aria-label={`평균 평점 ${averageRating}점`}>
           <Text weight="bold">평균 평점</Text>
           <RatingIconWrapper>
-            <SvgIcon variant="star" width={20} height={20} color={theme.colors.secondary} />
+            <SvgIcon variant="star" width={20} height={20} fill={theme.colors.secondary} />
             <Text as="span">{averageRating.toFixed(1)}</Text>
           </RatingIconWrapper>
         </DescriptionWrapper>

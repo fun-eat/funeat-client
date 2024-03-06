@@ -39,7 +39,7 @@ const MembersInfo = () => {
           {nickname} 님
         </Heading>
         <MemberModifyLink as={RouterLink} to={`${PATH.MEMBER}/modify`}>
-          <SvgIcon variant="pencil" width={20} height={24} color={theme.colors.gray3} />
+          <SvgIcon variant="pencil" width={20} height={24} fill={theme.colors.gray3} />
         </MemberModifyLink>
       </MemberInfoWrapper>
       <Button type="button" textColor="disabled" variant="transparent" onClick={handleLogout}>

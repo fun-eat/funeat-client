@@ -84,7 +84,7 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
     <ReviewRegisterFormContainer>
       <ReviewHeading tabIndex={0}>리뷰 작성</ReviewHeading>
       <CloseButton variant="transparent" onClick={closeReviewDialog} aria-label="닫기">
-        <SvgIcon variant="close" color={theme.colors.black} width={20} height={20} />
+        <SvgIcon variant="close" fill={theme.colors.black} width={20} height={20} />
       </CloseButton>
       <Divider />
       <ProductOverviewItemWrapper>

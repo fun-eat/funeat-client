@@ -50,7 +50,7 @@ export const HomePage = () => {
           🍯 꿀조합 랭킹
         </Heading>
         <RankingInfoWrapper>
-          <SvgIcon variant="info" width={18} height={18} color={theme.textColors.info} />
+          <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
           <Text size="sm" color={theme.textColors.info}>
             꿀조합 랭킹은 자체 알고리즘 기반으로 업데이트됩니다.
           </Text>
@@ -67,7 +67,7 @@ export const HomePage = () => {
           🍙 상품 랭킹
         </Heading>
         <RankingInfoWrapper>
-          <SvgIcon variant="info" width={18} height={18} color={theme.textColors.info} />
+          <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
           <Text size="sm" color={theme.textColors.info}>
             상품 랭킹은 2주 단위로 업데이트됩니다.
           </Text>
@@ -84,7 +84,7 @@ export const HomePage = () => {
           📝 리뷰 랭킹
         </Heading>
         <RankingInfoWrapper>
-          <SvgIcon variant="info" width={18} height={18} color={theme.textColors.info} />
+          <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
           <Text size="sm" color={theme.textColors.info}>
             리뷰 랭킹은 자체 알고리즘 기반으로 업데이트됩니다.
           </Text>

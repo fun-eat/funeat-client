@@ -40,7 +40,7 @@ const StarRate = ({ rating }: StarRateProps) => {
           >
             <SvgIconWrapper
               variant="star"
-              color={star <= (hovering || rating) ? theme.colors.secondary : theme.colors.gray2}
+              fill={star <= (hovering || rating) ? theme.colors.secondary : theme.colors.gray2}
             />
           </Button>
         ))}

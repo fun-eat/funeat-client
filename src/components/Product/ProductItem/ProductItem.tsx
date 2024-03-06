@@ -47,13 +47,13 @@ const ProductItem = ({ product }: ProductItemProps) => {
         </Text>
         <ProductReviewWrapper>
           <RatingIconWrapper>
-            <SvgIcon variant="star" width={20} height={20} color={theme.colors.secondary} />
+            <SvgIcon variant="star" width={20} height={20} fill={theme.colors.secondary} />
             <Text as="span" size="sm" css="line-height: 24px;" aria-label={`${averageRating}점`}>
               {averageRating.toFixed(1)}
             </Text>
           </RatingIconWrapper>
           <ReviewIconWrapper>
-            <SvgIcon variant="review" width={20} height={20} color={theme.colors.gray5} />
+            <SvgIcon variant="review" width={20} height={20} fill={theme.colors.gray5} />
             <Text as="span" size="sm" css="line-height: 24px" aria-label={`리뷰 ${reviewCount}개`}>
               {reviewCount}
             </Text>

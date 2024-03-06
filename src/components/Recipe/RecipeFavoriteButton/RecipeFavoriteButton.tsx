@@ -24,7 +24,7 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
     <FavoriteButton type="button" variant="transparent" onClick={debouncedToggleFavorite}>
       <SvgIcon
         variant={favorite ? 'favoriteFilled' : 'favorite'}
-        color={favorite ? 'red' : theme.colors.gray4}
+        fill={favorite ? 'red' : theme.colors.gray4}
         width={18}
       />
       <Text weight="bold" size="lg">
