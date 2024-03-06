@@ -50,7 +50,7 @@ export const ReviewDetailPage = () => {
                   <SvgIcon
                     key={`rating-${index}`}
                     variant="star"
-                    color={index < rating ? theme.colors.secondary : theme.colors.gray2}
+                    fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
                     width={16}
                     height={16}
                   />
@@ -71,7 +71,7 @@ export const ReviewDetailPage = () => {
         <TagList tags={tags} />
         <ReviewContent>{content}</ReviewContent>
         <FavoriteWrapper>
-          <SvgIcon variant="favoriteFilled" color="red" />
+          <SvgIcon variant="favoriteFilled" fill="red" />
           <Text as="span" weight="bold">
             {favoriteCount}
           </Text>

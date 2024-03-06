@@ -29,7 +29,7 @@ const ScrollButton = ({ targetRef, isRecipePage = false }: ScrollButtonProps) =>
       color="white"
       onClick={handleScroll}
     >
-      <SvgIcon variant="arrow" color="gray5" width={16} height={14} />
+      <SvgIcon variant="arrow" fill="gray5" width={16} height={14} />
     </ScrollButtonWrapper>
   );
 };

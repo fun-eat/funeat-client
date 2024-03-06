@@ -17,7 +17,7 @@ const SectionTitle = ({ name, link }: SectionTitleProps) => {
     <SectionTitleContainer>
       <SectionTitleWrapper>
         <Button type="button" variant="transparent" onClick={routeBack} aria-label="뒤로 가기">
-          <SvgIcon variant="arrow" color={theme.colors.gray5} width={15} height={15} />
+          <SvgIcon variant="arrow" fill={theme.colors.gray5} width={15} height={15} />
         </Button>
         {link ? (
           <Link as={RouterLink} to={link} block>
