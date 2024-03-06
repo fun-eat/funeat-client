@@ -1,5 +1,7 @@
 const path = require('path');
 const Dotenv = require('dotenv-webpack');
+const { VanillaExtractPlugin } = require('@vanilla-extract/webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -35,7 +37,19 @@ module.exports = {
         issuer: /\.tsx$/,
         use: [{ loader: '@svgr/webpack' }],
       },
+      {
+        test: /\.vanilla\.css$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              url: false,
+            },
+          },
+        ],
+      },
     ],
   },
-  plugins: [new Dotenv()],
+  plugins: [new Dotenv(), new VanillaExtractPlugin(), new MiniCssExtractPlugin()],
 };
