@@ -1,5 +1,7 @@
 import type { StorybookConfig } from '@storybook/react-webpack5';
 import path from 'path';
+import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
@@ -9,6 +11,7 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     'msw-storybook-addon',
     '@storybook/addon-onboarding',
+    '@storybook/addon-styling-webpack',
   ],
   framework: {
     name: '@storybook/react-webpack5',
@@ -54,6 +57,8 @@ const config: StorybookConfig = {
       test: /\.svg$/,
       use: ['@svgr/webpack'],
     });
+
+    config.plugins?.push(new VanillaExtractPlugin(), new MiniCssExtractPlugin());
 
     return config;
   },
