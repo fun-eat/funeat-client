@@ -7,7 +7,12 @@ const meta: Meta<typeof SvgIcon> = {
   title: 'common/SvgIcon',
   component: SvgIcon,
   argTypes: {
-    color: {
+    fill: {
+      control: {
+        type: 'color',
+      },
+    },
+    stroke: {
       control: {
         type: 'color',
       },
@@ -15,7 +20,7 @@ const meta: Meta<typeof SvgIcon> = {
   },
   args: {
     variant: 'recipe',
-    color: theme.colors.gray4,
+    stroke: theme.colors.gray4,
   },
 };
 
