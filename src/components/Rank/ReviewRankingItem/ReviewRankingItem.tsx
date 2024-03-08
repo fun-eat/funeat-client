@@ -13,34 +13,13 @@ interface ReviewRankingItemProps {
 const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
   const theme = useTheme();
 
-  const { productName, content, rating, favoriteCount, createdAt } = reviewRanking;
+  const { productName, content, tags, image } = reviewRanking;
 
   return (
     <ReviewRankingItemContainer>
       <Text size="sm" weight="bold">
         {productName}
       </Text>
-      <ReviewText size="sm" color={theme.textColors.info}>
-        {content}
-      </ReviewText>
-      <Spacing size={4} />
-      <FavoriteStarWrapper>
-        <FavoriteIconWrapper aria-label={`좋아요 ${favoriteCount}개`}>
-          <SvgIcon variant="favoriteFilled" fill="red" width={11} height={13} />
-          <Text size="xs" weight="bold">
-            {favoriteCount}
-          </Text>
-        </FavoriteIconWrapper>
-        <RatingIconWrapper aria-label={`${rating.toFixed(1)}점`}>
-          <SvgIcon variant="star" fill={theme.colors.secondary} width={16} height={16} />
-          <Text size="xs" weight="bold">
-            {rating.toFixed(1)}
-          </Text>
-        </RatingIconWrapper>
-        <ReviewDate size="sm" color={theme.textColors.info}>
-          {getRelativeDate(createdAt)}
-        </ReviewDate>
-      </FavoriteStarWrapper>
     </ReviewRankingItemContainer>
   );
 };
