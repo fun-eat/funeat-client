@@ -34,6 +34,7 @@ export const SVG_ICON_VARIANTS = [
   'plane',
   'info',
   'trashcan',
+  'arrowRight',
 ] as const;
 export type SvgIconVariant = (typeof SVG_ICON_VARIANTS)[number];
 
