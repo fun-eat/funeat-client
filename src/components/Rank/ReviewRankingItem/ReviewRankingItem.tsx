@@ -1,69 +1,47 @@
-import { Spacing, Text, useTheme } from '@fun-eat/design-system';
 import { memo } from 'react';
-import styled from 'styled-components';
 
-import { SvgIcon } from '@/components/Common';
+import {
+  reviewRankingItemContainer,
+  reviewRankingItemContent,
+  reviewRankingItemImage,
+  reviewRankingItemProductName,
+  reviewRankingItemTag,
+  reviewRankingItemTagList,
+} from './reviewRankingItem.css';
+
+import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { ReviewRanking } from '@/types/ranking';
-import { getRelativeDate } from '@/utils/date';
 
 interface ReviewRankingItemProps {
   reviewRanking: ReviewRanking;
 }
 
 const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
-  const theme = useTheme();
-
   const { productName, content, tags, image } = reviewRanking;
 
   return (
-    <ReviewRankingItemContainer>
-      <Text size="sm" weight="bold">
-        {productName}
-      </Text>
-    </ReviewRankingItemContainer>
+    <div className={reviewRankingItemContainer}>
+      <img
+        src={image ?? REVIEW_CARD_DEFAULT_IMAGE_URL}
+        className={reviewRankingItemImage}
+        width={166}
+        height={90}
+        alt={productName}
+      />
+      <div style={{ height: '8px' }} />
+      <p className={reviewRankingItemProductName}>{productName}</p>
+      <div style={{ height: '6px' }} />
+      <p className={reviewRankingItemContent}>{content}</p>
+      <div style={{ height: '10px' }} />
+      <ul className={reviewRankingItemTagList}>
+        {tags.map((tag) => (
+          <li key={tag.id} className={reviewRankingItemTag}>
+            <span>{tag.name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 export default memo(ReviewRankingItem);
-
-const ReviewRankingItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-  border: ${({ theme }) => `1px solid ${theme.borderColors.disabled}`};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
-`;
-
-const ReviewText = styled(Text)`
-  display: -webkit-inline-box;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
-const FavoriteStarWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-`;
-
-const FavoriteIconWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-  align-items: center;
-`;
-
-const RatingIconWrapper = styled.div`
-  display: flex;
-  gap: 2px;
-  align-items: center;
-
-  & > svg {
-    padding-bottom: 2px;
-  }
-`;
-
-const ReviewDate = styled(Text)`
-  margin-left: auto;
-`;
