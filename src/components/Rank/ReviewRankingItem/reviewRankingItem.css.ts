@@ -40,4 +40,7 @@ export const reviewRankingItemTag = style({
   textAlign: 'center',
   borderRadius: '2px',
   backgroundColor: '#ddd',
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 });
