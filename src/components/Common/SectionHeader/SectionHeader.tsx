@@ -9,14 +9,14 @@ interface SectionHeaderProps {
 
 const SectionHeader = ({ name, link }: SectionHeaderProps) => {
   return (
-    <header className={headerContainer}>
-      <p className={headerTitle}>{name}</p>
+    <div className={headerContainer}>
+      <h1 className={headerTitle}>{name}</h1>
       {link && (
         <Link to={link}>
-          <SvgIcon variant="arrowRight" fill={'#232527'} width={20} height={20} />
+          <SvgIcon variant="arrowRight" width={20} height={20} />
         </Link>
       )}
-    </header>
+    </div>
   );
 };
 
