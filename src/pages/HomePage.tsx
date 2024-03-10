@@ -1,7 +1,8 @@
 import { Heading, Spacing, Text, useTheme } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import styled from 'styled-components';
+
+import { categoryListWrapper, rankingInfoWrapper, sectionWrapper } from './homePage.css';
 
 import {
   Loading,
@@ -30,102 +31,66 @@ export const HomePage = () => {
       <section>
         <Banner />
       </section>
-      <Spacing size={40} />
-      <SectionWrapper>
-        <Heading as="h2" size="xl">
-          카테고리
-        </Heading>
-        <Spacing size={16} />
+      <section>
         <Suspense fallback={null}>
-          <CategoryListWrapper>
+          <div className={categoryListWrapper}>
             <CategoryFoodList />
             <CategoryStoreList />
-          </CategoryListWrapper>
+          </div>
         </Suspense>
-        <Spacing size={15} />
-      </SectionWrapper>
+      </section>
       <Spacing size={40} />
-      <SectionWrapper>
+      <section className={sectionWrapper}>
         <Heading as="h2" size="xl">
           🍯 꿀조합 랭킹
         </Heading>
-        <RankingInfoWrapper>
+        <div className={rankingInfoWrapper}>
           <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
           <Text size="sm" color={theme.textColors.info}>
             꿀조합 랭킹은 자체 알고리즘 기반으로 업데이트됩니다.
           </Text>
-        </RankingInfoWrapper>
+        </div>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <RecipeRankingList />
           </Suspense>
         </ErrorBoundary>
-      </SectionWrapper>
+      </section>
       <Spacing size={36} />
-      <SectionWrapper>
+      <section className={sectionWrapper}>
         <Heading as="h2" size="xl">
           🍙 상품 랭킹
         </Heading>
-        <RankingInfoWrapper>
+        <div className={rankingInfoWrapper}>
           <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
           <Text size="sm" color={theme.textColors.info}>
             상품 랭킹은 2주 단위로 업데이트됩니다.
           </Text>
-        </RankingInfoWrapper>
+        </div>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <ProductRankingList isHomePage />
           </Suspense>
         </ErrorBoundary>
-      </SectionWrapper>
+      </section>
       <Spacing size={36} />
-      <SectionWrapper>
+      <section className={sectionWrapper}>
         <Heading as="h2" size="xl">
           📝 리뷰 랭킹
         </Heading>
-        <RankingInfoWrapper>
+        <div className={rankingInfoWrapper}>
           <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
           <Text size="sm" color={theme.textColors.info}>
             리뷰 랭킹은 자체 알고리즘 기반으로 업데이트됩니다.
           </Text>
-        </RankingInfoWrapper>
+        </div>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <ReviewRankingList isHomePage />
           </Suspense>
         </ErrorBoundary>
-      </SectionWrapper>
+      </section>
       <Spacing size={36} />
     </>
   );
 };
-
-const SectionWrapper = styled.section`
-  padding: 0 20px;
-`;
-
-const CategoryListWrapper = styled.div`
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  @media screen and (min-width: 500px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-`;
-
-const RankingInfoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  margin: 8px 0 16px;
-
-  & > svg {
-    padding-bottom: 2px;
-  }
-`;
