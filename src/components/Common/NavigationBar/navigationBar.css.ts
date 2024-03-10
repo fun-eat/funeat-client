@@ -11,7 +11,7 @@ export const navigationList = style({
   justifyContent: 'space-around',
   alignItems: 'center',
   height: '100%',
-  borderTop: '1px solid #f9f9f9',
+  border: '1px solid #f9f9f9',
 });
 
 export const navigationLink = style({
