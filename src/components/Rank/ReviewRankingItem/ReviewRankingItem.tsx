@@ -34,9 +34,9 @@ const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
       <p className={reviewRankingItemContent}>{content}</p>
       <div style={{ height: '10px' }} />
       <ul className={reviewRankingItemTagList}>
-        {tags.map((tag) => (
-          <li key={tag.id} className={reviewRankingItemTag}>
-            <span>{tag.name}</span>
+        {tags.map(({ id, name }) => (
+          <li key={id} className={reviewRankingItemTag}>
+            <span>{name}</span>
           </li>
         ))}
       </ul>
