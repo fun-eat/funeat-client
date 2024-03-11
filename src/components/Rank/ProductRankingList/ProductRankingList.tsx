@@ -4,7 +4,7 @@ import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
 import { useProductRankingQuery } from '@/hooks/queries/rank';
 import ProductRankingItem from '../ProductRankingItem/ProductRankingItem';
-import { productRankingListContainer } from './productRankingList.css';
+import { container } from './productRankingList.css';
 
 const ProductRankingList = () => {
   const { data: productRankings } = useProductRankingQuery();
@@ -15,7 +15,7 @@ const ProductRankingList = () => {
   };
 
   return (
-    <ul className={productRankingListContainer}>
+    <ul className={container}>
       {productRankings.products.map(({ id, name, image, price, categoryType }, index) => (
         <li key={id}>
           <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`} onClick={handleProductRankingLinkClick}>

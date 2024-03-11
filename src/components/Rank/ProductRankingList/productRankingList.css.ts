@@ -1,12 +1,12 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
-export const productRankingListContainer = style({
+export const container = style({
   display: 'flex',
   overflowX: 'auto',
   overflowY: 'hidden',
   columnGap: '9px',
 });
 
-globalStyle(`${productRankingListContainer}::-webkit-scrollbar`, {
+globalStyle(`${container}::-webkit-scrollbar`, {
   display: 'none',
 });

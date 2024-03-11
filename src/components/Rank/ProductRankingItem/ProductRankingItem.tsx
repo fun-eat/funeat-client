@@ -1,10 +1,10 @@
 import {
-  productRankingImageWrapper,
-  productRankingImage,
-  productRankingTitle,
-  productRankingPrice,
-  productRankingRank,
-  productRankingItemContainer,
+  container,
+  imageWrapper,
+  productImage,
+  productRank,
+  productTitle,
+  productPrice,
 } from './productRankingItem.css';
 
 interface ProductRankingItemProps {
@@ -16,15 +16,15 @@ interface ProductRankingItemProps {
 
 const ProductRankingItem = ({ name, image, rank, price }: ProductRankingItemProps) => {
   return (
-    <div className={productRankingItemContainer}>
-      <div className={productRankingImageWrapper}>
-        {image && <img className={productRankingImage} src={image} alt={name} />}
-        <p className={productRankingRank}>{rank}</p>
+    <div className={container}>
+      <div className={imageWrapper}>
+        {image && <img className={productImage} src={image} alt={name} />}
+        <p className={productRank}>{rank}</p>
       </div>
       <div style={{ height: '5px' }} />
-      <p className={productRankingTitle}>{name}</p>
+      <p className={productTitle}>{name}</p>
       <div style={{ height: '2px' }} />
-      <p className={productRankingPrice}>{price.toLocaleString('ko-KR')}원</p>
+      <p className={productPrice}>{price.toLocaleString('ko-KR')}원</p>
     </div>
   );
 };

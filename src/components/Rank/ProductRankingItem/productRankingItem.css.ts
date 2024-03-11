@@ -1,10 +1,10 @@
 import { style } from '@vanilla-extract/css';
 
-export const productRankingItemContainer = style({
+export const container = style({
   width: 144,
 });
 
-export const productRankingImageWrapper = style({
+export const imageWrapper = style({
   position: 'relative',
   width: '100%',
   height: 144,
@@ -12,13 +12,13 @@ export const productRankingImageWrapper = style({
   borderRadius: 6,
 });
 
-export const productRankingImage = style({
+export const productImage = style({
   width: '100%',
   height: '100%',
   borderRadius: 6,
 });
 
-export const productRankingRank = style({
+export const productRank = style({
   position: 'absolute',
   top: 10,
   left: 10,
@@ -29,7 +29,7 @@ export const productRankingRank = style({
   fontWeight: '500',
 });
 
-export const productRankingTitle = style({
+export const productTitle = style({
   color: '#232527',
   fontSize: 13,
   fontWeight: 600,
@@ -38,7 +38,7 @@ export const productRankingTitle = style({
   overflow: 'hidden',
 });
 
-export const productRankingPrice = style({
+export const productPrice = style({
   color: '#808080',
   fontSize: 12,
   fontWeight: 600,
