@@ -7,14 +7,15 @@ export const recipeRankingImageWrapper = style({
 });
 
 export const recipeRankingImage = style({
-  width: 166,
-  height: 146,
+  width: '100%',
+  height: '100%',
   borderRadius: '6px',
+  objectFit: 'cover',
 });
 
 export const recipeRankingButtonWrapper = style({
   position: 'absolute',
-  top: 10,
+  top: 8,
   right: 8,
 });
 

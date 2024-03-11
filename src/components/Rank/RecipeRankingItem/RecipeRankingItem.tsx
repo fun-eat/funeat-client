@@ -27,6 +27,7 @@ const RecipeRankingItem = ({ recipe }: RecipeRankingItemProps) => {
       </div>
       <div style={{ height: '8px' }} />
       <p className={recipeRankingTitle}>{title}</p>
+      <div style={{ height: '2px' }} />
       <p className={recipeRankingInfo}>
         {author} 님 · {getRelativeDate(createdAt)}
       </p>
