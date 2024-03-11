@@ -1,4 +1,4 @@
-import type { CategoryVariant } from './common';
+import type { CategoryVariant, Tag } from './common';
 import type { Product } from './product';
 
 export type ProductRanking = Pick<Product, 'id' | 'name' | 'image' | 'price'> & { categoryType: string };
@@ -8,10 +8,9 @@ export interface ReviewRanking {
   productId: number;
   productName: string;
   content: string;
-  rating: number;
-  favoriteCount: number;
+  image: string | null;
   categoryType: CategoryVariant;
-  createdAt: string;
+  tags: Tag[];
 }
 
 export interface RecipeRanking {
