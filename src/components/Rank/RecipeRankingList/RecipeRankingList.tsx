@@ -21,8 +21,8 @@ const RecipeRankingList = () => {
   return (
     <ul className={recipeRankingContainer}>
       {recipeResponse.recipes.map((recipe) => (
-        <li className={recipeRankingItemList}>
-          <Link key={recipe.id} to={`${PATH.RECIPE}/${recipe.id}`} onClick={handleRecipeRankingLinkClick}>
+        <li className={recipeRankingItemList} key={recipe.id}>
+          <Link to={`${PATH.RECIPE}/${recipe.id}`} onClick={handleRecipeRankingLinkClick}>
             <RecipeRankingItem recipe={recipe} />
           </Link>
         </li>
