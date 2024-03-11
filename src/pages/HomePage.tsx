@@ -74,7 +74,7 @@ export const HomePage = () => {
         </RankingInfoWrapper>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <ProductRankingList isHomePage />
+            <ProductRankingList />
           </Suspense>
         </ErrorBoundary>
       </SectionWrapper>

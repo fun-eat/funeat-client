@@ -1,7 +1,7 @@
 import type { CategoryVariant } from './common';
 import type { Product } from './product';
 
-export type ProductRanking = Pick<Product, 'id' | 'name' | 'image'> & { categoryType: string };
+export type ProductRanking = Pick<Product, 'id' | 'name' | 'image' | 'price'> & { categoryType: string };
 
 export interface ReviewRanking {
   reviewId: number;
