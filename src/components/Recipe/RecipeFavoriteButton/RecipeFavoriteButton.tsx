@@ -20,7 +20,7 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
   return (
     <button type="button" onClick={debouncedToggleFavorite}>
       <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
-      <p>{favoriteCount}</p>
+      {favoriteCount && <p>{favoriteCount}</p>}
     </button>
   );
 };
