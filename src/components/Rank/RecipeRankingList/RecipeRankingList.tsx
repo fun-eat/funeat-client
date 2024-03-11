@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 
+import { recipeRankingContainer, recipeRankingItemList } from './recipeRankingList.css';
+
 import RecipeRankingItem from '../RecipeRankingItem/RecipeRankingItem';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
 import { useRecipeRankingQuery } from '@/hooks/queries/rank';
-import { recipeRankingContainer, recipeRankingItemList } from './recipeRankingList.css';
 
 const RecipeRankingList = () => {
   const { data: recipeResponse } = useRecipeRankingQuery();
