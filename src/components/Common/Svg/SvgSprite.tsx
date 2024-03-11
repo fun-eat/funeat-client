@@ -184,6 +184,42 @@ const SvgSprite = () => {
       <symbol id="trashcan" viewBox="0 0 24 24">
         <path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
       </symbol>
+      <symbol id="heartEmpty" viewBox="0 0 24 23">
+        <path
+          fill="#fff"
+          d="M16.5 2.826c-1.74 0-3.41.81-4.5 2.09-1.09-1.28-2.76-2.09-4.5-2.09-3.08 0-5.5 2.42-5.5 5.5 0 3.78 3.4 6.86 8.55 11.54a2.16 2.16 0 0 0 2.9-.01c5.15-4.67 8.55-7.75 8.55-11.53 0-3.08-2.42-5.5-5.5-5.5zm-4.4 15.55a.141.141 0 0 1-.2 0C7.14 14.066 4 11.216 4 8.326c0-2 1.5-3.5 3.5-3.5 1.216 0 2.406.617 3.115 1.55.34.448.825.81 1.387.81.565 0 1.053-.366 1.394-.816A3.982 3.982 0 0 1 16.5 4.826c2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"
+          filter="url(#a)"
+        />
+        <defs>
+          <filter
+            id="a"
+            width="24"
+            height="21.59"
+            x="0"
+            y=".83"
+            colorInterpolationFilters="sRGB"
+            filterUnits="userSpaceOnUse"
+          >
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
+            <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
+            <feOffset />
+            <feGaussianBlur stdDeviation="1" />
+            <feComposite in2="hardAlpha" operator="out" />
+            <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.5 0" />
+            <feBlend in2="BackgroundImageFix" result="effect1_dropShadow_3791_1017" />
+            <feBlend in="SourceGraphic" in2="effect1_dropShadow_3791_1017" result="shape" />
+          </filter>
+        </defs>
+      </symbol>
+      <symbol id="heartFilled" viewBox="0 0 22 19">
+        <path
+          fill="#FD4545"
+          stroke="#FD4545"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M11.306 2.916c1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.777-3.395 6.855-8.538 11.519l-.012.011a2.161 2.161 0 0 1-2.9.01l-.04-.036c-5.128-4.66-8.51-7.733-8.51-11.504 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09z"
+        />
+      </symbol>
     </svg>
   );
 };
