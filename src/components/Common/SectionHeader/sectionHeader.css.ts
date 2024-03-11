@@ -1,11 +1,11 @@
 import { style } from '@vanilla-extract/css';
 
-export const headerContainer = style({
+export const container = style({
   display: 'flex',
   justifyContent: 'space-between',
 });
 
-export const headerTitle = style({
+export const title = style({
   fontSize: '1.8rem',
   fontWeight: 600,
 });
