@@ -1,63 +1,35 @@
-import { Link, Text, theme } from '@fun-eat/design-system';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
-import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
+import { menuName, navigationBarContainer, navigationLink, navigationList } from './navigationBar.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import { NAVIGATION_MENU } from '@/constants';
 
 const NavigationBar = () => {
-  const location = useLocation();
-
   return (
-    <NavigationBarContainer>
-      <NavigationBarList>
-        {NAVIGATION_MENU.map(({ variant, name, path }) => {
-          const currentPath = location.pathname.split('/')[1];
-          const isSelected = currentPath === path.split('/')[1];
-
-          return (
-            <NavigationItem key={variant}>
-              <NavigationLink as={RouterLink} to={path}>
-                <SvgIcon variant={variant} fill={isSelected ? theme.colors.gray5 : theme.colors.gray3} />
-                <Text size="xs" color={isSelected ? theme.colors.gray5 : theme.colors.gray3}>
-                  {name}
-                </Text>
-              </NavigationLink>
-            </NavigationItem>
-          );
-        })}
-      </NavigationBarList>
-    </NavigationBarContainer>
+    <nav className={navigationBarContainer}>
+      <ul className={navigationList}>
+        {NAVIGATION_MENU.map(({ variant, name, path }) => (
+          <li key={variant}>
+            <NavLink to={path} className={navigationLink}>
+              {({ isActive }) => (
+                <>
+                  <SvgIcon
+                    variant={variant}
+                    width={20}
+                    height={20}
+                    fill="none"
+                    stroke={isActive ? '#ffb017' : '#a0a0a0'}
+                  />
+                  <span className={isActive ? menuName['active'] : menuName['default']}>{name}</span>
+                </>
+              )}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 };
 
 export default NavigationBar;
-
-const NavigationBarContainer = styled.nav`
-  width: 100%;
-  height: 60px;
-`;
-
-const NavigationBarList = styled.ul`
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 12px;
-  border: 1px solid ${({ theme }) => theme.borderColors.disabled};
-  border-bottom: none;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-`;
-
-const NavigationItem = styled.li`
-  height: 50px;
-`;
-
-const NavigationLink = styled(Link)`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  justify-content: flex-end;
-  align-items: center;
-`;
