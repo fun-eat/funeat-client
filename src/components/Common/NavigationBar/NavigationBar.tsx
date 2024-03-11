@@ -1,17 +1,17 @@
 import { NavLink } from 'react-router-dom';
 
-import { menuName, navigationBarContainer, navigationLink, navigationList } from './navigationBar.css';
+import { menuName, container, link, list } from './navigationBar.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import { NAVIGATION_MENU } from '@/constants';
 
 const NavigationBar = () => {
   return (
-    <nav className={navigationBarContainer}>
-      <ul className={navigationList}>
+    <nav className={container}>
+      <ul className={list}>
         {NAVIGATION_MENU.map(({ variant, name, path }) => (
           <li key={variant}>
-            <NavLink to={path} className={navigationLink}>
+            <NavLink to={path} className={link}>
               {({ isActive }) => (
                 <>
                   <SvgIcon

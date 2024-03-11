@@ -1,90 +1,40 @@
-import { Spacing, Text, useTheme } from '@fun-eat/design-system';
 import { memo } from 'react';
-import styled from 'styled-components';
 
-import { SvgIcon } from '@/components/Common';
+import { container, reviewContent, reviewImage, reviewTitle, tagList, tag } from './reviewRankingItem.css';
+
+import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { ReviewRanking } from '@/types/ranking';
-import { getRelativeDate } from '@/utils/date';
 
 interface ReviewRankingItemProps {
   reviewRanking: ReviewRanking;
 }
 
 const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
-  const theme = useTheme();
-
-  const { productName, content, rating, favoriteCount, createdAt } = reviewRanking;
+  const { productName, content, tags, image } = reviewRanking;
 
   return (
-    <ReviewRankingItemContainer>
-      <Text size="sm" weight="bold">
-        {productName}
-      </Text>
-      <ReviewText size="sm" color={theme.textColors.info}>
-        {content}
-      </ReviewText>
-      <Spacing size={4} />
-      <FavoriteStarWrapper>
-        <FavoriteIconWrapper aria-label={`좋아요 ${favoriteCount}개`}>
-          <SvgIcon variant="favoriteFilled" fill="red" width={11} height={13} />
-          <Text size="xs" weight="bold">
-            {favoriteCount}
-          </Text>
-        </FavoriteIconWrapper>
-        <RatingIconWrapper aria-label={`${rating.toFixed(1)}점`}>
-          <SvgIcon variant="star" fill={theme.colors.secondary} width={16} height={16} />
-          <Text size="xs" weight="bold">
-            {rating.toFixed(1)}
-          </Text>
-        </RatingIconWrapper>
-        <ReviewDate size="sm" color={theme.textColors.info}>
-          {getRelativeDate(createdAt)}
-        </ReviewDate>
-      </FavoriteStarWrapper>
-    </ReviewRankingItemContainer>
+    <div className={container}>
+      <img
+        src={image ?? REVIEW_CARD_DEFAULT_IMAGE_URL}
+        className={reviewImage}
+        width={166}
+        height={90}
+        alt={productName}
+      />
+      <div style={{ height: '8px' }} />
+      <p className={reviewTitle}>{productName}</p>
+      <div style={{ height: '6px' }} />
+      <p className={reviewContent}>{content}</p>
+      <div style={{ height: '10px' }} />
+      <ul className={tagList}>
+        {tags.map(({ id, name }) => (
+          <li key={id} className={tag}>
+            <span>{name}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };
 
 export default memo(ReviewRankingItem);
-
-const ReviewRankingItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px;
-  border: ${({ theme }) => `1px solid ${theme.borderColors.disabled}`};
-  border-radius: ${({ theme }) => theme.borderRadius.sm};
-`;
-
-const ReviewText = styled(Text)`
-  display: -webkit-inline-box;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
-const FavoriteStarWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-`;
-
-const FavoriteIconWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-  align-items: center;
-`;
-
-const RatingIconWrapper = styled.div`
-  display: flex;
-  gap: 2px;
-  align-items: center;
-
-  & > svg {
-    padding-bottom: 2px;
-  }
-`;
-
-const ReviewDate = styled(Text)`
-  margin-left: auto;
-`;
