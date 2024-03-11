@@ -17,7 +17,7 @@ const RecipeRankingItem = ({ recipe }: RecipeRankingItemProps) => {
   const { id, image, title, author, favorite, createdAt } = recipe;
 
   return (
-    <div>
+    <>
       {/* 이미지 값을 필수값으로 받을지 선택값으로 받을지에 따라 타입 수정 (현재는 대체 이미지로 인해 'string|null'임*/}
       <div className={recipeRankingImageWrapper}>
         {image && <img className={recipeRankingImage} src={image} alt={title} />}
@@ -31,7 +31,7 @@ const RecipeRankingItem = ({ recipe }: RecipeRankingItemProps) => {
       <p className={recipeRankingInfo}>
         {author} 님 · {getRelativeDate(createdAt)}
       </p>
-    </div>
+    </>
   );
 };
 

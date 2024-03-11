@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { recipeRankingContainer, recipeRankingItemList } from './recipeRankingList.css';
+import { recipeRankingContainer } from './recipeRankingList.css';
 
 import RecipeRankingItem from '../RecipeRankingItem/RecipeRankingItem';
 
@@ -21,7 +21,7 @@ const RecipeRankingList = () => {
   return (
     <ul className={recipeRankingContainer}>
       {recipeResponse.recipes.map((recipe) => (
-        <li className={recipeRankingItemList} key={recipe.id}>
+        <li key={recipe.id}>
           <Link to={`${PATH.RECIPE}/${recipe.id}`} onClick={handleRecipeRankingLinkClick}>
             <RecipeRankingItem recipe={recipe} />
           </Link>
