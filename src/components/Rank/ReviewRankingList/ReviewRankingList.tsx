@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { reviewRankingListContainer } from './reviewRankingList.css';
+import { container } from './reviewRankingList.css';
 import ReviewRankingItem from '../ReviewRankingItem/ReviewRankingItem';
 
 import { PATH } from '@/constants/path';
@@ -18,7 +18,7 @@ const ReviewRankingList = () => {
   };
 
   return (
-    <ul className={reviewRankingListContainer}>
+    <ul className={container}>
       {reviews.map((reviewRanking) => (
         <li key={reviewRanking.reviewId}>
           <Link to={`${PATH.REVIEW}/${reviewRanking.reviewId}`} onClick={handleReviewRankingLinkClick}>

@@ -1,21 +1,21 @@
 import { style } from '@vanilla-extract/css';
 
-export const reviewRankingItemContainer = style({
+export const container = style({
   width: 166,
 });
 
-export const reviewRankingItemImage = style({
+export const reviewImage = style({
   borderRadius: '6px',
   objectFit: 'cover',
 });
 
-export const reviewRankingItemProductName = style({
+export const reviewTitle = style({
   fontSize: 13,
   fontWeight: 600,
   color: '#3d3d3d',
 });
 
-export const reviewRankingItemContent = style({
+export const reviewContent = style({
   fontSize: 11,
   color: '#808080',
   display: '-webkit-inline-box',
@@ -25,12 +25,12 @@ export const reviewRankingItemContent = style({
   WebkitBoxOrient: 'vertical',
 });
 
-export const reviewRankingItemTagList = style({
+export const tagList = style({
   display: 'flex',
   gap: 8,
 });
 
-export const reviewRankingItemTag = style({
+export const tag = style({
   width: 63,
   height: 26,
   color: '#232527',
