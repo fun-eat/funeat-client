@@ -2,35 +2,34 @@
   "recipes": [
     {
       "id": 1,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
       "title": "초특급불닭콘치즈",
-      "author": {
-        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed",
-        "nickname": "funeat"
-      },
-      "favoriteCount": 153,
+      "author": "funeat",
+      "favorite": false,
       "createdAt": "2023-08-09T10:10:10"
     },
     {
       "id": 2,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": "https://image.funeat.site/prod/1ff85060-4ce9-4c3f-9044-87cbb993716caaa.webp",
       "title": "초특급불닭콘치즈",
-      "author": {
-        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed",
-        "nickname": "funeat"
-      },
-      "favoriteCount": 153,
+      "author": "funeat",
+      "favorite": true,
       "createdAt": "2023-08-09T10:10:10"
     },
     {
       "id": 3,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": "https://image.funeat.site/prod/240a51fa-9fad-4199-807b-891ccfa59f8aIMG_6598.webp",
       "title": "초특급불닭콘치즈",
-      "author": {
-        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed",
-        "nickname": "funeat"
-      },
-      "favoriteCount": 153,
+      "author": "funeat",
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10"
+    },
+    {
+      "id": 4,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": "funeat",
+      "favorite": false,
       "createdAt": "2023-08-09T10:10:10"
     }
   ]

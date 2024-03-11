@@ -8,7 +8,6 @@ const meta: Meta<typeof RecipeRankingItem> = {
   title: 'recipe/RecipeRankingItem',
   component: RecipeRankingItem,
   args: {
-    rank: 1,
     recipe: mockRecipeRankingList.recipes[0],
   },
 };

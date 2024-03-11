@@ -10,4 +10,10 @@ const meta: Meta<typeof RecipeRankingList> = {
 export default meta;
 type Story = StoryObj<typeof RecipeRankingList>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  render: () => (
+    <div style={{ width: '375px' }}>
+      <RecipeRankingList />
+    </div>
+  ),
+};
