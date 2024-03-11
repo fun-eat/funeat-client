@@ -1,5 +1,3 @@
-import type { RecipeRanking } from '@/types/ranking';
-import { getRelativeDate } from '@/utils/date';
 import {
   recipeRankingImageWrapper,
   recipeRankingImage,
@@ -7,7 +5,10 @@ import {
   recipeRankingTitle,
   recipeRankingInfo,
 } from './recipeRankingItem.css';
+
 import { RecipeFavoriteButton } from '@/components/Recipe';
+import type { RecipeRanking } from '@/types/ranking';
+import { getRelativeDate } from '@/utils/date';
 
 interface RecipeRankingItemProps {
   recipe: RecipeRanking;

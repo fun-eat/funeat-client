@@ -197,10 +197,10 @@ const SvgSprite = () => {
             height="21.59"
             x="0"
             y=".83"
-            color-interpolation-filters="sRGB"
+            colorInterpolationFilters="sRGB"
             filterUnits="userSpaceOnUse"
           >
-            <feFlood flood-opacity="0" result="BackgroundImageFix" />
+            <feFlood floodOpacity="0" result="BackgroundImageFix" />
             <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" />
             <feOffset />
             <feGaussianBlur stdDeviation="1" />
@@ -215,8 +215,8 @@ const SvgSprite = () => {
         <path
           fill="#FD4545"
           stroke="#FD4545"
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M11.306 2.916c1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.777-3.395 6.855-8.538 11.519l-.012.011a2.161 2.161 0 0 1-2.9.01l-.04-.036c-5.128-4.66-8.51-7.733-8.51-11.504 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09z"
         />
       </symbol>

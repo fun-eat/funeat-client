@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 
 import { recipeRankingContainer } from './recipeRankingList.css';
-
 import RecipeRankingItem from '../RecipeRankingItem/RecipeRankingItem';
 
 import { PATH } from '@/constants/path';
