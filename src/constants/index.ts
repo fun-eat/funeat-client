@@ -4,22 +4,22 @@ import type { NavigationMenu } from '@/types/common';
 
 export const NAVIGATION_MENU: NavigationMenu[] = [
   {
-    variant: 'list',
-    name: '목록',
+    variant: 'category2',
+    name: '카테고리',
     path: `${PATH.PRODUCT_LIST}/food`,
   },
   {
-    variant: 'home',
+    variant: 'home2',
     name: '홈',
     path: PATH.HOME,
   },
   {
-    variant: 'recipe',
-    name: '꿀조합',
+    variant: 'recipe2',
+    name: '조합실',
     path: PATH.RECIPE,
   },
   {
-    variant: 'member',
+    variant: 'member2',
     name: '마이',
     path: PATH.MEMBER,
   },
@@ -68,8 +68,5 @@ export const ENVIRONMENT = window.location.href.includes('dev')
   : process.env.NODE_ENV === 'production'
   ? 'prod'
   : 'local';
-
-export const IMAGE_URL =
-  ENVIRONMENT === 'dev' ? process.env.S3_DEV_CLOUDFRONT_PATH : process.env.S3_PROD_CLOUDFRONT_PATH;
 
 export const PREVIOUS_PATH_LOCAL_STORAGE_KEY = `funeat-previous-path-${ENVIRONMENT}`;

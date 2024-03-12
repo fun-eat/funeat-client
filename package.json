@@ -10,7 +10,9 @@
     "storybook": "storybook dev -p 6006",
     "lint:styled": "stylelint 'src/**/*.tsx' --fix",
     "test": "jest",
-    "test:coverage": "jest --watchAll --coverage"
+    "test:coverage": "jest --watchAll --coverage",
+    "lint:es": "eslint '**/*.{js,ts,tsx}'",
+    "lint:es:fix": "yarn lint:es -- --fix"
   },
   "dependencies": {
     "@fun-eat/design-system": "^0.4.1",

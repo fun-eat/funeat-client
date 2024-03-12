@@ -69,7 +69,7 @@ export const HomePage = () => {
         </div>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <ProductRankingList isHomePage />
+            <ProductRankingList />
           </Suspense>
         </ErrorBoundary>
       </section>
@@ -86,7 +86,7 @@ export const HomePage = () => {
         </div>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <ReviewRankingList isHomePage />
+            <ReviewRankingList />
           </Suspense>
         </ErrorBoundary>
       </section>
