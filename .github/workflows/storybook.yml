@@ -2,11 +2,7 @@ name: "Deploy Storybook"
 
 on:
   pull_request:
-    branches: [feat/v2, develop]
-    paths:
-      - '**.stories.tsx'
-  push:
-    branches: [feat/v2, develop]
+    branches: ['feat/v2', 'develop']
     paths:
       - '**.stories.tsx'
 
