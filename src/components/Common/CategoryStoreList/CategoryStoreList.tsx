@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import { categoryStoreListWrapper } from './categoryStoreList.css';
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import { CATEGORY_TYPE } from '@/constants';
@@ -11,17 +10,17 @@ const CategoryStoreList = () => {
   const { data: categories } = useCategoryStoreQuery(categoryType);
 
   return (
-    <CategoryStoreListWrapper>
+    <div className={categoryStoreListWrapper}>
       {categories.map(({ id, name, image }) => (
-        <CategoryItem key={id} categoryId={id} name={name} image={image} categoryType={categoryType} />
+        <CategoryItem
+          key={id}
+          categoryId={id}
+          image={{ src: image, width: 78, height: 58 }}
+          categoryType={categoryType}
+        />
       ))}
-    </CategoryStoreListWrapper>
+    </div>
   );
 };
 
 export default CategoryStoreList;
-
-const CategoryStoreListWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-`;

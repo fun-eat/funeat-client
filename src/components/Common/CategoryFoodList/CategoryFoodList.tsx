@@ -1,5 +1,4 @@
-import styled from 'styled-components';
-
+import { categoryFoodListWrapper } from './categoryFoodList.css';
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import { CATEGORY_TYPE } from '@/constants';
@@ -11,17 +10,18 @@ const CategoryFoodList = () => {
   const { data: categories } = useCategoryFoodQuery(categoryType);
 
   return (
-    <CategoryFoodListWrapper>
+    <div className={categoryFoodListWrapper}>
       {categories.map(({ id, name, image }) => (
-        <CategoryItem key={id} categoryId={id} name={name} image={image} categoryType={categoryType} />
+        <CategoryItem
+          key={id}
+          categoryId={id}
+          name={name}
+          image={{ src: image, width: 51, height: 51 }}
+          categoryType={categoryType}
+        />
       ))}
-    </CategoryFoodListWrapper>
+    </div>
   );
 };
 
 export default CategoryFoodList;
-
-const CategoryFoodListWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-`;

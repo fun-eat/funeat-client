@@ -1,5 +1,4 @@
-import { Link } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import { bannerImage } from './banner.css';
 
 import { useBannerQuery } from '@/hooks/queries/banner';
 
@@ -8,19 +7,14 @@ const Banner = () => {
   const { link, image } = banners[Math.floor(Math.random() * banners.length)];
 
   if (!link) {
-    return <BannerImage src={image} width={600} height={360} alt="배너" />;
+    return <img className={bannerImage} src={image} width={600} height={360} alt="배너" />;
   }
 
   return (
-    <Link href={link} isExternal>
-      <BannerImage src={image} width={600} height={360} alt="배너" />
-    </Link>
+    <a href={link} target="_blank" rel="noopener noreferrer">
+      <img className={bannerImage} src={image} width={600} height={360} alt="배너" />
+    </a>
   );
 };
 
 export default Banner;
-
-const BannerImage = styled.img`
-  width: 100%;
-  height: auto;
-`;
