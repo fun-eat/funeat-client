@@ -89,7 +89,7 @@ const router = createBrowserRouter([
       {
         index: true,
         async lazy() {
-          const { HomePage } = await import(/* webpackChunkName: "HomePage" */ '@/pages/HomePage');
+          const { HomePage } = await import(/* webpackChunkName: "HomePage" */ '@/pages/HomePage/HomePage');
           return { Component: HomePage };
         },
       },
