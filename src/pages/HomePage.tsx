@@ -1,8 +1,15 @@
 import { Heading, Spacing, Text, useTheme } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
+import { Link } from 'react-router-dom';
 
-import { categoryListWrapper, rankingInfoWrapper, sectionWrapper } from './homePage.css';
+import {
+  categoryListWrapper,
+  categorytSection,
+  rankingInfoWrapper,
+  searchRouterWrapper,
+  sectionWrapper,
+} from './homePage.css';
 
 import {
   Loading,
@@ -14,6 +21,7 @@ import {
   Banner,
 } from '@/components/Common';
 import { ProductRankingList, ReviewRankingList, RecipeRankingList } from '@/components/Rank';
+import { PATH } from '@/constants/path';
 import channelTalk from '@/service/channelTalk';
 
 export const HomePage = () => {
@@ -31,7 +39,13 @@ export const HomePage = () => {
       <section>
         <Banner />
       </section>
-      <section>
+      <section className={categorytSection}>
+        <Link to={`${PATH.SEARCH}/integrated`}>
+          <div className={searchRouterWrapper}>
+            <p>상품 또는 꿀!조합을 검색해보세요</p>
+            <SvgIcon variant="search2" width={20} height={20} stroke="#808080" />
+          </div>
+        </Link>
         <Suspense fallback={null}>
           <div className={categoryListWrapper}>
             <CategoryFoodList />
