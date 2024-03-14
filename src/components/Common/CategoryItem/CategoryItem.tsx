@@ -39,7 +39,7 @@ const CategoryItem = ({ categoryId, name, image, categoryType }: CategoryItemPro
       <div className={imageWrapper}>
         <img className={categoryImage} src={image.src} width={image.width} height={image.height} alt={name} />
       </div>
-      <p className={categoryName}>{name}</p>
+      {name && <p className={categoryName}>{name}</p>}
     </button>
   );
 };
