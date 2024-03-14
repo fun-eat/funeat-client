@@ -1,6 +1,6 @@
-import { Button } from '@fun-eat/design-system';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
+
+import { imageWrapper, categoryImage, categoryName } from './categoryItem.css';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
@@ -8,8 +8,12 @@ import { useCategoryActionContext } from '@/hooks/context';
 
 interface CategoryItemProps {
   categoryId: number;
-  name: string;
-  image: string;
+  name?: string;
+  image: {
+    src: string;
+    width: number;
+    height: number;
+  };
   categoryType: 'food' | 'store';
 }
 
@@ -31,35 +35,13 @@ const CategoryItem = ({ categoryId, name, image, categoryType }: CategoryItemPro
   };
 
   return (
-    <Button type="button" variant="transparent" customHeight="auto" onClick={() => handleCategoryItemClick(categoryId)}>
-      <ImageWrapper>
-        <img src={image} width={60} height={60} alt={name} />
-      </ImageWrapper>
-      <CategoryName>{name}</CategoryName>
-    </Button>
+    <button type="button" onClick={() => handleCategoryItemClick(categoryId)}>
+      <div className={imageWrapper}>
+        <img className={categoryImage} src={image.src} width={image.width} height={image.height} alt={name} />
+      </div>
+      {name && <p className={categoryName}>{name}</p>}
+    </button>
   );
 };
 
 export default CategoryItem;
-
-const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  border-radius: 10px;
-  background: ${({ theme }) => theme.colors.white};
-
-  & > img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
-`;
-
-const CategoryName = styled.p`
-  margin-top: 10px;
-  font-weight: 600;
-  font-size: ${({ theme }) => theme.fontSizes.xs};
-`;

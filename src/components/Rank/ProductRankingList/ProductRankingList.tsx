@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 
+import { container } from './productRankingList.css';
+import ProductRankingItem from '../ProductRankingItem/ProductRankingItem';
+
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
 import { useProductRankingQuery } from '@/hooks/queries/rank';
-import ProductRankingItem from '../ProductRankingItem/ProductRankingItem';
-import { container } from './productRankingList.css';
 
 const ProductRankingList = () => {
   const { data: productRankings } = useProductRankingQuery();
