@@ -1,15 +1,9 @@
-import { Heading, Spacing, Text, useTheme } from '@fun-eat/design-system';
+import { Spacing, useTheme } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 
-import {
-  categoryListWrapper,
-  categorytSection,
-  rankingInfoWrapper,
-  searchRouterWrapper,
-  sectionWrapper,
-} from './homePage.css';
+import { categoryListWrapper, categorytSection, searchRouterWrapper, sectionWrapper } from './homePage.css';
 
 import {
   Loading,
@@ -27,7 +21,6 @@ import channelTalk from '@/service/channelTalk';
 
 export const HomePage = () => {
   const { reset } = useQueryErrorResetBoundary();
-  const theme = useTheme();
 
   channelTalk.loadScript();
 
