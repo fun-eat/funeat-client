@@ -19,6 +19,7 @@ import {
   CategoryStoreList,
   SvgIcon,
   Banner,
+  SectionHeader,
 } from '@/components/Common';
 import { ProductRankingList, ReviewRankingList, RecipeRankingList } from '@/components/Rank';
 import { PATH } from '@/constants/path';
@@ -55,15 +56,7 @@ export const HomePage = () => {
       </section>
       <Spacing size={40} />
       <section className={sectionWrapper}>
-        <Heading as="h2" size="xl">
-          🍯 꿀조합 랭킹
-        </Heading>
-        <div className={rankingInfoWrapper}>
-          <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
-          <Text size="sm" color={theme.textColors.info}>
-            꿀조합 랭킹은 자체 알고리즘 기반으로 업데이트됩니다.
-          </Text>
-        </div>
+        <SectionHeader name="떠오르는 조합" link={PATH.RECIPE} />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <RecipeRankingList />
@@ -72,15 +65,7 @@ export const HomePage = () => {
       </section>
       <Spacing size={36} />
       <section className={sectionWrapper}>
-        <Heading as="h2" size="xl">
-          🍙 상품 랭킹
-        </Heading>
-        <div className={rankingInfoWrapper}>
-          <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
-          <Text size="sm" color={theme.textColors.info}>
-            상품 랭킹은 2주 단위로 업데이트됩니다.
-          </Text>
-        </div>
+        <SectionHeader name="상품 랭킹" />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <ProductRankingList />
@@ -89,15 +74,7 @@ export const HomePage = () => {
       </section>
       <Spacing size={36} />
       <section className={sectionWrapper}>
-        <Heading as="h2" size="xl">
-          📝 리뷰 랭킹
-        </Heading>
-        <div className={rankingInfoWrapper}>
-          <SvgIcon variant="info" width={18} height={18} fill={theme.textColors.info} />
-          <Text size="sm" color={theme.textColors.info}>
-            리뷰 랭킹은 자체 알고리즘 기반으로 업데이트됩니다.
-          </Text>
-        </div>
+        <SectionHeader name="오늘의 리뷰" />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <ReviewRankingList />
