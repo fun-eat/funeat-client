@@ -11,7 +11,7 @@ const Banner = () => {
   }
 
   return (
-    <a href={link} target="_blank" rel="noopener">
+    <a href={link} target="_blank" rel="noopener noreferrer">
       <img className={bannerImage} src={image} width={600} height={360} alt="배너" />
     </a>
   );
