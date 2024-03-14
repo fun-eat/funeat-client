@@ -32,7 +32,7 @@ export interface Tag {
 
 export interface NavigationMenu {
   variant: SvgIconVariant;
-  name: '카테고리' | '홈' | '조합실' | '마이';
+  name: '상품' | '홈' | '조합실' | '마이';
   path: (typeof PATH)[keyof typeof PATH] | '/products/food' | '/products/store';
 }
 

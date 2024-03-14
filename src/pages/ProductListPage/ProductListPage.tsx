@@ -1,17 +1,19 @@
 import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, Navigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import { menuName, tabMenu, tabMenuWrapper } from './productListPage.css';
 
 import { CategoryFoodTab, CategoryStoreTab, Loading, ErrorBoundary, ErrorComponent } from '@/components/Common';
+import { CATEGORY_TYPE } from '@/constants';
+import { PATH } from '@/constants/path';
 import { isCategoryVariant } from '@/types/common';
 
 const TAB_MENUS = [
-  { type: 'food', label: '공통 상품' },
-  { type: 'store', label: '오직!여기서' },
+  { type: CATEGORY_TYPE.FOOD, label: '공통 상품' },
+  { type: CATEGORY_TYPE.STORE, label: '오직!여기서' },
 ];
 
 export const ProductListPage = () => {
@@ -20,7 +22,7 @@ export const ProductListPage = () => {
   const { reset } = useQueryErrorResetBoundary();
 
   if (!category || !isCategoryVariant(category)) {
-    return null;
+    return <Navigate to={`${PATH.PRODUCT_LIST}/${CATEGORY_TYPE.FOOD}`} replace />;
   }
 
   return (
