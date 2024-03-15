@@ -4,7 +4,6 @@ import { container, headerTitle } from './pageHeader.css';
 
 import SvgIcon from '../Svg/SvgIcon';
 import { PATH } from '@/constants/path';
-import { useRoutePage } from '@/hooks/common';
 
 interface PageHeaderProps {
   title: string;
@@ -13,14 +12,12 @@ interface PageHeaderProps {
 }
 
 const PageHeader = ({ title, hasBackLink, hasSearchLink }: PageHeaderProps) => {
-  const { routeBack } = useRoutePage();
-
   return (
     <header className={container}>
       {hasBackLink ? (
-        <button type="button" onClick={routeBack}>
+        <Link to=".." relative="path">
           <SvgIcon variant="arrowLeft" stroke="#444444" width={24} height={24} />
-        </button>
+        </Link>
       ) : (
         <div style={{ width: 24, height: 24 }} aria-hidden />
       )}
