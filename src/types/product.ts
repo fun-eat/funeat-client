@@ -4,7 +4,7 @@ export interface Product {
   id: number;
   name: string;
   price: number;
-  image: string | null;
+  image: string;
   averageRating: number;
   reviewCount: number;
 }
@@ -13,7 +13,7 @@ export interface ProductDetail {
   id: number;
   name: string;
   price: number;
-  image: string | null;
+  image: string;
   content: string;
   averageRating: number;
   reviewCount: number;
@@ -24,7 +24,7 @@ export interface PBProduct {
   id: number;
   name: string;
   price: number;
-  image: string | null;
+  image: string;
   averageRating: number;
   reviewCount?: number;
 }
