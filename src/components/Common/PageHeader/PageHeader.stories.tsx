@@ -19,21 +19,21 @@ export const Default: Story = {
 export const BackButton: Story = {
   args: {
     title: '조합실',
-    isBackActive: true,
+    hasBackLink: true,
   },
 };
 
 export const SearchButton: Story = {
   args: {
     title: '조합실',
-    isSearchActive: true,
+    hasSearchLink: true,
   },
 };
 
 export const AllActive: Story = {
   args: {
     title: '조합실',
-    isBackActive: true,
-    isSearchActive: true,
+    hasBackLink: true,
+    hasSearchLink: true,
   },
 };
