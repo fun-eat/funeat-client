@@ -6,12 +6,11 @@ export const container = style({
 
 export const productImage = style({
   border: '1px solid #e6e6e6',
-  borderRadius: '6px',
+  borderRadius: 6,
   objectFit: 'cover',
 });
 
 export const productName = style({
-  fontSize: 16,
   fontWeight: 600,
   lineHeight: 1.4,
   whiteSpace: 'nowrap',
@@ -20,7 +19,6 @@ export const productName = style({
 });
 
 export const productPrice = style({
-  fontSize: 16,
   fontWeight: 500,
   lineHeight: 1.4,
 });
