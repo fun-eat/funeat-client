@@ -21,3 +21,9 @@ export const useCategoryStoreQuery = () => {
     staleTime: Infinity,
   });
 };
+
+export const useCategoryQuery = (type: CategoryVariant) => {
+  return useSuspendedQuery(['categories', type], () => fetchCategories(type), {
+    staleTime: Infinity,
+  });
+};

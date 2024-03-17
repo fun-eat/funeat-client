@@ -29,3 +29,17 @@ export const menuName = styleVariants({
 export const productSection = style({
   padding: '28px 0',
 });
+
+export const listWrapper = style({
+  marginBottom: 32,
+
+  selectors: {
+    '&:last-of-type': {
+      marginBottom: 0,
+    },
+  },
+});
+
+export const list = style({
+  overflowX: 'auto',
+});

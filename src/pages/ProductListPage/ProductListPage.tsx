@@ -2,7 +2,7 @@ import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 
-import { productSection } from './productListPage.css';
+import { list, listWrapper, productSection } from './productListPage.css';
 
 import {
   Loading,
@@ -16,6 +16,7 @@ import {
 import ProductPreviewList from '@/components/Product/ProductPreviewList/ProductPreviewList';
 import { CATEGORY_TYPE } from '@/constants';
 import { useTabMenu } from '@/hooks/common';
+import { useCategoryQuery } from '@/hooks/queries/product/useCategoryQuery';
 import type { CategoryVariant, Tab } from '@/types/common';
 
 const TAB_MENUS: Tab<CategoryVariant>[] = [
@@ -25,7 +26,11 @@ const TAB_MENUS: Tab<CategoryVariant>[] = [
 
 export const ProductListPage = () => {
   const { selectedTabMenu, handleTabMenuClick } = useTabMenu(TAB_MENUS[0].value);
+  const { data: categories } = useCategoryQuery(selectedTabMenu);
   const { reset } = useQueryErrorResetBoundary();
+
+  const getSectionTitle = (categoryType: CategoryVariant, name: string) =>
+    categoryType === CATEGORY_TYPE.FOOD ? `${name} 둘러보기` : `오직! ${name}에서`;
 
   return (
     <>
@@ -38,12 +43,18 @@ export const ProductListPage = () => {
           <CategoryStoreList location="products" hasName />
         )}
       </Suspense>
-      <Spacing size={20} />
+      <Spacing size={12} />
       <section className={productSection}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <SectionHeader name="떠오르는 조합" />
-            <ProductPreviewList category={selectedTabMenu} categoryId={1} />
+            {categories.map(({ id, name }) => (
+              <div key={id} className={listWrapper}>
+                <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} />
+                <div className={list}>
+                  <ProductPreviewList key={id} category={selectedTabMenu} categoryId={id} />
+                </div>
+              </div>
+            ))}
           </Suspense>
         </ErrorBoundary>
       </section>

@@ -165,15 +165,10 @@ const router = createBrowserRouter([
           return { Component: ProductListPage };
         },
       },
-      //{
-      //  path: `${PATH.PRODUCT_LIST}/:category`,
-      //  async lazy() {
-      //    const { ProductListPage } = await import(
-      //      /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
-      //    );
-      //    return { Component: ProductListPage };
-      //  },
-      //},
+      {
+        path: `${PATH.PRODUCT_LIST}/:category`,
+        element: <div>타입별 상품 페이지</div>,
+      },
       {
         path: PATH.RECIPE,
         async lazy() {
