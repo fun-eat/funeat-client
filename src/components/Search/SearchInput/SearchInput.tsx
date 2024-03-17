@@ -1,5 +1,6 @@
-import { SvgIcon } from '@/components/Common';
 import { iconWrapper, inputContainer, searchInput } from './searchInput.css';
+
+import { SvgIcon } from '@/components/Common';
 
 const SearchInput = () => {
   return (
