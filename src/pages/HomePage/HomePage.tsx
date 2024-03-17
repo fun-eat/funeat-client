@@ -3,7 +3,7 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 
-import { categoryListWrapper, categorytSection, searchRouterWrapper, sectionWrapper } from './homePage.css';
+import { categoryListWrapper, categorySection, searchRouterWrapper, sectionWrapper } from './homePage.css';
 
 import {
   Loading,
@@ -33,7 +33,7 @@ export const HomePage = () => {
       <section>
         <Banner />
       </section>
-      <section className={categorytSection}>
+      <section className={categorySection}>
         <Link to={`${PATH.SEARCH}/integrated`}>
           <div className={searchRouterWrapper}>
             <p>상품 또는 꿀!조합을 검색해보세요</p>

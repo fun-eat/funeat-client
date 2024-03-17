@@ -4,7 +4,7 @@ export const sectionWrapper = style({
   padding: '0 20px',
 });
 
-export const categorytSection = style({
+export const categorySection = style({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
