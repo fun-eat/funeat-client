@@ -77,7 +77,7 @@ export const RecipePage = () => {
           onClick={handleOpenRegisterRecipeSheet}
         />
       </RecipeRegisterButtonWrapper>
-      <ScrollButton targetRef={recipeRef} isRecipePage />
+      <ScrollButton targetRef={recipeRef} />
       <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="600px" close={handleCloseBottomSheet}>
         {activeSheet === 'sortOption' ? (
           <SortOptionList
