@@ -14,6 +14,9 @@ const meta: Meta<typeof RecipeNameInput> = {
       </RecipeFormProvider>
     ),
   ],
+  args: {
+    recipeName: '',
+  },
 };
 
 export default meta;
