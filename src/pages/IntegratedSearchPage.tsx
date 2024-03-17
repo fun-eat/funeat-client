@@ -26,7 +26,11 @@ export const IntegratedSearchPage = () => {
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery || '');
   const { reset } = useQueryErrorResetBoundary();
 
-  const { selectedTabMenu, isFirstTabMenu: isProductSearchTab, handleTabMenuClick } = useTabMenu();
+  const {
+    selectedTabMenu,
+    isFirstTabMenu: isProductSearchTab,
+    handleTabMenuClick,
+  } = useTabMenu(SEARCH_TAB_VARIANTS[0]);
   const inputPlaceholder = isProductSearchTab ? PRODUCT_PLACEHOLDER : RECIPE_PLACEHOLDER;
 
   useDebounce(
@@ -96,7 +100,7 @@ export const IntegratedSearchPage = () => {
             </ErrorBoundary>
           </>
         ) : (
-          <Text>{SEARCH_TAB_VARIANTS[selectedTabMenu]}을 검색해보세요.</Text>
+          <Text>{selectedTabMenu}을 검색해보세요.</Text>
         )}
       </SearchResultSection>
     </>

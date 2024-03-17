@@ -1,23 +1,26 @@
 import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import { NavLink, Navigate, useParams } from 'react-router-dom';
-import styled from 'styled-components';
+import { Navigate, useParams } from 'react-router-dom';
 
-import { menuName, tabMenu, tabMenuWrapper } from './productListPage.css';
-
-import { CategoryFoodTab, CategoryStoreTab, Loading, ErrorBoundary, ErrorComponent } from '@/components/Common';
+import {
+  Loading,
+  ErrorBoundary,
+  ErrorComponent,
+  CategoryFoodList,
+  CategoryStoreList,
+  TabMenu,
+} from '@/components/Common';
 import { CATEGORY_TYPE } from '@/constants';
 import { PATH } from '@/constants/path';
+import { useTabMenu } from '@/hooks/common';
 import { isCategoryVariant } from '@/types/common';
 
-const TAB_MENUS = [
-  { type: CATEGORY_TYPE.FOOD, label: '공통 상품' },
-  { type: CATEGORY_TYPE.STORE, label: '오직!여기서' },
-];
+const TAB_MENUS = ['공통 상품', '오직!여기서'] as const;
 
 export const ProductListPage = () => {
   const { category } = useParams();
+  const { selectedTabMenu, handleTabMenuClick } = useTabMenu(TAB_MENUS[0]);
 
   const { reset } = useQueryErrorResetBoundary();
 
@@ -27,30 +30,17 @@ export const ProductListPage = () => {
 
   return (
     <>
-      <ul className={tabMenuWrapper}>
-        {TAB_MENUS.map(({ type, label }) => (
-          <li key={type} className={tabMenu}>
-            <NavLink to={`/products/${type}`}>
-              {({ isActive }) => <span className={isActive ? menuName['active'] : menuName['default']}>{label}</span>}
-            </NavLink>
-          </li>
-        ))}
-      </ul>
+      <TabMenu tabMenus={TAB_MENUS} selectedTabMenu={selectedTabMenu} handleTabMenuSelect={handleTabMenuClick} />
       <Spacing size={20} />
-      <Suspense fallback={null}>{category === 'food' ? <CategoryFoodTab /> : <CategoryStoreTab />}</Suspense>
+      <Suspense fallback={null}>{category === 'food' ? <CategoryFoodList /> : <CategoryStoreList />}</Suspense>
       <Spacing size={20} />
-      <ProductListContainer>
+      <div>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             {/*<ProductList category={category} selectedOption={selectedOption} />*/}
           </Suspense>
         </ErrorBoundary>
-      </ProductListContainer>
+      </div>
     </>
   );
 };
-
-const ProductListContainer = styled.div`
-  height: calc(100% - 100px);
-  overflow-y: auto;
-`;

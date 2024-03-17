@@ -1,18 +1,16 @@
 import { useState } from 'react';
 
-const INIT_TAB_INDEX = 0;
+const useTabMenu = (init: string) => {
+  const [selectedTabMenu, setSelectedTabMenu] = useState(init);
 
-const useTabMenu = () => {
-  const [selectedTabMenu, setSelectedTabMenu] = useState(INIT_TAB_INDEX);
+  const isFirstTabMenu = selectedTabMenu === init;
 
-  const isFirstTabMenu = selectedTabMenu === INIT_TAB_INDEX;
-
-  const handleTabMenuClick = (index: number) => {
-    setSelectedTabMenu(index);
+  const handleTabMenuClick = (selectedMenu: string) => {
+    setSelectedTabMenu(selectedMenu);
   };
 
   const initTabMenu = () => {
-    setSelectedTabMenu(INIT_TAB_INDEX);
+    setSelectedTabMenu(init);
   };
 
   return {
