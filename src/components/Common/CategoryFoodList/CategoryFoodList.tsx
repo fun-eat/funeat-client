@@ -24,7 +24,7 @@ const imgSize = {
 };
 
 const CategoryFoodList = ({ hasName = false, isCircular = false, location = 'home' }: CategoryFoodListProps) => {
-  const { data: categories } = useCategoryFoodQuery(categoryType);
+  const { data: categories } = useCategoryFoodQuery();
 
   return (
     <div className={categoryFoodListWrapper}>

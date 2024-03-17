@@ -24,7 +24,7 @@ const imgSize = {
 };
 
 const CategoryStoreList = ({ hasName = false, isCircular = false, location = 'home' }: CategoryStoreListProps) => {
-  const { data: categories } = useCategoryStoreQuery(categoryType);
+  const { data: categories } = useCategoryStoreQuery();
 
   return (
     <div className={categoryStoreListWrapper}>
