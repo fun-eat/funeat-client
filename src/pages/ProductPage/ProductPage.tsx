@@ -2,7 +2,7 @@ import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 
-import { list, listWrapper, productSection } from './productListPage.css';
+import { list, listWrapper, productSection } from './productPage.css';
 
 import {
   Loading,
@@ -24,7 +24,7 @@ const TAB_MENUS: Tab<CategoryVariant>[] = [
   { value: CATEGORY_TYPE.STORE, label: '오직!여기서' },
 ];
 
-export const ProductListPage = () => {
+export const ProductPage = () => {
   const { selectedTabMenu, handleTabMenuClick } = useTabMenu(TAB_MENUS[0].value);
   const { data: categories } = useCategoryQuery(selectedTabMenu);
   const { reset } = useQueryErrorResetBoundary();

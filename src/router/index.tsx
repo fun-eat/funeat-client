@@ -159,10 +159,8 @@ const router = createBrowserRouter([
       {
         path: `${PATH.PRODUCT_LIST}`,
         async lazy() {
-          const { ProductListPage } = await import(
-            /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
-          );
-          return { Component: ProductListPage };
+          const { ProductPage } = await import(/* webpackChunkName: "ProductPage" */ '@/pages/ProductPage/ProductPage');
+          return { Component: ProductPage };
         },
       },
       {
