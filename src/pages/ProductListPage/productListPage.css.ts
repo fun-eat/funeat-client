@@ -25,3 +25,7 @@ export const menuName = styleVariants({
   active: [menuNameBase, { fontWeight: 700, color: '#232527', borderBottom: '3px solid #444' }],
   default: [menuNameBase, { fontWeight: 600, color: '#999' }],
 });
+
+export const productSection = style({
+  padding: '28px 0',
+});

@@ -3,10 +3,12 @@ import { forwardRef } from 'react';
 
 import { container, menuName, tabMenu } from './tabMenu.css';
 
+import type { Tab } from '@/types/common';
+
 interface TabMenuProps {
-  tabMenus: readonly string[];
+  tabMenus: Tab[];
   selectedTabMenu: string;
-  handleTabMenuSelect: (selectedMenu: string) => void;
+  handleTabMenuSelect: (selectedMenu: any) => void;
 }
 
 const TabMenu = (
@@ -19,17 +21,17 @@ const TabMenu = (
 
   return (
     <ul className={container} ref={ref}>
-      {tabMenus.map((menu) => {
-        const isSelected = selectedTabMenu === menu;
+      {tabMenus.map(({ value, label }) => {
+        const isSelected = selectedTabMenu === value;
         return (
-          <li key={menu} className={tabMenu}>
+          <li key={value} className={tabMenu}>
             <button
               className={isSelected ? menuName['active'] : menuName['default']}
               type="button"
-              value={menu}
+              value={value}
               onClick={handleTabMenuClick}
             >
-              {menu}
+              {label}
             </button>
           </li>
         );

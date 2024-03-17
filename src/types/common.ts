@@ -53,3 +53,8 @@ export type SortOption =
   | (typeof RECIPE_SORT_OPTIONS)[number];
 
 export type TagVariants = keyof typeof TAG_TITLE;
+
+export interface Tab<T = string> {
+  value: T;
+  label: string;
+}

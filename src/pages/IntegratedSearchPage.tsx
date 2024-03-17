@@ -3,7 +3,7 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { ErrorBoundary, ErrorComponent, Loading, SvgIcon, TabMenu } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, SvgIcon } from '@/components/Common';
 import { RecommendList, ProductSearchResultList, RecipeSearchResultList } from '@/components/Search';
 import { SEARCH_TAB_VARIANTS } from '@/constants';
 import { useDebounce, useTabMenu } from '@/hooks/common';
@@ -77,11 +77,7 @@ export const IntegratedSearchPage = () => {
         )}
       </SearchSection>
       <Spacing size={20} />
-      <TabMenu
-        tabMenus={SEARCH_TAB_VARIANTS}
-        selectedTabMenu={selectedTabMenu}
-        handleTabMenuSelect={handleTabMenuClick}
-      />
+
       <SearchResultSection>
         {isSubmitted && searchQuery ? (
           <>

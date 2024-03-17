@@ -1,11 +1,11 @@
 import { useState } from 'react';
 
-const useTabMenu = (init: string) => {
-  const [selectedTabMenu, setSelectedTabMenu] = useState(init);
+const useTabMenu = <T = string>(init: T) => {
+  const [selectedTabMenu, setSelectedTabMenu] = useState<T>(init);
 
   const isFirstTabMenu = selectedTabMenu === init;
 
-  const handleTabMenuClick = (selectedMenu: string) => {
+  const handleTabMenuClick = (selectedMenu: T) => {
     setSelectedTabMenu(selectedMenu);
   };
 
