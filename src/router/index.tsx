@@ -3,7 +3,6 @@ import { Navigate, createBrowserRouter } from 'react-router-dom';
 import App from './App';
 
 import { AuthLayout } from '@/components/Layout';
-import { CATEGORY_TYPE } from '@/constants';
 import { PATH } from '@/constants/path';
 import CategoryProvider from '@/contexts/CategoryContext';
 import NotFoundPage from '@/pages/NotFoundPage';
@@ -158,11 +157,7 @@ const router = createBrowserRouter([
     errorElement: <NotFoundPage />,
     children: [
       {
-        path: PATH.PRODUCT_LIST,
-        element: <Navigate to={`${PATH.PRODUCT_LIST}/${CATEGORY_TYPE.FOOD}`} replace />,
-      },
-      {
-        path: `${PATH.PRODUCT_LIST}/:category`,
+        path: `${PATH.PRODUCT_LIST}`,
         async lazy() {
           const { ProductListPage } = await import(
             /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
@@ -170,6 +165,15 @@ const router = createBrowserRouter([
           return { Component: ProductListPage };
         },
       },
+      //{
+      //  path: `${PATH.PRODUCT_LIST}/:category`,
+      //  async lazy() {
+      //    const { ProductListPage } = await import(
+      //      /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
+      //    );
+      //    return { Component: ProductListPage };
+      //  },
+      //},
       {
         path: PATH.RECIPE,
         async lazy() {
