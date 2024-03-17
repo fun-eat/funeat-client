@@ -1,4 +1,4 @@
-import { Spacing, useTheme } from '@fun-eat/design-system';
+import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
@@ -42,7 +42,7 @@ export const HomePage = () => {
         </Link>
         <Suspense fallback={null}>
           <div className={categoryListWrapper}>
-            <CategoryFoodList />
+            <CategoryFoodList hasName />
             <CategoryStoreList />
           </div>
         </Suspense>

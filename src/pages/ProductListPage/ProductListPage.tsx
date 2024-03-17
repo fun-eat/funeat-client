@@ -21,9 +21,13 @@ export const ProductListPage = () => {
   return (
     <>
       <TabMenu tabMenus={TAB_MENUS} selectedTabMenu={selectedTabMenu} handleTabMenuSelect={handleTabMenuClick} />
-      <Spacing size={20} />
+      <Spacing size={28} />
       <Suspense fallback={null}>
-        {selectedTabMenu === TAB_MENUS[0] ? <CategoryFoodList /> : <CategoryStoreList />}
+        {selectedTabMenu === TAB_MENUS[0] ? (
+          <CategoryFoodList location="products" hasName isCircular />
+        ) : (
+          <CategoryStoreList location="products" hasName />
+        )}
       </Suspense>
       <Spacing size={20} />
       <div>

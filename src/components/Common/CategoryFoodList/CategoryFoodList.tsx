@@ -2,22 +2,41 @@ import { categoryFoodListWrapper } from './categoryFoodList.css';
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import { CATEGORY_TYPE } from '@/constants';
-import { useCategoryFoodQuery } from '@/hooks/queries/product';
+import { useCategoryFoodQuery } from '@/hooks/queries/product/useCategoryQuery';
+
+interface CategoryFoodListProps {
+  hasName?: boolean;
+  isCircular?: boolean;
+  location?: 'home' | 'products';
+}
 
 const categoryType = CATEGORY_TYPE.FOOD;
 
-const CategoryFoodList = () => {
+const imgSize = {
+  home: {
+    width: 51,
+    height: 51,
+  },
+  products: {
+    width: 68,
+    height: 68,
+  },
+};
+
+const CategoryFoodList = ({ hasName = false, isCircular = false, location = 'home' }: CategoryFoodListProps) => {
   const { data: categories } = useCategoryFoodQuery(categoryType);
 
   return (
     <div className={categoryFoodListWrapper}>
-      {categories.map(({ id, name, image }) => (
+      {categories.map((category) => (
         <CategoryItem
-          key={id}
-          categoryId={id}
-          name={name}
-          image={{ src: image, width: 51, height: 51 }}
+          key={category.id}
+          category={category}
+          width={imgSize[location].width}
+          height={imgSize[location].height}
           categoryType={categoryType}
+          hasName={hasName}
+          isCircular={isCircular}
         />
       ))}
     </div>

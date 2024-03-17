@@ -11,6 +11,10 @@ export const categoryImage = style({
   objectFit: 'cover',
 });
 
+export const circle = style({
+  borderRadius: '50%',
+});
+
 export const categoryName = style({
   marginTop: 6,
   fontSize: '1.2rem',
