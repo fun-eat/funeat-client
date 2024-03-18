@@ -70,7 +70,7 @@ export const PREVIOUS_PATH_LOCAL_STORAGE_KEY = `funeat-previous-path-${ENVIRONME
 
 export const RECOMMENDED_TAGS = [
   { id: 1, name: '맛있어요', tagType: 'TASTE' },
-  { id: 2, name: '단짠단짠', tagType: 'TASTE' },
-  { id: 3, name: '어린이입맛', tagType: 'TASTE' },
-  { id: 4, name: '매콤해요', tagType: 'TASTE' },
+  { id: 2, name: '간식', tagType: 'ETC' },
+  { id: 3, name: '갓성비', tagType: 'QUANTITY' },
+  { id: 4, name: '달달해요', tagType: 'TASTE' },
 ];
