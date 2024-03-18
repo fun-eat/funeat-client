@@ -259,6 +259,10 @@ const SvgSprite = () => {
           d="M11.306 2.916c1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.777-3.395 6.855-8.538 11.519l-.012.011a2.161 2.161 0 0 1-2.9.01l-.04-.036c-5.128-4.66-8.51-7.733-8.51-11.504 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09z"
         />
       </symbol>
+      <symbol id="close2" viewBox="0 0 13 12">
+        <path d="M11.3705 0.81424L1.15625 11.0285" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M1.15625 0.81424L11.3705 11.0285" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+      </symbol>
     </svg>
   );
 };
