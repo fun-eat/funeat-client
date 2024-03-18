@@ -1,4 +1,4 @@
-import { globalStyle, style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 export const container = style({
   display: 'flex',
@@ -6,8 +6,4 @@ export const container = style({
   overflowX: 'auto',
   overflowY: 'hidden',
   columnGap: '9px',
-});
-
-globalStyle(`${container}::-webkit-scrollbar`, {
-  display: 'none',
 });

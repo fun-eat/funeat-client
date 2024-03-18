@@ -7,3 +7,7 @@ globalStyle('#root', {
   maxWidth: 400,
   margin: '0 auto',
 });
+
+globalStyle('*::-webkit-scrollbar', {
+  display: 'none',
+});
