@@ -10,6 +10,7 @@ const baseBadgeStyle = {
   fontSize: 12,
   color: text,
   borderRadius: 6,
+  whiteSpace: 'nowrap',
 };
 
 export const outlinedBadge = style({
