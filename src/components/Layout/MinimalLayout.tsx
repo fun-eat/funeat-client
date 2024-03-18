@@ -1,9 +1,9 @@
 import type { PropsWithChildren } from 'react';
 
-import { container } from './layout.css';
+import { minimalLayout } from './layout.css';
 
 const MinimalLayout = ({ children }: PropsWithChildren) => {
-  return <main className={container.minimal}>{children}</main>;
+  return <main className={minimalLayout}>{children}</main>;
 };
 
 export default MinimalLayout;

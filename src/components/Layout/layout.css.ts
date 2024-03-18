@@ -1,10 +1,9 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
-export const containerBase = style({
-  position: 'relative',
+export const defaultLayout = style({
+  padding: '50px 0 70px',
 });
 
-export const container = styleVariants({
-  default: [containerBase, { padding: '50px 0 70px' }],
-  minimal: [containerBase, { paddingTop: 50 }],
+export const minimalLayout = style({
+  paddingTop: 50,
 });
