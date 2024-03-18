@@ -2,7 +2,7 @@ import { categoryFoodListWrapper } from './categoryFoodList.css';
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import { CATEGORY_TYPE } from '@/constants';
-import { useCategoryFoodQuery } from '@/hooks/queries/product/useCategoryQuery';
+import { useCategoryFoodQuery } from '@/hooks/queries/product';
 
 interface CategoryFoodListProps {
   hasName?: boolean;

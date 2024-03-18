@@ -13,10 +13,10 @@ import {
   TabMenu,
   SectionHeader,
 } from '@/components/Common';
-import ProductPreviewList from '@/components/Product/ProductPreviewList/ProductPreviewList';
+import { ProductPreviewList } from '@/components/Product';
 import { CATEGORY_TYPE } from '@/constants';
 import { useTabMenu } from '@/hooks/common';
-import { useCategoryQuery } from '@/hooks/queries/product/useCategoryQuery';
+import { useCategoryQuery } from '@/hooks/queries/product';
 import type { CategoryVariant, Tab } from '@/types/common';
 
 const TAB_MENUS: Tab<CategoryVariant>[] = [
