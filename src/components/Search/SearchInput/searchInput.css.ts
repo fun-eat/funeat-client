@@ -10,7 +10,7 @@ export const searchInput = style({
   height: 40,
   padding: '10px 0 10px 18px',
   color: '#232527',
-  background: '#FFFFFF',
+  background: '#efefef',
   borderRadius: 20,
   fontSize: '1.4rem',
 
