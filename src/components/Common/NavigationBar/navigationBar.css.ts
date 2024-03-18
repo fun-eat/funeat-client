@@ -1,9 +1,14 @@
 import { style, styleVariants } from '@vanilla-extract/css';
 
 export const container = style({
+  position: 'fixed',
+  bottom: 0,
+  left: '50%',
   width: '100%',
+  maxWidth: 400,
   height: 70,
-  paddingBottom: 6,
+  backgroundColor: '#fff',
+  transform: 'translateX(-50%)',
 });
 
 export const list = style({
