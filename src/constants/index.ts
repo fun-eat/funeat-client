@@ -67,3 +67,10 @@ export const ENVIRONMENT = window.location.href.includes('dev')
   : 'local';
 
 export const PREVIOUS_PATH_LOCAL_STORAGE_KEY = `funeat-previous-path-${ENVIRONMENT}`;
+
+export const RECOMMENDED_TAGS = [
+  { id: 1, name: '맛있어요', tagType: 'TASTE' },
+  { id: 2, name: '단짠단짠', tagType: 'TASTE' },
+  { id: 3, name: '어린이입맛', tagType: 'TASTE' },
+  { id: 4, name: '매콤해요', tagType: 'TASTE' },
+];
