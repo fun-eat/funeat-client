@@ -18,5 +18,5 @@ export default DefaultLayout;
 
 const MainWrapper = styled.main`
   position: relative;
-  padding: 50px 0 90px;
+  padding: 50px 0 70px;
 `;
