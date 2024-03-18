@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { headerWithSearchContainer } from './header.css';
+import { container } from './header.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import Logo from '@/assets/logo.svg';
@@ -8,7 +8,7 @@ import { PATH } from '@/constants/path';
 
 const Header = () => {
   return (
-    <header className={headerWithSearchContainer}>
+    <header className={container}>
       <Link to={PATH.HOME}>
         <Logo width={120} />
       </Link>
