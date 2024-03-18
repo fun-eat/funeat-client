@@ -5,12 +5,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js',
-    clean: true,
-    publicPath: '/',
-  },
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.json'],
     alias: {
@@ -25,6 +19,9 @@ module.exports = {
         use: [
           {
             loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            },
           },
         ],
       },
