@@ -31,6 +31,12 @@ const useSearch = () => {
     setIsAutocompleteOpen(event.currentTarget.value.length > 0);
   };
 
+  const searchKeyword = (value: string) => {
+    setSearchQuery(value);
+    setIsSubmitted(true);
+    setSearchParams({ query: value });
+  };
+
   const handleSearch: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     gaEvent({ category: 'submit', action: '검색 페이지에서 검색', label: '검색' });
@@ -48,17 +54,12 @@ const useSearch = () => {
       return;
     }
 
-    setSearchQuery(trimmedSearchQuery);
-    setIsSubmitted(true);
-    setSearchParams({ query: trimmedSearchQuery });
+    searchKeyword(trimmedSearchQuery);
   };
 
   const handleSearchClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const { value } = event.currentTarget;
-
-    setSearchQuery(value);
-    setIsSubmitted(true);
-    setSearchParams({ query: value });
+    searchKeyword(value);
   };
 
   const handleAutocompleteClose = () => {
@@ -67,6 +68,8 @@ const useSearch = () => {
 
   const resetSearchQuery = () => {
     setSearchQuery('');
+    setIsSubmitted(false);
+    setSearchParams({});
   };
 
   return {
@@ -78,6 +81,7 @@ const useSearch = () => {
     handleSearch,
     handleSearchClick,
     handleAutocompleteClose,
+    searchKeyword,
     resetSearchQuery,
   };
 };
