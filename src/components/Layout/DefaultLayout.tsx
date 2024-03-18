@@ -1,6 +1,6 @@
 import type { PropsWithChildren } from 'react';
-import styled from 'styled-components';
 
+import { container } from './layout.css';
 import Header from '../Common/Header/Header';
 import NavigationBar from '../Common/NavigationBar/NavigationBar';
 
@@ -8,15 +8,12 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
-      <MainWrapper id="main">{children}</MainWrapper>
+      <main id="main" className={container.default}>
+        {children}
+      </main>
       <NavigationBar />
     </>
   );
 };
 
 export default DefaultLayout;
-
-const MainWrapper = styled.main`
-  position: relative;
-  padding: 50px 0 70px;
-`;

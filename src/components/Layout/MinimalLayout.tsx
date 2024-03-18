@@ -1,14 +1,9 @@
 import type { PropsWithChildren } from 'react';
-import styled from 'styled-components';
+
+import { container } from './layout.css';
 
 const MinimalLayout = ({ children }: PropsWithChildren) => {
-  return <MainWrapper>{children}</MainWrapper>;
+  return <main className={container.minimal}>{children}</main>;
 };
 
 export default MinimalLayout;
-
-const MainWrapper = styled.main`
-  position: relative;
-  height: 100%;
-  padding: 50px 0 90px;
-`;
