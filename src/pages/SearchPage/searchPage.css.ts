@@ -1,11 +1,12 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
 export const searchSection = style({
-  position: 'relative',
+  padding: '0 20px',
 });
 
 export const subTitle = style({
   fontSize: 14,
+  marginTop: 28,
 });
 
 export const searchResultTitle = style({

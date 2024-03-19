@@ -1,7 +1,7 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useState } from 'react';
 
-import { badgeContainer, searchResultTitle, showMoreButton, subTitle } from './searchPage.css';
+import { badgeContainer, searchResultTitle, searchSection, showMoreButton, subTitle } from './searchPage.css';
 
 import { Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
 import { ProductSearchResultList, RecipeSearchResultList, RecommendList, SearchInput } from '@/components/Search';
@@ -46,7 +46,7 @@ export const SearchPage = () => {
 
   return (
     <>
-      <section>
+      <section className={searchSection}>
         <PageHeader title="검색" hasBackLink />
         <div style={{ height: '16px' }} />
         <form onSubmit={isSubmitted ? resetSearchQuery : handleSearch}>
@@ -64,9 +64,9 @@ export const SearchPage = () => {
           </ErrorBoundary>
         )}
       </section>
-      <section>
+      <section className={searchSection}>
         {isSubmitted && searchQuery ? (
-          <section>
+          <div>
             <p className={searchResultTitle}>상품 바로가기</p>
             <ErrorBoundary fallback={ErrorComponent}>
               <Suspense fallback={<Loading />}>
@@ -83,9 +83,9 @@ export const SearchPage = () => {
                 <RecipeSearchResultList searchQuery={searchQuery} />
               </Suspense>
             </ErrorBoundary>
-          </section>
+          </div>
         ) : (
-          <section>
+          <div>
             <p className={subTitle}>최근 검색어</p>
             <div className={badgeContainer}>
               {recentSearchedKeywords.map(({ id, name }) => (
@@ -96,7 +96,6 @@ export const SearchPage = () => {
                 </button>
               ))}
             </div>
-            <div style={{ height: '28px' }} />
             <p className={subTitle}>추천 태그</p>
             <div className={badgeContainer}>
               {RECOMMENDED_TAGS.map(({ id, name }) => (
@@ -107,7 +106,7 @@ export const SearchPage = () => {
                 </button>
               ))}
             </div>
-          </section>
+          </div>
         )}
       </section>
     </>
