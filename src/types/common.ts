@@ -15,7 +15,7 @@ export type CategoryVariant = 'food' | 'store';
 export type Food = (typeof CATEGORY_TYPE)['FOOD'];
 export type Store = (typeof CATEGORY_TYPE)['STORE'];
 
-export const isCategoryVariant = (value: string): value is CategoryVariant => {
+export const isCategoryVariant = (value: string | undefined): value is CategoryVariant => {
   return value === 'store' || value === 'food';
 };
 export interface Category {
