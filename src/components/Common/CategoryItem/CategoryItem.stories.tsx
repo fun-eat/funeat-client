@@ -15,13 +15,13 @@ const meta: Meta<typeof CategoryItem> = {
     ),
   ],
   args: {
-    categoryId: 1,
-    name: '즉석 식품',
-    image: {
-      src: 'https://image.funeat.site/prod/food.png',
-      width: 51,
-      height: 51,
+    category: {
+      id: 1,
+      name: '즉석 식품',
+      image: 'https://image.funeat.site/prod/food.png',
     },
+    width: 51,
+    height: 51,
     categoryType: 'food',
   },
 };

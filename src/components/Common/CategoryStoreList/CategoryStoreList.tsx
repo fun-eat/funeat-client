@@ -4,19 +4,46 @@ import CategoryItem from '../CategoryItem/CategoryItem';
 import { CATEGORY_TYPE } from '@/constants';
 import { useCategoryStoreQuery } from '@/hooks/queries/product';
 
+interface CategoryStoreListProps {
+  hasName?: boolean;
+  isCircular?: boolean;
+  isBordered?: boolean;
+  location?: 'home' | 'products';
+}
+
 const categoryType = CATEGORY_TYPE.STORE;
 
-const CategoryStoreList = () => {
-  const { data: categories } = useCategoryStoreQuery(categoryType);
+const imgSize = {
+  home: {
+    width: 78,
+    height: 58,
+  },
+  products: {
+    width: 76,
+    height: 58,
+  },
+};
+
+const CategoryStoreList = ({
+  hasName = false,
+  isCircular = false,
+  isBordered = false,
+  location = 'home',
+}: CategoryStoreListProps) => {
+  const { data: categories } = useCategoryStoreQuery();
 
   return (
     <div className={categoryStoreListWrapper}>
-      {categories.map(({ id, name, image }) => (
+      {categories.map((category) => (
         <CategoryItem
-          key={id}
-          categoryId={id}
-          image={{ src: image, width: 78, height: 58 }}
+          key={category.id}
+          category={category}
+          width={imgSize[location].width}
+          height={imgSize[location].height}
           categoryType={categoryType}
+          hasName={hasName}
+          isCircular={isCircular}
+          isBordered={isBordered}
         />
       ))}
     </div>
