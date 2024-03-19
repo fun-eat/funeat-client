@@ -2,10 +2,12 @@ import { style } from '@vanilla-extract/css';
 
 export const container = style({
   position: 'relative',
-  width: 163,
 });
 
 export const productImage = style({
+  width: '100%',
+  height: 'auto',
+  minWidth: 163,
   border: '1px solid #e6e6e6',
   borderRadius: 6,
   objectFit: 'cover',
