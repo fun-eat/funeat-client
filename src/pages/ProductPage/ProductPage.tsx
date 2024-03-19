@@ -2,7 +2,7 @@ import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 
-import { productSection } from './productPage.css';
+import { categorySection, productSection } from './productPage.css';
 
 import {
   Loading,
@@ -35,15 +35,18 @@ export const ProductPage = () => {
   return (
     <>
       <TabMenu tabMenus={TAB_MENUS} selectedTabMenu={selectedTabMenu} handleTabMenuSelect={handleTabMenuClick} />
-      <Spacing size={28} />
-      <Suspense fallback={null}>
-        {selectedTabMenu === TAB_MENUS[0].value ? (
-          <CategoryFoodList location="products" hasName isCircular />
-        ) : (
-          <CategoryStoreList location="products" hasName isBordered />
-        )}
-      </Suspense>
-      <Spacing size={12} />
+
+      <section className={categorySection}>
+        <Suspense fallback={null}>
+          {selectedTabMenu === TAB_MENUS[0].value ? (
+            <CategoryFoodList location="products" hasName isCircular />
+          ) : (
+            <CategoryStoreList location="products" hasName isBordered />
+          )}
+        </Suspense>
+      </section>
+
+      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
 
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>

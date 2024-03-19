@@ -26,6 +26,10 @@ export const menuName = styleVariants({
   default: [menuNameBase, { fontWeight: 600, color: '#999' }],
 });
 
+export const categorySection = style({
+  margin: '28px 0 24px',
+});
+
 export const productSection = style({
   margin: '28px 0 32px',
 });
