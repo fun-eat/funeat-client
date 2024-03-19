@@ -1,7 +1,7 @@
 import { style } from '@vanilla-extract/css';
 
 export const sectionWrapper = style({
-  padding: '0 20px',
+  margin: '28px 0 32px',
 });
 
 export const categorySection = style({
