@@ -19,6 +19,7 @@ export const categoryListWrapper = style({
   alignItems: 'center',
   justifyContent: 'center',
   gap: 20,
+  width: '100%',
 });
 
 export const rankingInfoWrapper = style({

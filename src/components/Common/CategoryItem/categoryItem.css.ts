@@ -4,7 +4,7 @@ export const imageWrapper = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  borderRadius: '10px',
+  borderRadius: 6,
 });
 
 export const categoryImage = style({
@@ -13,6 +13,10 @@ export const categoryImage = style({
 
 export const circle = style({
   borderRadius: '50%',
+});
+
+export const bordered = style({
+  border: '1px solid #e6e6e6',
 });
 
 export const categoryName = style({

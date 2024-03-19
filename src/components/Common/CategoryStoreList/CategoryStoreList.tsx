@@ -7,6 +7,7 @@ import { useCategoryStoreQuery } from '@/hooks/queries/product';
 interface CategoryStoreListProps {
   hasName?: boolean;
   isCircular?: boolean;
+  isBordered?: boolean;
   location?: 'home' | 'products';
 }
 
@@ -23,7 +24,12 @@ const imgSize = {
   },
 };
 
-const CategoryStoreList = ({ hasName = false, isCircular = false, location = 'home' }: CategoryStoreListProps) => {
+const CategoryStoreList = ({
+  hasName = false,
+  isCircular = false,
+  isBordered = false,
+  location = 'home',
+}: CategoryStoreListProps) => {
   const { data: categories } = useCategoryStoreQuery();
 
   return (
@@ -37,6 +43,7 @@ const CategoryStoreList = ({ hasName = false, isCircular = false, location = 'ho
           categoryType={categoryType}
           hasName={hasName}
           isCircular={isCircular}
+          isBordered={isBordered}
         />
       ))}
     </div>

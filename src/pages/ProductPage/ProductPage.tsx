@@ -40,7 +40,7 @@ export const ProductPage = () => {
         {selectedTabMenu === TAB_MENUS[0].value ? (
           <CategoryFoodList location="products" hasName isCircular />
         ) : (
-          <CategoryStoreList location="products" hasName />
+          <CategoryStoreList location="products" hasName isBordered />
         )}
       </Suspense>
       <Spacing size={12} />
