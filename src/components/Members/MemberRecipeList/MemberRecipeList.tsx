@@ -7,7 +7,7 @@ import { RecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberRecipeQuery } from '@/hooks/queries/members';
-import useDisplaySlice from '@/utils/displaySlice';
+import displaySlice from '@/utils/displaySlice';
 
 interface MemberRecipeListProps {
   isPreview?: boolean;
@@ -18,7 +18,7 @@ const MemberRecipeList = ({ isPreview = false }: MemberRecipeListProps) => {
 
   const { fetchNextPage, hasNextPage, data } = useInfiniteMemberRecipeQuery();
   const memberRecipes = data?.pages.flatMap((page) => page.recipes);
-  const recipeToDisplay = useDisplaySlice(isPreview, memberRecipes);
+  const recipeToDisplay = displaySlice(isPreview, memberRecipes);
 
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 

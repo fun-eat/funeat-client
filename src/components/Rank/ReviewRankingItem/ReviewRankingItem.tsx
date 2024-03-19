@@ -5,7 +5,7 @@ import { container, reviewContent, reviewImage, reviewTitle, tagList, tag, tagEx
 
 import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { ReviewRanking } from '@/types/ranking';
-import useDisplaySlice from '@/utils/displaySlice';
+import displaySlice from '@/utils/displaySlice';
 
 interface ReviewRankingItemProps {
   reviewRanking: ReviewRanking;
@@ -15,7 +15,7 @@ const TAG_DISPLAY_LIMIT = 2;
 
 const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
   const { productName, content, tags, image } = reviewRanking;
-  const tagToDisplay = useDisplaySlice(true, tags, TAG_DISPLAY_LIMIT);
+  const tagToDisplay = displaySlice(true, tags, TAG_DISPLAY_LIMIT);
 
   return (
     <div className={container}>
