@@ -1,7 +1,6 @@
 import type { RefObject } from 'react';
 
 import { container } from './scrollButton.css';
-
 import SvgIcon from '../Svg/SvgIcon';
 
 import { useScroll } from '@/hooks/common';

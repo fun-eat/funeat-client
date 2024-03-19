@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 import { button, closeButton, container, speechBubble } from './writeButton.css';
-
 import SvgIcon from '../Svg/SvgIcon';
 
 import { useMemberQuery } from '@/hooks/queries/members';

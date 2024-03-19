@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { useRef } from 'react';
 
 import ScrollButton from './ScrollButton';
-import { useRef } from 'react';
 
 const meta: Meta<typeof ScrollButton> = {
   title: 'common/ScrollButton',
