@@ -260,8 +260,8 @@ const SvgSprite = () => {
         />
       </symbol>
       <symbol id="close2" viewBox="0 0 13 12">
-        <path d="M11.3705 0.81424L1.15625 11.0285" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
-        <path d="M1.15625 0.81424L11.3705 11.0285" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M11.3705 0.81424L1.15625 11.0285" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M1.15625 0.81424L11.3705 11.0285" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
       </symbol>
     </svg>
   );

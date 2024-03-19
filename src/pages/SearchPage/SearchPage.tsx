@@ -5,9 +5,9 @@ import { badgeContainer, searchResultTitle, showMoreButton, subTitle } from './s
 
 import { Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
 import { ProductSearchResultList, RecipeSearchResultList, RecommendList, SearchInput } from '@/components/Search';
+import { RECOMMENDED_TAGS } from '@/constants';
 import { useDebounce } from '@/hooks/common';
 import { useSearch } from '@/hooks/search';
-import { RECOMMENDED_TAGS } from '@/constants';
 
 export const SearchPage = () => {
   const {
