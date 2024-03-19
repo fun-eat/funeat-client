@@ -64,26 +64,22 @@ export const SearchPage = () => {
           </ErrorBoundary>
         )}
       </section>
-      <div style={{ height: '20px' }} />
       <section>
         {isSubmitted && searchQuery ? (
           <section>
             <p className={searchResultTitle}>상품 바로가기</p>
             <ErrorBoundary fallback={ErrorComponent}>
               <Suspense fallback={<Loading />}>
-                <div style={{ height: '20px' }} />
                 <ProductSearchResultList searchQuery={searchQuery} />
               </Suspense>
             </ErrorBoundary>
             <button className={showMoreButton}>더보기</button>
-            <div style={{ height: '20px' }} />
             {/* divider 컴포넌트 */}
             <hr style={{ border: '1px solid #e6e6e6' }} />
-            <div style={{ height: '32px' }} />
+            <div style={{ height: '12px' }} />
             <p className={searchResultTitle}>꿀!조합 바로가기</p>
             <ErrorBoundary fallback={ErrorComponent}>
               <Suspense fallback={<Loading />}>
-                <div style={{ height: '20px' }} />
                 <RecipeSearchResultList searchQuery={searchQuery} />
               </Suspense>
             </ErrorBoundary>

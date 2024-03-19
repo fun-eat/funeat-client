@@ -11,12 +11,14 @@ export const subTitle = style({
 export const searchResultTitle = style({
   fontSize: 12,
   color: '#808080',
+  margin: '20px 0',
 });
 
 export const showMoreButton = style({
   width: '100%',
   height: 38,
   padding: '9px 0',
+  margin: '20px 0',
   background: '#efefef',
   fontSize: 14,
   borderRadius: 6,
