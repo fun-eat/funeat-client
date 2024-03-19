@@ -8,8 +8,6 @@ export const productImage = style({
   width: '100%',
   height: 'auto',
   minWidth: 163,
-  border: '1px solid #e6e6e6',
-  borderRadius: 6,
   objectFit: 'cover',
   aspectRatio: '1 / 1',
 });
