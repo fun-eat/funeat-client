@@ -12,15 +12,15 @@ import type { CategoryVariant, SortOption } from '@/types/common';
 interface ProductListProps {
   category: CategoryVariant;
   categoryId: number;
-  selectedOption?: SortOption;
+  sortOption?: SortOption;
 }
 
-const ProductList = ({ category, categoryId, selectedOption }: ProductListProps) => {
+const ProductList = ({ category, categoryId, sortOption }: ProductListProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { fetchNextPage, hasNextPage, data } = useInfiniteProductsQuery(
     categoryId,
-    selectedOption?.value ?? 'reviewCount,desc'
+    sortOption?.value ?? 'reviewCount,desc'
   );
 
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
