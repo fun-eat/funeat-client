@@ -2,7 +2,7 @@ import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 
-import { list, listWrapper, productSection } from './productPage.css';
+import { productSection } from './productPage.css';
 
 import {
   Loading,
@@ -44,20 +44,18 @@ export const ProductPage = () => {
         )}
       </Suspense>
       <Spacing size={12} />
-      <section className={productSection}>
-        <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-          <Suspense fallback={<Loading />}>
-            {categories.map(({ id, name }) => (
-              <div key={id} className={listWrapper}>
-                <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} />
-                <div className={list}>
-                  <ProductPreviewList key={id} category={selectedTabMenu} categoryId={id} />
-                </div>
-              </div>
-            ))}
-          </Suspense>
-        </ErrorBoundary>
-      </section>
+
+      <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
+        <Suspense fallback={<Loading />}>
+          {categories.map(({ id, name }) => (
+            <section key={id} className={productSection}>
+              <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} />
+              <Spacing size={7} />
+              <ProductPreviewList key={id} category={selectedTabMenu} categoryId={id} />
+            </section>
+          ))}
+        </Suspense>
+      </ErrorBoundary>
     </>
   );
 };
