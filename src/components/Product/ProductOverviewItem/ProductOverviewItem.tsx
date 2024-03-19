@@ -1,60 +1,33 @@
-import { Text } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import { container, priceRate, priceRateWrapper, productName, rateWrapper } from './productOverviewItem.css';
 
-import PreviewImage from '@/assets/characters.svg';
+import { SvgIcon } from '@/components/Common';
 
 interface ProductOverviewItemProps {
   name: string;
-  image: string | null;
-  rank?: number;
+  image: string;
+  price: number;
+  rate: number;
 }
 
-const ProductOverviewItem = ({ name, image, rank }: ProductOverviewItemProps) => {
+const ProductOverviewItem = ({ image, name, price, rate }: ProductOverviewItemProps) => {
   return (
-    <ProductOverviewContainer rank={rank} tabIndex={0}>
-      <Text size="lg" weight="bold" align="center">
-        {rank ?? ''}
-      </Text>
-      {image !== null ? (
-        <ProductOverviewImage src={image} alt={rank ? `${rank}위 상품` : `${name}사진`} />
-      ) : (
-        <ProductPreviewImage width={45} height={45} />
-      )}
-      <ProductOverviewText size="lg" weight="bold" align="center" aria-label={name}>
-        {name}
-      </ProductOverviewText>
-    </ProductOverviewContainer>
+    <>
+      <div className={container}>
+        <img src={image} width={60} height={60} alt={name} />
+        <div>
+          <p className={productName}>{name}</p>
+          <div style={{ height: '6px' }} />
+          <div className={priceRateWrapper}>
+            <span className={priceRate}>{price}원</span>
+            <div className={rateWrapper}>
+              <SvgIcon variant="star2" fill="#FFB017" width={11} height={11} />
+              <span className={priceRate}>{rate}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 
 export default ProductOverviewItem;
-
-const ProductOverviewContainer = styled.div<Pick<ProductOverviewItemProps, 'rank'>>`
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  height: 50px;
-  padding: 0 15px;
-  border-radius: ${({ theme }) => theme.borderRadius.xs};
-  background: ${({ theme, rank }) => (rank ? theme.colors.gray1 : theme.colors.white)};
-`;
-
-const ProductOverviewImage = styled.img`
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-`;
-
-const ProductPreviewImage = styled(PreviewImage)`
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background-color: ${({ theme }) => theme.colors.white};
-`;
-
-const ProductOverviewText = styled(Text)`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  word-break: break-all;
-  overflow: hidden;
-`;
