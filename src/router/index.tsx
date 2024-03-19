@@ -59,7 +59,7 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <AuthLayout>
-        <App layout="headerOnly" />
+        <App layout="minimal" />
       </AuthLayout>
     ),
     errorElement: <Navigate to={PATH.LOGIN} replace />,
@@ -90,6 +90,13 @@ const router = createBrowserRouter([
         async lazy() {
           const { HomePage } = await import(/* webpackChunkName: "HomePage" */ '@/pages/HomePage/HomePage');
           return { Component: HomePage };
+        },
+      },
+      {
+        path: `${PATH.PRODUCT_LIST}/:category`,
+        async lazy() {
+          const { ProductListPage } = await import(/* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage');
+          return { Component: ProductListPage };
         },
       },
       {
@@ -130,7 +137,7 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <CategoryProvider>
-        <App layout="headerOnly" />
+        <App layout="minimal" />
       </CategoryProvider>
     ),
     errorElement: <NotFoundPage />,
@@ -144,6 +151,13 @@ const router = createBrowserRouter([
           return { Component: ProductDetailPage };
         },
       },
+      {
+        path: PATH.SEARCH,
+        async lazy() {
+          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
+          return { Component: SearchPage };
+        },
+      },
     ],
   },
   /** 네비게이션과 헤더(검색 아이콘이 없는)가 있는 레이아웃 */
@@ -151,30 +165,16 @@ const router = createBrowserRouter([
     path: '/',
     element: (
       <CategoryProvider>
-        <App layout="simpleHeader" />
+        <App layout="minimal" />
       </CategoryProvider>
     ),
     errorElement: <NotFoundPage />,
     children: [
       {
-        path: `${PATH.PRODUCT_LIST}/:category`,
-        async lazy() {
-          const { ProductListPage } = await import(/* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage');
-          return { Component: ProductListPage };
-        },
-      },
-      {
         path: PATH.RECIPE,
         async lazy() {
           const { RecipePage } = await import(/* webpackChunkName: "RecipePage" */ '@/pages/RecipePage');
           return { Component: RecipePage };
-        },
-      },
-      {
-        path: PATH.SEARCH,
-        async lazy() {
-          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
-          return { Component: SearchPage };
         },
       },
     ],
