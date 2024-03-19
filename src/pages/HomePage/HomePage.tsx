@@ -1,9 +1,9 @@
-import { Spacing, useTheme } from '@fun-eat/design-system';
+import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
 
-import { categoryListWrapper, categorytSection, searchRouterWrapper, sectionWrapper } from './homePage.css';
+import { categoryListWrapper, categorySection, searchRouterWrapper, sectionWrapper } from './homePage.css';
 
 import {
   Loading,
@@ -33,7 +33,8 @@ export const HomePage = () => {
       <section>
         <Banner />
       </section>
-      <section className={categorytSection}>
+
+      <section className={categorySection}>
         <Link to={`${PATH.SEARCH}/integrated`}>
           <div className={searchRouterWrapper}>
             <p>상품 또는 꿀!조합을 검색해보세요</p>
@@ -47,34 +48,38 @@ export const HomePage = () => {
           </div>
         </Suspense>
       </section>
-      <Spacing size={40} />
+
       <section className={sectionWrapper}>
         <SectionHeader name="떠오르는 조합" link={PATH.RECIPE} />
+        <Spacing size={12} />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <RecipeRankingList />
           </Suspense>
         </ErrorBoundary>
       </section>
-      <Spacing size={36} />
+
+      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+
       <section className={sectionWrapper}>
         <SectionHeader name="상품 랭킹" />
+        <Spacing size={8} />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <ProductRankingList />
           </Suspense>
         </ErrorBoundary>
       </section>
-      <Spacing size={36} />
+
       <section className={sectionWrapper}>
         <SectionHeader name="오늘의 리뷰" />
+        <Spacing size={10} />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <ReviewRankingList />
           </Suspense>
         </ErrorBoundary>
       </section>
-      <Spacing size={36} />
     </>
   );
 };

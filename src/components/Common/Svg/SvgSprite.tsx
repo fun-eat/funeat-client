@@ -12,8 +12,8 @@ const SvgSprite = () => {
         </defs>
       </symbol>
       <symbol id="home2" viewBox="0 0 14 14">
-        <path fill="none" strokeLinecap="round" strokeLinejoin="round" d="M.5 8L7 1.5 13.5 8" />
-        <path fill="none" strokeLinecap="round" strokeLinejoin="round" d="M2.5 6v6.5h9V6" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M.5 8L7 1.5 13.5 8" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.5 6v6.5h9V6" />
       </symbol>
       <symbol id="recipe2" viewBox="0 0 14 14">
         <g strokeLinecap="round" strokeLinejoin="round" clipPath="url(#clip0_1222_31717)">
@@ -211,9 +211,9 @@ const SvgSprite = () => {
       <symbol id="arrowLeft" viewBox="0 0 25 24">
         <path
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="1.2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="1.2"
           d="M16.24 3.661l-8.086 8.25 8.085 8.25"
         />
       </symbol>

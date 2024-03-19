@@ -3,11 +3,11 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { ErrorBoundary, ErrorComponent, Loading } from '@/components/Common';
-import { MinimalLayout, DefaultLayout, HeaderOnlyLayout, SimpleHeaderLayout } from '@/components/Layout';
+import { MinimalLayout, DefaultLayout } from '@/components/Layout';
 import { useRouteChangeTracker } from '@/hooks/common';
 
 interface AppProps {
-  layout?: 'default' | 'headerOnly' | 'minimal' | 'simpleHeader';
+  layout?: 'default' | 'minimal';
 }
 
 const App = ({ layout = 'default' }: AppProps) => {
@@ -22,30 +22,6 @@ const App = ({ layout = 'default' }: AppProps) => {
           <MinimalLayout>
             <Outlet />
           </MinimalLayout>
-        </Suspense>
-      </ErrorBoundary>
-    );
-  }
-
-  if (layout === 'headerOnly') {
-    return (
-      <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-        <Suspense fallback={<Loading />}>
-          <HeaderOnlyLayout>
-            <Outlet />
-          </HeaderOnlyLayout>
-        </Suspense>
-      </ErrorBoundary>
-    );
-  }
-
-  if (layout === 'simpleHeader') {
-    return (
-      <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-        <Suspense fallback={<Loading />}>
-          <SimpleHeaderLayout>
-            <Outlet />
-          </SimpleHeaderLayout>
         </Suspense>
       </ErrorBoundary>
     );

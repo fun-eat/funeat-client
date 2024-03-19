@@ -16,9 +16,9 @@ const NavigationBar = () => {
                 <>
                   <SvgIcon
                     variant={variant}
-                    width={20}
-                    height={20}
-                    fill="none"
+                    width={28}
+                    height={28}
+                    fill={isActive ? '#ffb017' : '#a0a0a0'}
                     stroke={isActive ? '#ffb017' : '#a0a0a0'}
                   />
                   <span className={isActive ? menuName['active'] : menuName['default']}>{name}</span>
