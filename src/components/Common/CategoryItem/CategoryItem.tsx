@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { imageWrapper, categoryImage, categoryName, circle, bordered } from './categoryItem.css';
+import { imageWrapper, categoryImage, categoryName, circle, bordered, link } from './categoryItem.css';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
@@ -39,7 +39,12 @@ const CategoryItem = ({
   };
 
   return (
-    <Link to={`${PATH.PRODUCT_LIST}/${categoryType}`} state={categoryId} onClick={handleCategoryItemClick}>
+    <Link
+      to={`${PATH.PRODUCT_LIST}/${categoryType}`}
+      className={link}
+      state={categoryId}
+      onClick={handleCategoryItemClick}
+    >
       <div className={cx(imageWrapper, { [bordered]: isBordered })}>
         <img
           className={cx(categoryImage, { [circle]: isCircular })}
