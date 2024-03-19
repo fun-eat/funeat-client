@@ -54,7 +54,7 @@ export const ProductPage = () => {
         <Suspense fallback={<Loading />}>
           {categories.map(({ id, name }) => (
             <section key={id} className={productSection}>
-              <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} />
+              <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} state={id} />
               <Spacing size={7} />
               <ProductPreviewList key={id} category={selectedTabMenu} categoryId={id} />
             </section>
