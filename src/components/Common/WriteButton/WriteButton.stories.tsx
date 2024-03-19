@@ -12,7 +12,7 @@ type Story = StoryObj<typeof WriteButton>;
 
 export const Default: Story = {
   render: () => (
-    <div style={{ height: '100px', background: '#D9D9D9' }}>
+    <div style={{ height: '100px' }}>
       <WriteButton />
     </div>
   ),
