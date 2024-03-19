@@ -30,7 +30,7 @@ export const button = style([
   },
 ]);
 
-export const speechBubble = style([
+export const bubble = style([
   flexCenter,
   {
     position: 'relative',
