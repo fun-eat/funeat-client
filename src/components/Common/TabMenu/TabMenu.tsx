@@ -1,12 +1,14 @@
-import { Button } from '@fun-eat/design-system';
 import type { ForwardedRef, MouseEventHandler } from 'react';
 import { forwardRef } from 'react';
-import styled from 'styled-components';
+
+import { container, menuName, tabMenu } from './tabMenu.css';
+
+import type { Tab } from '@/types/common';
 
 interface TabMenuProps {
-  tabMenus: readonly string[];
-  selectedTabMenu: number;
-  handleTabMenuSelect: (index: number) => void;
+  tabMenus: Tab[];
+  selectedTabMenu: string;
+  handleTabMenuSelect: (selectedMenu: any) => void;
 }
 
 const TabMenu = (
@@ -14,54 +16,28 @@ const TabMenu = (
   ref: ForwardedRef<HTMLUListElement>
 ) => {
   const handleTabMenuClick: MouseEventHandler<HTMLButtonElement> = (event) => {
-    const { index } = event.currentTarget.dataset;
-
-    if (index) {
-      handleTabMenuSelect(Number(index));
-    }
+    handleTabMenuSelect(event.currentTarget.value);
   };
 
   return (
-    <TabMenuContainer ref={ref}>
-      {tabMenus.map((menu, index) => {
-        const isSelected = selectedTabMenu === index;
+    <ul className={container} ref={ref}>
+      {tabMenus.map(({ value, label }) => {
+        const isSelected = selectedTabMenu === value;
         return (
-          <TabMenuItem key={menu} isSelected={isSelected}>
-            <TabMenuButton
+          <li key={value} className={tabMenu}>
+            <button
+              className={isSelected ? menuName['active'] : menuName['default']}
               type="button"
-              customWidth="100%"
-              customHeight="100%"
-              textColor={isSelected ? 'default' : 'disabled'}
-              weight={isSelected ? 'bold' : 'regular'}
-              variant="transparent"
-              value={menu}
+              value={value}
               onClick={handleTabMenuClick}
-              data-index={index}
             >
-              {menu}
-            </TabMenuButton>
-          </TabMenuItem>
+              {label}
+            </button>
+          </li>
         );
       })}
-    </TabMenuContainer>
+    </ul>
   );
 };
 
 export default forwardRef(TabMenu);
-
-const TabMenuContainer = styled.ul`
-  display: flex;
-`;
-
-const TabMenuItem = styled.li<{ isSelected: boolean }>`
-  flex-grow: 1;
-  width: 50%;
-  height: 45px;
-  border-bottom: 2px solid
-    ${({ isSelected, theme }) => (isSelected ? theme.borderColors.strong : theme.borderColors.disabled)};
-`;
-
-const TabMenuButton = styled(Button)`
-  padding: 0;
-  line-height: 45px;
-`;

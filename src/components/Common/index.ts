@@ -1,5 +1,3 @@
-export { default as CategoryFoodTab } from './CategoryFoodTab/CategoryFoodTab';
-export { default as CategoryStoreTab } from './CategoryStoreTab/CategoryStoreTab';
 export { default as Header } from './Header/Header';
 export { default as NavigationBar } from './NavigationBar/NavigationBar';
 export { default as SortButton } from './SortButton/SortButton';
