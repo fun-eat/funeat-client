@@ -11,6 +11,7 @@ export const productImage = style({
   border: '1px solid #e6e6e6',
   borderRadius: 6,
   objectFit: 'cover',
+  aspectRatio: '1 / 1',
 });
 
 export const productName = style({
