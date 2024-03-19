@@ -58,3 +58,8 @@ export interface Tab<T = string> {
   value: T;
   label: string;
 }
+
+export interface Option {
+  label: string | number;
+  value: string | number;
+}

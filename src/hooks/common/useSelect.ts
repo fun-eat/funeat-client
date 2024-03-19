@@ -1,9 +1,6 @@
 import { useState } from 'react';
 
-interface Option {
-  label: string | number;
-  value: string | number;
-}
+import type { Option } from '@/types/common';
 
 type SelectOption<T extends Option> = (currentOption: T) => void;
 type UseSelect<T extends Option> = [T, SelectOption<T>];
