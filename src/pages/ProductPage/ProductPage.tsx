@@ -1,6 +1,7 @@
 import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { categorySection, productSection } from './productPage.css';
 
@@ -25,7 +26,8 @@ const TAB_MENUS: Tab<CategoryVariant>[] = [
 ];
 
 export const ProductPage = () => {
-  const { selectedTabMenu, handleTabMenuClick } = useTabMenu(TAB_MENUS[0].value);
+  const { state: prevCategory } = useLocation();
+  const { selectedTabMenu, handleTabMenuClick } = useTabMenu(prevCategory ?? CATEGORY_TYPE.FOOD);
   const { data: categories } = useCategoryQuery(selectedTabMenu);
   const { reset } = useQueryErrorResetBoundary();
 

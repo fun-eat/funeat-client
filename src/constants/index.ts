@@ -70,3 +70,8 @@ export const ENVIRONMENT = window.location.href.includes('dev')
   : 'local';
 
 export const PREVIOUS_PATH_LOCAL_STORAGE_KEY = `funeat-previous-path-${ENVIRONMENT}`;
+
+export const PAGE_TITLE = {
+  FOOD: '공통 상품',
+  STORE: '오직!여기서',
+} as const;
