@@ -20,7 +20,7 @@ export const productImage = style({
 
 export const productRank = style({
   position: 'absolute',
-  top: 10,
+  top: 0,
   left: 10,
   color: '#808080',
   fontSize: 36,

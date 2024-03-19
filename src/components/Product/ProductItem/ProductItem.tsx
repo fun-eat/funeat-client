@@ -33,7 +33,12 @@ const ProductItem = ({ product }: ProductItemProps) => {
         loading="lazy"
         onLoad={() => setIsImageLoading(false)}
       />
-      {isImageLoading && <Skeleton width={163} height={163} />}
+      {/*스켈레톤 디자인시스템에서 수정*/}
+      {isImageLoading && (
+        <div style={{ position: 'absolute', top: 0, left: 0 }}>
+          <Skeleton width={163} height={163} />
+        </div>
+      )}
       <div style={{ height: '8px' }} />
       <p className={productName}>{name}</p>
       <div style={{ height: '2px' }} />

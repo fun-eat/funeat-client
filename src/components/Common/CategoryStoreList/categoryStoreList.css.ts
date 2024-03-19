@@ -2,6 +2,7 @@ import { style } from '@vanilla-extract/css';
 
 export const categoryStoreListWrapper = style({
   display: 'flex',
-  gap: 10,
-  justifyContent: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
+  padding: '0 20px',
 });

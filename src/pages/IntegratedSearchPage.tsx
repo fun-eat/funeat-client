@@ -3,7 +3,7 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
-import { ErrorBoundary, ErrorComponent, Loading, SvgIcon, TabMenu } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, SvgIcon } from '@/components/Common';
 import { RecommendList, ProductSearchResultList, RecipeSearchResultList } from '@/components/Search';
 import { SEARCH_TAB_VARIANTS } from '@/constants';
 import { useDebounce, useTabMenu } from '@/hooks/common';
@@ -26,7 +26,11 @@ export const IntegratedSearchPage = () => {
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery || '');
   const { reset } = useQueryErrorResetBoundary();
 
-  const { selectedTabMenu, isFirstTabMenu: isProductSearchTab, handleTabMenuClick } = useTabMenu();
+  const {
+    selectedTabMenu,
+    isFirstTabMenu: isProductSearchTab,
+    handleTabMenuClick,
+  } = useTabMenu(SEARCH_TAB_VARIANTS[0]);
   const inputPlaceholder = isProductSearchTab ? PRODUCT_PLACEHOLDER : RECIPE_PLACEHOLDER;
 
   useDebounce(
@@ -73,11 +77,7 @@ export const IntegratedSearchPage = () => {
         )}
       </SearchSection>
       <Spacing size={20} />
-      <TabMenu
-        tabMenus={SEARCH_TAB_VARIANTS}
-        selectedTabMenu={selectedTabMenu}
-        handleTabMenuSelect={handleTabMenuClick}
-      />
+
       <SearchResultSection>
         {isSubmitted && searchQuery ? (
           <>
@@ -96,7 +96,7 @@ export const IntegratedSearchPage = () => {
             </ErrorBoundary>
           </>
         ) : (
-          <Text>{SEARCH_TAB_VARIANTS[selectedTabMenu]}을 검색해보세요.</Text>
+          <Text>{selectedTabMenu}을 검색해보세요.</Text>
         )}
       </SearchResultSection>
     </>

@@ -33,7 +33,6 @@ export const HomePage = () => {
       <section>
         <Banner />
       </section>
-
       <section className={categorySection}>
         <Link to={`${PATH.SEARCH}/integrated`}>
           <div className={searchRouterWrapper}>
@@ -43,7 +42,7 @@ export const HomePage = () => {
         </Link>
         <Suspense fallback={null}>
           <div className={categoryListWrapper}>
-            <CategoryFoodList />
+            <CategoryFoodList hasName />
             <CategoryStoreList />
           </div>
         </Suspense>

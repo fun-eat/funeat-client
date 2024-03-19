@@ -32,7 +32,7 @@ export interface Tag {
 
 export interface NavigationMenu {
   variant: SvgIconVariant;
-  name: '카테고리' | '홈' | '조합실' | '마이';
+  name: '상품' | '홈' | '조합실' | '마이';
   path: (typeof PATH)[keyof typeof PATH] | '/products/food' | '/products/store';
 }
 
@@ -53,3 +53,8 @@ export type SortOption =
   | (typeof RECIPE_SORT_OPTIONS)[number];
 
 export type TagVariants = keyof typeof TAG_TITLE;
+
+export interface Tab<T = string> {
+  value: T;
+  label: string;
+}
