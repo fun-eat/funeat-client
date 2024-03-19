@@ -1,11 +1,10 @@
 import cx from 'classnames';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { imageWrapper, categoryImage, categoryName, circle, bordered } from './categoryItem.css';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
-import { useCategoryActionContext } from '@/hooks/context';
 import type { Category } from '@/types/common';
 
 interface CategoryItemProps {
@@ -27,16 +26,11 @@ const CategoryItem = ({
   isCircular = false,
   isBordered = false,
 }: CategoryItemProps) => {
-  const navigate = useNavigate();
-  const { selectCategory } = useCategoryActionContext();
   const { id: categoryId, name, image } = category;
 
   const { gaEvent } = useGA();
 
-  const handleCategoryItemClick = (categoryId: number) => {
-    selectCategory(categoryType, categoryId);
-    navigate(PATH.PRODUCT_LIST + '/' + categoryType);
-
+  const handleCategoryItemClick = () => {
     gaEvent({
       category: 'button',
       action: `${name} 카테고리 링크 클릭`,
@@ -45,7 +39,7 @@ const CategoryItem = ({
   };
 
   return (
-    <button type="button" onClick={() => handleCategoryItemClick(categoryId)}>
+    <Link to={`${PATH.PRODUCT_LIST}/${categoryType}`} state={categoryId} onClick={handleCategoryItemClick}>
       <div className={cx(imageWrapper, { [bordered]: isBordered })}>
         <img
           className={cx(categoryImage, { [circle]: isCircular })}
@@ -56,7 +50,7 @@ const CategoryItem = ({
         />
       </div>
       {hasName && <span className={categoryName}>{name}</span>}
-    </button>
+    </Link>
   );
 };
 
