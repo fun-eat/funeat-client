@@ -9,11 +9,13 @@ const WriteButton = () => {
   const { data: member } = useMemberQuery();
   const [isBubbleOpen, setIsBubbleOpen] = useState(true);
 
+  const isShowBubble = isBubbleOpen && !member;
+
   return (
     <>
       {/*  클릭 시 이동 (dialog 사용할 지, 페이지 이동할 지 미정) */}
       <div className={container}>
-        {isBubbleOpen && !member && (
+        {isShowBubble && (
           <div className={bubble}>
             <p>로그인 후 꿀조합을 작성할 수 있어요</p>
             <button className={closeButton} onClick={() => setIsBubbleOpen(false)}>
@@ -21,7 +23,7 @@ const WriteButton = () => {
             </button>
           </div>
         )}
-        <button className={button} disabled={!member}>
+        <button className={button} disabled={false}>
           <SvgIcon variant="pencil2" fill="none" stroke="white" width={17} height={17} />
         </button>
       </div>
