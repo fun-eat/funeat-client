@@ -11,7 +11,9 @@ export const container = style({
   justifyContent: 'space-between',
   alignItems: 'center',
   padding: '0 20px',
+  backgroundColor: '#fff',
   transform: 'translateX(-50%)',
+  zIndex: 1001,
 });
 
 export const headerTitle = style({
