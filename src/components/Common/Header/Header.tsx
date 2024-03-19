@@ -12,7 +12,7 @@ const Header = () => {
       <Link to={PATH.HOME}>
         <Logo width={120} />
       </Link>
-      <Link to={`${PATH.SEARCH}/integrated`}>
+      <Link to={`${PATH.SEARCH}`}>
         <SvgIcon variant="search2" width={20} height={20} fill="none" stroke="#232527" />
       </Link>
     </header>
