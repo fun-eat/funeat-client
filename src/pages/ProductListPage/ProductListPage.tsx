@@ -1,12 +1,13 @@
 import { BottomSheet, useBottomSheet } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
+import cx from 'classnames';
 import { Suspense, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
-import { listSection } from './productListPage.css';
+import { categoryButton, listSection, selectButton, selectSection, sortButton } from './productListPage.css';
 import NotFoundPage from '../NotFoundPage';
 
-import { ErrorBoundary, ErrorComponent, Loading, SelectOptionList } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, SelectOptionList, SvgIcon } from '@/components/Common';
 import PageHeader from '@/components/Common/PageHeader/PageHeader';
 import { ProductList } from '@/components/Product';
 import { CATEGORY_TYPE, PAGE_TITLE, PRODUCT_SORT_OPTIONS } from '@/constants';
@@ -48,12 +49,20 @@ export const ProductListPage = () => {
     <>
       <PageHeader title={pageTitle} hasBackLink hasSearchLink state={category} />
 
-      <button type="button" onClick={openBottomSheet('sort')}>
-        {currentSortOption.label}
-      </button>
-      <button type="button" onClick={openBottomSheet('category')}>
-        {currentCategory.label}
-      </button>
+      <section className={selectSection}>
+        <button type="button" className={cx(selectButton, sortButton)} onClick={openBottomSheet('sort')}>
+          <span>{currentSortOption.label}</span>
+          <span>
+            <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
+          </span>
+        </button>
+        <button type="button" className={cx(selectButton, categoryButton)} onClick={openBottomSheet('category')}>
+          <span>{currentCategory.label}</span>
+          <span>
+            <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
+          </span>
+        </button>
+      </section>
 
       <section className={listSection}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
