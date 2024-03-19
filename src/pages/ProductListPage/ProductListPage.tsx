@@ -56,7 +56,11 @@ export const ProductListPage = () => {
             <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
           </span>
         </button>
-        <button type="button" className={cx(selectButton, categoryButton)} onClick={openBottomSheet('category')}>
+        <button
+          type="button"
+          className={cx(selectButton, categoryButton[currentCategory.label as keyof typeof categoryButton])}
+          onClick={openBottomSheet('category')}
+        >
           <span>{currentCategory.label}</span>
           <span>
             <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
