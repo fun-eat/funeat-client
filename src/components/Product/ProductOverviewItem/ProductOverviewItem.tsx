@@ -1,4 +1,4 @@
-import { container, priceRate, priceRateWrapper, productName, rateWrapper } from './productOverviewItem.css';
+import { container, priceRate, priceRateWrapper, rateWrapper } from './productOverviewItem.css';
 
 import { SvgIcon } from '@/components/Common';
 
@@ -15,7 +15,7 @@ const ProductOverviewItem = ({ image, name, price, rate }: ProductOverviewItemPr
       <div className={container}>
         <img src={image} width={60} height={60} alt={name} />
         <div>
-          <p className={productName}>{name}</p>
+          <p>{name}</p>
           <div style={{ height: '6px' }} />
           <div className={priceRateWrapper}>
             <span className={priceRate}>{price}원</span>

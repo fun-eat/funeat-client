@@ -1,6 +1,5 @@
-import { Link, Text } from '@fun-eat/design-system';
 import { useRef } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { container } from './productSearchResultList.css';
 
@@ -25,7 +24,7 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
   const products = searchResponse.pages.flatMap((page) => page.products);
 
   if (products.length === 0) {
-    return <Text>검색한 상품을 찾을 수 없습니다.</Text>;
+    return <p>검색한 상품을 찾을 수 없습니다.</p>;
   }
 
   return (
@@ -33,7 +32,7 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
       <ul className={container}>
         {products.map(({ id, categoryType, image, name, price, averageRating }) => (
           <li key={id}>
-            <Link as={RouterLink} to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
+            <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
               <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
             </Link>
           </li>

@@ -21,10 +21,6 @@ export const rateWrapper = style({
   gap: 3,
 });
 
-export const productName = style({
-  fontSize: 16,
-});
-
 export const priceRate = style({
   fontSize: 11,
   color: '#999999',
