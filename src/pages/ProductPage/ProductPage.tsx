@@ -25,14 +25,14 @@ const TAB_MENUS: Tab<CategoryVariant>[] = [
   { value: CATEGORY_TYPE.STORE, label: '오직!여기서' },
 ];
 
+const getSectionTitle = (categoryType: CategoryVariant, name: string) =>
+  categoryType === CATEGORY_TYPE.FOOD ? `${name} 둘러보기` : `오직! ${name}에서`;
+
 export const ProductPage = () => {
   const { state: prevCategory } = useLocation();
   const { selectedTabMenu, handleTabMenuClick } = useTabMenu(prevCategory ?? CATEGORY_TYPE.FOOD);
   const { data: categories } = useCategoryQuery(selectedTabMenu);
   const { reset } = useQueryErrorResetBoundary();
-
-  const getSectionTitle = (categoryType: CategoryVariant, name: string) =>
-    categoryType === CATEGORY_TYPE.FOOD ? `${name} 둘러보기` : `오직! ${name}에서`;
 
   return (
     <>

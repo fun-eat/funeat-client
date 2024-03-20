@@ -70,7 +70,7 @@ export const ProductListPage = () => {
       <section className={listSection}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <ProductList category={category} categoryId={categoryId} sortOption={currentSortOption} />
+            <ProductList category={category} categoryId={currentCategory.value} sortOption={currentSortOption} />
           </Suspense>
         </ErrorBoundary>
       </section>
