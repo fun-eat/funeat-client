@@ -41,6 +41,7 @@ export const SVG_ICON_VARIANTS = [
   'arrowRight',
   'heartEmpty',
   'heartFilled',
+  'box',
 ] as const;
 export type SvgIconVariant = (typeof SVG_ICON_VARIANTS)[number];
 
