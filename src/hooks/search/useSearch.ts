@@ -5,6 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 
 import { useGA } from '../common';
 
+import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
+
 const useSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -18,6 +20,8 @@ const useSearch = () => {
   const { toast } = useToastActionContext();
 
   const { gaEvent } = useGA();
+
+  const recentSearchedKeywords = getLocalStorage<string[]>('recentSearchedKeywords') || [];
 
   const focusInput = () => {
     if (inputRef.current) {
@@ -55,6 +59,7 @@ const useSearch = () => {
     }
 
     searchKeyword(trimmedSearchQuery);
+    setLocalStorage('최근 검색어', [trimmedSearchQuery, ...recentSearchedKeywords.slice(0, 7)]);
   };
 
   const handleSearchClick: MouseEventHandler<HTMLButtonElement> = (event) => {

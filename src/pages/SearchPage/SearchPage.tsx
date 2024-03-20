@@ -8,6 +8,7 @@ import { ProductSearchResultList, RecipeSearchResultList, RecommendList, SearchI
 import { RECOMMENDED_TAGS } from '@/constants';
 import { useDebounce } from '@/hooks/common';
 import { useSearch } from '@/hooks/search';
+import { getLocalStorage } from '@/utils/localStorage';
 
 export const SearchPage = () => {
   const {
@@ -39,10 +40,7 @@ export const SearchPage = () => {
     }
   }, []);
 
-  const recentSearchedKeywords = [
-    { id: 0, name: '불닭볶음면' },
-    { id: 1, name: '라면' },
-  ];
+  const recentSearchedKeywords = getLocalStorage<string[]>('recentSearchedKeywords');
 
   return (
     <>
@@ -88,10 +86,10 @@ export const SearchPage = () => {
           <div>
             <p className={subTitle}>최근 검색어</p>
             <div className={badgeContainer}>
-              {recentSearchedKeywords.map(({ id, name }) => (
-                <button key={id} onClick={() => searchKeyword(name)}>
+              {recentSearchedKeywords?.map((keyword, index) => (
+                <button key={index} onClick={() => searchKeyword(keyword)}>
                   <Badge color="#e6e6e6" textColor="#808080" outlined>
-                    {name}
+                    {keyword}
                   </Badge>
                 </button>
               ))}
