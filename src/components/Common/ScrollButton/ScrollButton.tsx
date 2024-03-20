@@ -19,7 +19,7 @@ const ScrollButton = ({ targetRef }: ScrollButtonProps) => {
   };
 
   return (
-    <button className={container} onClick={handleScroll}>
+    <button type="button" className={container} onClick={handleScroll}>
       <SvgIcon variant="arrowUp" width={17} height={17} fill="none" stroke="#6B6B6B" />
     </button>
   );

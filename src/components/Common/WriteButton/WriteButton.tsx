@@ -18,12 +18,12 @@ const WriteButton = () => {
         {isShowBubble && (
           <div className={bubble}>
             <p>로그인 후 꿀조합을 작성할 수 있어요</p>
-            <button className={closeButton} onClick={() => setIsBubbleOpen(false)}>
+            <button type="button" className={closeButton} onClick={() => setIsBubbleOpen(false)}>
               <SvgIcon variant="close" width={8} height={8} fill="#808080" />
             </button>
           </div>
         )}
-        <button className={button} disabled={false}>
+        <button className={button} disabled={!member}>
           <SvgIcon variant="pencil2" fill="none" stroke="white" width={17} height={17} />
         </button>
       </div>
