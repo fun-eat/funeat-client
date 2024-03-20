@@ -1,20 +1,21 @@
-import cx from 'classnames';
 import { memo } from 'react';
 
-import { container, reviewContent, reviewImage, reviewTitle, tagList, tag, tagExtra } from './reviewRankingItem.css';
+import { container, reviewContent, reviewImage, reviewTitle, tagList, tag } from './reviewRankingItem.css';
 
 import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { ReviewRanking } from '@/types/ranking';
 import displaySlice from '@/utils/displaySlice';
 
 interface ReviewRankingItemProps {
-  reviewRanking: ReviewRanking;
+  productName: ReviewRanking['productName'];
+  content: ReviewRanking['content'];
+  tags: ReviewRanking['tags'];
+  image: ReviewRanking['image'];
 }
 
 const TAG_DISPLAY_LIMIT = 2;
 
-const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
-  const { productName, content, tags, image } = reviewRanking;
+const ReviewRankingItem = ({ productName, content, tags, image }: ReviewRankingItemProps) => {
   const tagToDisplay = displaySlice(true, tags, TAG_DISPLAY_LIMIT);
 
   return (
@@ -38,7 +39,7 @@ const ReviewRankingItem = ({ reviewRanking }: ReviewRankingItemProps) => {
           </li>
         ))}
         {tags.length > TAG_DISPLAY_LIMIT && (
-          <li className={cx(tag, tagExtra)}>
+          <li className={tag}>
             <span>+</span>
           </li>
         )}
