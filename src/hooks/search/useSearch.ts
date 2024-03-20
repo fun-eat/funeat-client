@@ -59,7 +59,7 @@ const useSearch = () => {
     }
 
     searchKeyword(trimmedSearchQuery);
-    setLocalStorage('최근 검색어', [trimmedSearchQuery, ...recentSearchedKeywords.slice(0, 7)]);
+    setLocalStorage('recentSearchedKeywords', [trimmedSearchQuery, ...recentSearchedKeywords.slice(0, 7)]);
   };
 
   const handleSearchClick: MouseEventHandler<HTMLButtonElement> = (event) => {
