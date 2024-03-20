@@ -9,9 +9,12 @@ const flexCenter = style({
 export const container = style([
   flexCenter,
   {
-    position: 'fixed',
+    position: 'sticky',
+    // 임의로 작성한 값. 추후 수정 예정
+    bottom: 80,
     right: 20,
     gap: 6,
+    float: 'right',
   },
 ]);
 
