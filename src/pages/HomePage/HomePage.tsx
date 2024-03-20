@@ -42,7 +42,7 @@ export const HomePage = () => {
         </Link>
         <Suspense fallback={null}>
           <div className={categoryListWrapper}>
-            <CategoryFoodList />
+            <CategoryFoodList hasName />
             <CategoryStoreList />
           </div>
         </Suspense>

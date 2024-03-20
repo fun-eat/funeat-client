@@ -2,11 +2,16 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import TabMenu from './TabMenu';
 
+import { CATEGORY_TYPE } from '@/constants';
+
 const meta: Meta<typeof TabMenu> = {
   title: 'common/TabMenu',
   component: TabMenu,
   args: {
-    tabMenus: ['리뷰 1,200', '꿀조합'],
+    tabMenus: [
+      { value: CATEGORY_TYPE.FOOD, label: '공통 상품' },
+      { value: CATEGORY_TYPE.STORE, label: '오직!여기서' },
+    ],
   },
 };
 

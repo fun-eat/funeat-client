@@ -16,7 +16,10 @@ export const categorySection = style({
 export const categoryListWrapper = style({
   display: 'flex',
   flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
   gap: 20,
+  width: '100%',
 });
 
 export const rankingInfoWrapper = style({

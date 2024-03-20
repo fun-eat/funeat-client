@@ -5,8 +5,8 @@ import type { NavigationMenu } from '@/types/common';
 export const NAVIGATION_MENU: NavigationMenu[] = [
   {
     variant: 'category2',
-    name: '카테고리',
-    path: `${PATH.PRODUCT_LIST}/food`,
+    name: '상품',
+    path: PATH.PRODUCT_LIST,
   },
   {
     variant: 'home2',

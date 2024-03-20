@@ -1,4 +1,4 @@
-import { BottomSheet, Spacing, useBottomSheet, Text, Button } from '@fun-eat/design-system';
+import { Spacing, useBottomSheet, Text, Button } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { useState, useRef, Suspense } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
@@ -6,8 +6,6 @@ import styled from 'styled-components';
 
 import {
   SortButton,
-  SortOptionList,
-  TabMenu,
   ScrollButton,
   Loading,
   ErrorBoundary,
@@ -15,12 +13,11 @@ import {
   RegisterButton,
   SectionTitle,
 } from '@/components/Common';
-import { ProductDetailItem, ProductRecipeList } from '@/components/Product';
-import { BestReviewItem, ReviewList, ReviewRegisterForm } from '@/components/Review';
-import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, RECIPE_SORT_OPTIONS, REVIEW_SORT_OPTIONS } from '@/constants';
+import { ProductDetailItem } from '@/components/Product';
+import { BestReviewItem } from '@/components/Review';
+import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, REVIEW_SORT_OPTIONS } from '@/constants';
 import { PATH } from '@/constants/path';
-import ReviewFormProvider from '@/contexts/ReviewFormContext';
-import { useGA, useSortOption, useTabMenu } from '@/hooks/common';
+import { useGA, useSortOption } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
 import { useProductDetailQuery } from '@/hooks/queries/product';
 import { setLocalStorage } from '@/utils/localStorage';
@@ -40,7 +37,6 @@ export const ProductDetailPage = () => {
 
   const { reset } = useQueryErrorResetBoundary();
 
-  const { selectedTabMenu, isFirstTabMenu: isReviewTab, handleTabMenuClick, initTabMenu } = useTabMenu();
   const tabRef = useRef<HTMLUListElement>(null);
 
   const { selectedOption, selectSortOption } = useSortOption(REVIEW_SORT_OPTIONS[0]);
@@ -57,8 +53,6 @@ export const ProductDetailPage = () => {
   const { name, reviewCount } = productDetail;
 
   const tabMenus = [`리뷰 ${reviewCount}`, '꿀조합'];
-  const sortOptions = isReviewTab ? REVIEW_SORT_OPTIONS : RECIPE_SORT_OPTIONS;
-  const currentSortOption = isReviewTab ? REVIEW_SORT_OPTIONS[0] : RECIPE_SORT_OPTIONS[0];
 
   const handleOpenRegisterReviewSheet = () => {
     setActiveSheet('registerReview');
@@ -70,11 +64,6 @@ export const ProductDetailPage = () => {
     setActiveSheet('sortOption');
     handleOpenBottomSheet();
     gaEvent({ category: 'button', action: '상품 리뷰 정렬 버튼 클릭', label: '상품 리뷰 정렬' });
-  };
-
-  const handleTabMenuSelect = (index: number) => {
-    handleTabMenuClick(index);
-    selectSortOption(currentSortOption);
   };
 
   const handleLoginButtonClick = () => {
@@ -90,12 +79,6 @@ export const ProductDetailPage = () => {
       <Spacing size={30} />
       <BestReviewItem productId={Number(productId)} />
       <Spacing size={36} />
-      <TabMenu
-        ref={tabRef}
-        tabMenus={tabMenus}
-        selectedTabMenu={selectedTabMenu}
-        handleTabMenuSelect={handleTabMenuSelect}
-      />
       {member ? (
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
@@ -103,18 +86,18 @@ export const ProductDetailPage = () => {
               <SortButton option={selectedOption} onClick={handleOpenSortOptionSheet} />
             </SortButtonWrapper>
             <section>
-              {isReviewTab ? (
+              {/*{isReviewTab ? (
                 <ReviewList productId={Number(productId)} selectedOption={selectedOption} />
               ) : (
                 <ProductRecipeList productId={Number(productId)} productName={name} selectedOption={selectedOption} />
-              )}
+              )}*/}
             </section>
           </Suspense>
         </ErrorBoundary>
       ) : (
         <ErrorContainer>
           <ErrorDescription align="center" weight="bold" size="lg">
-            {isReviewTab ? LOGIN_ERROR_MESSAGE_REVIEW : LOGIN_ERROR_MESSAGE_RECIPE}
+            {/*{isReviewTab ? LOGIN_ERROR_MESSAGE_REVIEW : LOGIN_ERROR_MESSAGE_RECIPE}*/}
           </ErrorDescription>
           <LoginButton
             type="button"
@@ -136,25 +119,6 @@ export const ProductDetailPage = () => {
         />
       </ReviewRegisterButtonWrapper>
       <ScrollButton targetRef={productDetailPageRef} />
-      <BottomSheet maxWidth="600px" isOpen={isOpen} isClosing={isClosing} close={handleCloseBottomSheet}>
-        {activeSheet === 'registerReview' ? (
-          <ReviewFormProvider>
-            <ReviewRegisterForm
-              targetRef={tabRef}
-              productId={Number(productId)}
-              closeReviewDialog={handleCloseBottomSheet}
-              initTabMenu={initTabMenu}
-            />
-          </ReviewFormProvider>
-        ) : (
-          <SortOptionList
-            options={sortOptions}
-            selectedOption={selectedOption}
-            selectSortOption={selectSortOption}
-            close={handleCloseBottomSheet}
-          />
-        )}
-      </BottomSheet>
     </ProductDetailPageContainer>
   );
 };
