@@ -1,3 +1,5 @@
+import { container, favoriteCountText } from './recipeFavoriteButton.css';
+
 import { SvgIcon } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
 import { useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
@@ -18,10 +20,12 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
   const [debouncedToggleFavorite] = useTimeout(handleToggleFavorite, 200);
 
   return (
-    <button type="button" onClick={debouncedToggleFavorite}>
-      <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
-      {favoriteCount && <p>{favoriteCount}</p>}
-    </button>
+    <div className={container}>
+      <button type="button" onClick={debouncedToggleFavorite}>
+        <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
+      </button>
+      {favoriteCount && <p className={favoriteCountText}>{favoriteCount}</p>}
+    </div>
   );
 };
 
