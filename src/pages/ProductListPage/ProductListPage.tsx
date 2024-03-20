@@ -7,8 +7,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { categoryButton, listSection, selectButton, selectSection, sortButton } from './productListPage.css';
 import NotFoundPage from '../NotFoundPage';
 
-import { ErrorBoundary, ErrorComponent, Loading, SelectOptionList, SvgIcon } from '@/components/Common';
-import PageHeader from '@/components/Common/PageHeader/PageHeader';
+import { ErrorBoundary, ErrorComponent, Loading, PageHeader, SelectOptionList, SvgIcon } from '@/components/Common';
 import { ProductList } from '@/components/Product';
 import { CATEGORY_TYPE, PAGE_TITLE, PRODUCT_SORT_OPTIONS } from '@/constants';
 import { useSelect } from '@/hooks/common';
