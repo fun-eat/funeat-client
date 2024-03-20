@@ -28,4 +28,6 @@ const SearchInput = forwardRef(
   }
 );
 
+SearchInput.displayName = 'SearchInput';
+
 export default SearchInput;
