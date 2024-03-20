@@ -16,7 +16,7 @@
     "lint:es:fix": "yarn lint:es -- --fix"
   },
   "dependencies": {
-    "@fun-eat/design-system": "^0.4.1",
+    "@fun-eat/design-system": "^0.4.3",
     "@tanstack/react-query": "^4.32.6",
     "@tanstack/react-query-devtools": "^4.32.6",
     "@vanilla-extract/css": "^1.14.1",
