@@ -48,7 +48,7 @@ export const SearchPage = () => {
         <PageHeader title="검색" hasBackLink />
         <div style={{ height: '16px' }} />
         <form onSubmit={isSubmitted ? resetSearchQuery : handleSearch}>
-          <SearchInput value={searchQuery} onChange={handleSearchQuery} isInputSubmitted={isSubmitted} />
+          <SearchInput value={searchQuery} onChange={handleSearchQuery} isInputSubmitted={isSubmitted} ref={inputRef} />
         </form>
         {!isSubmitted && debouncedSearchQuery && isAutocompleteOpen && (
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>

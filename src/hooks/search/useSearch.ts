@@ -75,6 +75,7 @@ const useSearch = () => {
     setSearchQuery('');
     setIsSubmitted(false);
     setSearchParams({});
+    focusInput();
   };
 
   return {
