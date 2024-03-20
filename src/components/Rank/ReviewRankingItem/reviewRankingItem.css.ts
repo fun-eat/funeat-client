@@ -26,8 +26,9 @@ export const reviewContent = style({
 });
 
 export const tagList = style({
-  display: 'flex',
-  gap: 4,
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 25px',
+  columnGap: 4,
 });
 
 export const tag = style({
@@ -40,8 +41,4 @@ export const tag = style({
   textAlign: 'center',
   borderRadius: 4,
   backgroundColor: '#ddd',
-});
-
-export const tagExtra = style({
-  flex: 1,
 });
