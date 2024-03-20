@@ -210,7 +210,6 @@ const SvgSprite = () => {
       </symbol>
       <symbol id="arrowUp" viewBox="0 0 11 18">
         <path
-          fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
           strokeWidth="1.5"
