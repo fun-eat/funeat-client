@@ -75,7 +75,7 @@ export const ProductDetailPage = () => {
     <ProductDetailPageContainer ref={productDetailPageRef}>
       <SectionTitle name={name} />
       <Spacing size={36} />
-      <ProductDetailItem category={category} productDetail={productDetail} />
+      <ProductDetailItem productDetail={productDetail} />
       <Spacing size={30} />
       <BestReviewItem productId={Number(productId)} />
       <Spacing size={36} />
