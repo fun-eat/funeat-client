@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         path: `${PATH.RECIPE}/:recipeId`,
         async lazy() {
           const { RecipeDetailPage } = await import(
-            /* webpackChunkName: "RecipeDetailPage" */ '@/pages/RecipeDetailPage'
+            /* webpackChunkName: "RecipeDetailPage" */ '@/pages/RecipeDetailPage/RecipeDetailPage'
           );
           return { Component: RecipeDetailPage };
         },
