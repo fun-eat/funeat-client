@@ -10,10 +10,4 @@ const meta: Meta<typeof SearchInput> = {
 export default meta;
 type Story = StoryObj<typeof SearchInput>;
 
-export const Default: Story = {
-  render: () => (
-    <div style={{ background: '#F2F2F2' }}>
-      <SearchInput />
-    </div>
-  ),
-};
+export const Default: Story = {};

@@ -1,7 +1,7 @@
 import type { ComponentPropsWithRef, ForwardedRef } from 'react';
 import { forwardRef } from 'react';
 
-import { iconWrapper, inputContainer, searchInput } from './searchInput.css';
+import { iconWrapperButton, inputContainer, searchInput } from './searchInput.css';
 
 import { SvgIcon } from '@/components/Common';
 
@@ -20,8 +20,12 @@ const SearchInput = forwardRef(
           value={value}
           {...props}
         />
-        <button className={iconWrapper}>
-          <SvgIcon variant={isInputSubmitted ? 'close2' : 'search2'} width={20} height={20} stroke="#808080" />
+        <button className={iconWrapperButton}>
+          {isInputSubmitted ? (
+            <SvgIcon variant="close2" width={13} height={13} stroke="#232527" />
+          ) : (
+            <SvgIcon variant="search2" width={20} height={20} stroke="#808080" />
+          )}
         </button>
       </div>
     );

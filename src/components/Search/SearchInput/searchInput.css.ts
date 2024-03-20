@@ -6,13 +6,14 @@ export const inputContainer = style({
 });
 
 export const searchInput = style({
-  width: '100%',
+  width: '90%',
   height: 40,
   padding: '10px 0 10px 18px',
   color: '#232527',
   background: '#efefef',
-  borderRadius: 20,
+  borderRadius: '20px 0 0 20px',
   fontSize: '1.4rem',
+  outline: 'none',
 
   selectors: {
     '&:placeholder': {
@@ -21,12 +22,15 @@ export const searchInput = style({
   },
 });
 
-export const iconWrapper = style({
+export const iconWrapperButton = style({
   position: 'absolute',
   top: 0,
   right: 0,
   display: 'flex',
   alignItems: 'center',
+  width: '10%',
   height: '100%',
-  marginRight: 18,
+  paddingLeft: 4,
+  background: '#efefef',
+  borderRadius: '0 20px 20px 0',
 });
