@@ -9,7 +9,7 @@ const baseBadgeStyle = style({
   padding: '5.5px 12px',
   fontSize: 12,
   color: text,
-  borderRadius: 6,
+  borderRadius: 50,
   whiteSpace: 'nowrap',
 });
 
