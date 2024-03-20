@@ -9,7 +9,7 @@ interface PageHeaderProps {
   title: string;
   hasBackLink?: boolean;
   hasSearchLink?: boolean;
-  state?: any;
+  state?: unknown;
 }
 
 const PageHeader = ({ title, hasBackLink, hasSearchLink, state }: PageHeaderProps) => {

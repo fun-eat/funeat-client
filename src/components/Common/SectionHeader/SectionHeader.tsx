@@ -7,7 +7,7 @@ import { SvgIcon } from '@/components/Common';
 interface SectionHeaderProps {
   name: string;
   link?: string;
-  state?: any;
+  state?: unknown;
 }
 
 const SectionHeader = ({ name, link, state }: SectionHeaderProps) => {
