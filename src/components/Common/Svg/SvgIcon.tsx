@@ -36,6 +36,7 @@ export const SVG_ICON_VARIANTS = [
   'plane',
   'info',
   'trashcan',
+  'arrowUp',
   'arrowLeft',
   'arrowRight',
   'heartEmpty',
