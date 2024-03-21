@@ -18,18 +18,4 @@ export const vars = createGlobalTheme(':root', {
     caution: '#FF9417',
     error: '#FD4545',
   },
-
-  fontSizes: {
-    caption4: '1.1rem/1.4 Pretendard',
-    catption3: '1.2 rem/1.4 Pretendard',
-    caption1: '1.4rem/1.4 Pretendard',
-    body: '1.6rem/1.4 Pretendard',
-    headline: '1.8rem/1.4 Pretendard',
-  },
-
-  fontWeight: {
-    regular: '400',
-    medium: '500',
-    semiBold: '600',
-  },
 });
