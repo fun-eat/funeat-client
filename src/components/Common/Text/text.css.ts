@@ -35,9 +35,3 @@ export const text = recipe({
     weight: 'regular',
   },
 });
-
-// export const textStyle = style<TextStyleProps>((theme, { size, weight, color }) => ({
-//   fontSize: theme.fontSizes[size],
-//   fontWeight: theme.fontWeights[weight],
-//   color: theme.colors[color],
-// }));
