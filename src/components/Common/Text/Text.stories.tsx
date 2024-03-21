@@ -38,7 +38,7 @@ export const Medium: Story = {
     return (
       <>
         {Object.values(sizes).map((size) => (
-          <Text size={size} weight="medium">
+          <Text key={size} size={size} weight="medium">
             {children}
           </Text>
         ))}
@@ -52,7 +52,7 @@ export const SemiBold: Story = {
     return (
       <>
         {Object.values(sizes).map((size) => (
-          <Text size={size} weight="semiBold">
+          <Text key={size} size={size} weight="semiBold">
             {children}
           </Text>
         ))}
