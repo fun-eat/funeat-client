@@ -152,18 +152,9 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.SEARCH}/integrated`,
+        path: PATH.SEARCH,
         async lazy() {
-          const { IntegratedSearchPage } = await import(
-            /* webpackChunkName: "IntegratedSearchPage" */ '@/pages/IntegratedSearchPage'
-          );
-          return { Component: IntegratedSearchPage };
-        },
-      },
-      {
-        path: `${PATH.SEARCH}/:searchVariant`,
-        async lazy() {
-          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage');
+          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
           return { Component: SearchPage };
         },
       },

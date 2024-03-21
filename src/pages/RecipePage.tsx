@@ -55,7 +55,7 @@ export const RecipePage = () => {
     <>
       <TitleWrapper>
         <Title>{RECIPE_PAGE_TITLE}</Title>
-        <Link as={RouterLink} to={`${PATH.SEARCH}/recipes`}>
+        <Link as={RouterLink} to={PATH.SEARCH}>
           <SvgIcon variant="search" />
         </Link>
       </TitleWrapper>

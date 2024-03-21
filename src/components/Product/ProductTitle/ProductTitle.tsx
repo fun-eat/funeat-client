@@ -18,7 +18,7 @@ const ProductTitle = ({ content, routeDestination }: ProductTitleProps) => {
         <HeadingTitle>{content}</HeadingTitle>
         <DropDownIcon variant="arrow" color={theme.colors.black} width={15} height={15} />
       </ProductTitleLink>
-      <Link as={RouterLink} to={`${PATH.SEARCH}/products`}>
+      <Link as={RouterLink} to={PATH.SEARCH}>
         <SvgIcon variant="search" />
       </Link>
     </ProductTitleContainer>

@@ -1,9 +1,9 @@
-import { Link, Text } from '@fun-eat/design-system';
 import { useRef } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { ProductItem } from '@/components/Product';
+import { container } from './productSearchResultList.css';
+
+import { ProductOverviewItem } from '@/components/Product';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
@@ -24,32 +24,23 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
   const products = searchResponse.pages.flatMap((page) => page.products);
 
   if (products.length === 0) {
-    return <Text>검색한 상품을 찾을 수 없습니다.</Text>;
+    return <p>검색한 상품을 찾을 수 없습니다.</p>;
   }
 
   return (
     <>
-      <ProductSearchResultListContainer>
-        {products.map((product) => (
-          <li key={product.id}>
-            <Link as={RouterLink} to={`${PATH.PRODUCT_LIST}/${product.categoryType}/${product.id}`}>
-              <ProductItem product={product} />
+      <ul className={container}>
+        {products.map(({ id, categoryType, image, name, price, averageRating }) => (
+          <li key={id}>
+            <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
+              <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
             </Link>
           </li>
         ))}
-      </ProductSearchResultListContainer>
+      </ul>
       <div ref={scrollRef} aria-hidden />
     </>
   );
 };
 
 export default ProductSearchResultList;
-
-const ProductSearchResultListContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
-
-  & > li {
-    border-bottom: 1px solid ${({ theme }) => theme.borderColors.disabled};
-  }
-`;
