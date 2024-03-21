@@ -8,7 +8,6 @@ import ReviewTextarea from '../ReviewTextarea/ReviewTextarea';
 import StarRate from '../StarRate/StarRate';
 
 import { ImageUploader, SvgIcon } from '@/components/Common';
-import { ProductOverviewItem } from '@/components/Product';
 import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import { useFormData, useImageUploader, useScroll } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
@@ -87,9 +86,6 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
         <SvgIcon variant="close" fill={theme.colors.black} width={20} height={20} />
       </CloseButton>
       <Divider />
-      <ProductOverviewItemWrapper>
-        <ProductOverviewItem name={productDetail.name} image={productDetail.image} />
-      </ProductOverviewItemWrapper>
       <Divider customHeight="4px" variant="disabled" />
       <RegisterForm onSubmit={handleSubmit}>
         <ReviewImageUploaderContainer>

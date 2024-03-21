@@ -33,9 +33,8 @@ export const HomePage = () => {
       <section>
         <Banner />
       </section>
-
       <section className={categorySection}>
-        <Link to={`${PATH.SEARCH}/integrated`}>
+        <Link to={PATH.SEARCH}>
           <div className={searchRouterWrapper}>
             <p>상품 또는 꿀!조합을 검색해보세요</p>
             <SvgIcon variant="search2" width={20} height={20} stroke="#808080" />
@@ -43,7 +42,7 @@ export const HomePage = () => {
         </Link>
         <Suspense fallback={null}>
           <div className={categoryListWrapper}>
-            <CategoryFoodList />
+            <CategoryFoodList hasName />
             <CategoryStoreList />
           </div>
         </Suspense>

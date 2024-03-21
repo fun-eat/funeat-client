@@ -55,7 +55,7 @@ export const RecipePage = () => {
     <>
       <TitleWrapper>
         <Title>{RECIPE_PAGE_TITLE}</Title>
-        <Link as={RouterLink} to={`${PATH.SEARCH}/recipes`}>
+        <Link as={RouterLink} to={PATH.SEARCH}>
           <SvgIcon variant="search" />
         </Link>
       </TitleWrapper>
@@ -77,7 +77,7 @@ export const RecipePage = () => {
           onClick={handleOpenRegisterRecipeSheet}
         />
       </RecipeRegisterButtonWrapper>
-      <ScrollButton targetRef={recipeRef} isRecipePage />
+      <ScrollButton targetRef={recipeRef} />
       <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="600px" close={handleCloseBottomSheet}>
         {activeSheet === 'sortOption' ? (
           <SortOptionList

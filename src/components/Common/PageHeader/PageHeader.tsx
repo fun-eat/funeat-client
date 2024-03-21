@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import { container, headerTitle } from './pageHeader.css';
-
 import SvgIcon from '../Svg/SvgIcon';
+
 import { PATH } from '@/constants/path';
 
 interface PageHeaderProps {
@@ -23,7 +23,7 @@ const PageHeader = ({ title, hasBackLink, hasSearchLink }: PageHeaderProps) => {
       )}
       <h1 className={headerTitle}>{title}</h1>
       {hasSearchLink ? (
-        <Link to={`${PATH.SEARCH}/integrated`}>
+        <Link to={PATH.SEARCH}>
           <SvgIcon variant="search2" stroke="#232527" width={20} height={20} />
         </Link>
       ) : (

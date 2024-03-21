@@ -16,6 +16,14 @@
       "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
       "averageRating": 4.0,
       "reviewCount": 55
+    },
+    {
+      "id": 3,
+      "name": "감자깡",
+      "price": 1000,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.0,
+      "reviewCount": 55
     }
   ]
 }
