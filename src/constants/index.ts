@@ -53,9 +53,6 @@ export const TAG_TITLE = {
 
 export const MIN_DISPLAYED_TAGS_LENGTH = 3;
 
-export const SEARCH_TAB_VARIANTS = ['상품', '꿀조합'];
-export const SEARCH_PAGE_VARIANTS = { products: '상품', recipes: '꿀조합', integrated: '통합' } as const;
-
 export const CATEGORY_TYPE = {
   FOOD: 'food',
   STORE: 'store',
@@ -70,3 +67,15 @@ export const ENVIRONMENT = window.location.href.includes('dev')
   : 'local';
 
 export const PREVIOUS_PATH_LOCAL_STORAGE_KEY = `funeat-previous-path-${ENVIRONMENT}`;
+
+export const PAGE_TITLE = {
+  FOOD: '공통 상품',
+  STORE: '오직!여기서',
+} as const;
+
+export const RECOMMENDED_TAGS = [
+  { id: 1, name: '맛있어요', tagType: 'TASTE' },
+  { id: 2, name: '간식', tagType: 'ETC' },
+  { id: 3, name: '갓성비', tagType: 'QUANTITY' },
+  { id: 4, name: '달달해요', tagType: 'TASTE' },
+];

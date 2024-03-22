@@ -5,6 +5,8 @@ import { useSearchParams } from 'react-router-dom';
 
 import { useGA } from '../common';
 
+import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
+
 const useSearch = () => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -19,6 +21,8 @@ const useSearch = () => {
 
   const { gaEvent } = useGA();
 
+  const recentSearchedKeywords = getLocalStorage<string[]>('recentSearchedKeywords') || [];
+
   const focusInput = () => {
     if (inputRef.current) {
       inputRef.current.focus();
@@ -29,6 +33,12 @@ const useSearch = () => {
     setIsSubmitted(false);
     setSearchQuery(event.currentTarget.value);
     setIsAutocompleteOpen(event.currentTarget.value.length > 0);
+  };
+
+  const searchKeyword = (value: string) => {
+    setSearchQuery(value);
+    setIsSubmitted(true);
+    setSearchParams({ query: value });
   };
 
   const handleSearch: FormEventHandler<HTMLFormElement> = (event) => {
@@ -48,17 +58,13 @@ const useSearch = () => {
       return;
     }
 
-    setSearchQuery(trimmedSearchQuery);
-    setIsSubmitted(true);
-    setSearchParams({ query: trimmedSearchQuery });
+    searchKeyword(trimmedSearchQuery);
+    setLocalStorage('recentSearchedKeywords', [trimmedSearchQuery, ...recentSearchedKeywords.slice(0, 7)]);
   };
 
   const handleSearchClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const { value } = event.currentTarget;
-
-    setSearchQuery(value);
-    setIsSubmitted(true);
-    setSearchParams({ query: value });
+    searchKeyword(value);
   };
 
   const handleAutocompleteClose = () => {
@@ -67,6 +73,9 @@ const useSearch = () => {
 
   const resetSearchQuery = () => {
     setSearchQuery('');
+    setIsSubmitted(false);
+    setSearchParams({});
+    focusInput();
   };
 
   return {
@@ -78,6 +87,7 @@ const useSearch = () => {
     handleSearch,
     handleSearchClick,
     handleAutocompleteClose,
+    searchKeyword,
     resetSearchQuery,
   };
 };

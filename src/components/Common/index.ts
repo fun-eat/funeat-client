@@ -20,3 +20,6 @@ export { default as CategoryFoodList } from './CategoryFoodList/CategoryFoodList
 export { default as CategoryStoreList } from './CategoryStoreList/CategoryStoreList';
 export { default as Banner } from './Banner/Banner';
 export { default as SectionHeader } from './SectionHeader/SectionHeader';
+export { default as SelectOptionList } from './SelectOptionList/SelectOptionList';
+export { default as PageHeader } from './PageHeader/PageHeader';
+export { default as Badge } from './Badge/Badge';
