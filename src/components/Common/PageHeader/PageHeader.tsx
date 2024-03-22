@@ -24,7 +24,7 @@ const PageHeader = ({ title, hasBackLink, hasSearchLink, state }: PageHeaderProp
       )}
       <h1 className={headerTitle}>{title}</h1>
       {hasSearchLink ? (
-        <Link to={`${PATH.SEARCH}/integrated`}>
+        <Link to={PATH.SEARCH}>
           <SvgIcon variant="search2" stroke="#232527" width={20} height={20} />
         </Link>
       ) : (
