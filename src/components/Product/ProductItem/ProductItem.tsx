@@ -27,8 +27,6 @@ const ProductItem = ({ product }: ProductItemProps) => {
       <img
         src={image}
         className={productImage}
-        width={163}
-        height={163}
         alt={`${name}사진`}
         loading="lazy"
         onLoad={() => setIsImageLoading(false)}

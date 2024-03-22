@@ -1,5 +1,12 @@
 import { style } from '@vanilla-extract/css';
 
+export const link = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 6,
+});
+
 export const imageWrapper = style({
   display: 'flex',
   justifyContent: 'center',
@@ -20,7 +27,6 @@ export const bordered = style({
 });
 
 export const categoryName = style({
-  marginTop: 6,
   fontSize: '1.2rem',
   lineHeight: 1.4,
 });

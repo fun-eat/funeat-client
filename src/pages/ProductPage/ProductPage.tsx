@@ -1,6 +1,7 @@
 import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { categorySection, productSection } from './productPage.css';
 
@@ -24,13 +25,14 @@ const TAB_MENUS: Tab<CategoryVariant>[] = [
   { value: CATEGORY_TYPE.STORE, label: '오직!여기서' },
 ];
 
+const getSectionTitle = (categoryType: CategoryVariant, name: string) =>
+  categoryType === CATEGORY_TYPE.FOOD ? `${name} 둘러보기` : `오직! ${name}에서`;
+
 export const ProductPage = () => {
-  const { selectedTabMenu, handleTabMenuClick } = useTabMenu(TAB_MENUS[0].value);
+  const { state: prevCategory } = useLocation();
+  const { selectedTabMenu, handleTabMenuClick } = useTabMenu(prevCategory ?? CATEGORY_TYPE.FOOD);
   const { data: categories } = useCategoryQuery(selectedTabMenu);
   const { reset } = useQueryErrorResetBoundary();
-
-  const getSectionTitle = (categoryType: CategoryVariant, name: string) =>
-    categoryType === CATEGORY_TYPE.FOOD ? `${name} 둘러보기` : `오직! ${name}에서`;
 
   return (
     <>
@@ -52,7 +54,7 @@ export const ProductPage = () => {
         <Suspense fallback={<Loading />}>
           {categories.map(({ id, name }) => (
             <section key={id} className={productSection}>
-              <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} />
+              <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} state={id} />
               <Spacing size={7} />
               <ProductPreviewList key={id} category={selectedTabMenu} categoryId={id} />
             </section>

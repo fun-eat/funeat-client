@@ -11,3 +11,4 @@ export { default as useRouteChangeTracker } from './useRouteChangeTracker';
 export { default as useTabMenu } from './useTabMenu';
 export { default as useScrollRestoration } from './useScrollRestoration';
 export { default as useGA } from './useGA';
+export { default as useSelect } from './useSelect';
