@@ -146,7 +146,7 @@ const router = createBrowserRouter([
         path: `${PATH.PRODUCT_LIST}/:category/:productId`,
         async lazy() {
           const { ProductDetailPage } = await import(
-            /* webpackChunkName: "ProductDetailPage" */ '@/pages/ProductDetailPage'
+            /* webpackChunkName: "ProductDetailPage" */ '@/pages/ProductDetailPage/ProductDetailPage'
           );
           return { Component: ProductDetailPage };
         },

@@ -11,7 +11,7 @@ import {
   ErrorBoundary,
   ErrorComponent,
   RegisterButton,
-  SectionTitle,
+  PageHeader,
 } from '@/components/Common';
 import { ProductDetailItem } from '@/components/Product';
 import { BestReviewItem } from '@/components/Review';
@@ -21,11 +21,6 @@ import { useGA, useSortOption } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
 import { useProductDetailQuery } from '@/hooks/queries/product';
 import { setLocalStorage } from '@/utils/localStorage';
-
-const LOGIN_ERROR_MESSAGE_REVIEW =
-  '로그인 후 상품 리뷰를 볼 수 있어요.\n펀잇에 가입하고 편의점 상품 리뷰를 확인해보세요 😊';
-const LOGIN_ERROR_MESSAGE_RECIPE =
-  '로그인 후 상품 꿀조합을 볼 수 있어요.\n펀잇에 가입하고 편의점 상품 꿀조합을 확인해보세요 😊';
 
 export const ProductDetailPage = () => {
   const { category, productId } = useParams();
@@ -72,11 +67,13 @@ export const ProductDetailPage = () => {
   };
 
   return (
-    <ProductDetailPageContainer ref={productDetailPageRef}>
-      <SectionTitle name={name} />
-      <Spacing size={36} />
+    <>
+      <PageHeader title="상세" hasBackLink />
+
       <ProductDetailItem productDetail={productDetail} />
-      <Spacing size={30} />
+
+      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+
       <BestReviewItem productId={Number(productId)} />
       <Spacing size={36} />
       {member ? (
@@ -119,7 +116,7 @@ export const ProductDetailPage = () => {
         />
       </ReviewRegisterButtonWrapper>
       <ScrollButton targetRef={productDetailPageRef} />
-    </ProductDetailPageContainer>
+    </>
   );
 };
 
