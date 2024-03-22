@@ -13,6 +13,7 @@ export const SVG_ICON_VARIANTS = [
   'pencil2',
   'star2',
   'review2',
+  'check2',
   'recipe',
   'list',
   'member',

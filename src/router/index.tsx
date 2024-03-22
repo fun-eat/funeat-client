@@ -177,6 +177,15 @@ const router = createBrowserRouter([
           return { Component: RecipePage };
         },
       },
+      {
+        path: `${PATH.PRODUCT_LIST}/:category`,
+        async lazy() {
+          const { ProductListPage } = await import(
+            /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
+          );
+          return { Component: ProductListPage };
+        },
+      },
     ],
   },
 ]);
