@@ -11,12 +11,15 @@ export const productImage = style({
   objectFit: 'cover',
 });
 
+export const productOverview = style({
+  margin: '20px 0 25px',
+});
+
 export const productInfo = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'flex-start',
   padding: '0 20px',
-  marginTop: 20,
 });
 
 export const productDetails = style({
