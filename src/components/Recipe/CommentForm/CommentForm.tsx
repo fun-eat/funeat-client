@@ -1,9 +1,10 @@
-import { Button, Spacing, Text, Textarea, useTheme, useToastActionContext } from '@fun-eat/design-system';
+import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, RefObject } from 'react';
 import { useState } from 'react';
-import styled from 'styled-components';
 
-import { SvgIcon } from '@/components/Common';
+import { commentForm, commentTextarea, container } from './commentForm.css';
+
+import CommentImage from '@/assets/comment.png';
 import { useScroll } from '@/hooks/common';
 import { useRecipeCommentMutation } from '@/hooks/queries/recipe';
 
@@ -18,7 +19,6 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
   const [commentValue, setCommentValue] = useState('');
   const { mutate } = useRecipeCommentMutation(recipeId);
 
-  const theme = useTheme();
   const { toast } = useToastActionContext();
 
   const { scrollToPosition } = useScroll();
@@ -51,54 +51,19 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
   };
 
   return (
-    <CommentFormContainer>
-      <Form onSubmit={handleSubmitComment}>
-        <CommentTextarea
-          placeholder="댓글을 입력하세요. (200자)"
+    <div className={container}>
+      <img src={CommentImage} width={29} height={29} />
+      <form className={commentForm} onSubmit={handleSubmitComment}>
+        <textarea
+          className={commentTextarea}
+          placeholder="댓글을 남겨보세요! (200자)"
           value={commentValue}
           onChange={handleCommentInput}
           maxLength={MAX_COMMENT_LENGTH}
         />
-        <SubmitButton variant="transparent" disabled={commentValue.length === 0}>
-          <SvgIcon
-            variant="plane"
-            width={30}
-            height={30}
-            fill={commentValue.length === 0 ? theme.colors.gray2 : theme.colors.gray4}
-          />
-        </SubmitButton>
-      </Form>
-      <Spacing size={8} />
-      <Text size="xs" color={theme.textColors.info} align="right">
-        {commentValue.length}자 / {MAX_COMMENT_LENGTH}자
-      </Text>
-    </CommentFormContainer>
+      </form>
+    </div>
   );
 };
 
 export default CommentForm;
-
-const CommentFormContainer = styled.div`
-  position: fixed;
-  bottom: 0;
-  width: calc(100% - 40px);
-  max-width: 540px;
-  padding: 16px 0;
-  background: ${({ theme }) => theme.backgroundColors.default};
-`;
-
-const Form = styled.form`
-  display: flex;
-  gap: 4px;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const CommentTextarea = styled(Textarea)`
-  height: 50px;
-  padding: 8px;
-`;
-
-const SubmitButton = styled(Button)`
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-`;
