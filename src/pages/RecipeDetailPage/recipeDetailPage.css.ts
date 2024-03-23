@@ -1,7 +1,28 @@
 import { style } from '@vanilla-extract/css';
 
+export const flexRowContainer = style({
+  display: 'flex',
+});
+
+export const flexColContainer = style({
+  display: 'flex',
+  flexDirection: 'column',
+});
+
 export const container = style({
   padding: '0 20px',
+});
+
+export const titleWrapper = style({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  marginBottom: 22,
+});
+
+export const titleText = style({
+  fontSize: '1.8rem',
+  fontWeight: '700',
 });
 
 export const authorWrapper = style({
@@ -21,12 +42,13 @@ export const created = style({
   fontWeight: 600,
 });
 
-export const recipeImageContainer = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 20,
-  alignItems: 'center',
-});
+export const recipeImageContainer = style([
+  flexColContainer,
+  {
+    gap: 20,
+    alignItems: 'center',
+  },
+]);
 
 export const recipeImage = style({
   width: '100%',

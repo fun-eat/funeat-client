@@ -1,7 +1,7 @@
 import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 import {
   authorWrapper,
@@ -16,11 +16,15 @@ import {
   recipeUsedProductsImageList,
   recipeContent,
   created,
+  titleWrapper,
+  titleText,
+  flexRowContainer,
 } from './recipeDetailPage.css';
 
-import { ErrorBoundary, ErrorComponent, Loading, PageHeader, SvgIcon } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, SvgIcon } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';
+import { PATH } from '@/constants/path';
 import { useRecipeDetailQuery } from '@/hooks/queries/recipe';
 import { getFormattedDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
@@ -38,7 +42,17 @@ export const RecipeDetailPage = () => {
   return (
     <>
       <section className={container}>
-        <PageHeader title={title} hasBackLink hasSearchLink />
+        <header className={titleWrapper}>
+          <div className={flexRowContainer}>
+            <Link to=".." relative="path">
+              <SvgIcon variant="arrowLeft" stroke="#444444" width={24} height={24} />
+            </Link>
+            <h1 className={titleText}>{title}</h1>
+          </div>
+          <Link to={PATH.SEARCH}>
+            <SvgIcon variant="search2" stroke="#232527" width={20} height={20} />
+          </Link>
+        </header>
         <div className={authorWrapper}>
           <MemberImage src={author.profileImage} alt={`${author.nickname}님의 프로필`} width={34} height={34} />
           <div>
