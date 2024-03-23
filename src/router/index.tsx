@@ -152,18 +152,9 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.SEARCH}/integrated`,
+        path: PATH.SEARCH,
         async lazy() {
-          const { IntegratedSearchPage } = await import(
-            /* webpackChunkName: "IntegratedSearchPage" */ '@/pages/IntegratedSearchPage'
-          );
-          return { Component: IntegratedSearchPage };
-        },
-      },
-      {
-        path: `${PATH.SEARCH}/:searchVariant`,
-        async lazy() {
-          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage');
+          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
           return { Component: SearchPage };
         },
       },
@@ -184,6 +175,15 @@ const router = createBrowserRouter([
         async lazy() {
           const { RecipePage } = await import(/* webpackChunkName: "RecipePage" */ '@/pages/RecipePage');
           return { Component: RecipePage };
+        },
+      },
+      {
+        path: `${PATH.PRODUCT_LIST}/:category`,
+        async lazy() {
+          const { ProductListPage } = await import(
+            /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
+          );
+          return { Component: ProductListPage };
         },
       },
     ],
