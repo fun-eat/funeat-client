@@ -15,6 +15,7 @@ import {
   boxIconWrapper,
   recipeUsedProductsImageList,
   recipeContent,
+  created,
 } from './recipeDetailPage.css';
 
 import { ErrorBoundary, ErrorComponent, Loading, PageHeader, SvgIcon } from '@/components/Common';
@@ -42,7 +43,7 @@ export const RecipeDetailPage = () => {
           <MemberImage src={author.profileImage} alt={`${author.nickname}님의 프로필`} width={34} height={34} />
           <div>
             <p className={nickname}>{author.nickname}</p>
-            <p className={createdAt}> {getFormattedDate(createdAt)}</p>
+            <p className={created}> {getFormattedDate(createdAt)}</p>
           </div>
         </div>
         <ul className={recipeImageContainer}>

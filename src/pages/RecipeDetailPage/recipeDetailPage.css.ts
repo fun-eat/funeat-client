@@ -15,7 +15,7 @@ export const nickname = style({
   fontWeight: 600,
 });
 
-export const createdAt = style({
+export const created = style({
   color: '#808080',
   fontSize: '1.1rem',
   fontWeight: 600,
