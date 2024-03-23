@@ -16,6 +16,7 @@ const useSearch = () => {
   const [searchQuery, setSearchQuery] = useState(currentSearchQuery || '');
   const [isSubmitted, setIsSubmitted] = useState(!!currentSearchQuery);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(searchQuery.length > 0);
+  const [isTagSearch, setIsTagSearch] = useState(false);
 
   const { toast } = useToastActionContext();
 
@@ -41,7 +42,7 @@ const useSearch = () => {
     setSearchParams({ query: value });
   };
 
-  const handleSearch: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSearchForm: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     gaEvent({ category: 'submit', action: '검색 페이지에서 검색', label: '검색' });
 
@@ -62,13 +63,19 @@ const useSearch = () => {
     setLocalStorage('recentSearchedKeywords', [trimmedSearchQuery, ...recentSearchedKeywords.slice(0, 7)]);
   };
 
-  const handleSearchClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+  const handleSearchByClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const { value } = event.currentTarget;
     searchKeyword(value);
   };
 
   const handleAutocompleteClose = () => {
     setIsAutocompleteOpen(false);
+  };
+
+  const handleTagSearch: MouseEventHandler<HTMLButtonElement> = (event) => {
+    const { value } = event.currentTarget;
+    searchKeyword(value);
+    setIsTagSearch(true);
   };
 
   const resetSearchQuery = () => {
@@ -84,10 +91,11 @@ const useSearch = () => {
     isSubmitted,
     isAutocompleteOpen,
     handleSearchQuery,
-    handleSearch,
-    handleSearchClick,
+    handleSearchForm,
+    handleSearchByClick,
     handleAutocompleteClose,
-    searchKeyword,
+    isTagSearch,
+    handleTagSearch,
     resetSearchQuery,
   };
 };
