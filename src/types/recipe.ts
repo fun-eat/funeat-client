@@ -9,27 +9,24 @@ export interface RecipeRequest {
 
 export type RecipeRequestKey = keyof RecipeRequest;
 
-export interface RecipeDetail extends Recipe {
-  images: string[];
-  content: string;
-  totalPrice: number;
-  favorite: boolean;
-}
-
-export interface BaseRecipe {
+export interface Recipe {
   id: number;
   image: string | null;
   title: string;
-  createdAt: string;
-  favoriteCount: number;
+  author: Member;
+  content: string;
+  favorite: boolean;
 }
 
-export interface Recipe extends BaseRecipe {
-  author: Member;
+export interface RecipeDetail extends Recipe {
+  images: string[];
+  totalPrice: number;
+  createdAt: string;
+  favoriteCount: number;
   products: RecipeProductWithPrice[];
 }
 
-export interface MemberRecipe extends BaseRecipe {
+export interface MemberRecipe extends Recipe {
   products: RecipeProduct[];
 }
 

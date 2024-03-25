@@ -10,22 +10,18 @@
   "recipes": [
     {
       "id": 1,
-      "image": null,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
       "title": "치즈함박카레라이스",
       "author": {
         "nickname": "냐미",
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
       },
-      "createdAt": "2023-08-09T10:10:10",
-      "favoriteCount": 153,
-      "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "콘치즈", "price": 1500 }
-      ]
+      "favorite": true,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
     },
     {
       "id": 2,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": null,
       "title": "초특급불닭콘치즈",
       "author": {
         "nickname": "뇨미",
@@ -33,13 +29,8 @@
       },
       "createdAt": "2023-08-10T10:10:10",
       "favoriteCount": 154,
-      "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "치즈불닭볶음면", "price": 1500 },
-        { "id": 13, "name": "콘치즈불닭볶음면", "price": 1500 },
-        { "id": 14, "name": "치즈불닭볶음면", "price": 1500 },
-        { "id": 15, "name": "콘치즈불닭볶음면", "price": 1500 }
-      ]
+      "favorite": true,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
     },
     {
       "id": 3,
@@ -51,11 +42,8 @@
       },
       "createdAt": "2023-08-01T10:10:10",
       "favoriteCount": 1531,
-      "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "치즈", "price": 1500 },
-        { "id": 13, "name": "치즈", "price": 1500 }
-      ]
+      "favorite": false,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
     },
     {
       "id": 4,
@@ -67,14 +55,8 @@
       },
       "createdAt": "2023-08-06T10:10:10",
       "favoriteCount": 120,
-      "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "치즈", "price": 1500 },
-        { "id": 13, "name": "콘치즈", "price": 1500 },
-        { "id": 14, "name": "치즈", "price": 1500 },
-        { "id": 15, "name": "콘치즈", "price": 1500 },
-        { "id": 16, "name": "콘치즈", "price": 1500 }
-      ]
+      "favorite": false,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
     }
   ]
 }
