@@ -8,14 +8,21 @@ export const recipeImage = style({
   width: '100%',
   height: 'auto',
   minWidth: 163,
+  borderRadius: '6px',
   objectFit: 'cover',
   aspectRatio: '1 / 1',
 });
 
-export const buttonWrapper = style({
+export const favoriteButtonWrapper = style({
   position: 'absolute',
   top: 8,
   right: 8,
+});
+
+export const productButtonWrapper = style({
+  position: 'absolute',
+  bottom: 8,
+  left: 8,
 });
 
 export const recipeTitle = style({
@@ -29,7 +36,10 @@ export const recipeAuthor = style({
   fontSize: 11,
 });
 
-export const recipeDescription = style({
+export const recipeContent = style({
   color: '#808080',
   fontSize: 11,
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 });

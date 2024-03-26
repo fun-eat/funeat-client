@@ -3,15 +3,17 @@ import { memo, useState } from 'react';
 
 import type { MemberRecipe, Recipe } from '@/types/recipe';
 import {
-  buttonWrapper,
+  favoriteButtonWrapper,
   imageWrapper,
+  productButtonWrapper,
   recipeAuthor,
-  recipeDescription,
+  recipeContent,
   recipeImage,
   recipeTitle,
 } from './recipeItem.css';
 import { RECIPE_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import RecipeFavoriteButton from '../RecipeFavoriteButton/RecipeFavoriteButton';
+import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
 
 interface RecipeItemProps {
   recipe: Recipe | MemberRecipe;
@@ -35,16 +37,18 @@ const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
             onLoad={() => image && setIsImageLoading(false)}
           />
           {isImageLoading && image && <Skeleton width={163} height={200} />}
-          <div className={buttonWrapper}>
+          <div className={favoriteButtonWrapper}>
             <RecipeFavoriteButton recipeId={id} favorite={favorite} />
+          </div>
+          <div className={productButtonWrapper}>
+            <RecipeProductButton isTranslucent />
           </div>
         </div>
       )}
       <div style={{ height: '8px' }} />
       <p className={recipeTitle}>{title}</p>
       <p className={recipeAuthor}>{author && `${author.nickname} 님`}</p>
-      {/* 아직 이 부분에 대한 논의가 없어 임시로 content 끼워 넣음. 만약 content가 맞다면 말줄임표 적용 예정 */}
-      <p className={recipeDescription}>{content}</p>
+      <p className={recipeContent}>{content}</p>
     </>
   );
 };
