@@ -9,6 +9,8 @@ const border = {
 const icon = {
   default: '#FFB017',
   disabled: '#999999',
+  gray: '#D6D6D6',
+  light: '#E6E6E6',
 };
 
 const background = {
