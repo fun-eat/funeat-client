@@ -14,7 +14,7 @@ export const searchHandlers = [
       return res(ctx.status(400));
     }
 
-    if (searchId === 'products') {
+    if (searchId === 'products' || searchId === 'tags') {
       const filteredProducts = {
         page: { ...productSearchResults.page },
         products: productSearchResults.products
