@@ -17,7 +17,11 @@
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
       },
       "favorite": true,
-      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
+      "products": [
+        { "id": 11, "name": "불닭볶음면", "price": 1500 },
+        { "id": 12, "name": "콘치즈", "price": 1500 }
+      ]
     },
     {
       "id": 2,
@@ -30,7 +34,14 @@
       "createdAt": "2023-08-10T10:10:10",
       "favoriteCount": 154,
       "favorite": true,
-      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
+      "products": [
+        { "id": 11, "name": "불닭볶음면", "price": 1500 },
+        { "id": 12, "name": "치즈불닭볶음면", "price": 1500 },
+        { "id": 13, "name": "콘치즈불닭볶음면", "price": 1500 },
+        { "id": 14, "name": "치즈불닭볶음면", "price": 1500 },
+        { "id": 15, "name": "콘치즈불닭볶음면", "price": 1500 }
+      ]
     },
     {
       "id": 3,
@@ -43,7 +54,12 @@
       "createdAt": "2023-08-01T10:10:10",
       "favoriteCount": 1531,
       "favorite": false,
-      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
+      "products": [
+        { "id": 11, "name": "불닭볶음면", "price": 1500 },
+        { "id": 12, "name": "치즈", "price": 1500 },
+        { "id": 13, "name": "치즈", "price": 1500 }
+      ]
     },
     {
       "id": 4,
@@ -56,7 +72,15 @@
       "createdAt": "2023-08-06T10:10:10",
       "favoriteCount": 120,
       "favorite": false,
-      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!"
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
+      "products": [
+        { "id": 11, "name": "불닭볶음면", "price": 1500 },
+        { "id": 12, "name": "치즈", "price": 1500 },
+        { "id": 13, "name": "콘치즈", "price": 1500 },
+        { "id": 14, "name": "치즈", "price": 1500 },
+        { "id": 15, "name": "콘치즈", "price": 1500 },
+        { "id": 16, "name": "콘치즈", "price": 1500 }
+      ]
     }
   ]
 }

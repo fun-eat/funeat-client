@@ -9,6 +9,13 @@ export interface RecipeRequest {
 
 export type RecipeRequestKey = keyof RecipeRequest;
 
+export interface RecipeDetail extends Recipe {
+  images: string[];
+  content: string;
+  totalPrice: number;
+  favorite: boolean;
+}
+
 export interface Recipe {
   id: number;
   image: string | null;
@@ -16,26 +23,19 @@ export interface Recipe {
   author: Member;
   content: string;
   favorite: boolean;
-}
-
-export interface RecipeDetail extends Recipe {
-  images: string[];
-  totalPrice: number;
-  createdAt: string;
-  favoriteCount: number;
-  products: RecipeProductWithPrice[];
+  products: RecipeProduct[];
 }
 
 export interface MemberRecipe extends Recipe {
-  products: RecipeProduct[];
+  // 추후 멤버 레시피 type 정의
+  // products: RecipeProduct[];
 }
 
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
 }
 
-type RecipeProductWithPrice = Pick<Product, 'id' | 'name' | 'price'>;
-export type RecipeProduct = Omit<RecipeProductWithPrice, 'price'>;
+type RecipeProduct = Pick<Product, 'id' | 'name' | 'price'>;
 
 export interface Comment {
   id: number;
