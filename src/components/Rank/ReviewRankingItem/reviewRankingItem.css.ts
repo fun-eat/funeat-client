@@ -27,20 +27,21 @@ export const reviewContent = style({
 
 export const tagList = style({
   display: 'flex',
-  gap: 8,
+  gap: 4,
 });
 
 export const tag = style({
-  width: 63,
   height: 26,
+  padding: '0 6px',
   color: '#232527',
   fontSize: 11,
   fontWeight: 500,
   lineHeight: '26px',
   textAlign: 'center',
-  borderRadius: '2px',
+  borderRadius: 4,
   backgroundColor: '#ddd',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+});
+
+export const tagExtra = style({
+  flex: 1,
 });
