@@ -21,6 +21,7 @@ export interface Recipe {
   image: string | null;
   title: string;
   author: Member;
+  createdAt: string;
   content: string;
   favorite: boolean;
   products: RecipeProduct[];
