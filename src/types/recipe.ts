@@ -25,7 +25,7 @@ export interface Recipe {
   favoriteCount: number;
   favorite: boolean;
   content: string;
-  products: RecipeProduct[];
+  products: Product[];
 }
 
 export interface MemberRecipe extends Recipe {
@@ -36,8 +36,6 @@ export interface MemberRecipe extends Recipe {
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
 }
-
-type RecipeProduct = Pick<Product, 'id' | 'name' | 'price'>;
 
 export interface Comment {
   id: number;

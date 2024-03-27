@@ -6,7 +6,9 @@ export interface Product {
   price: number;
   image: string;
   averageRating: number;
-  reviewCount: number;
+  reviewCount?: number;
+  // recipe type 때문에 일단 넣음. 추후 옵셔널을 필수로 변경
+  categoryType?: string;
 }
 
 export interface ProductDetail {
