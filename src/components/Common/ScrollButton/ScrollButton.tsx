@@ -12,8 +12,6 @@ interface ScrollButtonProps {
 const ScrollButton = ({ targetRef }: ScrollButtonProps) => {
   const { scrollToTop } = useScroll();
 
-  console.log(targetRef);
-
   const handleScroll = () => {
     if (targetRef) {
       scrollToTop(targetRef);
