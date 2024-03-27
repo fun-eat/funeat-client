@@ -1,5 +1,5 @@
-import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { MouseEvent, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import RecipeItem from '../RecipeItem/RecipeItem';
 
@@ -19,14 +19,19 @@ const RecipeList = ({ selectedOption }: RecipeListProps) => {
 
   const recipes = data.pages.flatMap((page) => page.recipes);
 
+  const navigate = useNavigate();
+
+  const handleRecipeLink = (id: number) => (event: MouseEvent<HTMLLIElement>) => {
+    event.preventDefault();
+    navigate(id);
+  };
+
   return (
     <>
       <ul className={container}>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <Link to={`${recipe.id}`}>
-              <RecipeItem recipe={recipe} />
-            </Link>
+          <li key={recipe.id} onClick={() => handleRecipeLink(recipe.id)}>
+            <RecipeItem recipe={recipe} />
           </li>
         ))}
       </ul>
