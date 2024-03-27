@@ -1,9 +1,7 @@
-import { Button, useTheme } from '@fun-eat/design-system';
-import styled from 'styled-components';
-
 import SvgIcon from '../Svg/SvgIcon';
 
 import type { SortOption } from '@/types/common';
+import { container } from './sortButton.css';
 
 interface SortButtonProps {
   option: SortOption;
@@ -11,22 +9,12 @@ interface SortButtonProps {
 }
 
 const SortButton = ({ option, onClick }: SortButtonProps) => {
-  const theme = useTheme();
-
   return (
-    <SortButtonContainer type="button" weight="bold" textColor="info" variant="transparent" onClick={onClick}>
-      <SvgIcon variant="sort" fill={theme.textColors.info} width={18} height={18} />
+    <button type="button" className={container} onClick={onClick}>
+      <SvgIcon variant="arrowUpDown" stroke="#3D3D3D" fill="none" width={14} height={14} />
       {option.label}
-    </SortButtonContainer>
+    </button>
   );
 };
 
 export default SortButton;
-
-const SortButtonContainer = styled(Button)`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0;
-  column-gap: 4px;
-`;
