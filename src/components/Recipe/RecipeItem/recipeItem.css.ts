@@ -29,6 +29,9 @@ export const recipeTitle = style({
   color: '#232527',
   fontSize: 14,
   fontWeight: 600,
+  whiteSpace: 'nowrap',
+  overflow: 'hidden',
+  textOverflow: 'ellipsis',
 });
 
 export const recipeAuthor = style({
