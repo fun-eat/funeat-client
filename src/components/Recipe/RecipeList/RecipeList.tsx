@@ -1,11 +1,11 @@
 import { useRef } from 'react';
 
+import { container } from './recipeList.css';
 import RecipeItem from '../RecipeItem/RecipeItem';
 
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipesQuery } from '@/hooks/queries/recipe';
 import type { SortOption } from '@/types/common';
-import { container } from './recipeList.css';
 
 interface RecipeListProps {
   selectedOption: SortOption;

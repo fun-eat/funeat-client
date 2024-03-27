@@ -1,7 +1,8 @@
 import cx from 'classnames';
 
-import { SvgIcon } from '@/components/Common';
 import { container, translucent } from './recipeProductButton.css';
+
+import { SvgIcon } from '@/components/Common';
 
 interface RecipeProductButtonProps {
   isTranslucent?: boolean;

@@ -3,6 +3,8 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { floatingButtonWrapper, container, sortButtonWrapper } from './recipePage.css';
+
 import {
   ErrorBoundary,
   ErrorComponent,
@@ -14,11 +16,9 @@ import {
 } from '@/components/Common';
 import { RecipeList } from '@/components/Recipe';
 import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, RECIPE_SORT_OPTIONS } from '@/constants';
-
 import { useGA, useSelect } from '@/hooks/common';
+import type { SortOption } from '@/types/common';
 import { setLocalStorage } from '@/utils/localStorage';
-import { floatingButtonWrapper, container, sortButtonWrapper } from './recipePage.css';
-import { SortOption } from '@/types/common';
 
 export const RecipePage = () => {
   const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();

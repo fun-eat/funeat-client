@@ -236,8 +236,8 @@ const SvgSprite = () => {
       </symbol>
       <symbol id="arrowUpDown" viewBox="0 0 15 16">
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
+          strokeLinecap="round"
+          strokeLinejoin="round"
           d="M9.229 13.549V2.45l2.925 2.925M5.549 2.451V13.55l-2.926-2.926"
         />
       </symbol>
@@ -282,7 +282,7 @@ const SvgSprite = () => {
         <path d="M1.15625 0.81424L11.3705 11.0285" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
       </symbol>
       <symbol id="disk" viewBox="0 0 12 13">
-        <g stroke-linecap="round" stroke-linejoin="round" clip-path="url(#a)">
+        <g strokeLinecap="round" strokeLinejoin="round" clipPath="url(#a)">
           <path d="M10.713.847H1.285a.857.857 0 0 0-.857.857v9.429c0 .473.383.857.857.857h9.428a.857.857 0 0 0 .858-.857V1.704a.857.857 0 0 0-.858-.857z" />
           <path d="M7.714.847v4.286a.429.429 0 0 1-.429.428H4.714a.429.429 0 0 1-.429-.428V.847m3 9h2.143" />
         </g>

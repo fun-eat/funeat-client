@@ -1,8 +1,10 @@
-import { PATH } from '@/constants/path';
 import { Link } from 'react-router-dom';
-import ProductOverviewItem from '../ProductOverviewItem/ProductOverviewItem';
+
 import { container } from './productOverviewList.css';
-import { Product } from '@/types/product';
+import ProductOverviewItem from '../ProductOverviewItem/ProductOverviewItem';
+
+import { PATH } from '@/constants/path';
+import type { Product } from '@/types/product';
 
 interface ProductOverviewListProps {
   products: Product[];

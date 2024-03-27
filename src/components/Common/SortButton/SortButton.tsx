@@ -1,7 +1,7 @@
+import { container } from './sortButton.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import type { SortOption } from '@/types/common';
-import { container } from './sortButton.css';
 
 interface SortButtonProps {
   option: SortOption;

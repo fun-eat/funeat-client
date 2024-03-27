@@ -28,10 +28,7 @@ export interface Recipe {
   products: Product[];
 }
 
-export interface MemberRecipe extends Recipe {
-  // 추후 멤버 레시피 type 정의
-  // products: RecipeProduct[];
-}
+export type MemberRecipe = Recipe
 
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
