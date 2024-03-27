@@ -52,10 +52,12 @@ export const RecipePage = () => {
           </section>
         </Suspense>
       </ErrorBoundary>
+
       <div className={floatingButtonWrapper}>
         <ScrollButton targetRef={recipeRef} />
         <WriteButton />
       </div>
+
       <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
         <SelectOptionList
           options={RECIPE_SORT_OPTIONS}

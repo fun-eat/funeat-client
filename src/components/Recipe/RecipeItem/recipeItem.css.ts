@@ -46,3 +46,7 @@ export const recipeContent = style({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
 });
+
+export const recipeProductWrapper = style({
+  margin: '48px 20px',
+});
