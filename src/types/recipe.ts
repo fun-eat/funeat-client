@@ -22,8 +22,9 @@ export interface Recipe {
   title: string;
   author: Member;
   createdAt: string;
-  content: string;
+  favoriteCount: number;
   favorite: boolean;
+  content: string;
   products: RecipeProduct[];
 }
 
