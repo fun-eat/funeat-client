@@ -40,6 +40,7 @@ export const SVG_ICON_VARIANTS = [
   'arrowUp',
   'arrowLeft',
   'arrowRight',
+  'arrowUpDown',
   'heartEmpty',
   'heartFilled',
   'close2',
