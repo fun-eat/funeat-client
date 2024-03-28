@@ -25,14 +25,16 @@ export interface Recipe {
   favoriteCount: number;
   favorite: boolean;
   content: string;
-  products: Product[];
+  products: RecipeProduct[];
 }
 
-export type MemberRecipe = Recipe
+export type MemberRecipe = Recipe;
 
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
 }
+
+export type RecipeProduct = Omit<Product, 'reviewCount'>;
 
 export interface Comment {
   id: number;
