@@ -50,7 +50,7 @@ const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
               loading="lazy"
               onLoad={() => image && setIsImageLoading(false)}
             />
-            {isImageLoading && image && <Skeleton width={163} height={200} />}
+            {isImageLoading && <Skeleton width={163} height={200} />}
             <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
               <RecipeFavoriteButton recipeId={id} favorite={favorite} />
             </div>
