@@ -1,5 +1,5 @@
 import { BottomSheet, Skeleton, useBottomSheet } from '@fun-eat/design-system';
-import type { MouseEventHandler} from 'react';
+import type { MouseEventHandler } from 'react';
 import { memo, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,6 @@ import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
 import { ProductOverviewList } from '@/components/Product';
 import { RECIPE_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { MemberRecipe, Recipe } from '@/types/recipe';
-
 
 interface RecipeItemProps {
   recipe: Recipe | MemberRecipe;
@@ -46,7 +45,7 @@ const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
           <div className={imageWrapper}>
             <img
               className={recipeImage}
-              src={image !== null ? image : RECIPE_CARD_DEFAULT_IMAGE_URL}
+              src={image ?? RECIPE_CARD_DEFAULT_IMAGE_URL}
               alt={`조리된 ${title}`}
               loading="lazy"
               onLoad={() => image && setIsImageLoading(false)}

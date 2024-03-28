@@ -15,7 +15,7 @@ const RecipeRankingItem = ({ recipe }: RecipeRankingItemProps) => {
   return (
     <>
       <div className={imageWrapper}>
-        <img className={recipeImage} src={image !== null ? image : RECIPE_CARD_DEFAULT_IMAGE_URL} alt={title} />
+        <img className={recipeImage} src={image ?? RECIPE_CARD_DEFAULT_IMAGE_URL} alt={title} />
         <div className={buttonWrapper} onClick={(e) => e.preventDefault()}>
           <RecipeFavoriteButton recipeId={id} favorite={favorite} />
         </div>
