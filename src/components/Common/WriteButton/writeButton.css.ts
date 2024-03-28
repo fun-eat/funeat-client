@@ -6,17 +6,11 @@ const flexCenter = style({
   justifyContent: 'center',
 });
 
-export const container = style([
-  flexCenter,
-  {
-    position: 'sticky',
-    // 임의로 작성한 값. 추후 수정 예정
-    bottom: 80,
-    right: 20,
-    gap: 6,
-    float: 'right',
-  },
-]);
+export const container = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 6,
+});
 
 export const button = style([
   flexCenter,

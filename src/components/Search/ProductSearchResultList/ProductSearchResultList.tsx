@@ -1,10 +1,6 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 
-import { container } from './productSearchResultList.css';
-
-import { ProductOverviewItem } from '@/components/Product';
-import { PATH } from '@/constants/path';
+import { ProductOverviewList } from '@/components/Product';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 
@@ -29,15 +25,7 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
 
   return (
     <>
-      <ul className={container}>
-        {products.map(({ id, categoryType, image, name, price, averageRating }) => (
-          <li key={id}>
-            <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
-              <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <ProductOverviewList products={products} />
       <div ref={scrollRef} aria-hidden />
     </>
   );

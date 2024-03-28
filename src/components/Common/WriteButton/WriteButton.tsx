@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { button, closeButton, container, bubble } from './writeButton.css';
+import { button, closeButton, bubble, container } from './writeButton.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import { useMemberQuery } from '@/hooks/queries/members';
@@ -13,7 +13,6 @@ const WriteButton = () => {
 
   return (
     <>
-      {/*  클릭 시 이동 (dialog 사용할 지, 페이지 이동할 지 미정) */}
       <div className={container}>
         {isShowBubble && (
           <div className={bubble}>

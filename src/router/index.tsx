@@ -108,6 +108,13 @@ const router = createBrowserRouter([
           return { Component: ReviewDetailPage };
         },
       },
+      {
+        path: PATH.RECIPE,
+        async lazy() {
+          const { RecipePage } = await import(/* webpackChunkName: "RecipePage" */ '@/pages/RecipePage/RecipePage');
+          return { Component: RecipePage };
+        },
+      },
     ],
   },
   /** 헤더, 네비게이션 모두 없는 레이아웃 */
@@ -170,13 +177,6 @@ const router = createBrowserRouter([
     ),
     errorElement: <NotFoundPage />,
     children: [
-      {
-        path: PATH.RECIPE,
-        async lazy() {
-          const { RecipePage } = await import(/* webpackChunkName: "RecipePage" */ '@/pages/RecipePage');
-          return { Component: RecipePage };
-        },
-      },
       {
         path: `${PATH.PRODUCT_LIST}/:category`,
         async lazy() {
