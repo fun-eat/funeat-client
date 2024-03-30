@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { container } from './productSearchResultList.css';
+import { container, showMoreButton } from './productSearchResultList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
 import { ProductOverviewItem } from '@/components/Product';
@@ -31,7 +31,7 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
   return (
     <>
       <ul className={container}>
-        {products.map(({ id, categoryType, image, name, price, averageRating }) => (
+        {products.slice(0, 2).map(({ id, categoryType, image, name, price, averageRating }) => (
           <li key={id}>
             <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
               <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
@@ -39,7 +39,9 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
           </li>
         ))}
       </ul>
-      <div ref={scrollRef} aria-hidden />
+      <Link to={`${PATH.SEARCH}/products?query=${searchQuery}`} className={showMoreButton}>
+        더보기
+      </Link>
     </>
   );
 };
