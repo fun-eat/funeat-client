@@ -1,51 +1,42 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
-import { container, showMoreButton } from './productSearchResultList.css';
-import SearchNotFound from '../SearchNotFound/SearchNotFound';
+import { container } from './productSearchListPage.css';
 
+import { PageHeader } from '@/components/Common';
 import { ProductOverviewItem } from '@/components/Product';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
-import displaySlice from '@/utils/displaySlice';
 
-interface ProductSearchResultListProps {
-  searchQuery: string;
-}
+export const ProductSearchListPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query') || '';
 
-const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) => {
   const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(searchQuery);
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 
-  if (!searchResponse) {
-    return null;
-  }
-
   const products = searchResponse.pages.flatMap((page) => page.products);
-  const productToDisplay = displaySlice(true, products);
-
-  if (products.length === 0) {
-    return <SearchNotFound />;
-  }
 
   return (
     <>
+      <PageHeader title={`'${searchQuery}'이/가 포함된 상품`} hasBackLink />
       <ul className={container}>
-        {productToDisplay.map(({ id, categoryType, image, name, price, averageRating }) => (
+        {products.map(({ id, categoryType, image, name, price, averageRating }) => (
           <li key={id}>
             <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
               <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
             </Link>
+            <div style={{ height: '20px' }} />
+            <hr style={{ border: '0.5px solid #e6e6e6' }} />
+            <div style={{ height: '20px' }} />
           </li>
         ))}
       </ul>
-      <Link to={`${PATH.SEARCH}/products?query=${searchQuery}`} className={showMoreButton}>
-        더보기
-      </Link>
+      <div ref={scrollRef} aria-hidden />
     </>
   );
 };
 
-export default ProductSearchResultList;
+export default ProductSearchListPage;

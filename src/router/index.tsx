@@ -158,6 +158,15 @@ const router = createBrowserRouter([
           return { Component: SearchPage };
         },
       },
+      {
+        path: `${PATH.SEARCH}/products`,
+        async lazy() {
+          const { ProductSearchListPage } = await import(
+            /* webpackChunkName: "ProductSearchListPage" */ '@/pages/ProductSearchListPage/ProductSearchListPage'
+          );
+          return { Component: ProductSearchListPage };
+        },
+      },
     ],
   },
   /** 네비게이션과 헤더(검색 아이콘이 없는)가 있는 레이아웃 */
