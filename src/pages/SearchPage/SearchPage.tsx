@@ -1,13 +1,20 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useState } from 'react';
 
-import { badgeContainer, searchResultTitle, searchSection, showMoreButton, subTitle } from './searchPage.css';
+import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTitle } from './searchPage.css';
 
-import { Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
-import { ProductSearchResultList, RecipeSearchResultList, RecommendList, SearchInput } from '@/components/Search';
+import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
+import {
+  ProductSearchResultList,
+  RecipeSearchResultList,
+  RecommendList,
+  SearchInput,
+  TagSearchResultList,
+} from '@/components/Search';
 import { RECOMMENDED_TAGS } from '@/constants';
 import { useDebounce } from '@/hooks/common';
 import { useSearch } from '@/hooks/search';
+import { vars } from '@/styles/theme.css';
 import { getLocalStorage } from '@/utils/localStorage';
 
 export const SearchPage = () => {
@@ -63,33 +70,51 @@ export const SearchPage = () => {
           </ErrorBoundary>
         )}
       </section>
-      <section className={searchSection}>
+      <section>
         {isSubmitted && searchQuery ? (
           <>
-            <p className={searchResultTitle}>상품 바로가기</p>
-            <ErrorBoundary fallback={ErrorComponent}>
-              <Suspense fallback={<Loading />}>
-                <ProductSearchResultList searchQuery={searchQuery} isTagSearch={isTagSearch} />
-              </Suspense>
-            </ErrorBoundary>
-            <button className={showMoreButton}>더보기</button>
-            {/* divider 컴포넌트 */}
-            <hr style={{ border: '1px solid #e6e6e6' }} />
-            <div style={{ height: '12px' }} />
-            {!isTagSearch && (
-              <>
-                <p className={searchResultTitle}>꿀!조합 바로가기</p>
+            {isTagSearch ? (
+              <div className={searchWrapper}>
+                <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
+                  태그 '{searchQuery}'가 포함된 상품
+                </Text>
                 <ErrorBoundary fallback={ErrorComponent}>
                   <Suspense fallback={<Loading />}>
-                    <RecipeSearchResultList searchQuery={searchQuery} />
+                    <TagSearchResultList searchQuery={searchQuery} />
                   </Suspense>
                 </ErrorBoundary>
+              </div>
+            ) : (
+              <>
+                <div className={searchWrapper}>
+                  <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
+                    상품 바로가기
+                  </Text>
+                  <ErrorBoundary fallback={ErrorComponent}>
+                    <Suspense fallback={<Loading />}>
+                      <ProductSearchResultList searchQuery={searchQuery} />
+                    </Suspense>
+                  </ErrorBoundary>
+                </div>
+                <hr style={{ border: `1px solid ${vars.colors.border.light}` }} />
+                <div className={searchWrapper}>
+                  <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
+                    꿀!조합 바로가기
+                  </Text>
+                  <ErrorBoundary fallback={ErrorComponent}>
+                    <Suspense fallback={<Loading />}>
+                      <RecipeSearchResultList searchQuery={searchQuery} />
+                    </Suspense>
+                  </ErrorBoundary>
+                </div>
               </>
             )}
           </>
         ) : (
-          <>
-            <p className={subTitle}>최근 검색어</p>
+          <div className={searchWrapper}>
+            <Text size="caption1" weight="medium" className={subTitle}>
+              최근 검색어
+            </Text>
             <div className={badgeContainer}>
               {recentSearchedKeywords?.map((keyword, index) => (
                 <button type="button" key={index} value={keyword} onClick={handleSearchByClick}>
@@ -99,7 +124,9 @@ export const SearchPage = () => {
                 </button>
               ))}
             </div>
-            <p className={subTitle}>추천 태그</p>
+            <Text size="caption1" weight="medium" className={subTitle}>
+              추천 태그
+            </Text>
             <div className={badgeContainer}>
               {RECOMMENDED_TAGS.map(({ id, name }) => (
                 <button type="button" key={id} value={name} onClick={handleTagSearch}>
@@ -109,7 +136,7 @@ export const SearchPage = () => {
                 </button>
               ))}
             </div>
-          </>
+          </div>
         )}
       </section>
     </>
