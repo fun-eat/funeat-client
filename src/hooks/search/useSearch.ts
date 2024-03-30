@@ -74,7 +74,9 @@ const useSearch = () => {
 
   const handleTagSearch: MouseEventHandler<HTMLButtonElement> = (event) => {
     const { value } = event.currentTarget;
-    searchKeyword(value);
+    setSearchQuery(value);
+    setIsSubmitted(true);
+    setSearchParams({ tag: value });
     setIsTagSearch(true);
   };
 

@@ -13,7 +13,7 @@ const fetchProductSearchResults = async (query: string, endpoint: 'tags' | 'prod
   return data;
 };
 
-const useInfiniteProductSearchResultsQuery = (query: string, isTagSearch: boolean) => {
+const useInfiniteProductSearchResultsQuery = (query: string, isTagSearch = false) => {
   const endpoint = isTagSearch ? 'tags' : 'products';
 
   return useSuspendedInfiniteQuery(
