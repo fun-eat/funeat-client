@@ -1,11 +1,12 @@
-import { Button, Text } from '@fun-eat/design-system';
 import type { MouseEventHandler } from 'react';
 import { useRef } from 'react';
-import styled from 'styled-components';
 
-import { MarkedText } from '@/components/Common';
+import { backdrop, container, productButton, wrapper } from './recommendList.css';
+
+import { MarkedText, Text } from '@/components/Common';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchAutocompleteQuery } from '@/hooks/queries/search';
+import { vars } from '@/styles/theme.css';
 
 interface RecommendListProps {
   searchQuery: string;
@@ -21,72 +22,25 @@ const RecommendList = ({ searchQuery, handleSearchClick, handleAutocompleteClose
   const products = searchResponse.pages.flatMap((page) => page.products);
 
   if (products.length === 0) {
-    return <ErrorText>검색어가 포함된 상품을 찾지 못했어요</ErrorText>;
+    return <Text>검색어가 포함된 상품을 찾지 못했어요</Text>;
   }
 
   return (
-    <RecommendListContainer>
-      <Backdrop onClick={handleAutocompleteClose} />
-      <RecommendListWrapper>
+    <div className={container}>
+      <div className={backdrop} onClick={handleAutocompleteClose} />
+      <ul className={wrapper}>
         {products.map(({ id, name }) => (
           <li key={id}>
-            <ProductButton
-              type="button"
-              customWidth="100%"
-              customHeight="100%"
-              color="white"
-              value={name}
-              onClick={handleSearchClick}
-            >
+            <button className={productButton} type="button" color="white" value={name} onClick={handleSearchClick}>
               <MarkedText text={name} mark={searchQuery} />
-            </ProductButton>
+            </button>
+            <hr style={{ border: `0.5px solid ${vars.colors.border.default}` }} />
           </li>
         ))}
-      </RecommendListWrapper>
+      </ul>
       <div ref={scrollRef} aria-hidden />
-    </RecommendListContainer>
+    </div>
   );
 };
 
 export default RecommendList;
-
-const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-`;
-
-const RecommendListContainer = styled.div`
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  max-height: 150px;
-  padding: 10px 0;
-  border: 1px solid ${({ theme }) => theme.borderColors.default};
-  background-color: ${({ theme }) => theme.backgroundColors.default};
-  overflow-y: auto;
-`;
-
-const RecommendListWrapper = styled.ul`
-  position: relative;
-  width: 100%;
-
-  & > li {
-    height: 36px;
-    padding: 0 10px;
-    line-height: 36px;
-  }
-`;
-
-const ProductButton = styled(Button)`
-  text-align: left;
-`;
-
-const ErrorText = styled(Text)`
-  height: 36px;
-  padding: 0 10px;
-  line-height: 36px;
-`;
