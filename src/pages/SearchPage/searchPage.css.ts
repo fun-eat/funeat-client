@@ -6,6 +6,12 @@ export const searchSection = style({
 
 export const searchWrapper = style({
   padding: '0 20px',
+  marginTop: 60,
+  marginBottom: 20,
+});
+
+export const tagSearchWrapper = style({
+  padding: '0 20px',
   marginBottom: 20,
 });
 

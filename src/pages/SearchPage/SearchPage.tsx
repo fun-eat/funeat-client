@@ -1,7 +1,14 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useState } from 'react';
 
-import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTitle } from './searchPage.css';
+import {
+  badgeContainer,
+  searchWrapper,
+  searchResultTitle,
+  searchSection,
+  subTitle,
+  tagSearchWrapper,
+} from './searchPage.css';
 
 import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
 import {
@@ -55,8 +62,14 @@ export const SearchPage = () => {
       <section className={searchSection}>
         <PageHeader title="검색" hasBackLink />
         <div style={{ height: '16px' }} />
-        <form onSubmit={isSubmitted ? resetSearchQuery : handleSearchForm}>
-          <SearchInput value={searchQuery} onChange={handleSearchQuery} isInputSubmitted={isSubmitted} ref={inputRef} />
+        <form onSubmit={handleSearchForm}>
+          <SearchInput
+            value={searchQuery}
+            onChange={handleSearchQuery}
+            isInputSubmitted={isSubmitted}
+            isTagSearch={isTagSearch}
+            ref={inputRef}
+          />
         </form>
         {!isSubmitted && debouncedSearchQuery && isAutocompleteOpen && (
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
@@ -74,7 +87,7 @@ export const SearchPage = () => {
         {isSubmitted && searchQuery ? (
           <>
             {isTagSearch ? (
-              <div className={searchWrapper}>
+              <div className={tagSearchWrapper}>
                 <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
                   태그 '{searchQuery}'가 포함된 상품
                 </Text>

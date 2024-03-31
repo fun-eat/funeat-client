@@ -50,7 +50,11 @@ const useSearch = () => {
 
     if (!trimmedSearchQuery) {
       toast.error('검색어를 입력해주세요');
-      focusInput();
+      resetSearchQuery();
+      return;
+    }
+
+    if (searchQuery) {
       resetSearchQuery();
       return;
     }
@@ -83,6 +87,7 @@ const useSearch = () => {
   const resetSearchQuery = () => {
     setSearchQuery('');
     setIsSubmitted(false);
+    setIsTagSearch(false);
     setSearchParams({});
     focusInput();
   };
