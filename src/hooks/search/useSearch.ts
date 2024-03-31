@@ -54,7 +54,7 @@ const useSearch = () => {
       return;
     }
 
-    if (searchQuery) {
+    if (isSubmitted) {
       resetSearchQuery();
       return;
     }
