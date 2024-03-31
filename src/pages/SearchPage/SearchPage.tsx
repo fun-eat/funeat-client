@@ -36,7 +36,6 @@ export const SearchPage = () => {
     handleAutocompleteClose,
     isTagSearch,
     handleTagSearch,
-    resetSearchQuery,
   } = useSearch();
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery || '');
   const { reset } = useQueryErrorResetBoundary();

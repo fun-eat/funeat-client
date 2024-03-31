@@ -103,7 +103,6 @@ const useSearch = () => {
     handleAutocompleteClose,
     isTagSearch,
     handleTagSearch,
-    resetSearchQuery,
   };
 };
 
