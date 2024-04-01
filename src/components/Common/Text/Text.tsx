@@ -8,12 +8,15 @@ const Text = <T extends TextElement = 'p'>({
   size = 'body',
   weight = 'regular',
   color = 'default',
+  as,
   ...props
 }: TextProps<T>) => {
+  const Component = as || 'p';
+
   return (
-    <p className={text({ color, size, weight })} {...props}>
+    <Component className={text({ color, size, weight })} {...props}>
       {children}
-    </p>
+    </Component>
   );
 };
 
