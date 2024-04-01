@@ -5,8 +5,10 @@ import { useState } from 'react';
 import { commentForm, commentTextarea, container } from './commentForm.css';
 
 import CommentImage from '@/assets/comment.png';
+import { SvgIcon, Text } from '@/components/Common';
 import { useScroll } from '@/hooks/common';
 import { useRecipeCommentMutation } from '@/hooks/queries/recipe';
+import { vars } from '@/styles/theme.css';
 
 interface CommentFormProps {
   recipeId: number;
@@ -60,7 +62,19 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
           value={commentValue}
           onChange={handleCommentInput}
           maxLength={MAX_COMMENT_LENGTH}
+          rows={1}
         />
+        <Text size="caption4" color="disabled">
+          {commentValue.length}/200
+        </Text>
+        <button>
+          <SvgIcon
+            variant="plane"
+            width={18}
+            height={18}
+            fill={commentValue.length === 0 ? vars.colors.gray3 : vars.colors.gray5}
+          />
+        </button>
       </form>
     </div>
   );
