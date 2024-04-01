@@ -1,3 +1,4 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const flexRowContainer = style({
@@ -61,6 +62,30 @@ export const recipeUsedProductsImageList = style({
   gap: 6,
 });
 
+export const productImageItem = style({
+  position: 'relative',
+});
+
+export const thirdProductImage = style({
+  filter: 'brightness(50%)',
+  borderRadius: 6,
+});
+
+export const recipeProductsCount = style({
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate( -50%, -50% )',
+  color: vars.colors.white,
+});
+
 export const recipeContent = style({
   whiteSpace: 'break-spaces',
+});
+
+export const bottomSheetWrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 18,
+  padding: '54px 20px 20px 20px',
 });

@@ -1,4 +1,4 @@
-import { Spacing } from '@fun-eat/design-system';
+import { BottomSheet, Spacing, useBottomSheet } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
 import { useParams } from 'react-router-dom';
@@ -13,10 +13,15 @@ import {
   boxIconWrapper,
   recipeUsedProductsImageList,
   recipeContent,
+  productImageItem,
+  recipeProductsCount,
+  thirdProductImage,
+  bottomSheetWrapper,
 } from './recipeDetailPage.css';
 
 import { ErrorBoundary, ErrorComponent, Loading, SectionTitle, SvgIcon, Text } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
+import { ProductOverviewItem } from '@/components/Product';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';
 import { useRecipeDetailQuery } from '@/hooks/queries/recipe';
 import { getFormattedDate } from '@/utils/date';
@@ -29,6 +34,8 @@ export const RecipeDetailPage = () => {
 
   const { data: recipeDetail } = useRecipeDetailQuery(Number(recipeId));
   const { reset } = useQueryErrorResetBoundary();
+
+  const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
 
   const { id, images, title, content, author, products, favoriteCount, favorite, createdAt } = recipeDetail;
 
@@ -64,10 +71,21 @@ export const RecipeDetailPage = () => {
               어떤 상품을 사용했나요?
             </Text>
           </div>
-          <ul className={recipeUsedProductsImageList}>
-            {displaySlice(false, products, 3).map(({ id, name }) => (
-              <li key={id}>
-                <img src={author.profileImage} alt={name} width={48} height={48} />
+          <ul className={recipeUsedProductsImageList} onClick={handleOpenBottomSheet}>
+            {displaySlice(true, products, 3).map(({ id, name, image }, idx) => (
+              <li key={id} className={productImageItem}>
+                <img
+                  src={image}
+                  className={products.length > 3 && idx === 2 ? thirdProductImage : ''}
+                  width={48}
+                  height={48}
+                  alt={name}
+                />
+                {idx === 2 && (
+                  <Text size="caption3" weight="medium" className={recipeProductsCount}>
+                    +{products.length - 3}
+                  </Text>
+                )}
               </li>
             ))}
           </ul>
@@ -90,6 +108,16 @@ export const RecipeDetailPage = () => {
           </Suspense>
         </ErrorBoundary>
       </section>
+      <BottomSheet isOpen={isOpen} isClosing={isClosing} close={handleCloseBottomSheet}>
+        <div className={bottomSheetWrapper}>
+          {products.map(({ name, image, price, rate }) => (
+            <>
+              <ProductOverviewItem name={name} image={image} price={price} rate={rate} />
+              <hr style={{ height: '1px', background: '#e6e6e6', border: 0 }} />
+            </>
+          ))}
+        </div>
+      </BottomSheet>
     </>
   );
 };
