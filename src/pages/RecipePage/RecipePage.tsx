@@ -47,7 +47,7 @@ export const RecipePage = () => {
             <div className={sortButtonWrapper}>
               <SortButton option={currentSortOption} onClick={handleOpenSortOptionSheet} />
             </div>
-            <div style={{ height: '16px' }} />
+            <div style={{ height: '8px' }} />
             <RecipeList selectedOption={currentSortOption} />
           </section>
         </Suspense>
