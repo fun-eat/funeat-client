@@ -72,9 +72,7 @@ const Spacer = () => {
 
 TopBar.BackLink = BackLink;
 TopBar.LeftNavigationGroup = LeftNavigationGroup;
-
 TopBar.Title = Title;
-
 TopBar.SearchLink = SearchLink;
 TopBar.RegisterLink = RegisterLink;
 TopBar.CloseButton = CloseButton;
