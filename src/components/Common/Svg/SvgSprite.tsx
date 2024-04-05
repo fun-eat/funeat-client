@@ -2,12 +2,12 @@ const SvgSprite = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" display="none">
       <symbol id="search2" viewBox="0 0 21 20">
-        <g clip-path="url(#a)">
+        <g clipPath="url(#a)">
           <path
             stroke="none"
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M3.146 8.571a5.714 5.714 0 1 1 11.429 0 5.714 5.714 0 0 1-11.429 0zM8.86 0a8.571 8.571 0 1 0 4.967 15.558l4.023 4.024a1.429 1.429 0 0 0 2.02-2.02l-4.023-4.024A8.571 8.571 0 0 0 8.86 0z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
           />
         </g>
         <defs>
@@ -227,9 +227,9 @@ const SvgSprite = () => {
       <symbol id="arrowLeft" viewBox="0 0 12 20">
         <path
           fill="none"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          stroke-width="2.4"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2.4"
           d="M10.183 18.367L1.816 9.65l7.698-8.018"
         />
       </symbol>
