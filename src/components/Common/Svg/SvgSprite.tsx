@@ -224,13 +224,13 @@ const SvgSprite = () => {
           d="M5.37 16.974V1.19m4.25 4.249l-4.25-4.25-4.25 4.25"
         />
       </symbol>
-      <symbol id="arrowLeft" viewBox="0 0 25 24">
+      <symbol id="arrowLeft" viewBox="0 0 12 20">
         <path
           fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth="1.2"
-          d="M16.24 3.661l-8.086 8.25 8.085 8.25"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2.4"
+          d="M10.183 18.367L1.816 9.65l7.698-8.018"
         />
       </symbol>
       <symbol id="arrowRight" viewBox="0 0 24 24">
