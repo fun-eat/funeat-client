@@ -1,5 +1,13 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
+const text = {
+  default: '#232527',
+  sub: '#3D3D3D',
+  info: '#808080',
+  disabled: '#999999',
+  white: '#FFFFFF',
+};
+
 const border = {
   default: '#E6E6E6',
   navigation: '#F2F2F2',
@@ -8,6 +16,7 @@ const border = {
 
 const icon = {
   default: '#FFB017',
+  fill: '#FFC14A',
   disabled: '#999999',
   gray: '#D6D6D6',
   light: '#E6E6E6',
@@ -37,6 +46,7 @@ export const vars = createGlobalTheme(':root', {
     caution: '#FF9417',
     error: '#FD4545',
 
+    text,
     border: border,
     icon: icon,
     background: background,

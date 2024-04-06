@@ -1,11 +1,19 @@
-import { Text, useTheme } from '@fun-eat/design-system';
 import { memo } from 'react';
 import styled from 'styled-components';
 
-import { favoriteWrapper, memberImage, memberInfo, memberName } from './reviewItem.css';
+import {
+  date,
+  favoriteWrapper,
+  memberImage,
+  memberInfo,
+  memberName,
+  ratingInfo,
+  ratingNumber,
+  ratingWrapper,
+} from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 
-import { Badge, SvgIcon, TagList } from '@/components/Common';
+import { Badge, SvgIcon, TagList, Text } from '@/components/Common';
 import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
 import { getRelativeDate } from '@/utils/date';
@@ -16,8 +24,6 @@ interface ReviewItemProps {
 }
 
 const ReviewItem = ({ productId, review }: ReviewItemProps) => {
-  const theme = useTheme();
-
   const { id, userName, profileImage, image, rating, tags, content, createdAt, rebuy, favorite, favoriteCount } =
     review;
 
@@ -36,22 +42,25 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
         </div>
       </div>
 
-      <ReviewerInfoWrapper>
-        <RatingIconWrapper>
+      <div className={ratingWrapper}>
+        <div className={ratingInfo}>
+          <Text as="span" className={ratingNumber}>
+            {rating.toFixed(1)}
+          </Text>
           {Array.from({ length: 5 }, (_, index) => (
             <SvgIcon
               key={`rating-${index}`}
-              variant="star"
-              fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
-              width={16}
-              height={16}
+              variant="star2"
+              fill={index < rating ? vars.colors.icon.fill : vars.colors.icon.light}
+              width={13}
+              height={13}
             />
           ))}
-          <Text as="span" size="sm" color={theme.textColors.info}>
-            {getRelativeDate(createdAt)}
-          </Text>
-        </RatingIconWrapper>
-      </ReviewerInfoWrapper>
+        </div>
+        <Text as="span" className={date}>
+          {getRelativeDate(createdAt)}
+        </Text>
+      </div>
 
       {image && <ReviewImage src={image} height={150} alt={`${userName}의 리뷰`} />}
 
@@ -63,34 +72,6 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
 };
 
 export default memo(ReviewItem);
-
-const ReviewItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-`;
-
-const ReviewerWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ReviewerInfoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-`;
-
-const RatingIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: -2px;
-
-  & > span {
-    margin-left: 12px;
-  }
-`;
 
 const ReviewImage = styled.img`
   align-self: center;
