@@ -28,7 +28,7 @@ export const productDetails = style({
   gap: 4,
 });
 
-export const category = style({
+export const categoryName = style({
   fontSize: '1.4rem',
   fontWeight: 500,
   color: '#808080',

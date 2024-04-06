@@ -1,5 +1,5 @@
 import {
-  category,
+  categoryName,
   preview,
   previewWrapper,
   productContent,
@@ -22,7 +22,7 @@ interface ProductDetailItemProps {
 }
 
 const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
-  const { name, price, image, content, averageRating, tags, reviewCount } = productDetail;
+  const { name, price, image, content, averageRating, tags, reviewCount, category } = productDetail;
 
   return (
     <section>
@@ -31,7 +31,7 @@ const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
       <div className={productOverview}>
         <div className={productInfo}>
           <div className={productDetails}>
-            <p className={category}>CU</p>
+            <p className={categoryName}>{category.name}</p>
             <h2 className={productName}>{name}</h2>
             <p className={productPrice}>{price.toLocaleString('ko-KR')}원</p>
           </div>
