@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import styled from 'styled-components';
 
 import {
   date,
@@ -10,6 +9,8 @@ import {
   ratingInfo,
   ratingNumber,
   ratingWrapper,
+  reviewContent,
+  reviewImage,
 } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 
@@ -42,6 +43,8 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
         </div>
       </div>
 
+      <div style={{ height: '12px' }} />
+
       <div className={ratingWrapper}>
         <div className={ratingInfo}>
           <Text as="span" className={ratingNumber}>
@@ -62,9 +65,15 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
         </Text>
       </div>
 
-      {image && <ReviewImage src={image} height={150} alt={`${userName}의 리뷰`} />}
+      <div style={{ height: '8px' }} />
 
-      <ReviewContent>{content}</ReviewContent>
+      {image && <img src={image} className={reviewImage} height={90} alt={`${userName}의 리뷰`} />}
+
+      <div style={{ height: '8px' }} />
+
+      <Text className={reviewContent}>{content}</Text>
+
+      <div style={{ height: '8px' }} />
 
       <TagList tags={tags} />
     </div>
@@ -72,11 +81,3 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
 };
 
 export default memo(ReviewItem);
-
-const ReviewImage = styled.img`
-  align-self: center;
-`;
-
-const ReviewContent = styled(Text)`
-  white-space: pre-wrap;
-`;

@@ -53,3 +53,14 @@ export const date = style([
     color: vars.colors.text.disabled,
   },
 ]);
+
+export const reviewImage = style({
+  borderRadius: 6,
+  objectFit: 'cover',
+});
+
+export const reviewContent = style({
+  fontSize: '1.3rem',
+  color: vars.colors.text.sub,
+  whiteSpace: 'pre-wrap',
+});
