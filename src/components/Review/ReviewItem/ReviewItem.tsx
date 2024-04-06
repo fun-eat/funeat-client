@@ -1,11 +1,12 @@
-import { Badge, Text, useTheme } from '@fun-eat/design-system';
+import { Text, useTheme } from '@fun-eat/design-system';
 import { memo } from 'react';
 import styled from 'styled-components';
 
+import { favoriteWrapper, memberImage, memberInfo, memberName } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 
-import { SvgIcon, TagList } from '@/components/Common';
-import { MemberImage } from '@/components/Members';
+import { Badge, SvgIcon, TagList } from '@/components/Common';
+import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
 import { getRelativeDate } from '@/utils/date';
 
@@ -21,45 +22,43 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
     review;
 
   return (
-    <ReviewItemContainer>
-      <ReviewerWrapper>
-        <ReviewerInfoWrapper>
-          <MemberImage
-            src={profileImage}
-            width={40}
-            height={40}
-            alt={`${userName}의 프로필`}
-            css={{ objectFit: `cover` }}
-          />
-          <div>
-            <Text weight="bold">{userName}</Text>
-            <RatingIconWrapper>
-              {Array.from({ length: 5 }, (_, index) => (
-                <SvgIcon
-                  key={`rating-${index}`}
-                  variant="star"
-                  fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
-                  width={16}
-                  height={16}
-                />
-              ))}
-              <Text as="span" size="sm" color={theme.textColors.info}>
-                {getRelativeDate(createdAt)}
-              </Text>
-            </RatingIconWrapper>
-          </div>
-        </ReviewerInfoWrapper>
+    <div>
+      <div className={memberInfo}>
+        <img src={profileImage} className={memberImage} width={36} height={36} alt={`${userName}의 프로필`} />
+        <p className={memberName}>{userName}</p>
         {rebuy && (
-          <RebuyBadge color={theme.colors.primary} textColor={theme.textColors.default}>
-            😝 또 살래요
-          </RebuyBadge>
+          <Badge color={vars.colors.black} textColor={vars.colors.secondary1}>
+            또 살래요
+          </Badge>
         )}
-      </ReviewerWrapper>
+        <div className={favoriteWrapper}>
+          <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
+        </div>
+      </div>
+
+      <ReviewerInfoWrapper>
+        <RatingIconWrapper>
+          {Array.from({ length: 5 }, (_, index) => (
+            <SvgIcon
+              key={`rating-${index}`}
+              variant="star"
+              fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
+              width={16}
+              height={16}
+            />
+          ))}
+          <Text as="span" size="sm" color={theme.textColors.info}>
+            {getRelativeDate(createdAt)}
+          </Text>
+        </RatingIconWrapper>
+      </ReviewerInfoWrapper>
+
       {image && <ReviewImage src={image} height={150} alt={`${userName}의 리뷰`} />}
-      <TagList tags={tags} />
+
       <ReviewContent>{content}</ReviewContent>
-      <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
-    </ReviewItemContainer>
+
+      <TagList tags={tags} />
+    </div>
   );
 };
 
@@ -81,10 +80,6 @@ const ReviewerInfoWrapper = styled.div`
   display: flex;
   align-items: center;
   column-gap: 10px;
-`;
-
-const RebuyBadge = styled(Badge)`
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
 `;
 
 const RatingIconWrapper = styled.div`
