@@ -1,12 +1,11 @@
-import { Button, Heading, Spacing, Text, theme, useToastActionContext } from '@fun-eat/design-system';
+import { Spacing, Text, theme, useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler, RefObject } from 'react';
-import styled from 'styled-components';
 
 import { itemTitle } from './reviewRegisterForm.css';
+import ReviewTextarea from './ReviewTextarea/ReviewTextarea';
 import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 import ReviewTagList from '../ReviewTagList/ReviewTagList';
-import ReviewTextarea from '../ReviewTextarea/ReviewTextarea';
 
 import { ImageUploader } from '@/components/Common';
 import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
@@ -90,9 +89,9 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
       </div>
       <Spacing size={32} />
       <StarRate rating={reviewFormValue.rating} />
-      <Spacing size={60} />
+      <Spacing size={32} />
       <ReviewTagList selectedTags={reviewFormValue.tagIds} />
-      <Spacing size={60} />
+      <Spacing size={32} />
       <ReviewTextarea content={reviewFormValue.content} />
       <Spacing size={80} />
       <RebuyCheckbox />
@@ -105,41 +104,3 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
 };
 
 export default ReviewRegisterForm;
-
-const ReviewRegisterFormContainer = styled.div`
-  position: relative;
-  height: 100%;
-`;
-
-const ReviewHeading = styled(Heading)`
-  height: 80px;
-  font-size: 2.4rem;
-  line-height: 80px;
-  text-align: center;
-`;
-
-const CloseButton = styled(Button)`
-  position: absolute;
-  top: 24px;
-  right: 32px;
-`;
-
-const ProductOverviewItemWrapper = styled.div`
-  margin: 15px 0;
-`;
-
-const RegisterForm = styled.form`
-  padding: 50px 20px;
-`;
-
-const ReviewImageUploaderContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const FormButton = styled(Button)`
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.white : theme.colors.black)};
-  background: ${({ theme, disabled }) => (disabled ? theme.colors.gray3 : theme.colors.primary)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-`;

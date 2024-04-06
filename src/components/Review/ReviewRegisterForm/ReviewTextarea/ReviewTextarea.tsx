@@ -1,7 +1,10 @@
-import { Heading, Spacing, Text, Textarea, useTheme } from '@fun-eat/design-system';
 import type { ChangeEventHandler } from 'react';
 import styled from 'styled-components';
 
+import { container, currentLength, reviewTextarea, status, statusWrapper } from './reviewTextarea.css';
+import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
+
+import { Text } from '@/components/Common';
 import { useReviewFormActionContext } from '@/hooks/context';
 
 const MAX_LENGTH = 200;
@@ -12,32 +15,33 @@ interface ReviewTextareaProps {
 
 const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
   const { handleReviewFormValue } = useReviewFormActionContext();
-  const theme = useTheme();
 
   const handleReviewText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
     handleReviewFormValue({ target: 'content', value: event.currentTarget.value });
   };
 
   return (
-    <ReviewTextareaContainer>
-      <Heading as="h2" size="xl" tabIndex={0}>
-        리뷰를 남겨주세요.
-        <RequiredMark aria-label="필수 작성">*</RequiredMark>
-      </Heading>
-      <Spacing size={20} />
-      <Textarea
+    <div className={container}>
+      <h2 className={itemTitle} tabIndex={0}>
+        설명
+        <sup className={requiredMark} aria-label="필수 작성">
+          *
+        </sup>
+      </h2>
+      <textarea
+        className={reviewTextarea}
         rows={5}
-        resize="vertical"
-        placeholder="솔직한 리뷰를 써주세요 😊"
+        placeholder="조합된 상품, 조리 방법 등 만든 꿀조합에 대한 설명을 자유롭게 작성해주세요"
         maxLength={MAX_LENGTH}
         value={content}
         onChange={handleReviewText}
       />
-      <Spacing size={16} />
-      <ReviewWritingStatusText color={theme.textColors.info} tabIndex={0}>
-        작성한 글자 수: {content.length}자 / {MAX_LENGTH}자
-      </ReviewWritingStatusText>
-    </ReviewTextareaContainer>
+      <div className={statusWrapper}>
+        <Text className={status} tabIndex={0}>
+          <strong className={currentLength}>{content.length}</strong>/{MAX_LENGTH}
+        </Text>
+      </div>
+    </div>
   );
 };
 
@@ -52,8 +56,4 @@ const ReviewTextareaContainer = styled.div`
 
 const RequiredMark = styled.sup`
   color: ${({ theme }) => theme.colors.error};
-`;
-
-const ReviewWritingStatusText = styled(Text)`
-  margin-left: auto;
 `;
