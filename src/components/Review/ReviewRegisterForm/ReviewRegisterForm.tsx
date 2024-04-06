@@ -1,4 +1,4 @@
-import { Spacing, Text, theme, useToastActionContext } from '@fun-eat/design-system';
+import { Spacing, useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler, RefObject } from 'react';
 
 import { itemTitle } from './reviewRegisterForm.css';
@@ -93,12 +93,8 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
       <ReviewTagList selectedTags={reviewFormValue.tagIds} />
       <Spacing size={32} />
       <ReviewTextarea content={reviewFormValue.content} />
-      <Spacing size={80} />
-      <RebuyCheckbox />
-      <Spacing size={16} />
-      <Text size="sm" color={theme.textColors.disabled}>
-        [작성시 유의사항] 신뢰성 확보에 저해되는 게시물은 삭제하거나 보이지 않게 할 수 있습니다.
-      </Text>
+      <Spacing size={32} />
+      <RebuyCheckbox isRebuy={reviewFormValue.rebuy} />
     </form>
   );
 };
