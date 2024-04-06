@@ -1,14 +1,22 @@
 import { useBottomSheet } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { useState, useRef } from 'react';
+import { useState, useRef, Suspense } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 
-import { registerButton, registerButtonWrapper, section } from './productDetailPage.css';
+import { main, registerButton, registerButtonWrapper, section, sortWrapper } from './productDetailPage.css';
 import NotFoundPage from '../NotFoundPage';
 
-import { SortButton, ScrollButton, PageHeader, SectionHeader } from '@/components/Common';
+import {
+  SortButton,
+  PageHeader,
+  SectionHeader,
+  ErrorBoundary,
+  ErrorComponent,
+  Loading,
+  ScrollButton,
+} from '@/components/Common';
 import { ProductDetailItem } from '@/components/Product';
+import { ReviewList } from '@/components/Review';
 import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, REVIEW_SORT_OPTIONS } from '@/constants';
 import { PATH } from '@/constants/path';
 import { useGA, useSortOption } from '@/hooks/common';
@@ -57,38 +65,37 @@ export const ProductDetailPage = () => {
   return (
     <>
       <PageHeader title="상세" hasBackLink />
+      <main className={main}>
+        <ProductDetailItem productDetail={productDetail} />
 
-      <ProductDetailItem productDetail={productDetail} />
+        <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
 
-      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+        <section className={section}>
+          <SectionHeader name="이 상품이 포함된 꿀조합!" />
+        </section>
 
-      <section className={section}>
-        <SectionHeader name="이 상품이 포함된 꿀조합!" />
-      </section>
+        <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
 
-      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+        <section className={section}>
+          <SectionHeader name="리뷰" />
+          <div className={sortWrapper}>
+            <SortButton option={selectedOption} onClick={handleOpenSortOptionSheet} />
+          </div>
+          <div style={{ height: '24px' }} />
+          <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
+            <Suspense fallback={<Loading />}>
+              <ReviewList productId={Number(productId)} selectedOption={selectedOption} />
+            </Suspense>
+          </ErrorBoundary>
+        </section>
 
-      <section className={section}>
-        <SectionHeader name="리뷰" />
-        <SortButtonWrapper>
-          <SortButton option={selectedOption} onClick={handleOpenSortOptionSheet} />
-        </SortButtonWrapper>
-      </section>
-
-      <div className={registerButtonWrapper}>
-        <button type="button" className={member ? registerButton.active : registerButton.disabled}>
-          {member ? '리뷰 작성하기' : '로그인하고 리뷰 작성하기'}
-        </button>
-      </div>
-
-      <ScrollButton targetRef={productDetailPageRef} />
+        <div className={registerButtonWrapper}>
+          <button type="button" className={member ? registerButton.active : registerButton.disabled}>
+            {member ? '리뷰 작성하기' : '로그인하고 리뷰 작성하기'}
+          </button>
+        </div>
+        <ScrollButton targetRef={productDetailPageRef} />
+      </main>
     </>
   );
 };
-
-const SortButtonWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin: 20px 0;
-`;

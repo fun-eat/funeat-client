@@ -1,8 +1,19 @@
 import { vars } from '@/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
 
+export const main = style({
+  paddingBottom: 70,
+});
+
 export const section = style({
+  position: 'relative',
   margin: '12px 0 24px',
+});
+
+export const sortWrapper = style({
+  position: 'absolute',
+  top: 0,
+  right: 20,
 });
 
 export const registerButtonWrapper = style({

@@ -1,4 +1,4 @@
-import { Button, useTheme } from '@fun-eat/design-system';
+import { useTheme } from '@fun-eat/design-system';
 import styled from 'styled-components';
 
 import SvgIcon from '../Svg/SvgIcon';
@@ -14,7 +14,7 @@ const SortButton = ({ option, onClick }: SortButtonProps) => {
   const theme = useTheme();
 
   return (
-    <SortButtonContainer type="button" weight="bold" textColor="info" variant="transparent" onClick={onClick}>
+    <SortButtonContainer type="button" onClick={onClick}>
       <SvgIcon variant="sort" fill={theme.textColors.info} width={18} height={18} />
       {option.label}
     </SortButtonContainer>
@@ -23,7 +23,7 @@ const SortButton = ({ option, onClick }: SortButtonProps) => {
 
 export default SortButton;
 
-const SortButtonContainer = styled(Button)`
+const SortButtonContainer = styled.button`
   display: flex;
   justify-content: flex-end;
   align-items: center;
