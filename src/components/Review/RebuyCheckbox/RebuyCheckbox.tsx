@@ -1,6 +1,7 @@
 import type { ChangeEventHandler } from 'react';
 
 import { check, checkbox, container, label } from './rebuyCheckbox.css';
+import { itemTitle } from '../ReviewRegisterForm/reviewRegisterForm.css';
 
 import { SvgIcon } from '@/components/Common';
 import { useEnterKeyDown } from '@/hooks/common';
@@ -20,15 +21,20 @@ const RebuyCheckbox = ({ isRebuy }: RebuyCheckboxProps) => {
   };
 
   return (
-    <p onKeyDown={handleKeydown}>
-      <label className={container} ref={labelRef}>
-        <input type="checkbox" className={checkbox} ref={inputRef} onChange={handleRebuy} tabIndex={0} />
-        <span className={isRebuy ? check.checked : check.default} aria-hidden>
-          <SvgIcon variant="check2" width={10} height={10} fill={isRebuy ? vars.colors.primary : vars.colors.white} />
-        </span>
-        <span className={label}>재구매할 생각이 있어요</span>
-      </label>
-    </p>
+    <>
+      <h2 className={itemTitle} tabIndex={0}>
+        재구매 여부
+      </h2>
+      <p onKeyDown={handleKeydown}>
+        <label className={container} ref={labelRef}>
+          <input type="checkbox" className={checkbox} ref={inputRef} onChange={handleRebuy} tabIndex={0} />
+          <span className={isRebuy ? check.checked : check.default} aria-hidden>
+            <SvgIcon variant="check2" width={10} height={10} fill={isRebuy ? vars.colors.primary : vars.colors.white} />
+          </span>
+          <span className={label}>재구매할 생각이 있어요</span>
+        </label>
+      </p>
+    </>
   );
 };
 
