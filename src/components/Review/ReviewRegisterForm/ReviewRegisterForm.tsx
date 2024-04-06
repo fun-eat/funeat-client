@@ -3,10 +3,10 @@ import type { FormEventHandler, RefObject } from 'react';
 import styled from 'styled-components';
 
 import { itemTitle } from './reviewRegisterForm.css';
+import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 import ReviewTagList from '../ReviewTagList/ReviewTagList';
 import ReviewTextarea from '../ReviewTextarea/ReviewTextarea';
-import StarRate from '../StarRate/StarRate';
 
 import { ImageUploader } from '@/components/Common';
 import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
@@ -88,7 +88,7 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
         </h2>
         <ImageUploader previewImage={previewImage} uploadImage={uploadImage} deleteImage={deleteImage} />
       </div>
-      <Spacing size={60} />
+      <Spacing size={32} />
       <StarRate rating={reviewFormValue.rating} />
       <Spacing size={60} />
       <ReviewTagList selectedTags={reviewFormValue.tagIds} />
