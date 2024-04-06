@@ -32,27 +32,19 @@ export const ratingInfo = style({
   gap: 4,
 });
 
-export const sub = style({
+export const ratingNumber = style({
   paddingTop: 4,
+  fontSize: '1.2rem',
+  color: vars.colors.gray5,
+  fontWeight: 500,
 });
 
-export const ratingNumber = style([
-  sub,
-  {
-    fontSize: '1.2rem',
-    color: vars.colors.gray5,
-    fontWeight: 500,
-  },
-]);
-
-export const date = style([
-  sub,
-  {
-    fontSize: '1.1rem',
-    fontWeight: 500,
-    color: vars.colors.text.disabled,
-  },
-]);
+export const date = style({
+  paddingTop: 2,
+  fontSize: '1.1rem',
+  fontWeight: 500,
+  color: vars.colors.text.disabled,
+});
 
 export const reviewImage = style({
   borderRadius: 6,
