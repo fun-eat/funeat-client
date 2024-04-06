@@ -1,8 +1,6 @@
-import { Badge } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import { tag, tagList } from './tagList.css';
 
 import type { Tag } from '@/types/common';
-import { convertTagColor } from '@/utils/convertTagColor';
 
 interface TagListProps {
   tags: Tag[];
@@ -10,29 +8,14 @@ interface TagListProps {
 
 const TagList = ({ tags }: TagListProps) => {
   return (
-    <TagListContainer>
-      {tags.map((tag) => {
-        const tagColor = convertTagColor(tag.tagType);
-        return (
-          <li key={tag.id}>
-            <TagBadge element="p" color={tagColor} textColor="black">
-              {tag.name}
-            </TagBadge>
-          </li>
-        );
-      })}
-    </TagListContainer>
+    <ul className={tagList}>
+      {tags.map(({ id, name }) => (
+        <li key={id} className={tag}>
+          <span>{name}</span>
+        </li>
+      ))}
+    </ul>
   );
 };
 
 export default TagList;
-
-const TagListContainer = styled.ul`
-  display: flex;
-  margin: 12px 0;
-  column-gap: 8px;
-`;
-
-const TagBadge = styled(Badge)`
-  font-weight: bold;
-`;
