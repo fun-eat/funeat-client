@@ -1,5 +1,4 @@
 import type { ChangeEventHandler } from 'react';
-import styled from 'styled-components';
 
 import { container, currentLength, reviewTextarea, status, statusWrapper } from './reviewTextarea.css';
 import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
@@ -46,14 +45,3 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
 };
 
 export default ReviewTextarea;
-
-const ReviewTextareaContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const RequiredMark = styled.sup`
-  color: ${({ theme }) => theme.colors.error};
-`;
