@@ -23,7 +23,7 @@ export const ReviewRegisterPage = () => {
           <ReviewRegisterForm productId={Number(productId)} openBottomSheet={handleOpenBottomSheet} />
         </section>
         <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
-          <ReviewTagSheet />
+          <ReviewTagSheet close={handleCloseBottomSheet} />
         </BottomSheet>
       </main>
     </ReviewFormProvider>
