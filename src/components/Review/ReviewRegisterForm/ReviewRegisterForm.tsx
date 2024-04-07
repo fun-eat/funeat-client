@@ -1,17 +1,16 @@
 import { Spacing, useToastActionContext } from '@fun-eat/design-system';
-import type { FormEventHandler, RefObject } from 'react';
+import type { FormEventHandler } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import { itemTitle } from './reviewRegisterForm.css';
+import { itemTitle, requiredMark, tagAddButton } from './reviewRegisterForm.css';
 import ReviewTextarea from './ReviewTextarea/ReviewTextarea';
 import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
-import ReviewTagList from '../ReviewTagList/ReviewTagList';
 
 import { ImageUploader } from '@/components/Common';
 import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
-import { useFormData, useImageUploader, useScroll } from '@/hooks/common';
+import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
-import { useProductDetailQuery } from '@/hooks/queries/product';
 import { useReviewRegisterFormMutation } from '@/hooks/queries/review';
 import type { ReviewRequest } from '@/types/review';
 
@@ -21,21 +20,18 @@ const MIN_CONTENT_LENGTH = 0;
 
 interface ReviewRegisterFormProps {
   productId: number;
-  targetRef: RefObject<HTMLElement>;
-  closeReviewDialog: () => void;
-  initTabMenu: () => void;
+  openBottomSheet: () => void;
 }
 
-const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMenu }: ReviewRegisterFormProps) => {
-  const { scrollToPosition } = useScroll();
+const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormProps) => {
   const { isImageUploading, previewImage, imageFile, uploadImage, deleteImage } = useImageUploader();
+  const navigate = useNavigate();
 
   const reviewFormValue = useReviewFormValueContext();
   const { resetReviewFormValue } = useReviewFormActionContext();
   const { toast } = useToastActionContext();
 
-  const { data: productDetail } = useProductDetailQuery(productId);
-  const { mutate, isLoading } = useReviewRegisterFormMutation(productId);
+  const { mutate } = useReviewRegisterFormMutation(productId);
 
   const isValid =
     reviewFormValue.rating > MIN_RATING_SCORE &&
@@ -54,7 +50,6 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
   const resetAndCloseForm = () => {
     deleteImage();
     resetReviewFormValue();
-    closeReviewDialog();
   };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
@@ -63,9 +58,8 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
     mutate(formData, {
       onSuccess: () => {
         resetAndCloseForm();
-        initTabMenu();
-        scrollToPosition(targetRef);
         toast.success('📝 리뷰가 등록 됐어요');
+        navigate(-1);
       },
       onError: (error) => {
         resetAndCloseForm();
@@ -90,7 +84,17 @@ const ReviewRegisterForm = ({ productId, targetRef, closeReviewDialog, initTabMe
       <Spacing size={32} />
       <StarRate rating={reviewFormValue.rating} />
       <Spacing size={32} />
-      <ReviewTagList selectedTags={reviewFormValue.tagIds} />
+      <div>
+        <h2 className={itemTitle} tabIndex={0}>
+          태그
+          <sup className={requiredMark} aria-label="필수 작성">
+            *
+          </sup>
+        </h2>
+        <button type="button" className={tagAddButton} onClick={openBottomSheet}>
+          태그를 골라주세요 +
+        </button>
+      </div>
       <Spacing size={32} />
       <ReviewTextarea content={reviewFormValue.content} />
       <Spacing size={32} />
