@@ -10,13 +10,16 @@ const Text = <T extends TextElement = 'p'>({
   size = 'body',
   weight = 'regular',
   color = 'default',
+  as,
   className,
   ...props
 }: TextProps<T>) => {
+  const Component = as || 'p';
+
   return (
-    <p className={cx(text({ color, size, weight }), className)} {...props}>
+    <Component className={cx(text({ color, size, weight }), className)} {...props}>
       {children}
-    </p>
+    </Component>
   );
 };
 
