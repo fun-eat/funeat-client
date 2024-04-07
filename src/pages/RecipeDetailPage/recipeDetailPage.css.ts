@@ -31,7 +31,6 @@ export const recipeImageContainer = style([
 export const recipeImage = style({
   width: '100%',
   height: 'auto',
-  borderRadius: 6,
   objectFit: 'cover',
 });
 
