@@ -7,11 +7,14 @@ import { Text, SvgIcon } from '@/components/Common';
 
 interface SearchInputProps extends ComponentPropsWithRef<'input'> {
   isInputSubmitted: boolean;
-  isTagSearch: boolean;
+  isTagSearch?: boolean;
 }
 
 const SearchInput = forwardRef(
-  ({ value, isInputSubmitted, isTagSearch, ...props }: SearchInputProps, ref: ForwardedRef<HTMLInputElement>) => {
+  (
+    { value, isInputSubmitted, isTagSearch = false, ...props }: SearchInputProps,
+    ref: ForwardedRef<HTMLInputElement>
+  ) => {
     return (
       <div className={inputContainer}>
         <input
@@ -32,14 +35,10 @@ const SearchInput = forwardRef(
           </div>
         )}
         <button className={iconWrapperButton}>
-          {!isTagSearch && (
-            <>
-              {isInputSubmitted ? (
-                <SvgIcon variant="close2" width={13} height={13} stroke="#232527" />
-              ) : (
-                <SvgIcon variant="search2" width={20} height={20} stroke="#808080" />
-              )}
-            </>
+          {isInputSubmitted ? (
+            <SvgIcon variant="close2" width={13} height={13} stroke="#232527" />
+          ) : (
+            <SvgIcon variant="search2" width={20} height={20} stroke="#808080" />
           )}
         </button>
       </div>

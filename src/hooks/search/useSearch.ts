@@ -1,10 +1,11 @@
 import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, MouseEventHandler } from 'react';
 import { useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useGA } from '../common';
 
+import { PATH } from '@/constants/path';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 
 const useSearch = () => {
@@ -12,11 +13,11 @@ const useSearch = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentSearchQuery = searchParams.get('query');
+  const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState(currentSearchQuery || '');
   const [isSubmitted, setIsSubmitted] = useState(!!currentSearchQuery);
   const [isAutocompleteOpen, setIsAutocompleteOpen] = useState(searchQuery.length > 0);
-  const [isTagSearch, setIsTagSearch] = useState(false);
 
   const { toast } = useToastActionContext();
 
@@ -80,16 +81,17 @@ const useSearch = () => {
     const { value } = event.currentTarget;
     setSearchQuery(value);
     setIsSubmitted(true);
-    setSearchParams({ tag: value });
-    setIsTagSearch(true);
+
+    navigate(`${PATH.SEARCH}/tags?query=${value}`);
   };
 
   const resetSearchQuery = () => {
     setSearchQuery('');
     setIsSubmitted(false);
-    setIsTagSearch(false);
     setSearchParams({});
     focusInput();
+
+    navigate(PATH.SEARCH);
   };
 
   return {
@@ -101,7 +103,6 @@ const useSearch = () => {
     handleSearchForm,
     handleSearchByClick,
     handleAutocompleteClose,
-    isTagSearch,
     handleTagSearch,
   };
 };

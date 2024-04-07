@@ -1,23 +1,10 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useEffect, useState } from 'react';
 
-import {
-  badgeContainer,
-  searchWrapper,
-  searchResultTitle,
-  searchSection,
-  subTitle,
-  tagSearchWrapper,
-} from './searchPage.css';
+import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTitle } from './searchPage.css';
 
 import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
-import {
-  ProductSearchResultList,
-  RecipeSearchResultList,
-  RecommendList,
-  SearchInput,
-  TagSearchResultList,
-} from '@/components/Search';
+import { ProductSearchResultList, RecipeSearchResultList, RecommendList, SearchInput } from '@/components/Search';
 import { RECOMMENDED_TAGS } from '@/constants';
 import { useDebounce } from '@/hooks/common';
 import { useSearch } from '@/hooks/search';
@@ -34,7 +21,6 @@ export const SearchPage = () => {
     handleSearchForm,
     handleSearchByClick,
     handleAutocompleteClose,
-    isTagSearch,
     handleTagSearch,
   } = useSearch();
   const [debouncedSearchQuery, setDebouncedSearchQuery] = useState(searchQuery || '');
@@ -62,13 +48,7 @@ export const SearchPage = () => {
         <PageHeader title="검색" hasBackLink />
         <div style={{ height: '16px' }} />
         <form onSubmit={handleSearchForm}>
-          <SearchInput
-            value={searchQuery}
-            onChange={handleSearchQuery}
-            isInputSubmitted={isSubmitted}
-            isTagSearch={isTagSearch}
-            ref={inputRef}
-          />
+          <SearchInput value={searchQuery} onChange={handleSearchQuery} isInputSubmitted={isSubmitted} ref={inputRef} />
         </form>
         {!isSubmitted && debouncedSearchQuery && isAutocompleteOpen && (
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
@@ -85,42 +65,27 @@ export const SearchPage = () => {
       <section>
         {isSubmitted && searchQuery ? (
           <>
-            {isTagSearch ? (
-              <div className={tagSearchWrapper}>
-                <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
-                  태그 '{searchQuery}'가 포함된 상품
-                </Text>
-                <ErrorBoundary fallback={ErrorComponent}>
-                  <Suspense fallback={<Loading />}>
-                    <TagSearchResultList searchQuery={searchQuery} />
-                  </Suspense>
-                </ErrorBoundary>
-              </div>
-            ) : (
-              <>
-                <div className={searchWrapper}>
-                  <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
-                    상품 바로가기
-                  </Text>
-                  <ErrorBoundary fallback={ErrorComponent}>
-                    <Suspense fallback={<Loading />}>
-                      <ProductSearchResultList searchQuery={searchQuery} />
-                    </Suspense>
-                  </ErrorBoundary>
-                </div>
-                <hr style={{ border: `1px solid ${vars.colors.border.light}` }} />
-                <div className={searchWrapper}>
-                  <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
-                    꿀!조합 바로가기
-                  </Text>
-                  <ErrorBoundary fallback={ErrorComponent}>
-                    <Suspense fallback={<Loading />}>
-                      <RecipeSearchResultList searchQuery={searchQuery} />
-                    </Suspense>
-                  </ErrorBoundary>
-                </div>
-              </>
-            )}
+            <div className={searchWrapper}>
+              <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
+                상품 바로가기
+              </Text>
+              <ErrorBoundary fallback={ErrorComponent}>
+                <Suspense fallback={<Loading />}>
+                  <ProductSearchResultList searchQuery={searchQuery} />
+                </Suspense>
+              </ErrorBoundary>
+            </div>
+            <hr style={{ border: `1px solid ${vars.colors.border.light}` }} />
+            <div className={searchWrapper}>
+              <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
+                꿀!조합 바로가기
+              </Text>
+              <ErrorBoundary fallback={ErrorComponent}>
+                <Suspense fallback={<Loading />}>
+                  <RecipeSearchResultList searchQuery={searchQuery} />
+                </Suspense>
+              </ErrorBoundary>
+            </div>
           </>
         ) : (
           <div className={searchWrapper}>
