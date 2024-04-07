@@ -9,6 +9,7 @@ import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
 import { ImageUploader, SvgIcon } from '@/components/Common';
 import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
+import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
 import { useReviewRegisterFormMutation } from '@/hooks/queries/review';
@@ -29,7 +30,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
   const navigate = useNavigate();
 
   const reviewFormValue = useReviewFormValueContext();
-  const { resetReviewFormValue } = useReviewFormActionContext();
+  const { handleReviewFormValue, resetReviewFormValue } = useReviewFormActionContext();
   const { toast } = useToastActionContext();
 
   const { mutate } = useReviewRegisterFormMutation(productId);
@@ -53,6 +54,10 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
   const resetAndCloseForm = () => {
     deleteImage();
     resetReviewFormValue();
+  };
+
+  const handleTagSelect = (currentTag: TagValue) => () => {
+    handleReviewFormValue({ target: 'tags', value: currentTag });
   };
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
@@ -100,7 +105,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
         <ul className={tagList}>
           {reviewFormValue.tags.map((tag) => (
             <li key={tag.id}>
-              <button type="button" className={tagButton}>
+              <button type="button" onClick={handleTagSelect(tag)} className={tagButton}>
                 <span>{tag.name}</span>
                 <SvgIcon variant="close2" width={8} height={8} fill="none" stroke={vars.colors.gray4} />
               </button>
