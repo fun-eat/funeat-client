@@ -33,6 +33,10 @@ const RecommendList = ({ searchQuery, handleSearchClick, handleAutocompleteClose
           <li key={id}>
             <button className={productButton} type="button" color="white" value={name} onClick={handleSearchClick}>
               <MarkedText text={name} mark={searchQuery} />
+              <div style={{ width: '10px' }} />
+              <Text size="caption4" weight="semiBold" color="disabled">
+                상품
+              </Text>
             </button>
             <hr style={{ border: `0.5px solid ${vars.colors.border.default}` }} />
           </li>

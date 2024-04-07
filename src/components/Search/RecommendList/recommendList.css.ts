@@ -3,7 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const container = style({
   position: 'absolute',
-  width: 400,
+  minWidth: 360,
   maxHeight: 150,
   padding: '10px 0',
   background: vars.colors.background.default,
@@ -24,8 +24,8 @@ export const wrapper = style({
 });
 
 export const productButton = style({
-  width: '100%',
-  height: '100%',
+  display: 'flex',
+  alignItems: 'center',
   padding: '14px 0',
   color: '#232527',
   fontSize: '1.6rem',
