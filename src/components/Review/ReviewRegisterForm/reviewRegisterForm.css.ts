@@ -23,3 +23,22 @@ export const tagAddButton = style({
   border: `1px solid ${vars.colors.border.default}`,
   color: vars.colors.gray3,
 });
+
+export const tagList = style({
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: 4,
+  marginTop: 12,
+});
+
+export const tagButton = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
+  height: 28,
+  padding: '0 6px',
+  fontSize: '1.3rem',
+  fontWeight: 500,
+  borderRadius: 4,
+  backgroundColor: vars.colors.gray2,
+});

@@ -2,16 +2,17 @@ import { Spacing, useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { itemTitle, requiredMark, tagAddButton } from './reviewRegisterForm.css';
+import { itemTitle, requiredMark, tagAddButton, tagButton, tagList } from './reviewRegisterForm.css';
 import ReviewTextarea from './ReviewTextarea/ReviewTextarea';
 import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
-import { ImageUploader } from '@/components/Common';
+import { ImageUploader, SvgIcon } from '@/components/Common';
 import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
 import { useReviewRegisterFormMutation } from '@/hooks/queries/review';
+import { vars } from '@/styles/theme.css';
 import type { ReviewRequest } from '@/types/review';
 
 const MIN_RATING_SCORE = 0;
@@ -96,6 +97,16 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
         <button type="button" className={tagAddButton} onClick={openBottomSheet}>
           태그를 골라주세요 +
         </button>
+        <ul className={tagList}>
+          {reviewFormValue.tags.map((tag) => (
+            <li key={tag.id}>
+              <button type="button" className={tagButton}>
+                <span>{tag.name}</span>
+                <SvgIcon variant="close2" width={8} height={8} fill="none" stroke={vars.colors.gray4} />
+              </button>
+            </li>
+          ))}
+        </ul>
       </div>
       <Spacing size={32} />
       <ReviewTextarea content={reviewFormValue.content} />
