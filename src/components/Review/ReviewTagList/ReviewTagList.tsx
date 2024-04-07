@@ -1,15 +1,23 @@
+import type { ChangeEvent } from 'react';
+
 import { checkbox, container, itemTitle, tagLabel, tagList } from './reviewTagList.css';
 
-import { TAG_TITLE } from '@/constants';
-import { useReviewFormActionContext } from '@/hooks/context';
+import { MIN_DISPLAYED_TAGS_LENGTH, TAG_TITLE } from '@/constants';
+import type { TagValue } from '@/contexts/ReviewFormContext';
+import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
 import { useReviewTagsQuery } from '@/hooks/queries/review';
 
 const ReviewTagList = () => {
   const { data: tagsData } = useReviewTagsQuery();
+  const { tags: selectedTags } = useReviewFormValueContext();
   const { handleReviewFormValue } = useReviewFormActionContext();
 
-  const handleTagSelect = (tagId: number) => () => {
-    handleReviewFormValue({ target: 'tagIds', value: tagId });
+  const handleTagSelect = (currentTag: TagValue) => (event: ChangeEvent<HTMLInputElement>) => {
+    handleReviewFormValue({ target: 'tags', value: currentTag });
+
+    if (selectedTags.length >= MIN_DISPLAYED_TAGS_LENGTH) {
+      event.target.checked = false;
+    }
   };
 
   return (
@@ -20,11 +28,11 @@ const ReviewTagList = () => {
             {TAG_TITLE[tagType]}
           </h2>
           <ul className={tagList}>
-            {tags.map(({ id, name }) => (
-              <li key={id}>
+            {tags.map((tag) => (
+              <li key={tag.id}>
                 <label>
-                  <input type="checkbox" className={checkbox} onChange={handleTagSelect(id)} />
-                  <span className={tagLabel}>{name}</span>
+                  <input type="checkbox" className={checkbox} onChange={handleTagSelect(tag)} />
+                  <span className={tagLabel}>{tag.name}</span>
                 </label>
               </li>
             ))}

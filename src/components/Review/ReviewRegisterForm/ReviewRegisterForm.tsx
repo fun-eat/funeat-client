@@ -35,16 +35,18 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
 
   const isValid =
     reviewFormValue.rating > MIN_RATING_SCORE &&
-    reviewFormValue.tagIds.length >= MIN_SELECTED_TAGS_COUNT &&
-    reviewFormValue.tagIds.length <= MIN_DISPLAYED_TAGS_LENGTH &&
+    reviewFormValue.tags.length >= MIN_SELECTED_TAGS_COUNT &&
+    reviewFormValue.tags.length <= MIN_DISPLAYED_TAGS_LENGTH &&
     reviewFormValue.content.length > MIN_CONTENT_LENGTH &&
     !isImageUploading;
+
+  const formValue: ReviewRequest = { ...reviewFormValue, tagIds: reviewFormValue.tags.map(({ id }) => id) };
 
   const formData = useFormData<ReviewRequest>({
     imageKey: 'image',
     imageFile: imageFile,
     formContentKey: 'reviewRequest',
-    formContent: reviewFormValue,
+    formContent: formValue,
   });
 
   const resetAndCloseForm = () => {
