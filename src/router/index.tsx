@@ -152,6 +152,15 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: `${PATH.PRODUCT_LIST}/:category/:productId/review-register`,
+        async lazy() {
+          const { ReviewRegisterPage } = await import(
+            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
+          );
+          return { Component: ReviewRegisterPage };
+        },
+      },
+      {
         path: PATH.SEARCH,
         async lazy() {
           const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
