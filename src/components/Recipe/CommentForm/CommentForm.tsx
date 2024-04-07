@@ -4,9 +4,9 @@ import { useState } from 'react';
 
 import { commentForm, commentTextarea, container } from './commentForm.css';
 
-import CommentImage from '@/assets/comment.png';
 import { SvgIcon, Text } from '@/components/Common';
 import { useScroll } from '@/hooks/common';
+import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeCommentMutation } from '@/hooks/queries/recipe';
 import { vars } from '@/styles/theme.css';
 
@@ -18,6 +18,8 @@ interface CommentFormProps {
 const MAX_COMMENT_LENGTH = 200;
 
 const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
+  const { data: member } = useMemberQuery();
+
   const [commentValue, setCommentValue] = useState('');
   const { mutate } = useRecipeCommentMutation(recipeId);
 
@@ -54,7 +56,7 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
 
   return (
     <div className={container}>
-      <img src={CommentImage} width={29} height={29} />
+      <img src={member?.profileImage} width={29} height={29} alt={`${member?.nickname}의 프로필 사진`} />
       <form className={commentForm} onSubmit={handleSubmitComment}>
         <textarea
           className={commentTextarea}
