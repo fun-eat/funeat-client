@@ -12,6 +12,8 @@ const ReviewTagList = () => {
   const { tags: selectedTags } = useReviewFormValueContext();
   const { handleReviewFormValue } = useReviewFormActionContext();
 
+  const isChecked = (tag: TagValue) => selectedTags.some(({ id }) => id === tag.id);
+
   const handleTagSelect = (currentTag: TagValue) => (event: ChangeEvent<HTMLInputElement>) => {
     handleReviewFormValue({ target: 'tags', value: currentTag });
 
@@ -31,7 +33,12 @@ const ReviewTagList = () => {
             {tags.map((tag) => (
               <li key={tag.id}>
                 <label>
-                  <input type="checkbox" className={checkbox} onChange={handleTagSelect(tag)} />
+                  <input
+                    type="checkbox"
+                    className={checkbox}
+                    checked={isChecked(tag)}
+                    onChange={handleTagSelect(tag)}
+                  />
                   <span className={tagLabel}>{tag.name}</span>
                 </label>
               </li>
