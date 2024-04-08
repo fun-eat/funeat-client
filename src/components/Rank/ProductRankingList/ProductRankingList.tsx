@@ -17,9 +17,9 @@ const ProductRankingList = () => {
 
   return (
     <ul className={container}>
-      {productRankings.products.map(({ id, name, image, price, categoryType }, index) => (
+      {productRankings.products.map(({ id, name, image, price }, index) => (
         <li key={id}>
-          <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`} onClick={handleProductRankingLinkClick}>
+          <Link to={`${PATH.PRODUCT_LIST}/detail/${id}`} onClick={handleProductRankingLinkClick}>
             <ProductRankingItem rank={index + 1} name={name} image={image} price={price} />
           </Link>
         </li>
