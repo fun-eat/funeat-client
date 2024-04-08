@@ -4,7 +4,12 @@ import { Suspense, useEffect, useState } from 'react';
 import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTitle } from './searchPage.css';
 
 import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
-import { ProductSearchResultList, RecipeSearchResultList, RecommendList, SearchInput } from '@/components/Search';
+import {
+  ProductSearchResultPreviewList,
+  RecipeSearchResultList,
+  RecommendList,
+  SearchInput,
+} from '@/components/Search';
 import { RECOMMENDED_TAGS } from '@/constants';
 import { useDebounce } from '@/hooks/common';
 import { useSearch } from '@/hooks/search';
@@ -71,7 +76,7 @@ export const SearchPage = () => {
               </Text>
               <ErrorBoundary fallback={ErrorComponent}>
                 <Suspense fallback={<Loading />}>
-                  <ProductSearchResultList searchQuery={searchQuery} />
+                  <ProductSearchResultPreviewList searchQuery={searchQuery} />
                 </Suspense>
               </ErrorBoundary>
             </div>

@@ -1,17 +1,22 @@
 import { useRef } from 'react';
+import { Link } from 'react-router-dom';
 
+import { showMoreLink } from './productSearchResultPreivewList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
+import { Text } from '@/components/Common';
 import { ProductOverviewList } from '@/components/Product';
+import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 import displaySlice from '@/utils/displaySlice';
 
-interface ProductSearchResultListProps {
+
+interface ProductSearchResultPreviewListProps {
   searchQuery: string;
 }
 
-const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) => {
+const ProductSearchResultPreviewList = ({ searchQuery }: ProductSearchResultPreviewListProps) => {
   const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(searchQuery);
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
@@ -30,9 +35,14 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
   return (
     <>
       <ProductOverviewList products={productToDisplay} />
+      <Link to={`${PATH.SEARCH}/products?query=${searchQuery}`} className={showMoreLink}>
+        <Text size="caption1" weight="medium" color="info">
+          더보기
+        </Text>
+      </Link>
       <div ref={scrollRef} aria-hidden />
     </>
   );
 };
 
-export default ProductSearchResultList;
+export default ProductSearchResultPreviewList;
