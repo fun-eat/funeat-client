@@ -15,7 +15,7 @@ interface ProductListProps {
   sortOption?: SortOption;
 }
 
-const ProductList = ({ category, categoryId, sortOption }: ProductListProps) => {
+const ProductList = ({ categoryId, sortOption }: ProductListProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const { fetchNextPage, hasNextPage, data } = useInfiniteProductsQuery(
@@ -32,7 +32,7 @@ const ProductList = ({ category, categoryId, sortOption }: ProductListProps) => 
       <ul className={container}>
         {products.map((product) => (
           <li key={product.id}>
-            <Link to={`${PATH.PRODUCT_LIST}/${category}/${product.id}`}>
+            <Link to={`${PATH.PRODUCT_LIST}/detail/${product.id}`}>
               <ProductItem product={product} />
             </Link>
           </li>

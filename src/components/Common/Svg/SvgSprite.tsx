@@ -275,6 +275,13 @@ const SvgSprite = () => {
           d="M14.475 12l-7.35-7.35q-.375-.375-.363-.888t.388-.887q.375-.375.888-.375t.887.375l7.675 7.7q.3.3.45.675t.15.75q0 .375-.15.75t-.45.675l-7.7 7.7q-.375.375-.875.363T7.15 21.1q-.375-.375-.375-.888t.375-.887z"
         />
       </symbol>
+      <symbol id="arrowUpDown" viewBox="0 0 15 16">
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d="M9.229 13.549V2.45l2.925 2.925M5.549 2.451V13.55l-2.926-2.926"
+        />
+      </symbol>
       <symbol id="heartEmpty" viewBox="0 0 24 23">
         <path
           fill="#fff"
@@ -314,6 +321,17 @@ const SvgSprite = () => {
       <symbol id="close2" viewBox="0 0 13 12">
         <path d="M11.3705 0.81424L1.15625 11.0285" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M1.15625 0.81424L11.3705 11.0285" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+      </symbol>
+      <symbol id="disk" viewBox="0 0 12 13">
+        <g strokeLinecap="round" strokeLinejoin="round" clipPath="url(#a)">
+          <path d="M10.713.847H1.285a.857.857 0 0 0-.857.857v9.429c0 .473.383.857.857.857h9.428a.857.857 0 0 0 .858-.857V1.704a.857.857 0 0 0-.858-.857z" />
+          <path d="M7.714.847v4.286a.429.429 0 0 1-.429.428H4.714a.429.429 0 0 1-.429-.428V.847m3 9h2.143" />
+        </g>
+        <defs>
+          <clipPath id="a">
+            <path d="M0 0h12v12H0z" transform="translate(0 .418)" />
+          </clipPath>
+        </defs>
       </symbol>
     </svg>
   );

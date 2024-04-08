@@ -19,7 +19,7 @@ export const RecipeDetailPage = () => {
   const { data: recipeDetail } = useRecipeDetailQuery(Number(recipeId));
   const { reset } = useQueryErrorResetBoundary();
 
-  const { id, images, title, content, author, products, totalPrice, favoriteCount, favorite, createdAt } = recipeDetail;
+  const { id, images, title, content, author, products, totalPrice, favorite, createdAt } = recipeDetail;
 
   return (
     <>
@@ -47,7 +47,7 @@ export const RecipeDetailPage = () => {
             <Text color={theme.textColors.info}> {getFormattedDate(createdAt)}</Text>
           </div>
         </AuthorWrapper>
-        <RecipeFavoriteButton recipeId={id} favorite={favorite} favoriteCount={favoriteCount} />
+        <RecipeFavoriteButton recipeId={id} favorite={favorite} />
       </AuthorFavoriteWrapper>
       <Spacing size={24} />
       <RecipeUsedProductsWrapper>
