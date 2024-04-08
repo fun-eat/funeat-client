@@ -6,7 +6,7 @@ export interface Product {
   price: number;
   image: string;
   averageRating: number;
-  reviewCount: number;
+  reviewCount?: number;
 }
 
 export interface ProductDetail {

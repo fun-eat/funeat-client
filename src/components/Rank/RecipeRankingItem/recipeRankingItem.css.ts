@@ -2,15 +2,15 @@ import { style } from '@vanilla-extract/css';
 
 export const imageWrapper = style({
   position: 'relative',
-  width: 166,
-  height: 146,
 });
 
 export const recipeImage = style({
   width: '100%',
-  height: '100%',
+  height: 'auto',
+  minWidth: 163,
   borderRadius: '6px',
   objectFit: 'cover',
+  aspectRatio: '1 / 1',
 });
 
 export const buttonWrapper = style({

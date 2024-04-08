@@ -6,5 +6,4 @@ export const container = style({
   gridAutoRows: 'auto',
   columnGap: 10,
   rowGap: 20,
-  padding: '0 20px',
 });

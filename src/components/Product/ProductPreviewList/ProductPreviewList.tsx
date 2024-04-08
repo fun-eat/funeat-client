@@ -13,7 +13,7 @@ interface ProductPreviewListProps {
   categoryId: number;
 }
 
-const ProductPreviewList = ({ category, categoryId }: ProductPreviewListProps) => {
+const ProductPreviewList = ({ categoryId }: ProductPreviewListProps) => {
   // 정렬기준은 어떤걸로 할지
   const { data } = useInfiniteProductsQuery(categoryId, 'reviewCount,desc');
   const products = data.pages.flatMap((page) => page.products);
@@ -24,7 +24,7 @@ const ProductPreviewList = ({ category, categoryId }: ProductPreviewListProps) =
     <ul className={container}>
       {productToDisplay.map((product) => (
         <li key={product.id}>
-          <Link to={`${PATH.PRODUCT_LIST}/${category}/${product.id}`}>
+          <Link to={`${PATH.PRODUCT_LIST}/detail/${product.id}`}>
             <ProductItem product={product} />
           </Link>
         </li>

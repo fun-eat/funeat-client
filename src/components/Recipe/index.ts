@@ -8,3 +8,4 @@ export { default as RecipeFavoriteButton } from './RecipeFavoriteButton/RecipeFa
 export { default as CommentItem } from './CommentItem/CommentItem';
 export { default as CommentForm } from './CommentForm/CommentForm';
 export { default as CommentList } from './CommentList/CommentList';
+export { default as RecipeProductButton } from './RecipeProductButton/RecipeProductButton';

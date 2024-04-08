@@ -28,7 +28,7 @@ const LOGIN_ERROR_MESSAGE_RECIPE =
   '로그인 후 상품 꿀조합을 볼 수 있어요.\n펀잇에 가입하고 편의점 상품 꿀조합을 확인해보세요 😊';
 
 export const ProductDetailPage = () => {
-  const { category, productId } = useParams();
+  const { productId } = useParams();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -46,7 +46,7 @@ export const ProductDetailPage = () => {
 
   const productDetailPageRef = useRef<HTMLDivElement>(null);
 
-  if (!category || !productId) {
+  if (!productId) {
     return null;
   }
 
@@ -75,7 +75,7 @@ export const ProductDetailPage = () => {
     <ProductDetailPageContainer ref={productDetailPageRef}>
       <SectionTitle name={name} />
       <Spacing size={36} />
-      <ProductDetailItem category={category} productDetail={productDetail} />
+      <ProductDetailItem productDetail={productDetail} />
       <Spacing size={30} />
       <BestReviewItem productId={Number(productId)} />
       <Spacing size={36} />

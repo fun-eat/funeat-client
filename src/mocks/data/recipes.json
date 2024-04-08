@@ -10,35 +10,81 @@
   "recipes": [
     {
       "id": 1,
-      "image": null,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
       "title": "치즈함박카레라이스",
       "author": {
-        "nickname": "냐미",
+        "nickname": "1번 글",
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
       },
-      "createdAt": "2023-08-09T10:10:10",
-      "favoriteCount": 153,
+      "createdAt": "2023-08-05T10:10:10",
+      "favoriteCount": 154,
+      "favorite": true,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "콘치즈", "price": 1500 }
+        {
+          "id": 1,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 2,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 4.0
+        }
       ]
     },
     {
       "id": 2,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": null,
       "title": "초특급불닭콘치즈",
       "author": {
-        "nickname": "뇨미",
+        "nickname": "2번 글",
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/84a20dae-4770-4497-ae25-2dd552261aab"
       },
-      "createdAt": "2023-08-10T10:10:10",
-      "favoriteCount": 154,
+      "createdAt": "2023-08-06T10:10:10",
+      "favoriteCount": 184,
+      "favorite": true,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "치즈불닭볶음면", "price": 1500 },
-        { "id": 13, "name": "콘치즈불닭볶음면", "price": 1500 },
-        { "id": 14, "name": "치즈불닭볶음면", "price": 1500 },
-        { "id": 15, "name": "콘치즈불닭볶음면", "price": 1500 }
+        {
+          "id": 1,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 2,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.5
+        },
+        {
+          "id": 3,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 3.5
+        },
+        {
+          "id": 14,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.5
+        },
+        {
+          "id": 15,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 3.5
+        }
       ]
     },
     {
@@ -46,15 +92,35 @@
       "image": "https://t3.ftcdn.net/jpg/06/06/91/70/240_F_606917032_4ujrrMV8nspZDX8nTgGrTpJ69N9JNxOL.jpg",
       "title": "치즈함박카레라이스2",
       "author": {
-        "nickname": "냐미",
+        "nickname": "3번 글",
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
       },
-      "createdAt": "2023-08-01T10:10:10",
+      "createdAt": "2023-08-07T10:10:11",
       "favoriteCount": 1531,
+      "favorite": false,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "치즈", "price": 1500 },
-        { "id": 13, "name": "치즈", "price": 1500 }
+        {
+          "id": 11,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.5
+        },
+        {
+          "id": 12,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈",
+          "price": 1500,
+          "averageRating": 3.0
+        },
+        {
+          "id": 13,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈",
+          "price": 1500,
+          "averageRating": 4.0
+        }
       ]
     },
     {
@@ -62,18 +128,106 @@
       "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_1280.jpg",
       "title": "초특급불닭콘치즈2",
       "author": {
-        "nickname": "뇨미",
+        "nickname": "4번 글",
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/84a20dae-4770-4497-ae25-2dd552261aab"
       },
-      "createdAt": "2023-08-06T10:10:10",
+      "createdAt": "2023-08-08T10:10:10",
       "favoriteCount": 120,
+      "favorite": false,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
-        { "id": 11, "name": "불닭볶음면", "price": 1500 },
-        { "id": 12, "name": "치즈", "price": 1500 },
-        { "id": 13, "name": "콘치즈", "price": 1500 },
-        { "id": 14, "name": "치즈", "price": 1500 },
-        { "id": 15, "name": "콘치즈", "price": 1500 },
-        { "id": 16, "name": "콘치즈", "price": 1500 }
+        {
+          "id": 11,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 12,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈",
+          "price": 1500,
+          "averageRating": 4.5
+        },
+        {
+          "id": 13,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 5.0
+        },
+        {
+          "id": 14,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈",
+          "price": 1500,
+          "averageRating": 3.0
+        },
+        {
+          "id": 15,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 16,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 4.0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "image": null,
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "5번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/84a20dae-4770-4497-ae25-2dd552261aab"
+      },
+      "createdAt": "2023-08-10T10:10:10",
+      "favoriteCount": 154,
+      "favorite": true,
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
+      "products": [
+        {
+          "id": 11,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "불닭볶음면",
+          "price": 1500,
+          "averageRating": 3.0
+        },
+        {
+          "id": 12,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 13,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 14,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 3.5
+        },
+        {
+          "id": 15,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈불닭볶음면",
+          "price": 1500,
+          "averageRating": 4.0
+        }
       ]
     }
   ]
