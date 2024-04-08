@@ -22,20 +22,18 @@
       "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
         {
-          "id": 11,
+          "id": 1,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "불닭볶음면",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         },
         {
-          "id": 12,
+          "id": 2,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         }
       ]
     },
@@ -53,44 +51,39 @@
       "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
         {
-          "id": 11,
+          "id": 1,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "불닭볶음면",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         },
         {
-          "id": 12,
+          "id": 2,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 4.5,
-          "categoryType": "food"
+          "averageRating": 4.5
         },
         {
-          "id": 13,
+          "id": 3,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 3.5,
-          "categoryType": "food"
+          "averageRating": 3.5
         },
         {
           "id": 14,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 4.5,
-          "categoryType": "food"
+          "averageRating": 4.5
         },
         {
           "id": 15,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 3.5,
-          "categoryType": "food"
+          "averageRating": 3.5
         }
       ]
     },
@@ -112,24 +105,21 @@
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "불닭볶음면",
           "price": 1500,
-          "averageRating": 4.5,
-          "categoryType": "food"
+          "averageRating": 4.5
         },
         {
           "id": 12,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈",
           "price": 1500,
-          "averageRating": 3.0,
-          "categoryType": "food"
+          "averageRating": 3.0
         },
         {
           "id": 13,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         }
       ]
     },
@@ -151,48 +141,42 @@
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "불닭볶음면",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         },
         {
           "id": 12,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈",
           "price": 1500,
-          "averageRating": 4.5,
-          "categoryType": "food"
+          "averageRating": 4.5
         },
         {
           "id": 13,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈",
           "price": 1500,
-          "averageRating": 5.0,
-          "categoryType": "food"
+          "averageRating": 5.0
         },
         {
           "id": 14,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈",
           "price": 1500,
-          "averageRating": 3.0,
-          "categoryType": "food"
+          "averageRating": 3.0
         },
         {
           "id": 15,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         },
         {
           "id": 16,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         }
       ]
     },
@@ -214,40 +198,35 @@
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "불닭볶음면",
           "price": 1500,
-          "averageRating": 3.0,
-          "categoryType": "food"
+          "averageRating": 3.0
         },
         {
           "id": 12,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         },
         {
           "id": 13,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         },
         {
           "id": 14,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 3.5,
-          "categoryType": "food"
+          "averageRating": 3.5
         },
         {
           "id": 15,
           "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
           "name": "콘치즈불닭볶음면",
           "price": 1500,
-          "averageRating": 4.0,
-          "categoryType": "food"
+          "averageRating": 4.0
         }
       ]
     }

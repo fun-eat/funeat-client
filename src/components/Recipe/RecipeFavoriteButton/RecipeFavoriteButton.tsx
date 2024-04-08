@@ -9,7 +9,7 @@ interface RecipeFavoriteProps {
   favoriteCount?: number;
 }
 
-const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavoriteProps) => {
+const RecipeFavoriteButton = ({ recipeId, favorite }: RecipeFavoriteProps) => {
   const { mutate } = useRecipeFavoriteMutation(Number(recipeId));
   const { data: member } = useMemberQuery();
 
@@ -24,7 +24,6 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
       {member ? (
         <button type="button" onClick={debouncedToggleFavorite}>
           <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
-          {favoriteCount && <p>{favoriteCount}</p>}
         </button>
       ) : (
         <div>

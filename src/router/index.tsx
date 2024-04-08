@@ -139,34 +139,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 네비게이션 바 없이 헤더만 있는 레이아웃 */
-  {
-    path: '/',
-    element: (
-      <CategoryProvider>
-        <App layout="minimal" />
-      </CategoryProvider>
-    ),
-    errorElement: <NotFoundPage />,
-    children: [
-      {
-        path: `${PATH.PRODUCT_LIST}/:category/:productId`,
-        async lazy() {
-          const { ProductDetailPage } = await import(
-            /* webpackChunkName: "ProductDetailPage" */ '@/pages/ProductDetailPage'
-          );
-          return { Component: ProductDetailPage };
-        },
-      },
-      {
-        path: PATH.SEARCH,
-        async lazy() {
-          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
-          return { Component: SearchPage };
-        },
-      },
-    ],
-  },
   /** 네비게이션과 헤더(검색 아이콘이 없는)가 있는 레이아웃 */
   {
     path: '/',
@@ -184,6 +156,34 @@ const router = createBrowserRouter([
             /* webpackChunkName: "ProductListPage" */ '@/pages/ProductListPage/ProductListPage'
           );
           return { Component: ProductListPage };
+        },
+      },
+    ],
+  },
+  /** 네비게이션 바 없이 헤더만 있는 레이아웃 */
+  {
+    path: '/',
+    element: (
+      <CategoryProvider>
+        <App layout="minimal" />
+      </CategoryProvider>
+    ),
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.PRODUCT_LIST}/detail/:productId`,
+        async lazy() {
+          const { ProductDetailPage } = await import(
+            /* webpackChunkName: "ProductDetailPage" */ '@/pages/ProductDetailPage'
+          );
+          return { Component: ProductDetailPage };
+        },
+      },
+      {
+        path: PATH.SEARCH,
+        async lazy() {
+          const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
+          return { Component: SearchPage };
         },
       },
     ],

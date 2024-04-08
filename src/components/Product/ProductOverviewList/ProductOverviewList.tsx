@@ -13,9 +13,9 @@ interface ProductOverviewListProps {
 const ProductOverviewList = ({ products }: ProductOverviewListProps) => {
   return (
     <ul className={container}>
-      {products.map(({ id, categoryType, image, name, price, averageRating }) => (
+      {products.map(({ id, image, name, price, averageRating }) => (
         <li key={id}>
-          <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
+          <Link to={`${PATH.PRODUCT_LIST}/detail/${id}`}>
             <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
           </Link>
         </li>
