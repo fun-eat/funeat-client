@@ -25,7 +25,7 @@ import { useProductDetailQuery } from '@/hooks/queries/product';
 import { setLocalStorage } from '@/utils/localStorage';
 
 export const ProductDetailPage = () => {
-  const { category, productId } = useParams();
+  const { productId } = useParams();
   const { pathname } = useLocation();
   const navigate = useNavigate();
 
@@ -41,7 +41,7 @@ export const ProductDetailPage = () => {
 
   const productDetailPageRef = useRef<HTMLDivElement>(null);
 
-  if (!category || !productId) {
+  if (!productId) {
     return <NotFoundPage />;
   }
 
