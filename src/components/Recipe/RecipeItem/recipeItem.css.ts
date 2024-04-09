@@ -17,12 +17,14 @@ export const favoriteButtonWrapper = style({
   position: 'absolute',
   top: 8,
   right: 8,
+  zIndex: 100,
 });
 
 export const productButtonWrapper = style({
   position: 'absolute',
   bottom: 8,
   left: 8,
+  zIndex: 100,
 });
 
 export const recipeTitle = style({
@@ -45,8 +47,4 @@ export const recipeContent = style({
   whiteSpace: 'nowrap',
   overflow: 'hidden',
   textOverflow: 'ellipsis',
-});
-
-export const recipeProductWrapper = style({
-  margin: '48px 20px',
 });
