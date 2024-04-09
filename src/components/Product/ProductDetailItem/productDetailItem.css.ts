@@ -1,3 +1,4 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const container = style({
@@ -29,10 +30,7 @@ export const productDetails = style({
 });
 
 export const categoryName = style({
-  fontSize: '1.4rem',
-  fontWeight: 500,
-  color: '#808080',
-  lineHeight: 1.4,
+  color: vars.colors.gray4,
 });
 
 export const productName = style({
@@ -43,8 +41,6 @@ export const productName = style({
 
 export const productPrice = style({
   fontSize: '2.2rem',
-  fontWeight: 600,
-  lineHeight: 1.4,
 });
 
 export const summaryWrapper = style({
@@ -59,17 +55,9 @@ export const previewWrapper = style({
   gap: 4,
 });
 
-export const preview = style({
-  fontSize: '1.4rem',
-  fontWeight: 500,
-});
-
 export const productContent = style({
   padding: '0 20px',
   marginTop: 16,
-  color: '#808080',
-  fontSize: '1.3rem',
-  lineHeight: 1.4,
   whiteSpace: 'pre-line',
 });
 
@@ -86,9 +74,6 @@ export const tag = style({
   justifyContent: 'center',
   height: 26,
   padding: '0 10px',
-  color: '#808080',
-  fontSize: 11,
-  fontWeight: 500,
   textAlign: 'center',
   borderRadius: 4,
   backgroundColor: '#f2f2f2',

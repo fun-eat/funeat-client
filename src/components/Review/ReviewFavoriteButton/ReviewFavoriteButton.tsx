@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { count, favoriteButton } from './reviewFavoriteButton.css';
+import { favoriteButton } from './reviewFavoriteButton.css';
 
 import { SvgIcon, Text } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
@@ -51,7 +51,7 @@ const ReviewFavoriteButton = ({ productId, reviewId, favorite, favoriteCount }: 
       aria-label={`좋아요 ${currentFavoriteCount}개`}
     >
       <SvgIcon variant="favorite2" width={16} fill={isFavorite ? vars.colors.error : vars.colors.icon.light} />
-      <Text as="span" className={isFavorite ? count.favorite : count.default}>
+      <Text as="span" color={isFavorite ? 'sub' : 'info'} size="caption1" weight="medium">
         {currentFavoriteCount}
       </Text>
     </button>

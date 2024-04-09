@@ -1,6 +1,4 @@
 import {
-  categoryName,
-  preview,
   previewWrapper,
   productContent,
   productDetails,
@@ -14,7 +12,7 @@ import {
   tagList,
 } from './productDetailItem.css';
 
-import { SvgIcon } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
 import type { ProductDetail } from '@/types/product';
 
 interface ProductDetailItemProps {
@@ -31,33 +29,41 @@ const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
       <div className={productOverview}>
         <div className={productInfo}>
           <div className={productDetails}>
-            <p className={categoryName}>{category.name}</p>
+            <Text size="caption1" weight="medium">
+              {category.name}
+            </Text>
             <h2 className={productName}>{name}</h2>
-            <p className={productPrice}>{price.toLocaleString('ko-KR')}원</p>
+            <Text weight="semiBold" className={productPrice}>
+              {price.toLocaleString('ko-KR')}원
+            </Text>
           </div>
 
           <div className={summaryWrapper}>
             <div className={previewWrapper}>
               <SvgIcon variant="star2" width={14} height={14} fill="#ffc14a" />
-              <span className={preview} aria-label={`${averageRating}점`}>
+              <Text as="span" size="caption1" weight="medium" aria-label={`${averageRating}점`}>
                 {averageRating.toFixed(1)}
-              </span>
+              </Text>
             </div>
             <div className={previewWrapper}>
               <SvgIcon variant="review2" width={14} height={14} fill="#ddd" />
-              <span className={preview} aria-label={`리뷰 ${reviewCount}개`}>
+              <Text as="span" size="caption1" weight="medium" aria-label={`리뷰 ${reviewCount}개`}>
                 {reviewCount}
-              </span>
+              </Text>
             </div>
           </div>
         </div>
 
-        <p className={productContent}>{content}</p>
+        <Text color="info" size="caption2" className={productContent}>
+          {content}
+        </Text>
 
         <ul className={tagList}>
           {tags.map(({ id, name }) => (
             <li key={id} className={tag}>
-              <span>{name}</span>
+              <Text as="span" color="info" size="caption2" weight="medium">
+                {name}
+              </Text>
             </li>
           ))}
         </ul>

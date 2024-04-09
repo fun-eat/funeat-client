@@ -12,10 +12,6 @@ export const memberImage = style({
   objectFit: 'cover',
 });
 
-export const memberName = style({
-  fontWeight: 600,
-});
-
 export const favoriteWrapper = style({
   marginLeft: 'auto',
 });
@@ -34,16 +30,11 @@ export const ratingInfo = style({
 
 export const ratingNumber = style({
   paddingTop: 4,
-  fontSize: '1.2rem',
   color: vars.colors.gray5,
-  fontWeight: 500,
 });
 
 export const date = style({
   paddingTop: 2,
-  fontSize: '1.1rem',
-  fontWeight: 500,
-  color: vars.colors.text.disabled,
 });
 
 export const reviewImage = style({
@@ -52,7 +43,5 @@ export const reviewImage = style({
 });
 
 export const reviewContent = style({
-  fontSize: '1.3rem',
-  color: vars.colors.text.sub,
   whiteSpace: 'pre-wrap',
 });

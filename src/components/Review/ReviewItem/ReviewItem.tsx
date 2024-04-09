@@ -5,7 +5,6 @@ import {
   favoriteWrapper,
   memberImage,
   memberInfo,
-  memberName,
   ratingInfo,
   ratingNumber,
   ratingWrapper,
@@ -32,7 +31,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
     <div>
       <div className={memberInfo}>
         <img src={profileImage} className={memberImage} width={36} height={36} alt={`${userName}의 프로필`} />
-        <p className={memberName}>{userName}</p>
+        <Text weight="semiBold">{userName}</Text>
         {rebuy && (
           <Badge color={vars.colors.black} textColor={vars.colors.secondary1}>
             또 살래요
@@ -47,7 +46,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
 
       <div className={ratingWrapper}>
         <div className={ratingInfo}>
-          <Text as="span" className={ratingNumber}>
+          <Text as="span" size="caption3" weight="medium" className={ratingNumber}>
             {rating.toFixed(1)}
           </Text>
           {Array.from({ length: 5 }, (_, index) => (
@@ -60,7 +59,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
             />
           ))}
         </div>
-        <Text as="span" className={date}>
+        <Text as="span" size="caption4" color="disabled" className={date}>
           {getRelativeDate(createdAt)}
         </Text>
       </div>
@@ -71,7 +70,9 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
 
       <div style={{ height: '8px' }} />
 
-      <Text className={reviewContent}>{content}</Text>
+      <Text color="sub" size="caption2" className={reviewContent}>
+        {content}
+      </Text>
 
       <div style={{ height: '8px' }} />
 
