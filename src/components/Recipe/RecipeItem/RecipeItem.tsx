@@ -21,9 +21,18 @@ import type { MemberRecipe, Recipe } from '@/types/recipe';
 interface RecipeItemProps {
   recipe: Recipe | MemberRecipe;
   isMemberPage?: boolean;
+  hasFavoriteButton?: boolean;
+  hasProductButton?: boolean;
+  hasContent?: boolean;
 }
 
-const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
+const RecipeItem = ({
+  recipe,
+  isMemberPage = false,
+  hasFavoriteButton = false,
+  hasProductButton = false,
+  hasContent = false,
+}: RecipeItemProps) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   const { id, image, title, content, favorite, products } = recipe;
@@ -42,18 +51,22 @@ const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
               onLoad={() => image && setIsImageLoading(false)}
             />
             {isImageLoading && image && <Skeleton width={163} height={200} />}
-            <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
-              <RecipeFavoriteButton recipeId={id} favorite={favorite} />
-            </div>
-            <div className={productButtonWrapper} onClick={(e) => e.preventDefault()}>
-              <RecipeProductButton isTranslucent products={products} />
-            </div>
+            {hasFavoriteButton && (
+              <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
+                <RecipeFavoriteButton recipeId={id} favorite={favorite} />
+              </div>
+            )}
+            {hasProductButton && (
+              <div className={productButtonWrapper} onClick={(e) => e.preventDefault()}>
+                <RecipeProductButton isTranslucent products={products} />
+              </div>
+            )}
           </div>
         )}
         <div style={{ height: '8px' }} />
         <p className={recipeTitle}>{title}</p>
         <p className={recipeAuthor}>{author && `${author.nickname} 님`}</p>
-        <p className={recipeContent}>{content}</p>
+        {hasContent && <p className={recipeContent}>{content}</p>}
       </Link>
     </>
   );
