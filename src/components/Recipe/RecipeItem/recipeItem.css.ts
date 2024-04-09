@@ -10,7 +10,7 @@ export const recipeImage = style({
   minWidth: 163,
   borderRadius: '6px',
   objectFit: 'cover',
-  aspectRatio: '1 / 1',
+  aspectRatio: '4 / 5',
 });
 
 export const favoriteButtonWrapper = style({
