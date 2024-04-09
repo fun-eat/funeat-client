@@ -34,7 +34,7 @@ const TagSearchResultList = ({ searchQuery }: TagSearchResultListProps) => {
       <ul className={container}>
         {products.map((product) => (
           <li key={product.id}>
-            <Link to={`${PATH.PRODUCT_LIST}/${product.categoryType}/${product.id}`}>
+            <Link to={`${PATH.PRODUCT_LIST}/detail/${product.id}`}>
               <ProductItem product={product} />
             </Link>
           </li>
