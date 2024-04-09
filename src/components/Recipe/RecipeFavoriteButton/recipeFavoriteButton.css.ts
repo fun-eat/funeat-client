@@ -5,9 +5,3 @@ export const container = style({
   gap: 6,
   alignItems: 'center',
 });
-
-export const favoriteCountText = style({
-  color: '#999999',
-  fontSize: '1.4rem',
-  fontWeight: 500,
-});
