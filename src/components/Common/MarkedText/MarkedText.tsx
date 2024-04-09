@@ -1,5 +1,8 @@
 import { Fragment } from 'react';
-import styled from 'styled-components';
+
+import { markText } from './markedText.css';
+
+import { Text } from '@/components/Common';
 
 interface MarkedTextProps {
   text: string;
@@ -13,7 +16,13 @@ const MarkedText = ({ text, mark }: MarkedTextProps) => {
     <>
       {textFragments.map((fragment, index) => (
         <Fragment key={`fragment-${index}`}>
-          {fragment.toLowerCase() === mark.toLowerCase() ? <Mark>{fragment}</Mark> : <>{fragment}</>}
+          {fragment.toLowerCase() === mark.toLowerCase() ? (
+            <mark className={markText}>{fragment}</mark>
+          ) : (
+            <Text as="span" weight="semiBold">
+              {fragment}
+            </Text>
+          )}
         </Fragment>
       ))}
     </>
@@ -21,8 +30,3 @@ const MarkedText = ({ text, mark }: MarkedTextProps) => {
 };
 
 export default MarkedText;
-
-const Mark = styled.mark`
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-  background-color: ${({ theme }) => theme.backgroundColors.default};
-`;
