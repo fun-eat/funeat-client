@@ -1,8 +1,9 @@
+import { container } from './recipeFavoriteButton.css';
+
 import { SvgIcon, Text } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
-import { container } from './recipeFavoriteButton.css';
 
 interface RecipeFavoriteProps {
   recipeId: number;
