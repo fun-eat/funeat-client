@@ -1,6 +1,6 @@
-import { useBottomSheet } from '@fun-eat/design-system';
+import { BottomSheet, useBottomSheet } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { useState, useRef, Suspense } from 'react';
+import { Suspense } from 'react';
 import { useParams, useLocation, useNavigate } from 'react-router-dom';
 
 import { main, registerButton, registerButtonWrapper, section, sortWrapper } from './productDetailPage.css';
@@ -13,15 +13,16 @@ import {
   ErrorBoundary,
   ErrorComponent,
   Loading,
-  ScrollButton,
+  SelectOptionList,
 } from '@/components/Common';
 import { ProductDetailItem, ProductRecipeList } from '@/components/Product';
 import { ReviewList } from '@/components/Review';
 import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, REVIEW_SORT_OPTIONS } from '@/constants';
 import { PATH } from '@/constants/path';
-import { useGA, useSortOption } from '@/hooks/common';
+import { useGA, useSelect } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
 import { useProductDetailQuery } from '@/hooks/queries/product';
+import type { SortOption } from '@/types/common';
 import { setLocalStorage } from '@/utils/localStorage';
 
 export const ProductDetailPage = () => {
@@ -34,25 +35,15 @@ export const ProductDetailPage = () => {
 
   const { reset } = useQueryErrorResetBoundary();
 
-  const { selectedOption, selectSortOption } = useSortOption(REVIEW_SORT_OPTIONS[0]);
+  const [currentSortOption, setSortOption] = useSelect<SortOption>(REVIEW_SORT_OPTIONS[0]);
   const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
-  const [activeSheet, setActiveSheet] = useState<'registerReview' | 'sortOption'>('sortOption');
   const { gaEvent } = useGA();
-
-  const productDetailPageRef = useRef<HTMLDivElement>(null);
 
   if (!productId) {
     return <NotFoundPage />;
   }
 
-  const handleOpenRegisterReviewSheet = () => {
-    setActiveSheet('registerReview');
-    handleOpenBottomSheet();
-    gaEvent({ category: 'button', action: '상품 리뷰 작성하기 버튼 클릭', label: '상품 리뷰 작성' });
-  };
-
   const handleOpenSortOptionSheet = () => {
-    setActiveSheet('sortOption');
     handleOpenBottomSheet();
     gaEvent({ category: 'button', action: '상품 리뷰 정렬 버튼 클릭', label: '상품 리뷰 정렬' });
   };
@@ -85,23 +76,32 @@ export const ProductDetailPage = () => {
         <section className={section}>
           <SectionHeader name="리뷰" />
           <div className={sortWrapper}>
-            <SortButton option={selectedOption} onClick={handleOpenSortOptionSheet} />
+            <SortButton option={currentSortOption} onClick={handleOpenSortOptionSheet} />
           </div>
           <div style={{ height: '24px' }} />
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
             <Suspense fallback={<Loading />}>
-              <ReviewList productId={Number(productId)} selectedOption={selectedOption} />
+              <ReviewList productId={Number(productId)} selectedOption={currentSortOption} />
             </Suspense>
           </ErrorBoundary>
         </section>
 
+        {/*로그인 여부에 따라 링크 경로*/}
         <div className={registerButtonWrapper}>
           <button type="button" className={member ? registerButton.active : registerButton.disabled}>
             {member ? '리뷰 작성하기' : '로그인하고 리뷰 작성하기'}
           </button>
         </div>
-        <ScrollButton targetRef={productDetailPageRef} />
       </main>
+
+      <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
+        <SelectOptionList
+          options={REVIEW_SORT_OPTIONS}
+          currentOption={currentSortOption}
+          selectOption={setSortOption}
+          close={handleCloseBottomSheet}
+        />
+      </BottomSheet>
     </>
   );
 };
