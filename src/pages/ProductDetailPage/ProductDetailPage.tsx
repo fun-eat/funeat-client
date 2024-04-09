@@ -15,7 +15,7 @@ import {
   Loading,
   ScrollButton,
 } from '@/components/Common';
-import { ProductDetailItem } from '@/components/Product';
+import { ProductDetailItem, ProductRecipeList } from '@/components/Product';
 import { ReviewList } from '@/components/Review';
 import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, REVIEW_SORT_OPTIONS } from '@/constants';
 import { PATH } from '@/constants/path';
@@ -72,6 +72,12 @@ export const ProductDetailPage = () => {
 
         <section className={section}>
           <SectionHeader name="이 상품이 포함된 꿀조합!" />
+          <div style={{ height: '24px' }} />
+          <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
+            <Suspense fallback={<Loading />}>
+              <ProductRecipeList productId={Number(productId)} />
+            </Suspense>
+          </ErrorBoundary>
         </section>
 
         <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
