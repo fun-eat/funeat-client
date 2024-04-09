@@ -37,7 +37,7 @@ export const RecipeDetailPage = () => {
 
   const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
 
-  const { id, images, title, content, author, products, favoriteCount, favorite, createdAt } = recipeDetail;
+  const { id, images, title, content, author, products, favorite, createdAt } = recipeDetail;
 
   return (
     <>
@@ -95,7 +95,7 @@ export const RecipeDetailPage = () => {
       <hr style={{ height: '1px', background: '#e6e6e6', border: 0 }} />
       <div style={{ height: '14px' }} />
       <section className={container}>
-        <RecipeFavoriteButton recipeId={id} favorite={favorite} favoriteCount={favoriteCount} />
+        <RecipeFavoriteButton recipeId={id} favorite={favorite} />
         <Spacing size={24} />
         <p className={recipeContent}>{content}</p>
         <Spacing size={24} />
@@ -110,9 +110,9 @@ export const RecipeDetailPage = () => {
       </section>
       <BottomSheet isOpen={isOpen} isClosing={isClosing} close={handleCloseBottomSheet}>
         <div className={bottomSheetWrapper}>
-          {products.map(({ name, image, price, rate }) => (
+          {products.map(({ name, image, price, averageRating }) => (
             <>
-              <ProductOverviewItem name={name} image={image} price={price} rate={rate} />
+              <ProductOverviewItem name={name} image={image} price={price} rate={averageRating} />
               <hr style={{ height: '1px', background: '#e6e6e6', border: 0 }} />
             </>
           ))}

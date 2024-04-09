@@ -1,7 +1,6 @@
-import { container, favoriteCountText } from './recipeFavoriteButton.css';
-
 import { SvgIcon } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
+import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
 
 interface RecipeFavoriteProps {
@@ -10,8 +9,9 @@ interface RecipeFavoriteProps {
   favoriteCount?: number;
 }
 
-const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavoriteProps) => {
+const RecipeFavoriteButton = ({ recipeId, favorite }: RecipeFavoriteProps) => {
   const { mutate } = useRecipeFavoriteMutation(Number(recipeId));
+  const { data: member } = useMemberQuery();
 
   const handleToggleFavorite = async () => {
     mutate({ favorite: !favorite });
@@ -20,12 +20,17 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
   const [debouncedToggleFavorite] = useTimeout(handleToggleFavorite, 200);
 
   return (
-    <div className={container}>
-      <button type="button" onClick={debouncedToggleFavorite}>
-        <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
-      </button>
-      {favoriteCount && <p className={favoriteCountText}>{favoriteCount}</p>}
-    </div>
+    <>
+      {member ? (
+        <button type="button" onClick={debouncedToggleFavorite}>
+          <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
+        </button>
+      ) : (
+        <div>
+          <SvgIcon variant="heartEmpty" width={24} height={24} />
+        </div>
+      )}
+    </>
   );
 };
 

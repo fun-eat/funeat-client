@@ -16,29 +16,24 @@ export interface RecipeDetail extends Recipe {
   favorite: boolean;
 }
 
-export interface BaseRecipe {
+export interface Recipe {
   id: number;
   image: string | null;
   title: string;
-  createdAt: string;
-  favoriteCount: number;
-}
-
-export interface Recipe extends BaseRecipe {
   author: Member;
-  products: RecipeProductWithPrice[];
-}
-
-export interface MemberRecipe extends BaseRecipe {
+  createdAt: string;
+  favorite: boolean;
+  content: string;
   products: RecipeProduct[];
 }
+
+export type MemberRecipe = Recipe;
 
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
 }
 
-type RecipeProductWithPrice = Pick<Product, 'id' | 'name' | 'price'> & { image: 'string'; rate: number };
-export type RecipeProduct = Omit<RecipeProductWithPrice, 'price'>;
+export type RecipeProduct = Omit<Product, 'reviewCount'>;
 
 export interface Comment {
   id: number;
