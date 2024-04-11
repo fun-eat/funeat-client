@@ -12,6 +12,7 @@ import {
 } from './productItem.css';
 
 import { SvgIcon } from '@/components/Common';
+import { vars } from '@/styles/theme.css';
 import type { Product } from '@/types/product';
 
 interface ProductItemProps {
@@ -44,13 +45,13 @@ const ProductItem = ({ product }: ProductItemProps) => {
       <div style={{ height: '8px' }} />
       <div className={summaryWrapper}>
         <div className={previewWrapper}>
-          <SvgIcon variant="star2" width={11} height={11} fill="none" stroke="#999" />
+          <SvgIcon variant="star2" width={11} height={11} fill={vars.colors.gray2} />
           <span className={preview} aria-label={`${averageRating}점`}>
             {averageRating.toFixed(1)}
           </span>
         </div>
         <div className={previewWrapper}>
-          <SvgIcon variant="review2" width={11} height={11} fill="none" stroke="#999" />
+          <SvgIcon variant="review2" width={11} height={11} />
           <span className={preview} aria-label={`리뷰 ${reviewCount}개`}>
             {reviewCount}
           </span>

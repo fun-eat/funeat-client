@@ -1,3 +1,5 @@
+import cx from 'classnames';
+
 import { text } from './text.css';
 import type { TextElement, TextVariants, OverridableComponentPropsWithoutRef } from './text.types';
 
@@ -9,12 +11,13 @@ const Text = <T extends TextElement = 'p'>({
   weight = 'regular',
   color = 'default',
   as,
+  className,
   ...props
 }: TextProps<T>) => {
   const Component = as || 'p';
 
   return (
-    <Component className={text({ color, size, weight })} {...props}>
+    <Component className={cx(text({ color, size, weight }), className)} {...props}>
       {children}
     </Component>
   );

@@ -3,9 +3,11 @@ import { useSuspendedInfiniteQuery } from '..';
 import { searchApi } from '@/apis';
 import type { ProductSearchResultResponse } from '@/types/response';
 
-const fetchProductSearchResults = async (query: string, pageParam: number) => {
+type SearchResultEndPoint = 'tags' | 'products';
+
+const fetchProductSearchResults = async (query: string, endpoint: SearchResultEndPoint, pageParam: number) => {
   const response = await searchApi.get({
-    params: '/products/results',
+    params: `/${endpoint}/results`,
     queries: `?query=${query}&lastProductId=${pageParam}`,
   });
   const data: ProductSearchResultResponse = await response.json();
@@ -13,10 +15,10 @@ const fetchProductSearchResults = async (query: string, pageParam: number) => {
   return data;
 };
 
-const useInfiniteProductSearchResultsQuery = (query: string) => {
+const useInfiniteProductSearchResultsQuery = (query: string, endpoint: SearchResultEndPoint) => {
   return useSuspendedInfiniteQuery(
-    ['search', 'products', 'results', query],
-    ({ pageParam = 0 }) => fetchProductSearchResults(query, pageParam),
+    ['search', endpoint, 'results', query],
+    ({ pageParam = 0 }) => fetchProductSearchResults(query, endpoint, pageParam),
     {
       getNextPageParam: (prevResponse: ProductSearchResultResponse) => {
         const lastCursor = prevResponse.products.length

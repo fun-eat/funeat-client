@@ -186,6 +186,24 @@ const router = createBrowserRouter([
           return { Component: SearchPage };
         },
       },
+      {
+        path: `${PATH.SEARCH}/tags`,
+        async lazy() {
+          const { TagSearchResultPage } = await import(
+            /* webpackChunkName: "TagSearchResultPage" */ '@/pages/SearchPage/TagSearchResultPage'
+          );
+          return { Component: TagSearchResultPage };
+        },
+      },
+      {
+        path: `${PATH.SEARCH}/products`,
+        async lazy() {
+          const { ProductSearchListPage } = await import(
+            /* webpackChunkName: "ProductSearchListPage" */ '@/pages/ProductSearchListPage/ProductSearchListPage'
+          );
+          return { Component: ProductSearchListPage };
+        },
+      },
     ],
   },
 ]);
