@@ -1,20 +1,15 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const container = style({
-  display: 'flex',
-  flexDirection: 'column',
-  gap: 20,
-});
-
-export const showMoreButton = style({
+export const showMoreLink = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: '100%',
-  height: 38,
-  padding: '9px 0',
+  height: 44,
+  padding: '12px 0',
   margin: '20px 0',
-  background: '#efefef',
+  border: `1px solid ${vars.colors.border.default}`,
   fontSize: 14,
   borderRadius: 6,
 });
