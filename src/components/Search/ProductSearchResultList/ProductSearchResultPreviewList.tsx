@@ -11,13 +11,16 @@ import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 import displaySlice from '@/utils/displaySlice';
 
-
 interface ProductSearchResultPreviewListProps {
   searchQuery: string;
 }
 
 const ProductSearchResultPreviewList = ({ searchQuery }: ProductSearchResultPreviewListProps) => {
-  const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(searchQuery);
+  const {
+    data: searchResponse,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteProductSearchResultsQuery(searchQuery, 'products');
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 

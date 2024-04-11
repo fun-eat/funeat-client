@@ -14,7 +14,11 @@ interface TagSearchResultListProps {
 }
 
 const TagSearchResultList = ({ searchQuery }: TagSearchResultListProps) => {
-  const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(searchQuery, true);
+  const {
+    data: searchResponse,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteProductSearchResultsQuery(searchQuery, 'tags');
 
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);

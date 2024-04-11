@@ -12,7 +12,11 @@ export const ProductSearchListPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') || '';
 
-  const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(searchQuery);
+  const {
+    data: searchResponse,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteProductSearchResultsQuery(searchQuery, 'products');
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 
