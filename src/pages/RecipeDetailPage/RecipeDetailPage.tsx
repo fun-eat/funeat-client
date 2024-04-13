@@ -21,7 +21,7 @@ import {
 
 import { ErrorBoundary, ErrorComponent, Loading, SectionTitle, SvgIcon, Text } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
-import { ProductOverviewItem } from '@/components/Product';
+import { ProductOverviewList } from '@/components/Product';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';
 import { useRecipeDetailQuery } from '@/hooks/queries/recipe';
 import { vars } from '@/styles/theme.css';
@@ -115,12 +115,7 @@ export const RecipeDetailPage = () => {
       </section>
       <BottomSheet isOpen={isOpen} isClosing={isClosing} close={handleCloseBottomSheet}>
         <div className={bottomSheetWrapper}>
-          {products.map(({ name, image, price, averageRating }) => (
-            <>
-              <ProductOverviewItem name={name} image={image} price={price} rate={averageRating} />
-              <hr style={{ height: '1px', background: '#e6e6e6', border: 0 }} />
-            </>
-          ))}
+          <ProductOverviewList products={products} hasBorder />
         </div>
       </BottomSheet>
     </>
