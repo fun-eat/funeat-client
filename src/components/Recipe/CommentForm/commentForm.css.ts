@@ -4,18 +4,18 @@ import { style } from '@vanilla-extract/css';
 export const container = style({
   display: 'flex',
   gap: 8,
-  alignItems: 'center',
+  alignItems: 'flex-end',
   marginBottom: 24,
-  padding: '6px 13px 6px 6px',
-  background: vars.colors.background.category,
-  borderRadius: 20,
 });
 
 export const commentForm = style({
   display: 'flex',
   gap: 8,
-  alignItems: 'center',
+  alignItems: 'flex-end',
   width: '100%',
+  padding: '6px 16px 9px 16px',
+  background: vars.colors.background.category,
+  borderRadius: 20,
 });
 
 export const commentTextarea = style({
@@ -25,10 +25,19 @@ export const commentTextarea = style({
   outline: 'none',
   background: 'none',
   fontSize: '1.4rem',
+  resize: 'none',
 
   selectors: {
     '&:placeholder': {
       color: '#808080',
     },
   },
+});
+
+export const profileImage = style({
+  borderRadius: '50%',
+});
+
+export const sendButton = style({
+  display: 'inherit',
 });
