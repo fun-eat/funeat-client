@@ -1,5 +1,5 @@
 import { BottomSheet, Skeleton, useBottomSheet } from '@fun-eat/design-system';
-import type { MouseEventHandler, PropsWithChildren} from 'react';
+import type { MouseEventHandler, PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

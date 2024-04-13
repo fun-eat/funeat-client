@@ -50,7 +50,7 @@ const MemberRecipeList = ({ isPreview = false }: MemberRecipeListProps) => {
         {recipeToDisplay?.map((recipe) => (
           <li key={recipe.id}>
             <Link as={RouterLink} to={`${PATH.RECIPE}/${recipe.id}`}>
-              <RecipeItem recipe={recipe} isMemberPage={isPreview} />
+              {/* <RecipeItem recipe={recipe} isMemberPage={isPreview} /> */}
             </Link>
           </li>
         ))}
