@@ -4,8 +4,10 @@ import { LeftNavigationWrapper, container, headerTitle, leftTitle } from './topB
 import SvgIcon from '../Svg/SvgIcon';
 import Text from '../Text/Text';
 
+import LogoImage from '@/assets/logo.svg';
 import { PATH } from '@/constants/path';
 import { vars } from '@/styles/theme.css';
+
 
 interface TopBarProps {
   children?: React.ReactNode;
@@ -16,6 +18,14 @@ interface TopBarProps {
 
 const TopBar = ({ children }: TopBarProps) => {
   return <header className={container}>{children}</header>;
+};
+
+const Logo = () => {
+  return (
+    <Link to={PATH.HOME}>
+      <LogoImage width={120} />
+    </Link>
+  );
 };
 
 const BackLink = ({ state }: TopBarProps) => {
@@ -70,6 +80,7 @@ const Spacer = () => {
   return <div style={{ width: 24, height: 24 }} aria-hidden />;
 };
 
+TopBar.Logo = Logo;
 TopBar.BackLink = BackLink;
 TopBar.LeftNavigationGroup = LeftNavigationGroup;
 TopBar.Title = Title;

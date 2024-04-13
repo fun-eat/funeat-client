@@ -22,6 +22,17 @@ export const Default: Story = {
   },
 };
 
+export const Logo: Story = {
+  render: (args) => {
+    return (
+      <TopBar {...args}>
+        <TopBar.Logo />
+        <TopBar.SearchLink />
+      </TopBar>
+    );
+  },
+};
+
 export const CenterTitleAndSearch: Story = {
   render: (args) => {
     return (
