@@ -24,6 +24,7 @@ import { MemberImage } from '@/components/Members';
 import { ProductOverviewItem } from '@/components/Product';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';
 import { useRecipeDetailQuery } from '@/hooks/queries/recipe';
+import { vars } from '@/styles/theme.css';
 import { getFormattedDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
 
@@ -37,7 +38,7 @@ export const RecipeDetailPage = () => {
 
   const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
 
-  const { id, images, title, content, author, products, favorite, createdAt } = recipeDetail;
+  const { id, images, title, content, author, products, favorite, favoriteCount, createdAt } = recipeDetail;
 
   return (
     <>
@@ -65,10 +66,10 @@ export const RecipeDetailPage = () => {
         <div className={recipeUsedProductsWrapper}>
           <div className={boxIconWrapper}>
             <div className={boxIcon}>
-              <SvgIcon variant="box" stroke="#ffffff" width={12} height={12} />
+              <SvgIcon variant="disk" stroke="#ffffff" fill="none" width={12} height={12} />
             </div>
             <Text size="caption3" weight="medium" color="info">
-              어떤 상품을 사용했나요?
+              이런 상품들을 사용했어요!
             </Text>
           </div>
           <ul className={recipeUsedProductsImageList} onClick={handleOpenBottomSheet}>
@@ -95,10 +96,14 @@ export const RecipeDetailPage = () => {
       <hr style={{ height: '1px', background: '#e6e6e6', border: 0 }} />
       <div style={{ height: '14px' }} />
       <section className={container}>
-        <RecipeFavoriteButton recipeId={id} favorite={favorite} />
+        <RecipeFavoriteButton recipeId={id} favorite={favorite} favoriteCount={favoriteCount} />
         <Spacing size={24} />
-        <p className={recipeContent}>{content}</p>
+        <Text size="body" className={recipeContent}>
+          {content}
+        </Text>
         <Spacing size={24} />
+        <hr style={{ height: '12px', background: vars.colors.border.light, border: 0 }} />
+        <Spacing size={20} />
         <CommentForm recipeId={Number(recipeId)} scrollTargetRef={scrollTargetRef} />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>

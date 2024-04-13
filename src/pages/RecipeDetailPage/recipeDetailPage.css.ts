@@ -52,7 +52,7 @@ export const boxIcon = style({
   width: 26,
   height: 26,
   marginRight: 8,
-  background: '#D9D9D9',
+  background: vars.colors.gray5,
   borderRadius: '50%',
 });
 
