@@ -13,28 +13,28 @@
       "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
       "name": "불닭",
       "price": 3000,
-      "rate": 4.5
+      "averageRating": 4.5
     },
     {
       "id": 2,
       "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
       "name": "참치삼김",
       "price": 4000,
-      "rate": 4.5
+      "averageRating": 4.5
     },
     {
       "id": 3,
       "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
       "name": "바나나 우유",
       "price": 1700,
-      "rate": 4.5
+      "averageRating": 4.5
     },
     {
       "id": 4,
       "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
       "name": "하리보",
       "price": 1200,
-      "rate": 4.3
+      "averageRating": 4.3
     }
   ],
   "totalPrice": 7000,
