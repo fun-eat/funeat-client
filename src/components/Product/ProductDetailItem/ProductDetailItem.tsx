@@ -6,13 +6,10 @@ import {
   productInfo,
   productName,
   productOverview,
-  productPrice,
   summaryWrapper,
-  tag,
-  tagList,
 } from './productDetailItem.css';
 
-import { SvgIcon, Text } from '@/components/Common';
+import { SvgIcon, TagList, Text } from '@/components/Common';
 import type { ProductDetail } from '@/types/product';
 
 interface ProductDetailItemProps {
@@ -33,7 +30,7 @@ const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
               {category.name}
             </Text>
             <h2 className={productName}>{name}</h2>
-            <Text weight="semiBold" className={productPrice}>
+            <Text weight="semiBold" size="display1">
               {price.toLocaleString('ko-KR')}원
             </Text>
           </div>
@@ -58,15 +55,7 @@ const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
           {content}
         </Text>
 
-        <ul className={tagList}>
-          {tags.map(({ id, name }) => (
-            <li key={id} className={tag}>
-              <Text as="span" color="info" size="caption2" weight="medium">
-                {name}
-              </Text>
-            </li>
-          ))}
-        </ul>
+        <TagList tags={tags} />
       </div>
     </section>
   );
