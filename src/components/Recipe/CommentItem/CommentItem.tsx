@@ -1,46 +1,25 @@
-import { Divider, Spacing, Text, useTheme } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import { container, nickname } from './commentItem.css';
 
-import { MemberImage } from '@/components/Members';
+import { Text } from '@/components/Common';
 import type { Comment } from '@/types/recipe';
-import { getFormattedDate } from '@/utils/date';
 
 interface CommentItemProps {
   recipeComment: Comment;
 }
 
 const CommentItem = ({ recipeComment }: CommentItemProps) => {
-  const theme = useTheme();
-  const { author, comment, createdAt } = recipeComment;
+  const { author, comment } = recipeComment;
 
   return (
-    <>
-      <AuthorWrapper>
-        <MemberImage src={author.profileImage} alt={`${author.nickname}님의 프로필`} width={32} height={32} />
-        <div>
-          <Text size="xs" color={theme.textColors.info}>
-            {author.nickname} 님
-          </Text>
-          <Text size="xs" color={theme.textColors.info}>
-            {getFormattedDate(createdAt)}
-          </Text>
-        </div>
-      </AuthorWrapper>
-      <CommentContent size="sm">{comment}</CommentContent>
-      <Divider variant="disabled" />
-      <Spacing size={16} />
-    </>
+    <li className={container}>
+      <Text as="span" size="caption3" weight="semiBold" color="sub" className={nickname}>
+        {author.nickname}
+      </Text>
+      <Text size="caption3" color="sub">
+        {comment}
+      </Text>
+    </li>
   );
 };
 
 export default CommentItem;
-
-const AuthorWrapper = styled.div`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-`;
-
-const CommentContent = styled(Text)`
-  margin: 16px 0;
-`;

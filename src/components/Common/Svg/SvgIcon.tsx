@@ -43,6 +43,7 @@ export const SVG_ICON_VARIANTS = [
   'arrowUpDown',
   'heartEmpty',
   'heartFilled',
+  'box',
   'close2',
   'disk',
 ] as const;

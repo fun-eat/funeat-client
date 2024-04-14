@@ -1,6 +1,6 @@
-import { Heading, Spacing, Text, theme } from '@fun-eat/design-system';
 import { useRef } from 'react';
 
+import { commentCount } from './commentList.css';
 import CommentItem from '../CommentItem/CommentItem';
 
 import { useIntersectionObserver } from '@/hooks/common';
@@ -21,11 +21,7 @@ const CommentList = ({ recipeId }: CommentListProps) => {
 
   return (
     <>
-      <Heading as="h3" size="lg">
-        댓글 ({totalElements}개)
-      </Heading>
-      <Spacing size={12} />
-      {totalElements === 0 && <Text color={theme.textColors.info}>꿀조합의 첫번째 댓글을 달아보세요!</Text>}
+      <p className={commentCount}>댓글 {totalElements}개</p>
       {comments.map((comment) => (
         <CommentItem key={comment.id} recipeComment={comment} />
       ))}

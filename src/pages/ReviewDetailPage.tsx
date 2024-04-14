@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { SectionTitle, SvgIcon, TagList } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
-import { PATH } from '@/constants/path';
 import { useReviewDetailQuery } from '@/hooks/queries/review';
 import { getRelativeDate } from '@/utils/date';
 
@@ -31,7 +30,7 @@ export const ReviewDetailPage = () => {
 
   return (
     <ReviewDetailPageContainer>
-      <SectionTitle name={productName} link={`${PATH.PRODUCT_LIST}/${categoryType}/${productId}`} />
+      <SectionTitle name={productName} />
       <Spacing size={24} />
       <ReviewItemContainer>
         <ReviewerWrapper>

@@ -8,10 +8,10 @@ import type { Product } from '@/types/product';
 
 interface ProductOverviewListProps {
   products: Product[];
-  isSearchPage?: boolean;
+  hasBorder?: boolean;
 }
 
-const ProductOverviewList = ({ products, isSearchPage = false }: ProductOverviewListProps) => {
+const ProductOverviewList = ({ products, hasBorder = false }: ProductOverviewListProps) => {
   return (
     <ul className={container}>
       {products.map(({ id, image, name, price, averageRating }) => (
@@ -19,7 +19,7 @@ const ProductOverviewList = ({ products, isSearchPage = false }: ProductOverview
           <Link to={`${PATH.PRODUCT_LIST}/detail/${id}`}>
             <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
           </Link>
-          {isSearchPage && (
+          {hasBorder && (
             <>
               <div style={{ height: '20px' }} />
               <hr style={{ border: '0.5px solid #e6e6e6' }} />

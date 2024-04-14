@@ -14,6 +14,7 @@ export interface RecipeDetail extends Recipe {
   content: string;
   totalPrice: number;
   favorite: boolean;
+  favoriteCount: number;
 }
 
 export interface Recipe {

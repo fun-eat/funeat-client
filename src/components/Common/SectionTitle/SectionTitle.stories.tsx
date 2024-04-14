@@ -16,8 +16,9 @@ export const Default: Story = {
   },
 };
 
-export const Bookmarked: Story = {
+export const HasSearch: Story = {
   args: {
     name: '사이다',
+    hasSearchLink: true,
   },
 };
