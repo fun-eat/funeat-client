@@ -24,4 +24,4 @@ export { default as SelectOptionList } from './SelectOptionList/SelectOptionList
 export { default as PageHeader } from './PageHeader/PageHeader';
 export { default as Badge } from './Badge/Badge';
 export { default as WriteButton } from './WriteButton/WriteButton';
-export { default as Text } from './Text/Text';
+export { default as Text } from './Typography/Text/Text';

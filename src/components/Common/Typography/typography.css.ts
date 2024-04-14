@@ -5,7 +5,7 @@ const baseText = style({
   lineHeight: 1.4,
 });
 
-export const text = recipe({
+export const typography = recipe({
   base: baseText,
   variants: {
     color: {
@@ -22,6 +22,7 @@ export const text = recipe({
       caption1: { fontSize: '1.4rem' },
       body: { fontSize: '1.6rem' },
       headline: { fontSize: '1.8rem' },
+      display1: { fontSize: '2.2rem' },
     },
     weight: {
       regular: { fontWeight: 400 },
