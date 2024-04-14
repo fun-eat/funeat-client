@@ -1,7 +1,7 @@
 import { registerButton, registerButtonWrapper, section } from './reviewTagSheet.css';
 import ReviewTagList from '../ReviewTagList/ReviewTagList';
 
-import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
+import { MAX_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import { useReviewFormValueContext } from '@/hooks/context';
 
 interface ReviewTagSheetProps {
@@ -11,7 +11,7 @@ interface ReviewTagSheetProps {
 const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
   const { tags } = useReviewFormValueContext();
 
-  const isValid = tags.length === MIN_DISPLAYED_TAGS_LENGTH;
+  const isValid = tags.length === MAX_DISPLAYED_TAGS_LENGTH;
 
   return (
     <>
@@ -25,7 +25,7 @@ const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
           disabled={!isValid}
           onClick={() => close()}
         >
-          태그 선택 완료 {tags.length}/{MIN_DISPLAYED_TAGS_LENGTH}
+          태그 선택 완료 {tags.length}/{MAX_DISPLAYED_TAGS_LENGTH}
         </button>
       </div>
     </>

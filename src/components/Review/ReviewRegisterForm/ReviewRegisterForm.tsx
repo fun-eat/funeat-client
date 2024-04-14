@@ -8,7 +8,7 @@ import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
 import { ImageUploader, SvgIcon } from '@/components/Common';
-import { MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
+import { MAX_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
@@ -38,7 +38,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
   const isValid =
     reviewFormValue.rating > MIN_RATING_SCORE &&
     reviewFormValue.tags.length >= MIN_SELECTED_TAGS_COUNT &&
-    reviewFormValue.tags.length <= MIN_DISPLAYED_TAGS_LENGTH &&
+    reviewFormValue.tags.length <= MAX_DISPLAYED_TAGS_LENGTH &&
     reviewFormValue.content.length > MIN_CONTENT_LENGTH &&
     !isImageUploading;
 

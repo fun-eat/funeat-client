@@ -180,7 +180,7 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.PRODUCT_LIST}/:category/:productId/review-register`,
+        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
         async lazy() {
           const { ReviewRegisterPage } = await import(
             /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
