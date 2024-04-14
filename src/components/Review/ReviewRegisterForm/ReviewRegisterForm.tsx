@@ -7,8 +7,8 @@ import ReviewTextarea from './ReviewTextarea/ReviewTextarea';
 import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
-import { ImageUploader, SvgIcon } from '@/components/Common';
-import { MAX_DISPLAYED_TAGS_LENGTH } from '@/constants';
+import { ImageUploader, SvgIcon, Text } from '@/components/Common';
+import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
@@ -17,7 +17,6 @@ import { vars } from '@/styles/theme.css';
 import type { ReviewRequest } from '@/types/review';
 
 const MIN_RATING_SCORE = 0;
-const MIN_SELECTED_TAGS_COUNT = 1;
 const MIN_CONTENT_LENGTH = 0;
 
 interface ReviewRegisterFormProps {
@@ -37,7 +36,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
 
   const isValid =
     reviewFormValue.rating > MIN_RATING_SCORE &&
-    reviewFormValue.tags.length >= MIN_SELECTED_TAGS_COUNT &&
+    reviewFormValue.tags.length >= MIN_DISPLAYED_TAGS_LENGTH &&
     reviewFormValue.tags.length <= MAX_DISPLAYED_TAGS_LENGTH &&
     reviewFormValue.content.length > MIN_CONTENT_LENGTH &&
     !isImageUploading;
@@ -106,7 +105,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
           {reviewFormValue.tags.map((tag) => (
             <li key={tag.id}>
               <button type="button" onClick={handleTagSelect(tag)} className={tagButton}>
-                <span>{tag.name}</span>
+                <Text as="span">{tag.name}</Text>
                 <SvgIcon variant="close2" width={8} height={8} fill="none" stroke={vars.colors.gray4} />
               </button>
             </li>

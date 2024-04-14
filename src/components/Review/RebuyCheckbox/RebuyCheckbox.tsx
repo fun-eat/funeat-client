@@ -1,9 +1,9 @@
 import type { ChangeEventHandler } from 'react';
 
-import { check, checkbox, container, label } from './rebuyCheckbox.css';
+import { check, checkbox, container } from './rebuyCheckbox.css';
 import { itemTitle } from '../ReviewRegisterForm/reviewRegisterForm.css';
 
-import { SvgIcon } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
 import { useEnterKeyDown } from '@/hooks/common';
 import { useReviewFormActionContext } from '@/hooks/context';
 import { vars } from '@/styles/theme.css';
@@ -31,7 +31,9 @@ const RebuyCheckbox = ({ isRebuy }: RebuyCheckboxProps) => {
           <span className={isRebuy ? check.checked : check.default} aria-hidden>
             <SvgIcon variant="check2" width={10} height={10} fill={isRebuy ? vars.colors.primary : vars.colors.white} />
           </span>
-          <span className={label}>재구매할 생각이 있어요</span>
+          <Text as="span" weight="semiBold">
+            재구매할 생각이 있어요
+          </Text>
         </label>
       </p>
     </>

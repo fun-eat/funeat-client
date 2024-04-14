@@ -25,7 +25,3 @@ export const check = styleVariants({
   default: [checkBase, { backgroundColor: vars.colors.icon.light }],
   checked: [checkBase, { backgroundColor: vars.colors.black }],
 });
-
-export const label = style({
-  fontWeight: 600,
-});
