@@ -1,7 +1,7 @@
 import { registerButton, registerButtonWrapper, section } from './reviewTagSheet.css';
 import ReviewTagList from '../ReviewTagList/ReviewTagList';
 
-import { MAX_DISPLAYED_TAGS_LENGTH } from '@/constants';
+import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import { useReviewFormValueContext } from '@/hooks/context';
 
 interface ReviewTagSheetProps {
@@ -11,7 +11,7 @@ interface ReviewTagSheetProps {
 const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
   const { tags } = useReviewFormValueContext();
 
-  const isValid = tags.length === MAX_DISPLAYED_TAGS_LENGTH;
+  const isValid = tags.length >= MIN_DISPLAYED_TAGS_LENGTH && tags.length <= MAX_DISPLAYED_TAGS_LENGTH;
 
   return (
     <>
