@@ -1,12 +1,24 @@
-import { Heading, Text, Skeleton, useTheme } from '@fun-eat/design-system';
-import { Fragment, memo, useState } from 'react';
-import styled from 'styled-components';
+import { BottomSheet, Skeleton, useBottomSheet } from '@fun-eat/design-system';
+import type { MouseEventHandler } from 'react';
+import { memo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import PreviewImage from '@/assets/plate.svg';
-import { SvgIcon } from '@/components/Common';
-import { MemberImage } from '@/components/Members';
+import {
+  favoriteButtonWrapper,
+  imageWrapper,
+  productButtonWrapper,
+  recipeAuthor,
+  recipeContent,
+  recipeImage,
+  recipeProductWrapper,
+  recipeTitle,
+} from './recipeItem.css';
+import RecipeFavoriteButton from '../RecipeFavoriteButton/RecipeFavoriteButton';
+import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
+
+import { ProductOverviewList } from '@/components/Product';
+import { RECIPE_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { MemberRecipe, Recipe } from '@/types/recipe';
-import { getFormattedDate } from '@/utils/date';
 
 interface RecipeItemProps {
   recipe: Recipe | MemberRecipe;
@@ -14,99 +26,52 @@ interface RecipeItemProps {
 }
 
 const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
-  const { image, title, createdAt, favoriteCount, products } = recipe;
+  const { id, image, title, content, favorite, products } = recipe;
+  const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
+
   const author = 'author' in recipe ? recipe.author : null;
+
   const [isImageLoading, setIsImageLoading] = useState(true);
-  const theme = useTheme();
+
+  const handleOpenProductSheet: MouseEventHandler<HTMLDivElement> = (event) => {
+    event.preventDefault();
+    handleOpenBottomSheet();
+  };
 
   return (
     <>
-      {!isMemberPage && (
-        <ImageWrapper>
-          {image !== null ? (
-            <>
-              <RecipeImage src={image} alt={`조리된 ${title}`} loading="lazy" onLoad={() => setIsImageLoading(false)} />
-              {isImageLoading && <Skeleton width="100%" height={160} />}
-            </>
-          ) : (
-            <PreviewImage width={160} height={160} />
-          )}
-          {author && (
-            <MemberImage
-              src={author.profileImage}
-              alt={`${author.nickname}의 프로필`}
-              width={60}
-              height={60}
-              css={{ position: `absolute`, bottom: `-20px`, right: `16px` }}
+      <Link to={`${id}`}>
+        {!isMemberPage && (
+          <div className={imageWrapper}>
+            <img
+              className={recipeImage}
+              src={image ?? RECIPE_CARD_DEFAULT_IMAGE_URL}
+              alt={`조리된 ${title}`}
+              loading="lazy"
+              onLoad={() => image && setIsImageLoading(false)}
             />
-          )}
-        </ImageWrapper>
-      )}
-      <RecipeInfoWrapper>
-        <Text color={theme.textColors.sub}>
-          {author && `${author.nickname} 님 | `}
-          {getFormattedDate(createdAt)}
-        </Text>
-        <Heading as="h3" size="xl" weight="bold">
-          {title}
-        </Heading>
-        <RecipeProductText>
-          {products.map(({ id, name }) => (
-            <Text as="span" key={id} color={theme.textColors.info}>
-              #{name}
-            </Text>
-          ))}
-        </RecipeProductText>
-        <FavoriteWrapper>
-          <SvgIcon variant="favoriteFilled" width={16} height={16} fill={theme.colors.error} />
-          <Text as="span" weight="bold">
-            {favoriteCount}
-          </Text>
-        </FavoriteWrapper>
-      </RecipeInfoWrapper>
+            {isImageLoading && image && <Skeleton width={163} height={200} />}
+            <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
+              <RecipeFavoriteButton recipeId={id} favorite={favorite} />
+            </div>
+            <div className={productButtonWrapper} onClick={(e) => handleOpenProductSheet(e)}>
+              <RecipeProductButton isTranslucent />
+            </div>
+          </div>
+        )}
+        <div style={{ height: '8px' }} />
+        <p className={recipeTitle}>{title}</p>
+        <p className={recipeAuthor}>{author && `${author.nickname} 님`}</p>
+        <p className={recipeContent}>{content}</p>
+      </Link>
+
+      <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
+        <div className={recipeProductWrapper}>
+          <ProductOverviewList products={products} />
+        </div>
+      </BottomSheet>
     </>
   );
 };
 
 export default memo(RecipeItem);
-
-const ImageWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 160px;
-`;
-
-const RecipeImage = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-`;
-
-const RecipeInfoWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100px;
-  margin-top: 10px;
-`;
-
-const FavoriteWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  bottom: 50%;
-  right: 0;
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  transform: translateY(-50%);
-`;
-
-const RecipeProductText = styled(Text)`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;

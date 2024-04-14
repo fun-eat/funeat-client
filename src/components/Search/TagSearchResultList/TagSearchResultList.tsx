@@ -1,19 +1,25 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { container } from './productSearchResultList.css';
+import { container } from './tagSearchResult.css';
+import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
-import { ProductOverviewItem } from '@/components/Product';
+import { ProductItem } from '@/components/Product';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 
-interface ProductSearchResultListProps {
+interface TagSearchResultListProps {
   searchQuery: string;
 }
 
-const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) => {
-  const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(searchQuery);
+const TagSearchResultList = ({ searchQuery }: TagSearchResultListProps) => {
+  const {
+    data: searchResponse,
+    fetchNextPage,
+    hasNextPage,
+  } = useInfiniteProductSearchResultsQuery(searchQuery, 'tags');
+
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 
@@ -24,16 +30,16 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
   const products = searchResponse.pages.flatMap((page) => page.products);
 
   if (products.length === 0) {
-    return <p>검색한 상품을 찾을 수 없습니다.</p>;
+    return <SearchNotFound />;
   }
 
   return (
     <>
       <ul className={container}>
-        {products.map(({ id, categoryType, image, name, price, averageRating }) => (
-          <li key={id}>
-            <Link to={`${PATH.PRODUCT_LIST}/${categoryType}/${id}`}>
-              <ProductOverviewItem image={image} name={name} price={price} rate={averageRating} />
+        {products.map((product) => (
+          <li key={product.id}>
+            <Link to={`${PATH.PRODUCT_LIST}/detail/${product.id}`}>
+              <ProductItem product={product} />
             </Link>
           </li>
         ))}
@@ -43,4 +49,4 @@ const ProductSearchResultList = ({ searchQuery }: ProductSearchResultListProps) 
   );
 };
 
-export default ProductSearchResultList;
+export default TagSearchResultList;
