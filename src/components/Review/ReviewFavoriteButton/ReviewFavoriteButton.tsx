@@ -50,7 +50,7 @@ const ReviewFavoriteButton = ({ productId, reviewId, favorite, favoriteCount }: 
       onClick={debouncedToggleFavorite}
       aria-label={`좋아요 ${currentFavoriteCount}개`}
     >
-      <SvgIcon variant="favorite2" width={16} fill={isFavorite ? vars.colors.error : vars.colors.icon.light} />
+      <SvgIcon variant="favorite2" width={16} fill={isFavorite ? vars.colors.semantic.red : vars.colors.icon.light} />
       <Text as="span" color={isFavorite ? 'sub' : 'info'} size="caption1" weight="medium">
         {currentFavoriteCount}
       </Text>

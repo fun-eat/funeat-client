@@ -1,5 +1,11 @@
 import { createGlobalTheme } from '@vanilla-extract/css';
 
+const semantic = {
+  blue: '#1774FF',
+  orange: '#FF9417',
+  red: '#FD4545',
+};
+
 const text = {
   default: '#232527',
   sub: '#3D3D3D',
@@ -42,10 +48,11 @@ export const vars = createGlobalTheme(':root', {
     gray5: '#444444',
     black: '#232527',
 
-    success: '#1774FF',
-    caution: '#FF9417',
-    error: '#FD4545',
+    success: semantic.blue,
+    caution: semantic.orange,
+    error: semantic.red,
 
+    semantic,
     text,
     border: border,
     icon: icon,
