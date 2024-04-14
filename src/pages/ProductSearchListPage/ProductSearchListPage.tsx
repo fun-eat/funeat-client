@@ -26,7 +26,7 @@ export const ProductSearchListPage = () => {
     <>
       <PageHeader title={`'${searchQuery}'이/가 포함된 상품`} hasBackLink />
       <div className={container}>
-        <ProductOverviewList products={products} isSearchPage />
+        <ProductOverviewList products={products} hasBorder />
       </div>
       <div ref={scrollRef} aria-hidden />
     </>
