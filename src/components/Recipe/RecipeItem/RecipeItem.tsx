@@ -128,13 +128,13 @@ const Author = () => {
   return <Text size="caption3" color="sub">{`${author.nickname} 님`}</Text>;
 };
 
-const CreatedDate = () => {
+const AuthorAndCreatedDate = () => {
   const { recipe } = useRecipeItemValueContext();
-  const { createdAt } = recipe;
+  const { author, createdAt } = recipe;
 
   return (
     <Text size="caption3" color="sub">
-      · {getRelativeDate(createdAt)}
+      {`${author.nickname} 님 · ${getRelativeDate(createdAt)}`}
     </Text>
   );
 };
@@ -155,7 +155,7 @@ RecipeItem.ProductButton = ProductButton;
 RecipeItem.ProductCircleButton = ProductCircleButton;
 RecipeItem.Title = Title;
 RecipeItem.Author = Author;
-RecipeItem.CreatedDate = CreatedDate;
+RecipeItem.AuthorAndCreatedDate = AuthorAndCreatedDate;
 RecipeItem.Content = Content;
 
 export default RecipeItem;

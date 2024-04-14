@@ -27,10 +27,7 @@ export const Default: Story = {
         <RecipeItem.ImageAndFavoriteButton />
         <div style={{ height: '8px' }} />
         <RecipeItem.Title />
-        <div style={{ display: 'flex', gap: '0.3rem' }}>
-          <RecipeItem.Author />
-          <RecipeItem.CreatedDate />
-        </div>
+        <RecipeItem.AuthorAndCreatedDate />
       </RecipeItem>
     );
   },
@@ -45,10 +42,7 @@ export const Recipe: Story = {
         </RecipeItem.ImageAndFavoriteButton>
         <div style={{ height: '8px' }} />
         <RecipeItem.Title />
-        <div style={{ display: 'flex', gap: '0.3rem' }}>
-          <RecipeItem.Author />
-          <RecipeItem.CreatedDate />
-        </div>
+        <RecipeItem.AuthorAndCreatedDate />
         <RecipeItem.Content />
       </RecipeItem>
     );
@@ -80,10 +74,7 @@ export const Search: Story = {
         </RecipeItem.ImageAndFavoriteButton>
         <div style={{ height: '8px' }} />
         <RecipeItem.Title />
-        <div style={{ display: 'flex', gap: '0.3rem' }}>
-          <RecipeItem.Author />
-          <RecipeItem.CreatedDate />
-        </div>
+        <RecipeItem.AuthorAndCreatedDate />
       </RecipeItem>
     );
   },
