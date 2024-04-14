@@ -27,7 +27,7 @@ const RecipeList = ({ selectedOption }: RecipeListProps) => {
       <ul className={container}>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <RecipeItem recipe={recipe} />
+            <RecipeItem recipe={recipe} hasFavoriteButton hasProductButton hasContent />
           </li>
         ))}
       </ul>

@@ -1,11 +1,20 @@
-import { Badge, Text, useTheme } from '@fun-eat/design-system';
 import { memo } from 'react';
-import styled from 'styled-components';
 
+import {
+  date,
+  favoriteWrapper,
+  memberImage,
+  memberInfo,
+  ratingInfo,
+  ratingNumber,
+  ratingWrapper,
+  reviewContent,
+  reviewImage,
+} from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 
-import { SvgIcon, TagList } from '@/components/Common';
-import { MemberImage } from '@/components/Members';
+import { Badge, SvgIcon, TagList, Text } from '@/components/Common';
+import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
 import { getRelativeDate } from '@/utils/date';
 
@@ -15,92 +24,61 @@ interface ReviewItemProps {
 }
 
 const ReviewItem = ({ productId, review }: ReviewItemProps) => {
-  const theme = useTheme();
-
   const { id, userName, profileImage, image, rating, tags, content, createdAt, rebuy, favorite, favoriteCount } =
     review;
 
   return (
-    <ReviewItemContainer>
-      <ReviewerWrapper>
-        <ReviewerInfoWrapper>
-          <MemberImage
-            src={profileImage}
-            width={40}
-            height={40}
-            alt={`${userName}의 프로필`}
-            css={{ objectFit: `cover` }}
-          />
-          <div>
-            <Text weight="bold">{userName}</Text>
-            <RatingIconWrapper>
-              {Array.from({ length: 5 }, (_, index) => (
-                <SvgIcon
-                  key={`rating-${index}`}
-                  variant="star"
-                  fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
-                  width={16}
-                  height={16}
-                />
-              ))}
-              <Text as="span" size="sm" color={theme.textColors.info}>
-                {getRelativeDate(createdAt)}
-              </Text>
-            </RatingIconWrapper>
-          </div>
-        </ReviewerInfoWrapper>
+    <div>
+      <div className={memberInfo}>
+        <img src={profileImage} className={memberImage} width={36} height={36} alt={`${userName}의 프로필`} />
+        <Text weight="semiBold">{userName}</Text>
         {rebuy && (
-          <RebuyBadge color={theme.colors.primary} textColor={theme.textColors.default}>
-            😝 또 살래요
-          </RebuyBadge>
+          <Badge color={vars.colors.black} textColor={vars.colors.secondary1}>
+            또 살래요
+          </Badge>
         )}
-      </ReviewerWrapper>
-      {image && <ReviewImage src={image} height={150} alt={`${userName}의 리뷰`} />}
+        <div className={favoriteWrapper}>
+          <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
+        </div>
+      </div>
+
+      <div style={{ height: '12px' }} />
+
+      <div className={ratingWrapper}>
+        <div className={ratingInfo}>
+          <Text as="span" size="caption3" weight="medium" className={ratingNumber}>
+            {rating.toFixed(1)}
+          </Text>
+          {Array.from({ length: 5 }, (_, index) => (
+            <SvgIcon
+              key={`rating-${index}`}
+              variant="star2"
+              fill={index < rating ? vars.colors.icon.fill : vars.colors.icon.light}
+              width={13}
+              height={13}
+            />
+          ))}
+        </div>
+        <Text as="span" size="caption4" color="disabled" className={date}>
+          {getRelativeDate(createdAt)}
+        </Text>
+      </div>
+
+      <div style={{ height: '8px' }} />
+
+      {image && <img src={image} className={reviewImage} height={90} alt={`${userName}의 리뷰`} />}
+
+      <div style={{ height: '8px' }} />
+
+      <Text color="sub" size="caption2" className={reviewContent}>
+        {content}
+      </Text>
+
+      <div style={{ height: '8px' }} />
+
       <TagList tags={tags} />
-      <ReviewContent>{content}</ReviewContent>
-      <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
-    </ReviewItemContainer>
+    </div>
   );
 };
 
 export default memo(ReviewItem);
-
-const ReviewItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 20px;
-`;
-
-const ReviewerWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const ReviewerInfoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  column-gap: 10px;
-`;
-
-const RebuyBadge = styled(Badge)`
-  font-weight: ${({ theme }) => theme.fontWeights.bold};
-`;
-
-const RatingIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: -2px;
-
-  & > span {
-    margin-left: 12px;
-  }
-`;
-
-const ReviewImage = styled.img`
-  align-self: center;
-`;
-
-const ReviewContent = styled(Text)`
-  white-space: pre-wrap;
-`;

@@ -1,10 +1,9 @@
-import { Text } from '@fun-eat/design-system';
 import { useRef } from 'react';
-import styled from 'styled-components';
 
+import { container } from './reviewList.css';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
-import { Loading } from '@/components/Common';
+import { Loading, Text } from '@/components/Common';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductReviewsQuery } from '@/hooks/queries/product';
 import type { SortOption } from '@/types/common';
@@ -30,13 +29,13 @@ const ReviewList = ({ productId, selectedOption }: ReviewListProps) => {
 
   return (
     <>
-      <ReviewListContainer>
+      <ul className={container}>
         {reviews.map((review) => (
           <li key={review.id}>
             <ReviewItem productId={productId} review={review} />
           </li>
         ))}
-      </ReviewListContainer>
+      </ul>
       <div ref={scrollRef} aria-hidden />
       {isFetchingNextPage && <Loading />}
     </>
@@ -44,9 +43,3 @@ const ReviewList = ({ productId, selectedOption }: ReviewListProps) => {
 };
 
 export default ReviewList;
-
-const ReviewListContainer = styled.ul`
-  display: flex;
-  flex-direction: column;
-  row-gap: 60px;
-`;

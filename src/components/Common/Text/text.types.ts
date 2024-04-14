@@ -5,7 +5,7 @@ import type { text } from './text.css';
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 
 export const colors = ['default', 'sub', 'info', 'disabled', 'white'] as const;
-export const sizes = ['caption4', 'caption3', 'caption2', 'caption1', 'body', 'headline'] as const;
+export const sizes = ['caption4', 'caption3', 'caption2', 'caption1', 'body', 'headline', 'display1'] as const;
 export const weights = ['regular', 'medium', 'semiBold'] as const;
 
 export type Color = (typeof colors)[number];
