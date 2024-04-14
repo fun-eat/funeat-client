@@ -1,10 +1,18 @@
-import { Checkbox } from '@fun-eat/design-system';
 import type { ChangeEventHandler } from 'react';
 
+import { check, checkbox, container } from './rebuyCheckbox.css';
+import { itemTitle } from '../ReviewRegisterForm/reviewRegisterForm.css';
+
+import { SvgIcon, Text } from '@/components/Common';
 import { useEnterKeyDown } from '@/hooks/common';
 import { useReviewFormActionContext } from '@/hooks/context';
+import { vars } from '@/styles/theme.css';
 
-const RebuyCheckbox = () => {
+interface RebuyCheckboxProps {
+  isRebuy: boolean;
+}
+
+const RebuyCheckbox = ({ isRebuy }: RebuyCheckboxProps) => {
   const { handleReviewFormValue } = useReviewFormActionContext();
   const { inputRef, labelRef, handleKeydown } = useEnterKeyDown();
 
@@ -13,11 +21,22 @@ const RebuyCheckbox = () => {
   };
 
   return (
-    <p onKeyDown={handleKeydown}>
-      <Checkbox ref={labelRef} inputRef={inputRef} weight="bold" onChange={handleRebuy} tabIndex={0}>
-        재구매할 생각이 있으신가요?
-      </Checkbox>
-    </p>
+    <>
+      <h2 className={itemTitle} tabIndex={0}>
+        재구매 여부
+      </h2>
+      <p onKeyDown={handleKeydown}>
+        <label className={container} ref={labelRef}>
+          <input type="checkbox" className={checkbox} ref={inputRef} onChange={handleRebuy} tabIndex={0} />
+          <span className={isRebuy ? check.checked : check.default} aria-hidden>
+            <SvgIcon variant="check2" width={10} height={10} fill={isRebuy ? vars.colors.primary : vars.colors.white} />
+          </span>
+          <Text as="span" weight="semiBold">
+            재구매할 생각이 있어요
+          </Text>
+        </label>
+      </p>
+    </>
   );
 };
 

@@ -1,9 +1,10 @@
-import { Button, Heading, Spacing, theme } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import { starIcon, starWrapper } from './starRate.css';
+import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
 
 import { SvgIcon } from '@/components/Common';
 import { useReviewFormActionContext } from '@/hooks/context';
 import { useStarRatingHover } from '@/hooks/review';
+import { vars } from '@/styles/theme.css';
 
 const starList = Array.from({ length: 5 }, (_, index) => index + 1);
 
@@ -20,48 +21,35 @@ const StarRate = ({ rating }: StarRateProps) => {
   };
 
   return (
-    <StarRateContainer>
-      <Heading as="h2" size="xl" tabIndex={0}>
-        별점을 남겨주세요.
-        <RequiredMark aria-label="필수 작성">*</RequiredMark>
-      </Heading>
-      <Spacing size={20} />
-      <div>
+    <div>
+      <h2 className={itemTitle} tabIndex={0}>
+        별점
+        <sup className={requiredMark} aria-label="필수 작성">
+          *
+        </sup>
+      </h2>
+      <div className={starWrapper}>
         {starList.map((star) => (
-          <Button
+          <button
             type="button"
             key={star}
-            variant="transparent"
-            css="padding: 0 2px"
             onClick={() => handleRating(star)}
             onMouseEnter={() => handleMouseEnter(star)}
             onMouseLeave={handleMouseLeave}
             aria-label={`별점 ${star}점`}
           >
-            <SvgIconWrapper
-              variant="star"
-              fill={star <= (hovering || rating) ? theme.colors.secondary : theme.colors.gray2}
+            <SvgIcon
+              className={starIcon}
+              variant="star2"
+              width={30}
+              height={30}
+              fill={star <= (hovering || rating) ? vars.colors.icon.default : vars.colors.icon.light}
             />
-          </Button>
+          </button>
         ))}
       </div>
-    </StarRateContainer>
+    </div>
   );
 };
 
 export default StarRate;
-
-const StarRateContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const RequiredMark = styled.sup`
-  color: ${({ theme }) => theme.colors.error};
-`;
-
-const SvgIconWrapper = styled(SvgIcon)`
-  transition: all 0.3s ease-out;
-`;
