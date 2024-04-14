@@ -4,8 +4,7 @@ import { useParams } from 'react-router-dom';
 import { section } from './reviewRegisterPage.css';
 import NotFoundPage from '../NotFoundPage';
 
-import { ReviewRegisterForm } from '@/components/Review';
-import ReviewTagSheet from '@/components/Review/ReviewTagSheet/ReviewTagSheet';
+import { ReviewRegisterForm, ReviewTagSheet } from '@/components/Review';
 import ReviewFormProvider from '@/contexts/ReviewFormContext';
 
 export const ReviewRegisterPage = () => {
