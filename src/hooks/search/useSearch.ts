@@ -1,10 +1,11 @@
 import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, MouseEventHandler } from 'react';
 import { useRef, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useGA } from '../common';
 
+import { PATH } from '@/constants/path';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 
 const useSearch = () => {
@@ -12,6 +13,7 @@ const useSearch = () => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const currentSearchQuery = searchParams.get('query');
+  const navigate = useNavigate();
 
   const [searchQuery, setSearchQuery] = useState(currentSearchQuery || '');
   const [isSubmitted, setIsSubmitted] = useState(!!currentSearchQuery);
@@ -41,7 +43,7 @@ const useSearch = () => {
     setSearchParams({ query: value });
   };
 
-  const handleSearch: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSearchForm: FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     gaEvent({ category: 'submit', action: '검색 페이지에서 검색', label: '검색' });
 
@@ -49,7 +51,11 @@ const useSearch = () => {
 
     if (!trimmedSearchQuery) {
       toast.error('검색어를 입력해주세요');
-      focusInput();
+      resetSearchQuery();
+      return;
+    }
+
+    if (isSubmitted) {
       resetSearchQuery();
       return;
     }
@@ -62,7 +68,7 @@ const useSearch = () => {
     setLocalStorage('recentSearchedKeywords', [trimmedSearchQuery, ...recentSearchedKeywords.slice(0, 7)]);
   };
 
-  const handleSearchClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+  const handleSearchByClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const { value } = event.currentTarget;
     searchKeyword(value);
   };
@@ -71,11 +77,21 @@ const useSearch = () => {
     setIsAutocompleteOpen(false);
   };
 
+  const handleTagSearch: MouseEventHandler<HTMLButtonElement> = (event) => {
+    const { value } = event.currentTarget;
+    setSearchQuery(value);
+    setIsSubmitted(true);
+
+    navigate(`${PATH.SEARCH}/tags?query=${value}`);
+  };
+
   const resetSearchQuery = () => {
     setSearchQuery('');
     setIsSubmitted(false);
     setSearchParams({});
     focusInput();
+
+    navigate(PATH.SEARCH);
   };
 
   return {
@@ -84,11 +100,10 @@ const useSearch = () => {
     isSubmitted,
     isAutocompleteOpen,
     handleSearchQuery,
-    handleSearch,
-    handleSearchClick,
+    handleSearchForm,
+    handleSearchByClick,
     handleAutocompleteClose,
-    searchKeyword,
-    resetSearchQuery,
+    handleTagSearch,
   };
 };
 
