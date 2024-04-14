@@ -1,6 +1,10 @@
 import { vars } from '@/styles/theme.css';
 import { style, styleVariants } from '@vanilla-extract/css';
 
+export const container = style({
+  height: '100vh',
+});
+
 export const section = style({
   padding: '50px 20px 70px',
   marginBottom: 32,
@@ -17,7 +21,7 @@ export const registerButtonWrapper = style({
   height: 70,
   maxWidth: 400,
   padding: '0 20px',
-  border: `1px solid ${vars.colors.border.default}`,
+  borderTop: `1px solid ${vars.colors.border.default}`,
   backgroundColor: vars.colors.background.default,
   transform: 'translateX(-50%)',
 });

@@ -1,4 +1,4 @@
-import { registerButton, registerButtonWrapper, section } from './reviewTagSheet.css';
+import { container, registerButton, registerButtonWrapper, section } from './reviewTagSheet.css';
 import ReviewTagList from '../ReviewTagList/ReviewTagList';
 
 import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
@@ -14,7 +14,7 @@ const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
   const isValid = tags.length >= MIN_DISPLAYED_TAGS_LENGTH && tags.length <= MAX_DISPLAYED_TAGS_LENGTH;
 
   return (
-    <>
+    <div className={container}>
       <section className={section}>
         <ReviewTagList />
       </section>
@@ -28,7 +28,7 @@ const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
           태그 선택 완료 {tags.length}/{MAX_DISPLAYED_TAGS_LENGTH}
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
