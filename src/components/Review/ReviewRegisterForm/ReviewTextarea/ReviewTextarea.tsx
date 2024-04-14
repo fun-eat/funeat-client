@@ -1,10 +1,17 @@
 import { useState } from 'react';
 import type { FocusEventHandler, ChangeEventHandler } from 'react';
 
-import { container, currentLength, errorMessage, reviewTextarea, statusWrapper } from './reviewTextarea.css';
+import {
+  container,
+  currentLength,
+  errorMessage,
+  errorWrapper,
+  reviewTextarea,
+  statusWrapper,
+} from './reviewTextarea.css';
 import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
 
-import { Text } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
 import { useReviewFormActionContext } from '@/hooks/context';
 
 const MIN_LENGTH = 10;
@@ -58,9 +65,12 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
         </Text>
       </div>
 
-      <Text size="caption3" weight="medium" className={isValid ? errorMessage.hidden : errorMessage.show}>
-        다른 사람들을 위해 {MIN_LENGTH}자 이상의 리뷰를 작성해보는 건 어떨까요?
-      </Text>
+      <div className={isValid ? errorWrapper.hidden : errorWrapper.show}>
+        <SvgIcon variant="error" width={12} height={12} fill="currentColor" />
+        <Text size="caption4" weight="medium" className={errorMessage}>
+          다른 사람들을 위해 {MIN_LENGTH}자 이상의 리뷰를 작성해보는 건 어떨까요?
+        </Text>
+      </div>
     </div>
   );
 };

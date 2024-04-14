@@ -46,6 +46,7 @@ export const SVG_ICON_VARIANTS = [
   'heartFilled',
   'close2',
   'disk',
+  'error',
 ] as const;
 export type SvgIconVariant = (typeof SVG_ICON_VARIANTS)[number];
 

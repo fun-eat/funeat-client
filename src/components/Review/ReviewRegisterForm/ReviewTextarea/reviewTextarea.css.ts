@@ -38,11 +38,17 @@ export const currentLength = style({
   fontWeight: 500,
 });
 
-export const errorMessageBase = style({
-  color: vars.colors.error,
+export const errorWrapperBase = style({
+  display: 'flex',
+  alignItems: 'center',
+  gap: 4,
 });
 
-export const errorMessage = styleVariants({
-  show: [errorMessageBase, { opacity: 1 }],
-  hidden: [errorMessageBase, { opacity: 0 }],
+export const errorWrapper = styleVariants({
+  show: [errorWrapperBase, { opacity: 1 }],
+  hidden: [errorWrapperBase, { opacity: 0 }],
+});
+
+export const errorMessage = style({
+  color: vars.colors.error,
 });
