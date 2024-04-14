@@ -2,7 +2,8 @@ import type { ChangeEvent } from 'react';
 
 import { checkbox, container, itemTitle, tagLabel, tagList } from './reviewTagList.css';
 
-import { MIN_DISPLAYED_TAGS_LENGTH, TAG_TITLE } from '@/constants';
+import { Text } from '@/components/Common';
+import { MAX_DISPLAYED_TAGS_LENGTH, TAG_TITLE } from '@/constants';
 import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
 import { useReviewTagsQuery } from '@/hooks/queries/review';
@@ -17,7 +18,7 @@ const ReviewTagList = () => {
   const handleTagSelect = (currentTag: TagValue) => (event: ChangeEvent<HTMLInputElement>) => {
     handleReviewFormValue({ target: 'tags', value: currentTag });
 
-    if (selectedTags.length >= MIN_DISPLAYED_TAGS_LENGTH) {
+    if (selectedTags.length >= MAX_DISPLAYED_TAGS_LENGTH) {
       event.target.checked = false;
     }
   };
@@ -39,7 +40,9 @@ const ReviewTagList = () => {
                     checked={isChecked(tag)}
                     onChange={handleTagSelect(tag)}
                   />
-                  <span className={tagLabel}>{tag.name}</span>
+                  <Text as="span" size="caption1" weight="medium" className={tagLabel}>
+                    {tag.name}
+                  </Text>
                 </label>
               </li>
             ))}

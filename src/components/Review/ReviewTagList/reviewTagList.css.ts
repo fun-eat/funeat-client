@@ -28,8 +28,6 @@ export const tagLabel = style({
   padding: '6px 12px',
   borderRadius: 30,
   backgroundColor: vars.colors.background.category,
-  fontSize: '1.4rem',
-  fontWeight: 500,
   cursor: 'pointer',
   userSelect: 'none',
 

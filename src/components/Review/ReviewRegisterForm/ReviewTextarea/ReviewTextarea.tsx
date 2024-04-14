@@ -1,6 +1,6 @@
 import type { ChangeEventHandler } from 'react';
 
-import { container, currentLength, reviewTextarea, status, statusWrapper } from './reviewTextarea.css';
+import { container, currentLength, reviewTextarea, statusWrapper } from './reviewTextarea.css';
 import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
 
 import { Text } from '@/components/Common';
@@ -36,7 +36,7 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
         onChange={handleReviewText}
       />
       <div className={statusWrapper}>
-        <Text className={status} tabIndex={0}>
+        <Text color="disabled" size="caption3" weight="medium" tabIndex={0}>
           <strong className={currentLength}>{content.length}</strong>/{MAX_LENGTH}
         </Text>
       </div>

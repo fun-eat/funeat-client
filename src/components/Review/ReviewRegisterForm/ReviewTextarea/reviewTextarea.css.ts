@@ -28,12 +28,6 @@ export const statusWrapper = style({
   right: 16,
 });
 
-export const status = style({
-  fontSize: '1.2rem',
-  fontWeight: 500,
-  color: vars.colors.gray3,
-});
-
 export const currentLength = style({
   color: vars.colors.black,
   fontWeight: 500,
