@@ -28,10 +28,6 @@ export const productButtonWrapper = style({
   zIndex: 100,
 });
 
-export const recipeProductWrapper = style({
-  margin: '48px 20px',
-});
-
 export const productCircleWrapper = style({
   position: 'absolute',
   bottom: 10,
