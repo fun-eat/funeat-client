@@ -39,8 +39,9 @@ const RecipeItem = ({ children }: PropsWithChildren) => {
 };
 
 const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
-  const { recipe } = useRecipeItemValueContext();
-  const { id, image, title, favorite } = recipe;
+  const {
+    recipe: { id, image, title, favorite },
+  } = useRecipeItemValueContext();
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   return (
@@ -62,8 +63,9 @@ const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
 };
 
 const ProductButton = () => {
-  const { recipe } = useRecipeItemValueContext();
-  const { products } = recipe;
+  const {
+    recipe: { products },
+  } = useRecipeItemValueContext();
   const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
 
   const handleOpenProductSheet: MouseEventHandler<HTMLDivElement> = (event) => {
@@ -87,8 +89,9 @@ const ProductButton = () => {
 };
 
 const ProductCircleButton = () => {
-  const { recipe } = useRecipeItemValueContext();
-  const { products } = recipe;
+  const {
+    recipe: { products },
+  } = useRecipeItemValueContext();
 
   return (
     <ul className={productCircleWrapper}>
@@ -111,8 +114,9 @@ const ProductCircleButton = () => {
 };
 
 const Title = () => {
-  const { recipe } = useRecipeItemValueContext();
-  const { title } = recipe;
+  const {
+    recipe: { title },
+  } = useRecipeItemValueContext();
 
   return (
     <Text className={ellipsis} size="caption1" weight="semiBold" color="default">
@@ -122,15 +126,17 @@ const Title = () => {
 };
 
 const Author = () => {
-  const { recipe } = useRecipeItemValueContext();
-  const { author } = recipe;
+  const {
+    recipe: { author },
+  } = useRecipeItemValueContext();
 
   return <Text size="caption3" color="sub">{`${author.nickname} 님`}</Text>;
 };
 
 const AuthorAndCreatedDate = () => {
-  const { recipe } = useRecipeItemValueContext();
-  const { author, createdAt } = recipe;
+  const {
+    recipe: { author, createdAt },
+  } = useRecipeItemValueContext();
 
   return (
     <Text size="caption3" color="sub">
@@ -140,8 +146,9 @@ const AuthorAndCreatedDate = () => {
 };
 
 const Content = () => {
-  const { recipe } = useRecipeItemValueContext();
-  const { content } = recipe;
+  const {
+    recipe: { content },
+  } = useRecipeItemValueContext();
 
   return (
     <Text className={ellipsis} size="caption4" color="disabled">
