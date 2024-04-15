@@ -25,3 +25,4 @@ export { default as PageHeader } from './PageHeader/PageHeader';
 export { default as Badge } from './Badge/Badge';
 export { default as WriteButton } from './WriteButton/WriteButton';
 export { default as Text } from './Typography/Text/Text';
+export { default as Heading } from './Typography/Heading/Heading';
