@@ -152,3 +152,55 @@ RecipeItem.AuthorAndCreatedDate = AuthorAndCreatedDate;
 RecipeItem.Content = Content;
 
 export default RecipeItem;
+
+export const DefaultRecipeItem = () => {
+  return (
+    <RecipeItem>
+      <RecipeItem.ImageAndFavoriteButton />
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.AuthorAndCreatedDate />
+    </RecipeItem>
+  );
+};
+
+export const RecipeItemWithProductButton = () => {
+  return (
+    <RecipeItem>
+      <RecipeItem.ImageAndFavoriteButton>
+        <RecipeItem.ProductButton />
+      </RecipeItem.ImageAndFavoriteButton>
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.AuthorAndCreatedDate />
+    </RecipeItem>
+  );
+};
+
+export const RecipeItemWithProductCircleButton = () => {
+  return (
+    <RecipeItem>
+      <RecipeItem.ImageAndFavoriteButton>
+        <RecipeItem.ProductCircleButton />
+      </RecipeItem.ImageAndFavoriteButton>
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.Author />
+      <RecipeItem.Content />
+    </RecipeItem>
+  );
+};
+
+export const RecipeItemWithProductButtonAndContent = () => {
+  return (
+    <RecipeItem>
+      <RecipeItem.ImageAndFavoriteButton>
+        <RecipeItem.ProductButton />
+      </RecipeItem.ImageAndFavoriteButton>
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.AuthorAndCreatedDate />
+      <RecipeItem.Content />
+    </RecipeItem>
+  );
+};
