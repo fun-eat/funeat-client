@@ -1,13 +1,18 @@
 const SvgSprite = () => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" display="none">
-      <symbol id="search2" viewBox="0 0 14 14">
-        <g fill="none" strokeLinecap="round" strokeLinejoin="round" clipPath="url(#a)">
-          <path d="M6 11.5a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zm7.5 2L10 10" />
+      <symbol id="search2" viewBox="0 0 21 20">
+        <g clipPath="url(#a)">
+          <path
+            stroke="none"
+            fillRule="evenodd"
+            d="M3.146 8.571a5.714 5.714 0 1 1 11.429 0 5.714 5.714 0 0 1-11.429 0zM8.86 0a8.571 8.571 0 1 0 4.967 15.558l4.023 4.024a1.429 1.429 0 0 0 2.02-2.02l-4.023-4.024A8.571 8.571 0 0 0 8.86 0z"
+            clipRule="evenodd"
+          />
         </g>
         <defs>
           <clipPath id="a">
-            <path fill="#fff" d="M0 0h14v14H0z" />
+            <path fill="#fff" d="M0 0h20v20H0z" transform="translate(.29)" />
           </clipPath>
         </defs>
       </symbol>
@@ -274,13 +279,13 @@ const SvgSprite = () => {
           d="M5.37 16.974V1.19m4.25 4.249l-4.25-4.25-4.25 4.25"
         />
       </symbol>
-      <symbol id="arrowLeft" viewBox="0 0 25 24">
+      <symbol id="arrowLeft" viewBox="0 0 12 20">
         <path
           fill="none"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="1.2"
-          d="M16.24 3.661l-8.086 8.25 8.085 8.25"
+          strokeWidth="2.4"
+          d="M10.183 18.367L1.816 9.65l7.698-8.018"
         />
       </symbol>
       <symbol id="arrowRight" viewBox="0 0 24 24">
