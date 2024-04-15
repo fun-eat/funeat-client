@@ -1,4 +1,4 @@
-import type { Tag } from './common';
+import type { Category, Tag } from './common';
 
 export interface Product {
   id: number;
@@ -17,6 +17,7 @@ export interface ProductDetail {
   content: string;
   averageRating: number;
   reviewCount: number;
+  category: Category;
   tags: Tag[];
 }
 

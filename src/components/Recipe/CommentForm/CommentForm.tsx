@@ -1,11 +1,14 @@
-import { Button, Spacing, Text, Textarea, useTheme, useToastActionContext } from '@fun-eat/design-system';
+import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, RefObject } from 'react';
-import { useState } from 'react';
-import styled from 'styled-components';
+import { useRef, useState } from 'react';
 
-import { SvgIcon } from '@/components/Common';
+import { commentForm, commentTextarea, container, profileImage, sendButton } from './commentForm.css';
+
+import { SvgIcon, Text } from '@/components/Common';
 import { useScroll } from '@/hooks/common';
+import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeCommentMutation } from '@/hooks/queries/recipe';
+import { vars } from '@/styles/theme.css';
 
 interface CommentFormProps {
   recipeId: number;
@@ -15,16 +18,27 @@ interface CommentFormProps {
 const MAX_COMMENT_LENGTH = 200;
 
 const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
+  const { data: member } = useMemberQuery();
+
   const [commentValue, setCommentValue] = useState('');
   const { mutate } = useRecipeCommentMutation(recipeId);
 
-  const theme = useTheme();
   const { toast } = useToastActionContext();
 
   const { scrollToPosition } = useScroll();
 
+  const textAreaRef = useRef<HTMLTextAreaElement>(null);
+
+  const autoResizeTextarea = () => {
+    if (textAreaRef.current) {
+      textAreaRef.current.style.height = 'auto';
+      textAreaRef.current.style.height = textAreaRef.current.scrollHeight + 'px';
+    }
+  };
+
   const handleCommentInput: ChangeEventHandler<HTMLTextAreaElement> = (e) => {
     setCommentValue(e.target.value);
+    autoResizeTextarea();
   };
 
   const handleSubmitComment: FormEventHandler<HTMLFormElement> = (e) => {
@@ -51,54 +65,40 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
   };
 
   return (
-    <CommentFormContainer>
-      <Form onSubmit={handleSubmitComment}>
-        <CommentTextarea
-          placeholder="댓글을 입력하세요. (200자)"
-          value={commentValue}
-          onChange={handleCommentInput}
-          maxLength={MAX_COMMENT_LENGTH}
-        />
-        <SubmitButton variant="transparent" disabled={commentValue.length === 0}>
-          <SvgIcon
-            variant="plane"
-            width={30}
-            height={30}
-            fill={commentValue.length === 0 ? theme.colors.gray2 : theme.colors.gray4}
+    <div className={container}>
+      <img
+        className={profileImage}
+        src={member?.profileImage}
+        width={29}
+        height={29}
+        alt={`${member?.nickname}의 프로필 사진`}
+      />
+      <>
+        <form className={commentForm} onSubmit={handleSubmitComment}>
+          <textarea
+            className={commentTextarea}
+            placeholder="댓글을 남겨보세요! (200자)"
+            value={commentValue}
+            onChange={handleCommentInput}
+            maxLength={MAX_COMMENT_LENGTH}
+            rows={1}
+            ref={textAreaRef}
           />
-        </SubmitButton>
-      </Form>
-      <Spacing size={8} />
-      <Text size="xs" color={theme.textColors.info} align="right">
-        {commentValue.length}자 / {MAX_COMMENT_LENGTH}자
-      </Text>
-    </CommentFormContainer>
+          <Text size="caption4" color="disabled">
+            {commentValue.length}/200
+          </Text>
+          <button className={sendButton}>
+            <SvgIcon
+              variant="plane"
+              width={18}
+              height={18}
+              fill={commentValue.length === 0 ? vars.colors.gray3 : vars.colors.gray5}
+            />
+          </button>
+        </form>
+      </>
+    </div>
   );
 };
 
 export default CommentForm;
-
-const CommentFormContainer = styled.div`
-  position: fixed;
-  bottom: 0;
-  width: calc(100% - 40px);
-  max-width: 540px;
-  padding: 16px 0;
-  background: ${({ theme }) => theme.backgroundColors.default};
-`;
-
-const Form = styled.form`
-  display: flex;
-  gap: 4px;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const CommentTextarea = styled(Textarea)`
-  height: 50px;
-  padding: 8px;
-`;
-
-const SubmitButton = styled(Button)`
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-`;

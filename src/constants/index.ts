@@ -51,7 +51,8 @@ export const TAG_TITLE = {
   ETC: '기타',
 } as const;
 
-export const MIN_DISPLAYED_TAGS_LENGTH = 3;
+export const MIN_DISPLAYED_TAGS_LENGTH = 1;
+export const MAX_DISPLAYED_TAGS_LENGTH = 3;
 
 export const CATEGORY_TYPE = {
   FOOD: 'food',

@@ -68,7 +68,7 @@ const router = createBrowserRouter([
         path: `${PATH.RECIPE}/:recipeId`,
         async lazy() {
           const { RecipeDetailPage } = await import(
-            /* webpackChunkName: "RecipeDetailPage" */ '@/pages/RecipeDetailPage'
+            /* webpackChunkName: "RecipeDetailPage" */ '@/pages/RecipeDetailPage/RecipeDetailPage'
           );
           return { Component: RecipeDetailPage };
         },
@@ -174,9 +174,18 @@ const router = createBrowserRouter([
         path: `${PATH.PRODUCT_LIST}/detail/:productId`,
         async lazy() {
           const { ProductDetailPage } = await import(
-            /* webpackChunkName: "ProductDetailPage" */ '@/pages/ProductDetailPage'
+            /* webpackChunkName: "ProductDetailPage" */ '@/pages/ProductDetailPage/ProductDetailPage'
           );
           return { Component: ProductDetailPage };
+        },
+      },
+      {
+        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
+        async lazy() {
+          const { ReviewRegisterPage } = await import(
+            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
+          );
+          return { Component: ReviewRegisterPage };
         },
       },
       {

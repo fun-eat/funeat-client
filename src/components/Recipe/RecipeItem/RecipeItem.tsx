@@ -1,5 +1,5 @@
-import { BottomSheet, Skeleton, useBottomSheet } from '@fun-eat/design-system';
-import type { MouseEventHandler, PropsWithChildren } from 'react';
+import { Skeleton } from '@fun-eat/design-system';
+import type { PropsWithChildren } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,6 @@ import {
   productCircleWrapper,
   productImage,
   recipeImage,
-  recipeProductWrapper,
   recipeProductsCount,
   thirdProductImage,
 } from './recipeItem.css';
@@ -20,7 +19,6 @@ import RecipeFavoriteButton from '../RecipeFavoriteButton/RecipeFavoriteButton';
 import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
 
 import { Text } from '@/components/Common';
-import { ProductOverviewList } from '@/components/Product';
 import { RECIPE_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
@@ -66,24 +64,12 @@ const ProductButton = () => {
   const {
     recipe: { products },
   } = useRecipeItemValueContext();
-  const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
-
-  const handleOpenProductSheet: MouseEventHandler<HTMLDivElement> = (event) => {
-    event.preventDefault();
-    handleOpenBottomSheet();
-  };
 
   return (
     <>
-      <div className={productButtonWrapper} onClick={(e) => handleOpenProductSheet(e)}>
-        <RecipeProductButton isTranslucent />
+      <div className={productButtonWrapper} onClick={(e) => e.preventDefault()}>
+        <RecipeProductButton isTranslucent products={products} />
       </div>
-
-      <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
-        <div className={recipeProductWrapper}>
-          <ProductOverviewList products={products} />
-        </div>
-      </BottomSheet>
     </>
   );
 };
