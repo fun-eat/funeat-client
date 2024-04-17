@@ -19,11 +19,25 @@ import RecipeFavoriteButton from '../RecipeFavoriteButton/RecipeFavoriteButton';
 import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
 
 import { Text } from '@/components/Common';
-import { RECIPE_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
+import {
+  RECIPE_CARD_DEFAULT_IMAGE_URL_1,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_2,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_3,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_4,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_5,
+} from '@/constants/image';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
 import { getRelativeDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
+
+const defaultImages = [
+  RECIPE_CARD_DEFAULT_IMAGE_URL_1,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_2,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_3,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_4,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_5,
+];
 
 const RecipeItem = ({ children }: PropsWithChildren) => {
   const { recipe } = useRecipeItemValueContext();
@@ -42,11 +56,14 @@ const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
   } = useRecipeItemValueContext();
   const [isImageLoading, setIsImageLoading] = useState(true);
 
+  const randomIndex = Math.floor(Math.random() * defaultImages.length);
+  const defaultImage = defaultImages[randomIndex];
+
   return (
     <div className={imageWrapper}>
       <img
         className={recipeImage}
-        src={image ?? RECIPE_CARD_DEFAULT_IMAGE_URL}
+        src={image ?? defaultImage}
         alt={`조리된 ${title}`}
         loading="lazy"
         onLoad={() => image && setIsImageLoading(false)}
@@ -164,7 +181,7 @@ export const DefaultRecipeItem = () => {
   );
 };
 
-export const RecipeItemWithProductButton = () => {
+export const RecipeItemWithDiskIcon = () => {
   return (
     <RecipeItem>
       <RecipeItem.ImageAndFavoriteButton>
@@ -177,7 +194,7 @@ export const RecipeItemWithProductButton = () => {
   );
 };
 
-export const RecipeItemWithProductCircleButton = () => {
+export const RecipeItemWithProductDetailImage = () => {
   return (
     <RecipeItem>
       <RecipeItem.ImageAndFavoriteButton>
@@ -191,7 +208,7 @@ export const RecipeItemWithProductCircleButton = () => {
   );
 };
 
-export const RecipeItemWithProductButtonAndContent = () => {
+export const RecipeItemWithDiskIconAndContent = () => {
   return (
     <RecipeItem>
       <RecipeItem.ImageAndFavoriteButton>
