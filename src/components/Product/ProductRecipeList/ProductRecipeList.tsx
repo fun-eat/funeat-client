@@ -35,7 +35,14 @@ const ProductRecipeList = ({ productId }: ProductRecipeListProps) => {
           {/*링크는 상품이 포함된 꿀조합 검색결과로 가는 것이 맞을듯?*/}
           <Link to={''} className={moreLink}>
             <div className={moreIconWrapper}>
-              <SvgIcon variant="arrowLeft" className={moreIcon} fill="none" stroke={vars.colors.gray5} />
+              <SvgIcon
+                variant="arrowLeft"
+                className={moreIcon}
+                width={16}
+                height={16}
+                fill="none"
+                stroke={vars.colors.gray5}
+              />
             </div>
             <Text as="span" color="info" weight="semiBold" size="caption2">
               전체보기
