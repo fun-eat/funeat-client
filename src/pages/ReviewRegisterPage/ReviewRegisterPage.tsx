@@ -17,8 +17,6 @@ export const ReviewRegisterPage = () => {
     return <NotFoundPage />;
   }
 
-  console.log(isValid);
-
   return (
     <>
       <TopBar>
