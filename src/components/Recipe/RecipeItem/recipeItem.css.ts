@@ -18,14 +18,12 @@ export const favoriteButtonWrapper = style({
   position: 'absolute',
   top: 8,
   right: 8,
-  zIndex: 100,
 });
 
 export const productButtonWrapper = style({
   position: 'absolute',
-  bottom: 8,
+  bottom: 12,
   left: 8,
-  zIndex: 100,
 });
 
 export const productCircleWrapper = style({

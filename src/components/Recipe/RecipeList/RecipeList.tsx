@@ -5,6 +5,8 @@ import { container } from './recipeList.css';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipesQuery } from '@/hooks/queries/recipe';
 import type { SortOption } from '@/types/common';
+import RecipeItemProvider from '@/contexts/RecipeItemContext';
+import { RecipeItemWithDiskIconAndContent } from '../RecipeItem/RecipeItem';
 
 interface RecipeListProps {
   selectedOption: SortOption;
@@ -25,7 +27,11 @@ const RecipeList = ({ selectedOption }: RecipeListProps) => {
     <>
       <ul className={container}>
         {recipes.map((recipe) => (
-          <li key={recipe.id}>{/* <RecipeItem recipe={recipe} /> */}</li>
+          <li key={recipe.id}>
+            <RecipeItemProvider recipe={recipe}>
+              <RecipeItemWithDiskIconAndContent />
+            </RecipeItemProvider>
+          </li>
         ))}
       </ul>
       <div ref={scrollRef} aria-hidden style={{ height: '1px' }} />
