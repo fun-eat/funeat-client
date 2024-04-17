@@ -1,12 +1,12 @@
 import { useRef } from 'react';
 
 import { container } from './recipeList.css';
+import { RecipeItemWithDiskIconAndContent } from '../RecipeItem/RecipeItem';
 
+import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipesQuery } from '@/hooks/queries/recipe';
 import type { SortOption } from '@/types/common';
-import RecipeItemProvider from '@/contexts/RecipeItemContext';
-import { RecipeItemWithDiskIconAndContent } from '../RecipeItem/RecipeItem';
 
 interface RecipeListProps {
   selectedOption: SortOption;
