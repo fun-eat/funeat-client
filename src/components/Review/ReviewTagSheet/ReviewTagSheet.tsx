@@ -1,8 +1,10 @@
-import { container, registerButton, registerButtonWrapper, section } from './reviewTagSheet.css';
+import { closeWrapper, container, registerButton, registerButtonWrapper, section } from './reviewTagSheet.css';
 import ReviewTagList from '../ReviewTagList/ReviewTagList';
 
+import { SvgIcon } from '@/components/Common';
 import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import { useReviewFormValueContext } from '@/hooks/context';
+import { vars } from '@/styles/theme.css';
 
 interface ReviewTagSheetProps {
   close: () => void;
@@ -17,6 +19,11 @@ const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
 
   return (
     <div className={container}>
+      <div className={closeWrapper}>
+        <button type="button" onClick={close}>
+          <SvgIcon variant="close2" stroke={vars.colors.black} width={20} height={20} />
+        </button>
+      </div>
       <section className={section}>
         <ReviewTagList />
       </section>
