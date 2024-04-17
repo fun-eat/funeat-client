@@ -36,3 +36,21 @@ export const moreIconWrapper = style({
 export const moreIcon = style({
   transform: 'rotate(180deg)',
 });
+
+export const notFound = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 6,
+  textAlign: 'center',
+});
+
+export const recipeLink = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: 34,
+  padding: '0 16px',
+  backgroundColor: vars.colors.gray2,
+  borderRadius: 44,
+});
