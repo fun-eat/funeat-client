@@ -1,19 +1,21 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { styled } from 'styled-components';
 
+import { listWrapper, showMore } from './recipeSearchResultPreviewList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
+import { SvgIcon, Text } from '@/components/Common';
 import { RecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
+import { vars } from '@/styles/theme.css';
 
-interface RecipeSearchResultListProps {
+interface RecipeSearchResultPreviewListProps {
   searchQuery: string;
 }
 
-const RecipeSearchResultList = ({ searchQuery }: RecipeSearchResultListProps) => {
+const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPreviewListProps) => {
   const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteRecipeSearchResultsQuery(searchQuery);
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
@@ -25,25 +27,27 @@ const RecipeSearchResultList = ({ searchQuery }: RecipeSearchResultListProps) =>
   }
 
   return (
-    <>
-      <RecipeSearchResultListContainer>
-        {recipes.map((recipe) => (
-          <li key={recipe.id}>
+    <ul className={listWrapper}>
+      {recipes.map((recipe, idx) => (
+        <li key={recipe.id}>
+          {idx < 4 ? (
             <Link to={`${PATH.RECIPE}/${recipe.id}`}>
               <RecipeItem recipe={recipe} />
             </Link>
-          </li>
-        ))}
-      </RecipeSearchResultListContainer>
-      <div ref={scrollRef} aria-hidden />
-    </>
+          ) : (
+            <Link to={`${PATH.SEARCH}/recipes?query=${searchQuery}`}>
+              <div className={showMore}>
+                <SvgIcon variant="arrowRight" stroke={vars.colors.gray5} />
+              </div>
+              <Text size="caption2" weight="semiBold" color="info">
+                더보기
+              </Text>
+            </Link>
+          )}
+        </li>
+      ))}
+    </ul>
   );
 };
 
-export default RecipeSearchResultList;
-
-const RecipeSearchResultListContainer = styled.ul`
-  & > li + li {
-    margin-top: 40px;
-  }
-`;
+export default RecipeSearchResultPreviewList;
