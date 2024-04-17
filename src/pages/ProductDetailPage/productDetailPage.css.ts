@@ -1,5 +1,5 @@
 import { vars } from '@/styles/theme.css';
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 export const main = style({
   paddingBottom: 70,
@@ -16,7 +16,7 @@ export const sortWrapper = style({
   right: 20,
 });
 
-export const registerButtonWrapper = style({
+export const linkWrapper = style({
   position: 'fixed',
   left: '50%',
   bottom: 0,
@@ -32,16 +32,14 @@ export const registerButtonWrapper = style({
   transform: 'translateX(-50%)',
 });
 
-const registerButtonBase = style({
+export const link = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
   width: '100%',
   height: 56,
   backgroundColor: vars.colors.primary,
   color: vars.colors.white,
   borderRadius: 6,
   fontWeight: 700,
-});
-
-export const registerButton = styleVariants({
-  active: [registerButtonBase, { backgroundColor: vars.colors.primary }],
-  disabled: [registerButtonBase, { backgroundColor: vars.colors.background.tag }],
 });
