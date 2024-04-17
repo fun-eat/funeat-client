@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 
 import { container } from './recipeRankingList.css';
-import RecipeRankingItem from '../RecipeRankingItem/RecipeRankingItem';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
 import { useRecipeRankingQuery } from '@/hooks/queries/rank';
+import RecipeItemProvider from '@/contexts/RecipeItemContext';
+import { DefaultRecipeItem } from '@/components/Recipe/RecipeItem/RecipeItem';
 
 const RecipeRankingList = () => {
   const { data: recipeResponse } = useRecipeRankingQuery();
@@ -22,7 +23,9 @@ const RecipeRankingList = () => {
       {recipeResponse.recipes.map((recipe) => (
         <li key={recipe.id}>
           <Link to={`${PATH.RECIPE}/${recipe.id}`} onClick={handleRecipeRankingLinkClick}>
-            <RecipeRankingItem recipe={recipe} />
+            <RecipeItemProvider recipe={recipe}>
+              <DefaultRecipeItem />
+            </RecipeItemProvider>
           </Link>
         </li>
       ))}
