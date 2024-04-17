@@ -6,7 +6,7 @@ import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
 import { useRecipeRankingQuery } from '@/hooks/queries/rank';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
-import { DefaultRecipeItem } from '@/components/Recipe/RecipeItem/RecipeItem';
+import { DefaultRecipeItem } from '@/components/Recipe';
 
 const RecipeRankingList = () => {
   const { data: recipeResponse } = useRecipeRankingQuery();
