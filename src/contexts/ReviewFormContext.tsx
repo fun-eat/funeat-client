@@ -2,7 +2,7 @@ import { useToastActionContext } from '@fun-eat/design-system';
 import type { PropsWithChildren } from 'react';
 import { createContext, useState } from 'react';
 
-import { MAX_DISPLAYED_TAGS_LENGTH } from '@/constants';
+import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import type { ReviewRequest } from '@/types/review';
 
 export interface TagValue {
@@ -18,6 +18,11 @@ interface ReviewFormActionParams {
   value: ReviewFormValues;
 }
 
+interface Value {
+  isValid: boolean;
+  reviewFormValue: ReviewFormValue;
+}
+
 interface ReviewFormAction {
   handleReviewFormValue: (params: ReviewFormActionParams) => void;
   resetReviewFormValue: () => void;
@@ -31,14 +36,13 @@ const initialReviewFormValue: ReviewFormValue = {
 };
 
 const MIN_RATING_SCORE = 0;
-const MIN_SELECTED_TAGS_COUNT = 1;
-const MIN_CONTENT_LENGTH = 0;
+const MIN_CONTENT_LENGTH = 10;
 
 const isTagValue = (value: ReviewFormValues): value is TagValue =>
   typeof value === 'object' && 'id' in value && 'name' in value;
 const isSelectedTag = (tags: TagValue[], selectedTag: TagValue) => tags.some(({ id }) => id === selectedTag.id);
 
-export const ReviewFormValueContext = createContext<ReviewFormValue | null>(null);
+export const ReviewFormValueContext = createContext<Value | null>(null);
 export const ReviewFormActionContext = createContext<ReviewFormAction | null>(null);
 
 const ReviewFormProvider = ({ children }: PropsWithChildren) => {
@@ -47,9 +51,9 @@ const ReviewFormProvider = ({ children }: PropsWithChildren) => {
 
   const isValid =
     reviewFormValue.rating > MIN_RATING_SCORE &&
-    reviewFormValue.tags.length >= MIN_SELECTED_TAGS_COUNT &&
+    reviewFormValue.tags.length >= MIN_DISPLAYED_TAGS_LENGTH &&
     reviewFormValue.tags.length <= MAX_DISPLAYED_TAGS_LENGTH &&
-    reviewFormValue.content.length > MIN_CONTENT_LENGTH;
+    reviewFormValue.content.length >= MIN_CONTENT_LENGTH;
 
   const handleReviewFormValue = ({ target, value }: ReviewFormActionParams) => {
     setReviewFormValue((prev) => {
@@ -76,6 +80,11 @@ const ReviewFormProvider = ({ children }: PropsWithChildren) => {
     setReviewFormValue(initialReviewFormValue);
   };
 
+  const value = {
+    isValid,
+    reviewFormValue,
+  };
+
   const reviewFormAction = {
     handleReviewFormValue,
     resetReviewFormValue,
@@ -83,7 +92,7 @@ const ReviewFormProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <ReviewFormActionContext.Provider value={reviewFormAction}>
-      <ReviewFormValueContext.Provider value={reviewFormValue}>{children}</ReviewFormValueContext.Provider>
+      <ReviewFormValueContext.Provider value={value}>{children}</ReviewFormValueContext.Provider>
     </ReviewFormActionContext.Provider>
   );
 };

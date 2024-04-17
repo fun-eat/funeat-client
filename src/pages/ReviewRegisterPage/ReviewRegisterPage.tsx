@@ -4,19 +4,27 @@ import { useParams } from 'react-router-dom';
 import { section } from './reviewRegisterPage.css';
 import NotFoundPage from '../NotFoundPage';
 
+import { TopBar } from '@/components/Common';
 import { ReviewRegisterForm, ReviewTagSheet } from '@/components/Review';
-import ReviewFormProvider from '@/contexts/ReviewFormContext';
+import { useReviewFormValueContext } from '@/hooks/context';
 
 export const ReviewRegisterPage = () => {
   const { productId } = useParams<{ productId: string }>();
+  const { isValid } = useReviewFormValueContext();
   const { isOpen, isClosing, handleOpenBottomSheet, handleCloseBottomSheet } = useBottomSheet();
 
   if (!productId || isNaN(Number(productId))) {
     return <NotFoundPage />;
   }
 
+  console.log(isValid);
+
   return (
-    <ReviewFormProvider>
+    <>
+      <TopBar>
+        <TopBar.LeftNavigationGroup title="리뷰 작성" />
+        <TopBar.RegisterButton form="review-form" disabled={!isValid} />
+      </TopBar>
       <main>
         <section className={section}>
           <ReviewRegisterForm productId={Number(productId)} openBottomSheet={handleOpenBottomSheet} />
@@ -25,6 +33,6 @@ export const ReviewRegisterPage = () => {
           <ReviewTagSheet close={handleCloseBottomSheet} />
         </BottomSheet>
       </main>
-    </ReviewFormProvider>
+    </>
   );
 };
