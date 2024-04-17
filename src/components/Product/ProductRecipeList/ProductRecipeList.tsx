@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { container, moreIcon, moreIconWrapper, moreItem, moreLink } from './productRecipeList.css';
 
 import { SvgIcon, Text } from '@/components/Common';
-import { RecipeItem } from '@/components/Recipe';
 import { useInfiniteProductRecipesQuery } from '@/hooks/queries/product';
 import { vars } from '@/styles/theme.css';
 import displaySlice from '@/utils/displaySlice';
+import RecipeItemProvider from '@/contexts/RecipeItemContext';
+import { DefaultRecipeItem } from '@/components/Recipe';
 
 interface ProductRecipeListProps {
   productId: number;
@@ -27,7 +28,9 @@ const ProductRecipeList = ({ productId }: ProductRecipeListProps) => {
     <ul className={container}>
       {recipeToDisplay.map((recipe) => (
         <li key={recipe.id}>
-          <RecipeItem recipe={recipe} hasFavoriteButton />
+          <RecipeItemProvider recipe={recipe}>
+            <DefaultRecipeItem />
+          </RecipeItemProvider>
         </li>
       ))}
       {recipeToDisplay.length < recipes.length && (
