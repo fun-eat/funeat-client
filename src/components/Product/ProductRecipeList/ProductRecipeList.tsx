@@ -4,7 +4,6 @@ import { container, moreIcon, moreIconWrapper, moreItem, moreLink } from './prod
 
 import { SvgIcon, Text } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
-import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useInfiniteProductRecipesQuery } from '@/hooks/queries/product';
 import { vars } from '@/styles/theme.css';
 import displaySlice from '@/utils/displaySlice';
@@ -28,9 +27,7 @@ const ProductRecipeList = ({ productId }: ProductRecipeListProps) => {
     <ul className={container}>
       {recipeToDisplay.map((recipe) => (
         <li key={recipe.id}>
-          <RecipeItemProvider recipe={recipe}>
-            <DefaultRecipeItem />
-          </RecipeItemProvider>
+          <DefaultRecipeItem recipe={recipe} />
         </li>
       ))}
       {recipeToDisplay.length < recipes.length && (

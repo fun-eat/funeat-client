@@ -28,6 +28,7 @@ import {
 } from '@/constants/image';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
+import type { Recipe } from '@/types/recipe';
 import { getRelativeDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
 
@@ -39,8 +40,12 @@ const defaultImages = [
   RECIPE_CARD_DEFAULT_IMAGE_URL_5,
 ];
 
-const RecipeItem = ({ children }: PropsWithChildren) => {
-  const { recipe } = useRecipeItemValueContext();
+interface RecipeItemProps {
+  recipe: Recipe;
+  children?: React.ReactNode;
+}
+
+const RecipeItem = ({ recipe, children }: RecipeItemProps) => {
   const { id } = recipe;
 
   return (
@@ -178,9 +183,9 @@ RecipeItem.Content = Content;
 
 export default RecipeItem;
 
-export const DefaultRecipeItem = () => {
+export const DefaultRecipeItem = ({ recipe }: RecipeItemProps) => {
   return (
-    <RecipeItem>
+    <RecipeItem recipe={recipe}>
       <RecipeItem.ImageAndFavoriteButton />
       <div style={{ height: '8px' }} />
       <RecipeItem.Title />
@@ -189,9 +194,9 @@ export const DefaultRecipeItem = () => {
   );
 };
 
-export const RecipeItemWithDiskIcon = () => {
+export const RecipeItemWithDiskIcon = ({ recipe }: RecipeItemProps) => {
   return (
-    <RecipeItem>
+    <RecipeItem recipe={recipe}>
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductButton />
       </RecipeItem.ImageAndFavoriteButton>
@@ -202,9 +207,9 @@ export const RecipeItemWithDiskIcon = () => {
   );
 };
 
-export const RecipeItemWithProductDetailImage = () => {
+export const RecipeItemWithProductDetailImage = ({ recipe }: RecipeItemProps) => {
   return (
-    <RecipeItem>
+    <RecipeItem recipe={recipe}>
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductCircleButton />
       </RecipeItem.ImageAndFavoriteButton>
@@ -216,9 +221,9 @@ export const RecipeItemWithProductDetailImage = () => {
   );
 };
 
-export const RecipeItemWithDiskIconAndContent = () => {
+export const RecipeItemWithDiskIconAndContent = ({ recipe }: RecipeItemProps) => {
   return (
-    <RecipeItem>
+    <RecipeItem recipe={recipe}>
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductButton />
       </RecipeItem.ImageAndFavoriteButton>

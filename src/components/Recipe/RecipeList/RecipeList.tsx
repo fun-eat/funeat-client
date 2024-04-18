@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { container } from './recipeList.css';
 import { RecipeItemWithDiskIconAndContent } from '../RecipeItem/RecipeItem';
 
-import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipesQuery } from '@/hooks/queries/recipe';
 import type { SortOption } from '@/types/common';
@@ -28,9 +27,7 @@ const RecipeList = ({ selectedOption }: RecipeListProps) => {
       <ul className={container}>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <RecipeItemProvider recipe={recipe}>
-              <RecipeItemWithDiskIconAndContent />
-            </RecipeItemProvider>
+            <RecipeItemWithDiskIconAndContent recipe={recipe} />
           </li>
         ))}
       </ul>

@@ -7,19 +7,11 @@ import RecipeItem, {
   RecipeItemWithProductDetailImage,
 } from './RecipeItem';
 
-import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import mockRecipe from '@/mocks/data/recipes.json';
 
 const meta: Meta<typeof RecipeItem> = {
   title: 'recipe/RecipeItem',
   component: RecipeItem,
-  decorators: [
-    (Story) => (
-      <RecipeItemProvider recipe={mockRecipe.recipes[1]}>
-        <Story />
-      </RecipeItemProvider>
-    ),
-  ],
 };
 
 export default meta;
@@ -27,24 +19,24 @@ type Story = StoryObj<typeof RecipeItem>;
 
 export const Default: Story = {
   render: () => {
-    return <DefaultRecipeItem />;
+    return <DefaultRecipeItem recipe={mockRecipe.recipes[1]} />;
   },
 };
 
 export const Recipe: Story = {
   render: () => {
-    return <RecipeItemWithDiskIconAndContent />;
+    return <RecipeItemWithDiskIconAndContent recipe={mockRecipe.recipes[1]} />;
   },
 };
 
 export const MyPage: Story = {
   render: () => {
-    return <RecipeItemWithProductDetailImage />;
+    return <RecipeItemWithProductDetailImage recipe={mockRecipe.recipes[1]} />;
   },
 };
 
 export const Search: Story = {
   render: () => {
-    return <RecipeItemWithDiskIcon />;
+    return <RecipeItemWithDiskIcon recipe={mockRecipe.recipes[1]} />;
   },
 };
