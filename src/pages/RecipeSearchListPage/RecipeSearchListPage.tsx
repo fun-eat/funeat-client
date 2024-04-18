@@ -1,12 +1,11 @@
 import { useRef } from 'react';
-import { Link, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 import { listWrapper } from './recipeSearchListPage.css';
 
 import { PageHeader } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
 import SearchNotFound from '@/components/Search/SearchNotFound/SearchNotFound';
-import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
 
@@ -30,9 +29,7 @@ export const RecipeSearchListPage = () => {
       <ul className={listWrapper}>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <Link to={`${PATH.RECIPE}/${recipe.id}`}>
-              <DefaultRecipeItem recipe={recipe} />
-            </Link>
+            <DefaultRecipeItem recipe={recipe} />
           </li>
         ))}
       </ul>

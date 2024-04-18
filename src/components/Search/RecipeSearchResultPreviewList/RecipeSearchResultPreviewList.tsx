@@ -32,9 +32,7 @@ const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPrevie
       {displaySlice(false, recipes, 4).map((recipe, idx) => (
         <li key={recipe.id}>
           {idx < 4 ? (
-            <Link to={`${PATH.RECIPE}/${recipe.id}`}>
-              <DefaultRecipeItem recipe={recipe} />
-            </Link>
+            <DefaultRecipeItem recipe={recipe} />
           ) : (
             <Link to={`${PATH.SEARCH}/recipes?query=${searchQuery}`} className={linkWrapper}>
               <div className={showMore}>
