@@ -10,6 +10,7 @@ import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
 import { vars } from '@/styles/theme.css';
+import displaySlice from '@/utils/displaySlice';
 
 interface RecipeSearchResultPreviewListProps {
   searchQuery: string;
@@ -28,7 +29,7 @@ const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPrevie
 
   return (
     <ul className={listWrapper}>
-      {recipes.map((recipe, idx) => (
+      {displaySlice(false, recipes, 4).map((recipe, idx) => (
         <li key={recipe.id}>
           {idx < 4 ? (
             <Link to={`${PATH.RECIPE}/${recipe.id}`}>
