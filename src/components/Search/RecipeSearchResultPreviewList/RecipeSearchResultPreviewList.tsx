@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { listWrapper, showMore } from './recipeSearchResultPreviewList.css';
+import { linkWrapper, listWrapper, showMore } from './recipeSearchResultPreviewList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
 import { SvgIcon, Text } from '@/components/Common';
@@ -36,12 +36,12 @@ const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPrevie
               <DefaultRecipeItem recipe={recipe} />
             </Link>
           ) : (
-            <Link to={`${PATH.SEARCH}/recipes?query=${searchQuery}`}>
+            <Link to={`${PATH.SEARCH}/recipes?query=${searchQuery}`} className={linkWrapper}>
               <div className={showMore}>
                 <SvgIcon variant="arrowRight" stroke={vars.colors.gray5} />
               </div>
               <Text size="caption2" weight="semiBold" color="info">
-                더보기
+                전체보기
               </Text>
             </Link>
           )}

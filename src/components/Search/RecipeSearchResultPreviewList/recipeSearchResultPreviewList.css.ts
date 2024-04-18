@@ -17,3 +17,11 @@ export const showMore = style({
   background: vars.colors.secondary1,
   borderRadius: '50%',
 });
+
+export const linkWrapper = style({
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 12,
+  alignItems: 'center',
+  width: 45,
+});
