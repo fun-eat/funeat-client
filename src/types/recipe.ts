@@ -24,8 +24,8 @@ export interface Recipe {
   author: Member;
   createdAt: string;
   favorite: boolean;
-  content: string;
-  products: RecipeProduct[];
+  content?: string;
+  products?: RecipeProduct[];
 }
 
 export type MemberRecipe = Recipe;
