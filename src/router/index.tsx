@@ -213,6 +213,15 @@ const router = createBrowserRouter([
           return { Component: ProductSearchListPage };
         },
       },
+      {
+        path: `${PATH.SEARCH}/recipes`,
+        async lazy() {
+          const { RecipeSearchListPage } = await import(
+            /* webpackChunkName: "RecipeSearchListPage" */ '@/pages/RecipeSearchListPage/RecipeSearchListPage'
+          );
+          return { Component: RecipeSearchListPage };
+        },
+      },
     ],
   },
 ]);
