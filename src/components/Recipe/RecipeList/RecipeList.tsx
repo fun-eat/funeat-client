@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 
 import { container } from './recipeList.css';
-import RecipeItem from '../RecipeItem/RecipeItem';
+import { RecipeItemWithDiskIconAndContent } from '../RecipeItem/RecipeItem';
 
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipesQuery } from '@/hooks/queries/recipe';
@@ -27,7 +27,7 @@ const RecipeList = ({ selectedOption }: RecipeListProps) => {
       <ul className={container}>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <RecipeItem recipe={recipe} hasFavoriteButton hasProductButton hasContent />
+            <RecipeItemWithDiskIconAndContent recipe={recipe} />
           </li>
         ))}
       </ul>
