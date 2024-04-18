@@ -87,13 +87,8 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
           <Text size="caption4" color="disabled">
             {commentValue.length}/200
           </Text>
-          <button className={sendButton}>
-            <SvgIcon
-              variant="plane"
-              width={18}
-              height={18}
-              fill={commentValue.length === 0 ? vars.colors.gray3 : vars.colors.gray5}
-            />
+          <button className={commentValue.length === 0 ? sendButton['disabled'] : sendButton['active']}>
+            <SvgIcon variant="plane" width={14} height={14} fill={vars.colors.white} />
           </button>
         </form>
       </>

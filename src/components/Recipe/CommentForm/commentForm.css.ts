@@ -1,5 +1,5 @@
 import { vars } from '@/styles/theme.css';
-import { style } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css';
 
 export const container = style({
   display: 'flex',
@@ -38,6 +38,14 @@ export const profileImage = style({
   borderRadius: '50%',
 });
 
-export const sendButton = style({
+export const sendButtonStyles = style({
   display: 'inherit',
+  width: 36,
+  borderRadius: 45,
+  padding: '4px 10px',
+});
+
+export const sendButton = styleVariants({
+  active: [sendButtonStyles, { background: vars.colors.primary }],
+  disabled: [sendButtonStyles, { background: vars.colors.gray3 }],
 });
