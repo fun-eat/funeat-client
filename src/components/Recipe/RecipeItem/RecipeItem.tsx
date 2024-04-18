@@ -182,7 +182,7 @@ export const DefaultRecipeItem = () => {
   return (
     <RecipeItem>
       <RecipeItem.ImageAndFavoriteButton />
-      <div style={{ height: '4px' }} />
+      <div style={{ height: '8px' }} />
       <RecipeItem.Title />
       <RecipeItem.AuthorAndCreatedDate />
     </RecipeItem>
@@ -195,7 +195,7 @@ export const RecipeItemWithDiskIcon = () => {
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductButton />
       </RecipeItem.ImageAndFavoriteButton>
-      <div style={{ height: '4px' }} />
+      <div style={{ height: '8px' }} />
       <RecipeItem.Title />
       <RecipeItem.AuthorAndCreatedDate />
     </RecipeItem>
@@ -208,7 +208,7 @@ export const RecipeItemWithProductDetailImage = () => {
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductCircleButton />
       </RecipeItem.ImageAndFavoriteButton>
-      <div style={{ height: '4px' }} />
+      <div style={{ height: '8px' }} />
       <RecipeItem.Title />
       <RecipeItem.Author />
       <RecipeItem.Content />
@@ -222,7 +222,7 @@ export const RecipeItemWithDiskIconAndContent = () => {
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductButton />
       </RecipeItem.ImageAndFavoriteButton>
-      <div style={{ height: '4px' }} />
+      <div style={{ height: '8px' }} />
       <RecipeItem.Title />
       <RecipeItem.AuthorAndCreatedDate />
       <RecipeItem.Content />

@@ -3,6 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const imageWrapper = style({
   position: 'relative',
+  lineHeight: 0,
 });
 
 export const recipeImage = style({
@@ -22,7 +23,7 @@ export const favoriteButtonWrapper = style({
 
 export const productButtonWrapper = style({
   position: 'absolute',
-  bottom: 12,
+  bottom: 8,
   left: 8,
 });
 
