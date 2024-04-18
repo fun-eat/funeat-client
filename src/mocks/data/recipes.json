@@ -34,6 +34,27 @@
           "name": "콘치즈",
           "price": 1500,
           "averageRating": 4.0
+        },
+        {
+          "id": 3,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 4,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "name": "콘치즈",
+          "price": 1500,
+          "averageRating": 4.0
         }
       ]
     },

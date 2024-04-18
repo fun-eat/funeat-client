@@ -12,12 +12,3 @@ export interface ReviewRanking {
   categoryType: CategoryVariant;
   tags: Tag[];
 }
-
-export interface RecipeRanking {
-  id: number;
-  image: string | null;
-  title: string;
-  author: string;
-  favorite: boolean;
-  createdAt: string;
-}
