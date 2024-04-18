@@ -5,7 +5,7 @@ import { listWrapper, showMore } from './recipeSearchResultPreviewList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
 import { SvgIcon, Text } from '@/components/Common';
-import { RecipeItem } from '@/components/Recipe';
+import { DefaultRecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
@@ -33,7 +33,7 @@ const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPrevie
         <li key={recipe.id}>
           {idx < 4 ? (
             <Link to={`${PATH.RECIPE}/${recipe.id}`}>
-              <RecipeItem recipe={recipe} />
+              <DefaultRecipeItem recipe={recipe} />
             </Link>
           ) : (
             <Link to={`${PATH.SEARCH}/recipes?query=${searchQuery}`}>

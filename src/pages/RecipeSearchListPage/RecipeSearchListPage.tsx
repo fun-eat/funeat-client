@@ -4,7 +4,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { listWrapper } from './recipeSearchListPage.css';
 
 import { PageHeader } from '@/components/Common';
-import { RecipeItem } from '@/components/Recipe';
+import { DefaultRecipeItem } from '@/components/Recipe';
 import SearchNotFound from '@/components/Search/SearchNotFound/SearchNotFound';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
@@ -31,7 +31,7 @@ export const RecipeSearchListPage = () => {
         {recipes.map((recipe) => (
           <li key={recipe.id}>
             <Link to={`${PATH.RECIPE}/${recipe.id}`}>
-              <RecipeItem recipe={recipe} />
+              <DefaultRecipeItem recipe={recipe} />
             </Link>
           </li>
         ))}
