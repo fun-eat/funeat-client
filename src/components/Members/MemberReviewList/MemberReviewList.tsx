@@ -34,8 +34,7 @@ const MemberReviewList = ({ isPreview = false }: MemberReviewListProps) => {
   // }
 
   return (
-    <section>
-      <div style={{ height: '20px' }} />
+    <>
       <ul>
         {reviewsToDisplay.map((review) => (
           <>
@@ -47,7 +46,7 @@ const MemberReviewList = ({ isPreview = false }: MemberReviewListProps) => {
         ))}
       </ul>
       <div ref={scrollRef} aria-hidden />
-    </section>
+    </>
   );
 };
 

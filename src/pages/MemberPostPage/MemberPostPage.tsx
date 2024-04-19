@@ -2,14 +2,11 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
-import { container } from './memberPostPage.css';
-
 import { ErrorBoundary, ErrorComponent, Loading, TabMenu, TopBar } from '@/components/Common';
 import { MemberRecipeList, MemberReviewList } from '@/components/Members';
 import { POST_TYPE } from '@/constants';
 import { useTabMenu } from '@/hooks/common';
 import type { MemberPostVariant, Tab } from '@/types/common';
-
 
 const TAB_MENUS: Tab<MemberPostVariant>[] = [
   { value: POST_TYPE.RECIPE, label: '꿀조합' },
@@ -30,9 +27,10 @@ export const MemberPostPage = () => {
 
       <TabMenu tabMenus={TAB_MENUS} selectedTabMenu={selectedTabMenu} handleTabMenuSelect={handleTabMenuClick} />
 
-      <section className={container} ref={memberRecipeRef}>
+      <section ref={memberRecipeRef}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
+            <div style={{ height: '20px' }} />
             {selectedTabMenu === TAB_MENUS[0].value ? <MemberRecipeList /> : <MemberReviewList />}
           </Suspense>
         </ErrorBoundary>
