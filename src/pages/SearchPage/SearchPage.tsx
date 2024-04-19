@@ -6,7 +6,7 @@ import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTit
 import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
 import {
   ProductSearchResultPreviewList,
-  RecipeSearchResultList,
+  RecipeSearchResultPreviewList,
   RecommendList,
   SearchInput,
 } from '@/components/Search';
@@ -87,7 +87,7 @@ export const SearchPage = () => {
               </Text>
               <ErrorBoundary fallback={ErrorComponent}>
                 <Suspense fallback={<Loading />}>
-                  <RecipeSearchResultList searchQuery={searchQuery} />
+                  <RecipeSearchResultPreviewList searchQuery={searchQuery} />
                 </Suspense>
               </ErrorBoundary>
             </div>

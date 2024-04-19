@@ -66,7 +66,7 @@ export const ProductDetailPage = () => {
           <div style={{ height: '24px' }} />
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
             <Suspense fallback={<Loading />}>
-              <ProductRecipeList productId={Number(productId)} />
+              <ProductRecipeList productId={Number(productId)} productName={productDetail.name} />
             </Suspense>
           </ErrorBoundary>
         </section>

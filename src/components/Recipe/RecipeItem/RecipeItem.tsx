@@ -26,6 +26,7 @@ import {
   RECIPE_CARD_DEFAULT_IMAGE_URL_4,
   RECIPE_CARD_DEFAULT_IMAGE_URL_5,
 } from '@/constants/image';
+import { PATH } from '@/constants/path';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
 import type { Recipe } from '@/types/recipe';
@@ -50,7 +51,7 @@ const RecipeItem = ({ recipe, children }: RecipeItemProps) => {
 
   return (
     <RecipeItemProvider recipe={recipe}>
-      <Link to={`${id}`}>{children}</Link>
+      <Link to={`${PATH.RECIPE}/${id}`}>{children}</Link>
     </RecipeItemProvider>
   );
 };

@@ -1,18 +1,17 @@
-import { Link } from 'react-router-dom';
+import { container, moreItem } from './productRecipeList.css';
 
-import { container, moreIcon, moreIconWrapper, moreItem, moreLink } from './productRecipeList.css';
-
-import { SvgIcon, Text } from '@/components/Common';
+import { ShowAllButton } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
+import { PATH } from '@/constants/path';
 import { useInfiniteProductRecipesQuery } from '@/hooks/queries/product';
-import { vars } from '@/styles/theme.css';
 import displaySlice from '@/utils/displaySlice';
 
 interface ProductRecipeListProps {
   productId: number;
+  productName: string;
 }
 
-const ProductRecipeList = ({ productId }: ProductRecipeListProps) => {
+const ProductRecipeList = ({ productId, productName }: ProductRecipeListProps) => {
   // 상품에서 보여줄 꿀조합 정렬 조건
   const { data } = useInfiniteProductRecipesQuery(productId, 'favoriteCount,desc');
 
@@ -32,15 +31,7 @@ const ProductRecipeList = ({ productId }: ProductRecipeListProps) => {
       ))}
       {recipeToDisplay.length < recipes.length && (
         <li className={moreItem}>
-          {/*링크는 상품이 포함된 꿀조합 검색결과로 가는 것이 맞을듯?*/}
-          <Link to={''} className={moreLink}>
-            <div className={moreIconWrapper}>
-              <SvgIcon variant="arrowLeft" className={moreIcon} fill="none" stroke={vars.colors.gray5} />
-            </div>
-            <Text as="span" color="info" weight="semiBold" size="caption2">
-              전체보기
-            </Text>
-          </Link>
+          <ShowAllButton link={`${PATH.SEARCH}/recipes?query=${productName}`} />
         </li>
       )}
     </ul>

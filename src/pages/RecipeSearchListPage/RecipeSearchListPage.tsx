@@ -1,19 +1,18 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
-import { styled } from 'styled-components';
+import { useSearchParams } from 'react-router-dom';
 
-import SearchNotFound from '../SearchNotFound/SearchNotFound';
+import { listWrapper } from './recipeSearchListPage.css';
 
-import { RecipeItem } from '@/components/Recipe';
-import { PATH } from '@/constants/path';
+import { TopBar } from '@/components/Common';
+import { DefaultRecipeItem } from '@/components/Recipe';
+import SearchNotFound from '@/components/Search/SearchNotFound/SearchNotFound';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
 
-interface RecipeSearchResultListProps {
-  searchQuery: string;
-}
+export const RecipeSearchListPage = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get('query') || '';
 
-const RecipeSearchResultList = ({ searchQuery }: RecipeSearchResultListProps) => {
   const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteRecipeSearchResultsQuery(searchQuery);
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
@@ -26,24 +25,19 @@ const RecipeSearchResultList = ({ searchQuery }: RecipeSearchResultListProps) =>
 
   return (
     <>
-      <RecipeSearchResultListContainer>
+      <TopBar>
+        <TopBar.BackLink />
+        <TopBar.Title title={`'${searchQuery}'이/가 포함된 꿀조합`} />
+        <TopBar.Spacer />
+      </TopBar>
+      <ul className={listWrapper}>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
-            <Link to={`${PATH.RECIPE}/${recipe.id}`}>
-              <RecipeItem recipe={recipe} />
-            </Link>
+            <DefaultRecipeItem recipe={recipe} />
           </li>
         ))}
-      </RecipeSearchResultListContainer>
+      </ul>
       <div ref={scrollRef} aria-hidden />
     </>
   );
 };
-
-export default RecipeSearchResultList;
-
-const RecipeSearchResultListContainer = styled.ul`
-  & > li + li {
-    margin-top: 40px;
-  }
-`;
