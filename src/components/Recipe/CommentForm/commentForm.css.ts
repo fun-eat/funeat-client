@@ -34,10 +34,6 @@ export const commentTextarea = style({
   },
 });
 
-export const profileImage = style({
-  borderRadius: '50%',
-});
-
 export const sendButtonStyles = style({
   display: 'inherit',
   width: 36,
