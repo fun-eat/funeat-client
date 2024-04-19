@@ -26,8 +26,9 @@ export interface MemberReview {
   productName: string;
   content: string;
   rating: number;
-  favoriteCount: number;
-  categoryType: CategoryVariant;
+  createdAt: string;
+  tags: Tag[];
+  image?: string;
 }
 
 export interface ReviewTag {
