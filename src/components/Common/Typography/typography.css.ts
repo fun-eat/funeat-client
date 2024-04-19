@@ -28,6 +28,7 @@ export const typography = recipe({
       regular: { fontWeight: 400 },
       medium: { fontWeight: 500 },
       semiBold: { fontWeight: 600 },
+      bold: { fontWeight: 700 },
     },
   },
   defaultVariants: {
