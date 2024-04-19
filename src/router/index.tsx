@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: PATH.MEMBER,
         async lazy() {
-          const { MemberPage } = await import(/* webpackChunkName: "MemberPage" */ '@/pages/MemberPage');
+          const { MemberPage } = await import(/* webpackChunkName: "MemberPage" */ '@/pages/MemberPage/MemberPage');
           return { Component: MemberPage };
         },
       },

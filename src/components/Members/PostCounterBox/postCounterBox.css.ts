@@ -5,7 +5,7 @@ export const container = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  width: 335,
+  width: '100%',
   height: 80,
 
   background: vars.colors.border.light,
