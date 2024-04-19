@@ -30,31 +30,16 @@
       "tags": [
         {
           "id": 5,
-          "name": "👶 어린이입맛",
+          "name": "👶 초딩입맛",
           "tagType": "TASTE"
         },
         {
           "id": 1,
-          "name": "🍺 속이 풀려요",
+          "name": "🍺 속풀려요",
           "tagType": "TASTE"
         },
         {
           "id": 6,
-          "name": "🍳 아침식사",
-          "tagType": "TASTE"
-        }
-      ]
-    },
-    {
-      "reviewId": 3,
-      "productId": 2,
-      "productName": "하얀짜파게티큰사발",
-      "content": "하얀 짜파게티라니 말이 안된다고 생각했었죠. 실제로 맛을 보니까 까만 짜파게티랑 맛이 뭔가 다를게 없네요.",
-      "image": "https://image.funeat.site/prod/b9f82f35-e4ef-4acc-81a4-f3e07f8c0c738B1A8A65-8D48-4A8A-9474-EA3B6F0797BD.webp",
-      "categoryType": "food",
-      "tags": [
-        {
-          "id": 5,
           "name": "🍳 아침식사",
           "tagType": "TASTE"
         }
