@@ -1,22 +1,11 @@
 import { memo } from 'react';
 
-import {
-  date,
-  favoriteWrapper,
-  memberImage,
-  memberInfo,
-  ratingInfo,
-  ratingNumber,
-  ratingWrapper,
-  reviewContent,
-  reviewImage,
-} from './reviewItem.css';
+import { favoriteWrapper, memberImage, memberInfo, reviewContent, reviewImage } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 
-import { Badge, SvgIcon, TagList, Text } from '@/components/Common';
+import { Badge, StarRating, TagList, Text } from '@/components/Common';
 import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
-import { getRelativeDate } from '@/utils/date';
 
 interface ReviewItemProps {
   productId: number;
@@ -44,25 +33,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
 
       <div style={{ height: '12px' }} />
 
-      <div className={ratingWrapper}>
-        <div className={ratingInfo}>
-          <Text as="span" size="caption3" weight="medium" className={ratingNumber}>
-            {rating.toFixed(1)}
-          </Text>
-          {Array.from({ length: 5 }, (_, index) => (
-            <SvgIcon
-              key={`rating-${index}`}
-              variant="star2"
-              fill={index < rating ? vars.colors.icon.fill : vars.colors.icon.light}
-              width={13}
-              height={13}
-            />
-          ))}
-        </div>
-        <Text as="span" size="caption4" color="disabled" className={date}>
-          {getRelativeDate(createdAt)}
-        </Text>
-      </div>
+      <StarRating rating={rating} createdAt={createdAt} />
 
       <div style={{ height: '8px' }} />
 
