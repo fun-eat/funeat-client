@@ -10,15 +10,7 @@ export const reviewImage = style({
   aspectRatio: '164 / 90',
 });
 
-export const reviewTitle = style({
-  fontSize: 13,
-  fontWeight: 600,
-  color: '#3d3d3d',
-});
-
 export const reviewContent = style({
-  fontSize: 11,
-  color: '#808080',
   display: '-webkit-inline-box',
   textOverflow: 'ellipsis',
   overflow: 'hidden',
