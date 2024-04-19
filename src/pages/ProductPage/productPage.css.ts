@@ -1,4 +1,5 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { vars } from '@/styles/theme.css';
+import { style } from '@vanilla-extract/css';
 
 export const tabMenuWrapper = style({
   display: 'flex',
@@ -11,19 +12,7 @@ export const tabMenu = style({
   width: '50%',
   height: 40,
   textAlign: 'center',
-  borderBottom: '1px solid #e6e6e6',
-});
-
-const menuNameBase = style({
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  height: '100%',
-});
-
-export const menuName = styleVariants({
-  active: [menuNameBase, { fontWeight: 700, color: '#232527', borderBottom: '3px solid #444' }],
-  default: [menuNameBase, { fontWeight: 600, color: '#999' }],
+  borderBottom: `1px solid ${vars.colors.border.default}`,
 });
 
 export const categorySection = style({
@@ -31,7 +20,7 @@ export const categorySection = style({
 });
 
 export const productSection = style({
-  margin: '28px 0 32px',
+  margin: '28px 0 36px',
 });
 
 export const list = style({
