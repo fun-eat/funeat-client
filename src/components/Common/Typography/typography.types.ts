@@ -1,6 +1,6 @@
 import type { ElementType, ComponentPropsWithoutRef } from 'react';
 
-import type { text } from './text.css';
+import type { typography } from './typography.css';
 
 import type { RecipeVariants } from '@vanilla-extract/recipes';
 
@@ -12,8 +12,7 @@ export type Color = (typeof colors)[number];
 export type Size = (typeof sizes)[number];
 export type Weight = (typeof weights)[number];
 
-export type TextVariants = RecipeVariants<typeof text>;
-
 export type OverridableComponentPropsWithoutRef<T extends ElementType, P = unknown> = P &
   ComponentPropsWithoutRef<T> & { as?: T };
-export type TextElement = Extract<ElementType, 'p' | 'span'>;
+
+export type TypographyVariants = RecipeVariants<typeof typography>;
