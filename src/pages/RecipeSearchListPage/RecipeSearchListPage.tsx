@@ -26,8 +26,8 @@ export const RecipeSearchListPage = () => {
   return (
     <>
       <TopBar>
-        <TopBar.Title title={`'${searchQuery}'이/가 포함된 꿀조합`} />
         <TopBar.BackLink />
+        <TopBar.Title title={`'${searchQuery}'이/가 포함된 꿀조합`} />
         <TopBar.Spacer />
       </TopBar>
       <ul className={listWrapper}>
