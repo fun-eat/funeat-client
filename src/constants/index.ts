@@ -59,6 +59,11 @@ export const CATEGORY_TYPE = {
   STORE: 'store',
 } as const;
 
+export const POST_TYPE = {
+  REVIEW: 'review',
+  RECIPE: 'recipe',
+} as const;
+
 export const IMAGE_MAX_SIZE = 5 * 1024 * 1024;
 
 export const ENVIRONMENT = window.location.href.includes('dev')

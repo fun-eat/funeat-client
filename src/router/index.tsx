@@ -35,21 +35,12 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.MEMBER}/review`,
+        path: `${PATH.MEMBER}/post`,
         async lazy() {
-          const { MemberReviewPage } = await import(
-            /* webpackChunkName: "MemberReviewPage" */ '@/pages/MemberReviewPage'
+          const { MemberPostPage } = await import(
+            /* webpackChunkName: "MemberPostPage" */ '@/pages/MemberPostPage/MemberPostPage'
           );
-          return { Component: MemberReviewPage };
-        },
-      },
-      {
-        path: `${PATH.MEMBER}/recipe`,
-        async lazy() {
-          const { MemberRecipePage } = await import(
-            /* webpackChunkName: "MemberRecipePage" */ '@/pages/MemberRecipePage'
-          );
-          return { Component: MemberRecipePage };
+          return { Component: MemberPostPage };
         },
       },
     ],
