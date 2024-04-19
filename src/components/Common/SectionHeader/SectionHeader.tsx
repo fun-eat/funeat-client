@@ -17,7 +17,7 @@ const SectionHeader = ({ name, link, state }: SectionHeaderProps) => {
       <h1 className={title}>{name}</h1>
       {link && (
         <Link to={link} state={state}>
-          <SvgIcon variant="arrowRight" width={20} height={20} />
+          <SvgIcon variant="arrowRight" width={20} height={20} style={{ transform: 'translateY(2px)' }} />
         </Link>
       )}
     </div>
