@@ -19,7 +19,7 @@ export const registerButtonWrapper = style({
   alignItems: 'flex-end',
   width: '100%',
   height: 70,
-  maxWidth: 400,
+  maxWidth: 440,
   padding: '0 20px',
   borderTop: `1px solid ${vars.colors.border.default}`,
   backgroundColor: vars.colors.background.default,

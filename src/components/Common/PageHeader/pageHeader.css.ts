@@ -5,7 +5,7 @@ export const container = style({
   top: 0,
   left: '50%',
   width: '100%',
-  maxWidth: 400,
+  maxWidth: 440,
   height: 50,
   display: 'flex',
   justifyContent: 'space-between',

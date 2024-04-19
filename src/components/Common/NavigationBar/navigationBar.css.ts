@@ -6,7 +6,7 @@ export const container = style({
   bottom: 0,
   left: '50%',
   width: '100%',
-  maxWidth: 400,
+  maxWidth: 440,
   backgroundColor: vars.colors.white,
   transform: 'translateX(-50%)',
 });
