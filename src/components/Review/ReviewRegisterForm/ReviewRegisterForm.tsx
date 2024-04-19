@@ -24,7 +24,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
   const { previewImage, imageFile, uploadImage, deleteImage } = useImageUploader();
   const navigate = useNavigate();
 
-  const { reviewFormValue } = useReviewFormValueContext();
+  const { formValue: reviewFormValue } = useReviewFormValueContext();
   const { handleReviewFormValue, resetReviewFormValue } = useReviewFormActionContext();
   const { toast } = useToastActionContext();
 

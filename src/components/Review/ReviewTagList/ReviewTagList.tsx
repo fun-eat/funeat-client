@@ -11,7 +11,7 @@ import { useReviewTagsQuery } from '@/hooks/queries/review';
 const ReviewTagList = () => {
   const { data: tagsData } = useReviewTagsQuery();
   const {
-    reviewFormValue: { tags: selectedTags },
+    formValue: { tags: selectedTags },
   } = useReviewFormValueContext();
   const { handleReviewFormValue } = useReviewFormActionContext();
 

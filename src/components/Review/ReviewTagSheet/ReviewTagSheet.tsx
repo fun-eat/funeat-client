@@ -12,7 +12,7 @@ interface ReviewTagSheetProps {
 
 const ReviewTagSheet = ({ close }: ReviewTagSheetProps) => {
   const {
-    reviewFormValue: { tags },
+    formValue: { tags },
   } = useReviewFormValueContext();
 
   const isValid = tags.length >= MIN_DISPLAYED_TAGS_LENGTH && tags.length <= MAX_DISPLAYED_TAGS_LENGTH;

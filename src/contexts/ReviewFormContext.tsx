@@ -10,17 +10,17 @@ export interface TagValue {
   name: string;
 }
 
-type ReviewFormValue = Omit<ReviewRequest, 'tagIds'> & { tags: TagValue[] };
-type ReviewFormValues = Exclude<ReviewFormValue[keyof ReviewFormValue], TagValue[]> | TagValue;
+type FormValue = Omit<ReviewRequest, 'tagIds'> & { tags: TagValue[] };
+type FormValues = Exclude<FormValue[keyof FormValue], TagValue[]> | TagValue;
 
 interface ReviewFormActionParams {
-  target: keyof ReviewFormValue;
-  value: ReviewFormValues;
+  target: keyof FormValue;
+  value: FormValues;
 }
 
-interface Value {
+interface ReviewFormValue {
   isValid: boolean;
-  reviewFormValue: ReviewFormValue;
+  formValue: FormValue;
 }
 
 interface ReviewFormAction {
@@ -28,7 +28,7 @@ interface ReviewFormAction {
   resetReviewFormValue: () => void;
 }
 
-const initialReviewFormValue: ReviewFormValue = {
+const initialFormValue: FormValue = {
   rating: 0,
   tags: [],
   content: '',
@@ -38,25 +38,25 @@ const initialReviewFormValue: ReviewFormValue = {
 const MIN_RATING_SCORE = 0;
 const MIN_CONTENT_LENGTH = 10;
 
-const isTagValue = (value: ReviewFormValues): value is TagValue =>
+const isTagValue = (value: FormValues): value is TagValue =>
   typeof value === 'object' && 'id' in value && 'name' in value;
 const isSelectedTag = (tags: TagValue[], selectedTag: TagValue) => tags.some(({ id }) => id === selectedTag.id);
 
-export const ReviewFormValueContext = createContext<Value | null>(null);
+export const ReviewFormValueContext = createContext<ReviewFormValue | null>(null);
 export const ReviewFormActionContext = createContext<ReviewFormAction | null>(null);
 
 const ReviewFormProvider = ({ children }: PropsWithChildren) => {
-  const [reviewFormValue, setReviewFormValue] = useState(initialReviewFormValue);
+  const [formValue, setFormValue] = useState(initialFormValue);
   const { toast } = useToastActionContext();
 
   const isValid =
-    reviewFormValue.rating > MIN_RATING_SCORE &&
-    reviewFormValue.tags.length >= MIN_DISPLAYED_TAGS_LENGTH &&
-    reviewFormValue.tags.length <= MAX_DISPLAYED_TAGS_LENGTH &&
-    reviewFormValue.content.length >= MIN_CONTENT_LENGTH;
+    formValue.rating > MIN_RATING_SCORE &&
+    formValue.tags.length >= MIN_DISPLAYED_TAGS_LENGTH &&
+    formValue.tags.length <= MAX_DISPLAYED_TAGS_LENGTH &&
+    formValue.content.length >= MIN_CONTENT_LENGTH;
 
   const handleReviewFormValue = ({ target, value }: ReviewFormActionParams) => {
-    setReviewFormValue((prev) => {
+    setFormValue((prev) => {
       const targetValue = prev[target];
 
       if (isTagValue(value) && Array.isArray(targetValue)) {
@@ -77,12 +77,12 @@ const ReviewFormProvider = ({ children }: PropsWithChildren) => {
   };
 
   const resetReviewFormValue = () => {
-    setReviewFormValue(initialReviewFormValue);
+    setFormValue(initialFormValue);
   };
 
   const value = {
     isValid,
-    reviewFormValue,
+    formValue,
   };
 
   const reviewFormAction = {
