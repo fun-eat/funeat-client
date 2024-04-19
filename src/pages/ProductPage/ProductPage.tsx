@@ -18,6 +18,7 @@ import { ProductPreviewList } from '@/components/Product';
 import { CATEGORY_TYPE } from '@/constants';
 import { useTabMenu } from '@/hooks/common';
 import { useCategoryQuery } from '@/hooks/queries/product';
+import { vars } from '@/styles/theme.css';
 import type { CategoryVariant, Tab } from '@/types/common';
 
 const TAB_MENUS: Tab<CategoryVariant>[] = [
@@ -43,19 +44,19 @@ export const ProductPage = () => {
           {selectedTabMenu === TAB_MENUS[0].value ? (
             <CategoryFoodList location="products" hasName isCircular />
           ) : (
-            <CategoryStoreList location="products" hasName isBordered />
+            <CategoryStoreList hasName isBordered />
           )}
         </Suspense>
       </section>
 
-      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+      <div style={{ height: '12px', backgroundColor: vars.colors.border.light }} aria-hidden />
 
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>
           {categories.map(({ id, name }) => (
             <section key={id} className={productSection}>
               <SectionHeader name={getSectionTitle(selectedTabMenu, name)} link={`${selectedTabMenu}`} state={id} />
-              <Spacing size={7} />
+              <Spacing size={8} />
               <ProductPreviewList key={id} category={selectedTabMenu} categoryId={id} />
             </section>
           ))}
