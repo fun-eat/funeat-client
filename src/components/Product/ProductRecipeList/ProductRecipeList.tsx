@@ -12,7 +12,7 @@ import {
 
 import SearchNotFoundImage from '@/assets/search-notfound.png';
 import { SvgIcon, Text } from '@/components/Common';
-import { RecipeItem } from '@/components/Recipe';
+import { DefaultRecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useInfiniteProductRecipesQuery } from '@/hooks/queries/product';
 import { vars } from '@/styles/theme.css';
@@ -50,7 +50,7 @@ const ProductRecipeList = ({ productId }: ProductRecipeListProps) => {
     <ul className={container}>
       {recipeToDisplay.map((recipe) => (
         <li key={recipe.id}>
-          <RecipeItem recipe={recipe} hasFavoriteButton />
+          <DefaultRecipeItem recipe={recipe} />
         </li>
       ))}
       {recipeToDisplay.length < recipes.length && (
