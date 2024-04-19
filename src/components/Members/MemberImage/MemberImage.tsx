@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
-import DefaultMemberImage from '@/assets/defaultProfile.png';
 import { container } from './memberImage.css';
+
+import DefaultMemberImage from '@/assets/defaultProfile.png';
 
 interface MemberImageProps {
   src: string;
