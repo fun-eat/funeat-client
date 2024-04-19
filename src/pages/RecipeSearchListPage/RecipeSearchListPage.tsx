@@ -3,7 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { listWrapper } from './recipeSearchListPage.css';
 
-import { PageHeader } from '@/components/Common';
+import { TopBar } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
 import SearchNotFound from '@/components/Search/SearchNotFound/SearchNotFound';
 import { useIntersectionObserver } from '@/hooks/common';
@@ -25,7 +25,11 @@ export const RecipeSearchListPage = () => {
 
   return (
     <>
-      <PageHeader title={`'${searchQuery}'이/가 포함된 꿀조합`} hasBackLink />
+      <TopBar>
+        <TopBar.Title title={`'${searchQuery}'이/가 포함된 꿀조합`} />
+        <TopBar.BackLink />
+        <TopBar.Spacer />
+      </TopBar>
       <ul className={listWrapper}>
         {recipes.map((recipe) => (
           <li key={recipe.id}>
