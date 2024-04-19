@@ -48,5 +48,9 @@ module.exports = {
       },
     ],
   },
-  plugins: [new Dotenv(), new VanillaExtractPlugin(), new MiniCssExtractPlugin()],
+  plugins: [
+    new Dotenv(),
+    new VanillaExtractPlugin({ identifiers: ({ hash }) => `prefix_${hash}` }),
+    new MiniCssExtractPlugin(),
+  ],
 };
