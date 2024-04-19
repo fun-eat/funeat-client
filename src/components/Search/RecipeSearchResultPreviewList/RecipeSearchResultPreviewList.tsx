@@ -1,15 +1,13 @@
 import { useRef } from 'react';
-import { Link } from 'react-router-dom';
 
-import { linkWrapper, listWrapper, showMore } from './recipeSearchResultPreviewList.css';
+import { listWrapper } from './recipeSearchResultPreviewList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
-import { SvgIcon, Text } from '@/components/Common';
+import { ShowAllButton } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
-import { vars } from '@/styles/theme.css';
 import displaySlice from '@/utils/displaySlice';
 
 interface RecipeSearchResultPreviewListProps {
@@ -34,14 +32,7 @@ const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPrevie
           {idx < 4 ? (
             <DefaultRecipeItem recipe={recipe} />
           ) : (
-            <Link to={`${PATH.SEARCH}/recipes?query=${searchQuery}`} className={linkWrapper}>
-              <div className={showMore}>
-                <SvgIcon variant="arrowRight" stroke={vars.colors.gray5} />
-              </div>
-              <Text size="caption2" weight="semiBold" color="info">
-                전체보기
-              </Text>
-            </Link>
+            <ShowAllButton link={`${PATH.SEARCH}/recipes?query=${searchQuery}`} />
           )}
         </li>
       ))}
