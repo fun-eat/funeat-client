@@ -6,6 +6,7 @@ globalStyle('#root', {
   height: '100vh',
   maxWidth: 400,
   margin: '0 auto',
+  lineHeight: 1.4,
 });
 
 globalStyle('*::-webkit-scrollbar', {

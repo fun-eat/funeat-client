@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { RecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberRecipeQuery } from '@/hooks/queries/members';
@@ -50,7 +49,7 @@ const MemberRecipeList = ({ isPreview = false }: MemberRecipeListProps) => {
         {recipeToDisplay?.map((recipe) => (
           <li key={recipe.id}>
             <Link as={RouterLink} to={`${PATH.RECIPE}/${recipe.id}`}>
-              <RecipeItem recipe={recipe} isMemberPage={isPreview} />
+              {/* <RecipeItem recipe={recipe} isMemberPage={isPreview} /> */}
             </Link>
           </li>
         ))}

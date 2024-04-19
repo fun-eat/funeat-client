@@ -1,100 +1,64 @@
-import { Text, useTheme } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import {
+  previewWrapper,
+  productContent,
+  productDetails,
+  productImage,
+  productInfo,
+  productName,
+  productOverview,
+  summaryWrapper,
+} from './productDetailItem.css';
 
-import PreviewImage from '@/assets/characters.svg';
-import PBPreviewImage from '@/assets/samgakgimbab.svg';
-import { SvgIcon, TagList } from '@/components/Common';
-import { CATEGORY_TYPE } from '@/constants';
+import { SvgIcon, TagList, Text } from '@/components/Common';
 import type { ProductDetail } from '@/types/product';
 
 interface ProductDetailItemProps {
-  category: string;
   productDetail: ProductDetail;
 }
 
-const ProductDetailItem = ({ category, productDetail }: ProductDetailItemProps) => {
-  const { name, price, image, content, averageRating, tags } = productDetail;
-
-  const theme = useTheme();
+const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
+  const { name, price, image, content, averageRating, tags, reviewCount, category } = productDetail;
 
   return (
-    <ProductDetailContainer>
-      <ImageWrapper>
-        {image ? (
-          <img src={image} width={300} alt={name} />
-        ) : category === CATEGORY_TYPE.FOOD ? (
-          <PreviewImage width={300} />
-        ) : (
-          <PBPreviewImage width={300} />
-        )}
-      </ImageWrapper>
-      <DetailInfoWrapper>
+    <section>
+      <img src={image} className={productImage} height={328} alt={name} />
+
+      <div className={productOverview}>
+        <div className={productInfo}>
+          <div className={productDetails}>
+            <Text size="caption1" weight="medium">
+              {category.name}
+            </Text>
+            <h2 className={productName}>{name}</h2>
+            <Text weight="semiBold" size="display1">
+              {price.toLocaleString('ko-KR')}원
+            </Text>
+          </div>
+
+          <div className={summaryWrapper}>
+            <div className={previewWrapper}>
+              <SvgIcon variant="star2" width={14} height={14} fill="#ffc14a" />
+              <Text as="span" size="caption1" weight="medium" aria-label={`${averageRating}점`}>
+                {averageRating.toFixed(1)}
+              </Text>
+            </div>
+            <div className={previewWrapper}>
+              <SvgIcon variant="review2" width={14} height={14} fill="#ddd" />
+              <Text as="span" size="caption1" weight="medium" aria-label={`리뷰 ${reviewCount}개`}>
+                {reviewCount}
+              </Text>
+            </div>
+          </div>
+        </div>
+
+        <Text color="info" size="caption2" className={productContent}>
+          {content}
+        </Text>
+
         <TagList tags={tags} />
-        <DescriptionWrapper>
-          <Text weight="bold">가격</Text>
-          <Text>{price.toLocaleString('ko-KR')}원</Text>
-        </DescriptionWrapper>
-        <DescriptionWrapper>
-          <Text weight="bold">상품 설명</Text>
-          <ProductContent>{content}</ProductContent>
-        </DescriptionWrapper>
-        <DescriptionWrapper aria-label={`평균 평점 ${averageRating}점`}>
-          <Text weight="bold">평균 평점</Text>
-          <RatingIconWrapper>
-            <SvgIcon variant="star" width={20} height={20} fill={theme.colors.secondary} />
-            <Text as="span">{averageRating.toFixed(1)}</Text>
-          </RatingIconWrapper>
-        </DescriptionWrapper>
-      </DetailInfoWrapper>
-    </ProductDetailContainer>
+      </div>
+    </section>
   );
 };
 
 export default ProductDetailItem;
-
-const ProductDetailContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  row-gap: 30px;
-  g & > img,
-  svg {
-    align-self: center;
-  }
-`;
-
-const ImageWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const DetailInfoWrapper = styled.div`
-  & > div + div {
-    margin-top: 10px;
-  }
-`;
-
-const DescriptionWrapper = styled.div`
-  display: flex;
-  column-gap: 20px;
-
-  & > p:first-of-type {
-    flex-shrink: 0;
-    width: 60px;
-  }
-`;
-
-const ProductContent = styled(Text)`
-  white-space: pre-wrap;
-`;
-
-const RatingIconWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  margin-left: -4px;
-  column-gap: 4px;
-
-  & > svg {
-    padding-bottom: 2px;
-  }
-`;

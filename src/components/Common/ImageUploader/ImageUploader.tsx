@@ -1,9 +1,13 @@
-import { Button, useToastActionContext } from '@fun-eat/design-system';
+import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler } from 'react';
-import styled from 'styled-components';
+
+import { container, deleteButton, image, imageWrapper, uploadInput, uploadLabel } from './imageUploader.css';
+import SvgIcon from '../Svg/SvgIcon';
+import Text from '../Text/Text';
 
 import { IMAGE_MAX_SIZE } from '@/constants';
 import { useEnterKeyDown } from '@/hooks/common';
+import { vars } from '@/styles/theme.css';
 
 interface ReviewImageUploaderProps {
   previewImage: string;
@@ -32,45 +36,32 @@ const ImageUploader = ({ previewImage, uploadImage, deleteImage }: ReviewImageUp
   };
 
   return (
-    <>
-      {previewImage ? (
-        <PreviewImageWrapper>
-          <img src={previewImage} alt="업로드한 사진" width={200} />
-          <Button type="button" customWidth="80px" color="primary" weight="bold" variant="filled" onClick={deleteImage}>
-            삭제하기
-          </Button>
-        </PreviewImageWrapper>
-      ) : (
-        <ImageUploadLabel tabIndex={0} onKeyDown={handleKeydown} aria-label="사진 업로드 버튼" aria-hidden>
-          +
-          <input ref={inputRef} type="file" accept="image/*" onChange={handleImageUpload} />
-        </ImageUploadLabel>
+    <div className={container}>
+      <label
+        className={previewImage ? uploadLabel.uploaded : uploadLabel.default}
+        tabIndex={0}
+        onKeyDown={handleKeydown}
+        aria-label="사진 업로드 버튼"
+        aria-hidden
+      >
+        <SvgIcon variant="picture" width={28} height={28} fill={vars.colors.gray2} />
+        {previewImage && (
+          <Text as="span" size="caption4" color="disabled" weight="medium">
+            사진 변경하기
+          </Text>
+        )}
+        <input className={uploadInput} ref={inputRef} type="file" accept="image/*" onChange={handleImageUpload} />
+      </label>
+      {previewImage && (
+        <div className={imageWrapper}>
+          <img src={previewImage} className={image} width={80} height={80} alt="업로드한 사진" />
+          <button type="button" className={deleteButton} onClick={deleteImage}>
+            <SvgIcon variant="close2" width={10} height={10} fill="none" stroke={vars.colors.white} />
+          </button>
+        </div>
       )}
-    </>
+    </div>
   );
 };
 
 export default ImageUploader;
-
-const ImageUploadLabel = styled.label`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 92px;
-  height: 95px;
-  border: 1px solid ${({ theme }) => theme.borderColors.disabled};
-  border-radius: ${({ theme }) => theme.borderRadius.xs};
-  background: ${({ theme }) => theme.colors.gray1};
-  cursor: pointer;
-
-  & > input {
-    display: none;
-  }
-`;
-
-const PreviewImageWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  align-items: center;
-`;

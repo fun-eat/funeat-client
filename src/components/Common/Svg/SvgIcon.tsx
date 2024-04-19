@@ -13,6 +13,8 @@ export const SVG_ICON_VARIANTS = [
   'pencil2',
   'star2',
   'review2',
+  'check2',
+  'picture',
   'recipe',
   'list',
   'member',
@@ -36,10 +38,16 @@ export const SVG_ICON_VARIANTS = [
   'plane',
   'info',
   'trashcan',
+  'arrowUp',
   'arrowLeft',
   'arrowRight',
+  'arrowUpDown',
   'heartEmpty',
   'heartFilled',
+  'box',
+  'close2',
+  'disk',
+  'error',
 ] as const;
 export type SvgIconVariant = (typeof SVG_ICON_VARIANTS)[number];
 
