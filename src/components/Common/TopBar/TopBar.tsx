@@ -8,7 +8,6 @@ import LogoImage from '@/assets/logo.svg';
 import { PATH } from '@/constants/path';
 import { vars } from '@/styles/theme.css';
 
-
 interface TopBarProps {
   children?: React.ReactNode;
   title?: string;
@@ -31,7 +30,13 @@ const Logo = () => {
 const BackLink = ({ state }: TopBarProps) => {
   return (
     <Link to=".." relative="path" state={state}>
-      <SvgIcon variant="arrowLeft" stroke={vars.colors.gray5} width={20} height={20} />
+      <SvgIcon
+        variant="arrowLeft"
+        stroke={vars.colors.gray5}
+        width={20}
+        height={20}
+        style={{ transform: 'translateY(2px)' }}
+      />
     </Link>
   );
 };
