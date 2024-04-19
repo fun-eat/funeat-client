@@ -1,12 +1,13 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const container = style({
-  width: 166,
-});
-
 export const reviewImage = style({
+  width: '100%',
+  height: 'auto',
+  minWidth: 164,
   borderRadius: '6px',
   objectFit: 'cover',
+  aspectRatio: '164 / 90',
 });
 
 export const reviewTitle = style({
@@ -27,18 +28,19 @@ export const reviewContent = style({
 
 export const tagList = style({
   display: 'grid',
-  gridTemplateColumns: '1fr 1fr 25px',
+  gridTemplateColumns: '1fr 1fr 24px',
   columnGap: 4,
 });
 
 export const tag = style({
   height: 26,
-  padding: '0 6px',
-  color: '#232527',
-  fontSize: 11,
-  fontWeight: 500,
-  lineHeight: '26px',
+  padding: '0 4px',
   textAlign: 'center',
   borderRadius: 4,
-  backgroundColor: '#ddd',
+  backgroundColor: vars.colors.gray2,
+});
+
+export const tagName = style({
+  display: 'inline-block',
+  lineHeight: '26px',
 });

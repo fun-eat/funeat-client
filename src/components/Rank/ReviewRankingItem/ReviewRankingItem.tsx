@@ -1,7 +1,8 @@
 import { memo } from 'react';
 
-import { container, reviewContent, reviewImage, reviewTitle, tagList, tag } from './reviewRankingItem.css';
+import { reviewContent, reviewImage, reviewTitle, tagList, tag, tagName } from './reviewRankingItem.css';
 
+import { Text } from '@/components/Common';
 import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import type { ReviewRanking } from '@/types/ranking';
 import displaySlice from '@/utils/displaySlice';
@@ -19,14 +20,8 @@ const ReviewRankingItem = ({ productName, content, tags, image }: ReviewRankingI
   const tagToDisplay = displaySlice(true, tags, TAG_DISPLAY_LIMIT);
 
   return (
-    <div className={container}>
-      <img
-        src={image ?? REVIEW_CARD_DEFAULT_IMAGE_URL}
-        className={reviewImage}
-        width={166}
-        height={90}
-        alt={productName}
-      />
+    <div>
+      <img src={image ?? REVIEW_CARD_DEFAULT_IMAGE_URL} className={reviewImage} alt={productName} />
       <div style={{ height: '8px' }} />
       <p className={reviewTitle}>{productName}</p>
       <div style={{ height: '6px' }} />
@@ -35,12 +30,16 @@ const ReviewRankingItem = ({ productName, content, tags, image }: ReviewRankingI
       <ul className={tagList}>
         {tagToDisplay.map(({ id, name }) => (
           <li key={id} className={tag}>
-            <span>{name}</span>
+            <Text as="span" size="caption4" weight="medium" className={tagName}>
+              {name}
+            </Text>
           </li>
         ))}
         {tags.length > TAG_DISPLAY_LIMIT && (
           <li className={tag}>
-            <span>+</span>
+            <Text as="span" size="caption4" weight="medium" className={tagName}>
+              +
+            </Text>
           </li>
         )}
       </ul>
