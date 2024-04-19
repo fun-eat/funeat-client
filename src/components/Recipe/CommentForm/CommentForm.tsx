@@ -2,9 +2,10 @@ import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, RefObject } from 'react';
 import { useRef, useState } from 'react';
 
-import { commentForm, commentTextarea, container, profileImage, sendButton } from './commentForm.css';
+import { commentForm, commentTextarea, container, sendButton } from './commentForm.css';
 
 import { SvgIcon, Text } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import { useScroll } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeCommentMutation } from '@/hooks/queries/recipe';
@@ -66,13 +67,7 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
 
   return (
     <div className={container}>
-      <img
-        className={profileImage}
-        src={member?.profileImage}
-        width={29}
-        height={29}
-        alt={`${member?.nickname}의 프로필 사진`}
-      />
+      <MemberImage src={member?.profileImage || ''} width={29} height={29} alt={`${member?.nickname}의 프로필 사진`} />
       <>
         <form className={commentForm} onSubmit={handleSubmitComment}>
           <textarea
@@ -87,13 +82,8 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
           <Text size="caption4" color="disabled">
             {commentValue.length}/200
           </Text>
-          <button className={sendButton}>
-            <SvgIcon
-              variant="plane"
-              width={18}
-              height={18}
-              fill={commentValue.length === 0 ? vars.colors.gray3 : vars.colors.gray5}
-            />
+          <button className={commentValue.length === 0 ? sendButton['disabled'] : sendButton['active']}>
+            <SvgIcon variant="plane" width={14} height={14} fill={vars.colors.white} />
           </button>
         </form>
       </>
