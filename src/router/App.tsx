@@ -15,7 +15,7 @@ const App = ({ hasLayout = false }: AppProps) => {
 
   useRouteChangeTracker();
 
-  if (hasLayout) {
+  if (!hasLayout) {
     return (
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>
