@@ -10,3 +10,7 @@ export const container = style({
 export const translucent = style({
   opacity: '50%',
 });
+
+export const recipeProductWrapper = style({
+  margin: '48px 20px',
+});

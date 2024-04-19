@@ -1,93 +1,56 @@
-import { Heading, Spacing } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import type { ChangeEvent } from 'react';
 
-import ReviewTagItem from '../ReviewTagItem/ReviewTagItem';
+import { checkbox, container, itemTitle, tagLabel, tagList } from './reviewTagList.css';
 
-import { TAG_TITLE } from '@/constants';
+import { Text } from '@/components/Common';
+import { MAX_DISPLAYED_TAGS_LENGTH, TAG_TITLE } from '@/constants';
+import type { TagValue } from '@/contexts/ReviewFormContext';
+import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
 import { useReviewTagsQuery } from '@/hooks/queries/review';
 
-interface ReviewTagListProps {
-  selectedTags: number[];
-}
-
-const ReviewTagList = ({ selectedTags }: ReviewTagListProps) => {
+const ReviewTagList = () => {
   const { data: tagsData } = useReviewTagsQuery();
+  const { tags: selectedTags } = useReviewFormValueContext();
+  const { handleReviewFormValue } = useReviewFormActionContext();
+
+  const isChecked = (tag: TagValue) => selectedTags.some(({ id }) => id === tag.id);
+
+  const handleTagSelect = (currentTag: TagValue) => (event: ChangeEvent<HTMLInputElement>) => {
+    handleReviewFormValue({ target: 'tags', value: currentTag });
+
+    if (selectedTags.length >= MAX_DISPLAYED_TAGS_LENGTH) {
+      event.target.checked = false;
+    }
+  };
 
   return (
-    <ReviewTagListContainer>
-      <Heading as="h2" size="xl" tabIndex={0}>
-        태그를 골라주세요. (3개까지)
-        <RequiredMark aria-label="필수 작성">*</RequiredMark>
-      </Heading>
-      <Spacing size={25} />
-      <TagListWrapper>
-        {tagsData.map(({ tagType, tags }) => (
-          <TagItemWrapper key={tagType}>
-            <TagTitle as="h3" size="md" tabIndex={0}>
-              {TAG_TITLE[tagType]}
-            </TagTitle>
-            <Spacing size={20} />
-            <ul>
-              {tags.map(({ id, name }) => (
-                <>
-                  <li key={id}>
-                    <ReviewTagItem id={id} name={name} variant={tagType} isSelected={selectedTags.includes(id)} />
-                  </li>
-                  <Spacing size={5} />
-                </>
-              ))}
-            </ul>
-          </TagItemWrapper>
-        ))}
-      </TagListWrapper>
-      <Spacing size={26} />
-    </ReviewTagListContainer>
+    <div className={container}>
+      {tagsData.map(({ tagType, tags }) => (
+        <div key={tagType}>
+          <h2 className={itemTitle} tabIndex={0}>
+            {TAG_TITLE[tagType]}
+          </h2>
+          <ul className={tagList}>
+            {tags.map((tag) => (
+              <li key={tag.id}>
+                <label>
+                  <input
+                    type="checkbox"
+                    className={checkbox}
+                    checked={isChecked(tag)}
+                    onChange={handleTagSelect(tag)}
+                  />
+                  <Text as="span" size="caption1" weight="medium" className={tagLabel}>
+                    {tag.name}
+                  </Text>
+                </label>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   );
 };
 
 export default ReviewTagList;
-
-const ReviewTagListContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const RequiredMark = styled.sup`
-  color: ${({ theme }) => theme.colors.error};
-`;
-
-const TagListWrapper = styled.div`
-  display: flex;
-  width: 100%;
-  margin: 0 auto;
-  column-gap: 20px;
-  overflow-x: auto;
-
-  @media screen and (min-width: 420px) {
-    justify-content: center;
-
-    & > div {
-      flex-grow: 0;
-    }
-  }
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
-  & > div {
-    flex-grow: 1;
-  }
-`;
-
-const TagItemWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 100px;
-`;
-
-const TagTitle = styled(Heading)`
-  text-align: center;
-`;

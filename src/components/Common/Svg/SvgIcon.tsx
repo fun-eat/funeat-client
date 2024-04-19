@@ -14,6 +14,7 @@ export const SVG_ICON_VARIANTS = [
   'star2',
   'review2',
   'check2',
+  'picture',
   'recipe',
   'list',
   'member',
@@ -46,6 +47,7 @@ export const SVG_ICON_VARIANTS = [
   'box',
   'close2',
   'disk',
+  'error',
 ] as const;
 export type SvgIconVariant = (typeof SVG_ICON_VARIANTS)[number];
 

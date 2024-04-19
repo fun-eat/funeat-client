@@ -17,7 +17,7 @@ type Story = StoryObj<typeof ProductDetailItem>;
 
 export const Default: Story = {
   render: ({ ...args }) => (
-    <div style={{ width: '375px', padding: '0 20px' }}>
+    <div style={{ width: '375px' }}>
       <ProductDetailItem {...args} />
     </div>
   ),
