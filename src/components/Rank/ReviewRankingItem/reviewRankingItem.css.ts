@@ -1,23 +1,16 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const container = style({
-  width: 166,
-});
-
 export const reviewImage = style({
+  width: '100%',
+  height: 'auto',
+  minWidth: 164,
   borderRadius: '6px',
   objectFit: 'cover',
-});
-
-export const reviewTitle = style({
-  fontSize: 13,
-  fontWeight: 600,
-  color: '#3d3d3d',
+  aspectRatio: '164 / 90',
 });
 
 export const reviewContent = style({
-  fontSize: 11,
-  color: '#808080',
   display: '-webkit-inline-box',
   textOverflow: 'ellipsis',
   overflow: 'hidden',
@@ -26,21 +19,20 @@ export const reviewContent = style({
 });
 
 export const tagList = style({
-  display: 'flex',
-  gap: 8,
+  display: 'grid',
+  gridTemplateColumns: '1fr 1fr 24px',
+  columnGap: 4,
 });
 
 export const tag = style({
-  width: 63,
   height: 26,
-  color: '#232527',
-  fontSize: 11,
-  fontWeight: 500,
-  lineHeight: '26px',
+  padding: '0 4px',
   textAlign: 'center',
-  borderRadius: '2px',
-  backgroundColor: '#ddd',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
+  borderRadius: 4,
+  backgroundColor: vars.colors.gray2,
+});
+
+export const tagName = style({
+  display: 'inline-block',
+  lineHeight: '26px',
 });

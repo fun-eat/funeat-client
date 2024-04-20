@@ -19,10 +19,10 @@ const ReviewRankingList = () => {
 
   return (
     <ul className={container}>
-      {reviews.map((reviewRanking) => (
-        <li key={reviewRanking.reviewId}>
-          <Link to={`${PATH.REVIEW}/${reviewRanking.reviewId}`} onClick={handleReviewRankingLinkClick}>
-            <ReviewRankingItem reviewRanking={reviewRanking} />
+      {reviews.map(({ reviewId, productName, content, tags, image }) => (
+        <li key={reviewId}>
+          <Link to={`${PATH.REVIEW}/${reviewId}`} onClick={handleReviewRankingLinkClick}>
+            <ReviewRankingItem productName={productName} content={content} tags={tags} image={image} />
           </Link>
         </li>
       ))}

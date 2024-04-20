@@ -6,7 +6,7 @@ import ProductItem from '../ProductItem/ProductItem';
 import { PATH } from '@/constants/path';
 import { useInfiniteProductsQuery } from '@/hooks/queries/product';
 import type { CategoryVariant } from '@/types/common';
-import useDisplaySlice from '@/utils/displaySlice';
+import displaySlice from '@/utils/displaySlice';
 
 interface ProductPreviewListProps {
   category: CategoryVariant;
@@ -18,7 +18,7 @@ const ProductPreviewList = ({ categoryId }: ProductPreviewListProps) => {
   const { data } = useInfiniteProductsQuery(categoryId, 'reviewCount,desc');
   const products = data.pages.flatMap((page) => page.products);
   // 몇개까지 보여줄지
-  const productToDisplay = useDisplaySlice(false, products, 5);
+  const productToDisplay = displaySlice(true, products, 5);
 
   return (
     <ul className={container}>
