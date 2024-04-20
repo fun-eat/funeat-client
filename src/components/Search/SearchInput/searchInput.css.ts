@@ -1,38 +1,36 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const inputContainer = style({
   position: 'relative',
-  width: 343,
 });
 
 export const searchInput = style({
-  position: 'absolute',
   width: '90%',
   height: 40,
   padding: '10px 0 10px 18px',
-  color: '#232527',
-  background: '#efefef',
+  background: vars.colors.background.category,
   borderRadius: '20px 0 0 20px',
   fontSize: '1.4rem',
   outline: 'none',
 
   selectors: {
     '&:placeholder': {
-      color: '#808080',
+      color: vars.colors.gray3,
     },
   },
 });
 
 export const tagInputWrapper = style({
-  position: 'relative',
-  top: 6,
+  position: 'absolute',
+  top: 5,
   left: 6,
   display: 'flex',
   alignItems: 'baseline',
   gap: 6,
   width: 'fit-content',
   padding: '5px 12px',
-  background: '#FFFFFF',
+  background: vars.colors.white,
   borderRadius: 20,
 });
 
@@ -45,6 +43,6 @@ export const iconWrapperButton = style({
   width: '10%',
   height: 40,
   paddingLeft: 4,
-  background: '#efefef',
+  background: vars.colors.background.category,
   borderRadius: '0 20px 20px 0',
 });
