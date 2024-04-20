@@ -1,9 +1,10 @@
 import { memo } from 'react';
 
-import { favoriteWrapper, memberImage, memberInfo, reviewContent, reviewImage } from './reviewItem.css';
+import { favoriteWrapper, memberImage, memberInfo } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
+import ReviewItemInfo from '../ReviewItemInfo/ReviewItemInfo';
 
-import { Badge, StarRating, TagList, Text } from '@/components/Common';
+import { Badge, Text } from '@/components/Common';
 import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
 
@@ -30,24 +31,9 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
           <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
         </div>
       </div>
-
       <div style={{ height: '12px' }} />
 
-      <StarRating rating={rating} createdAt={createdAt} />
-
-      <div style={{ height: '8px' }} />
-
-      {image && <img src={image} className={reviewImage} height={90} alt={`${userName}의 리뷰`} />}
-
-      <div style={{ height: '8px' }} />
-
-      <Text color="sub" size="caption2" className={reviewContent}>
-        {content}
-      </Text>
-
-      <div style={{ height: '8px' }} />
-
-      <TagList tags={tags} />
+      <ReviewItemInfo rating={rating} createdAt={createdAt} image={image} content={content} tags={tags} />
     </div>
   );
 };

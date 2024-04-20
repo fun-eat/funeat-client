@@ -1,9 +1,10 @@
 import { useRef } from 'react';
 
+import { container } from './memberRecipeList.css';
+
+import { DefaultRecipeItem } from '@/components/Recipe';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberRecipeQuery } from '@/hooks/queries/members';
-import { DefaultRecipeItem } from '@/components/Recipe';
-import { container } from './memberRecipeList.css';
 
 const MemberRecipeList = () => {
   const scrollRef = useRef<HTMLDivElement>(null);

@@ -28,7 +28,7 @@ export interface MemberReview {
   rating: number;
   createdAt: string;
   tags: Tag[];
-  image?: string;
+  image: string | null;
 }
 
 export interface ReviewTag {

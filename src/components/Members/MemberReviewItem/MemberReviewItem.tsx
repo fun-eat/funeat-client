@@ -2,9 +2,10 @@ import { useToastActionContext } from '@fun-eat/design-system';
 import type { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 
-import { reviewImage, titleWrapper } from './memberReviewItem.css';
+import { titleWrapper } from './memberReviewItem.css';
 
-import { StarRating, SvgIcon, TagList, Text } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
+import { ReviewItemInfo } from '@/components/Review';
 import { PATH } from '@/constants/path';
 import { useDeleteReview } from '@/hooks/queries/members';
 import { vars } from '@/styles/theme.css';
@@ -61,18 +62,7 @@ const MemberReviewItem = ({ review }: MemberReviewItemProps) => {
       </div>
       <div style={{ height: '11px' }} />
 
-      <StarRating rating={rating} createdAt={createdAt} />
-      <div style={{ height: '8px' }} />
-
-      {image && <img className={reviewImage} src={image} alt="작성한 리뷰" />}
-      <div style={{ height: '8px' }} />
-
-      <Text size="caption2" color="sub">
-        {content}
-      </Text>
-      <div style={{ height: '8px' }} />
-
-      <TagList tags={tags} />
+      <ReviewItemInfo rating={rating} createdAt={createdAt} image={image} content={content} tags={tags} />
     </>
   );
 };
