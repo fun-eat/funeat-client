@@ -58,7 +58,7 @@ export const RecipePage = () => {
         <WriteButton />
       </div>
 
-      <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
+      <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="440px" close={handleCloseBottomSheet}>
         <SelectOptionList
           options={RECIPE_SORT_OPTIONS}
           currentOption={currentSortOption}

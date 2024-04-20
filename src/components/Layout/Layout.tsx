@@ -1,14 +1,14 @@
 import type { PropsWithChildren } from 'react';
 
-import { defaultLayout } from './layout.css';
+import { main } from './layout.css';
 import Header from '../Common/Header/Header';
 import NavigationBar from '../Common/NavigationBar/NavigationBar';
 
-const DefaultLayout = ({ children }: PropsWithChildren) => {
+const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Header />
-      <main id="main" className={defaultLayout}>
+      <main id="main" className={main}>
         {children}
       </main>
       <NavigationBar />
@@ -16,4 +16,4 @@ const DefaultLayout = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default DefaultLayout;
+export default Layout;

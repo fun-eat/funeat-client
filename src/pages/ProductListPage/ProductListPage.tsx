@@ -4,7 +4,7 @@ import cx from 'classnames';
 import { Suspense, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
-import { categoryButton, listSection, selectButton, selectSection, sortButton } from './productListPage.css';
+import { categoryButton, listSection, main, selectButton, selectSection, sortButton } from './productListPage.css';
 import NotFoundPage from '../NotFoundPage';
 
 import { ErrorBoundary, ErrorComponent, Loading, PageHeader, SelectOptionList, SvgIcon } from '@/components/Common';
@@ -48,32 +48,34 @@ export const ProductListPage = () => {
     <>
       <PageHeader title={pageTitle} hasBackLink hasSearchLink state={category} />
 
-      <section className={selectSection}>
-        <button type="button" className={cx(selectButton, sortButton)} onClick={openBottomSheet('sort')}>
-          <span>{currentSortOption.label}</span>
-          <span>
-            <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
-          </span>
-        </button>
-        <button
-          type="button"
-          className={cx(selectButton, categoryButton[currentCategory.label as keyof typeof categoryButton])}
-          onClick={openBottomSheet('category')}
-        >
-          <span>{currentCategory.label}</span>
-          <span>
-            <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
-          </span>
-        </button>
-      </section>
+      <main className={main}>
+        <section className={selectSection}>
+          <button type="button" className={cx(selectButton, sortButton)} onClick={openBottomSheet('sort')}>
+            <span>{currentSortOption.label}</span>
+            <span>
+              <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
+            </span>
+          </button>
+          <button
+            type="button"
+            className={cx(selectButton, categoryButton[currentCategory.label as keyof typeof categoryButton])}
+            onClick={openBottomSheet('category')}
+          >
+            <span>{currentCategory.label}</span>
+            <span>
+              <SvgIcon variant="arrow" width={8} height={8} style={{ transform: 'rotate(-90deg)' }} />
+            </span>
+          </button>
+        </section>
 
-      <section className={listSection}>
-        <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-          <Suspense fallback={<Loading />}>
-            <ProductList category={category} categoryId={currentCategory.value} sortOption={currentSortOption} />
-          </Suspense>
-        </ErrorBoundary>
-      </section>
+        <section className={listSection}>
+          <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
+            <Suspense fallback={<Loading />}>
+              <ProductList category={category} categoryId={currentCategory.value} sortOption={currentSortOption} />
+            </Suspense>
+          </ErrorBoundary>
+        </section>
+      </main>
 
       <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="400px" close={handleCloseBottomSheet}>
         {activeSheet === 'sort' && (

@@ -13,7 +13,7 @@ const meta: Meta<typeof ReviewItem> = {
   },
   decorators: [
     (Story) => (
-      <div style={{ maxWidth: 400 }}>
+      <div style={{ maxWidth: 440 }}>
         <Story />
       </div>
     ),

@@ -1,3 +1,2 @@
-export { default as DefaultLayout } from './DefaultLayout';
-export { default as MinimalLayout } from './MinimalLayout';
+export { default as Layout } from './Layout';
 export { default as AuthLayout } from './AuthLayout';

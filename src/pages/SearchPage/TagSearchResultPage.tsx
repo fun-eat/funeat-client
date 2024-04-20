@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { searchResultTitle, searchSection } from './searchPage.css';
+import { form, formWrapper, searchResultTitle, searchSection } from './searchPage.css';
 
 import { ErrorBoundary, ErrorComponent, Loading, Text } from '@/components/Common';
 import { SearchInput, TagSearchResultList } from '@/components/Search';
@@ -10,26 +10,28 @@ export const TagSearchResultPage = () => {
   const { inputRef, searchQuery, isSubmitted, handleSearchQuery, handleSearchForm } = useSearch();
 
   return (
-    <section className={searchSection}>
-      <form onSubmit={handleSearchForm}>
-        <SearchInput
-          value={searchQuery}
-          onChange={handleSearchQuery}
-          isInputSubmitted={isSubmitted}
-          ref={inputRef}
-          isTagSearch
-        />
-      </form>
-      <div>
+    <>
+      <div className={formWrapper}>
+        <form className={form} onSubmit={handleSearchForm}>
+          <SearchInput
+            value={searchQuery}
+            onChange={handleSearchQuery}
+            isInputSubmitted={isSubmitted}
+            ref={inputRef}
+            isTagSearch
+          />
+        </form>
+      </div>
+      <section className={searchSection}>
         <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
-          '{searchQuery}'가 포함된 상품
+          &apos;{searchQuery}&apos;가 포함된 상품
         </Text>
         <ErrorBoundary fallback={ErrorComponent}>
           <Suspense fallback={<Loading />}>
             <TagSearchResultList searchQuery={searchQuery} />
           </Suspense>
         </ErrorBoundary>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

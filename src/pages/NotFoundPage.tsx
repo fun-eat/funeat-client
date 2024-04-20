@@ -2,12 +2,12 @@ import { Heading, Link, Spacing } from '@fun-eat/design-system';
 import { Link as RouterLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { DefaultLayout } from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
 
 const NotFoundPage = () => {
   return (
-    <DefaultLayout>
+    <Layout>
       <NotFoundSection>
         <Heading size="xl">존재하지 않는 페이지입니다</Heading>
         <Spacing size={20} />
@@ -15,7 +15,7 @@ const NotFoundPage = () => {
           홈으로 가기
         </HomePageLink>
       </NotFoundSection>
-    </DefaultLayout>
+    </Layout>
   );
 };
 
