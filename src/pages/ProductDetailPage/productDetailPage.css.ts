@@ -2,7 +2,7 @@ import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const main = style({
-  paddingBottom: 70,
+  padding: '50px 0 70px',
 });
 
 export const section = style({
