@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <header className={container}>
       <Link to={PATH.HOME}>
-        <Logo width={120} />
+        <Logo />
       </Link>
       <Link to={PATH.SEARCH}>
         <SvgIcon variant="search2" width={20} height={20} fill="none" stroke="#232527" />
