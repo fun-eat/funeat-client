@@ -2,7 +2,7 @@ import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const main = style({
-  paddingBottom: 70,
+  padding: '50px 0 70px',
 });
 
 export const section = style({
@@ -25,7 +25,7 @@ export const linkWrapper = style({
   alignItems: 'flex-end',
   width: '100%',
   height: 70,
-  maxWidth: 400,
+  maxWidth: 440,
   padding: '0 20px',
   border: `1px solid ${vars.colors.border.default}`,
   backgroundColor: vars.colors.background.default,

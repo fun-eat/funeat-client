@@ -9,8 +9,15 @@ export const container = style({
   alignItems: 'center',
   width: '100%',
   height: 50,
-  maxWidth: 400,
+  maxWidth: 440,
+  padding: '0 20px',
   backgroundColor: '#fff',
   transform: 'translateX(-50%)',
   zIndex: 1001,
+});
+
+export const link = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
 });
