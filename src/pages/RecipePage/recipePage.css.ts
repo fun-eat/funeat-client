@@ -13,10 +13,11 @@ export const sortButtonWrapper = style({
 
 export const floatingButtonWrapper = style({
   position: 'sticky',
+  right: 16,
+  bottom: 100,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-end',
   float: 'right',
-  bottom: 80,
   gap: 8,
 });
