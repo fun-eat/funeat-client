@@ -1,7 +1,7 @@
 [
-  { "id": 1, "name": "간편식사", "image": "https://image.funeat.site/prod/food.png" },
-  { "id": 2, "name": "과자류", "image": "https://image.funeat.site/prod/food.png" },
-  { "id": 3, "name": "아이스크림", "image": "https://image.funeat.site/prod/food.png" },
+  { "id": 1, "name": "간편식사", "image": "https://image.funeat.site/prod/instantfood.png" },
+  { "id": 2, "name": "과자류", "image": "https://image.funeat.site/prod/snack.png" },
+  { "id": 3, "name": "아이스크림", "image": "https://image.funeat.site/prod/icecream.png" },
   { "id": 4, "name": "식품", "image": "https://image.funeat.site/prod/food.png" },
-  { "id": 5, "name": "음료", "image": "https://image.funeat.site/prod/food.png" }
+  { "id": 5, "name": "음료", "image": "https://image.funeat.site/prod/drink.png" }
 ]
