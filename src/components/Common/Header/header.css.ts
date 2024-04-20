@@ -15,3 +15,9 @@ export const container = style({
   transform: 'translateX(-50%)',
   zIndex: 1001,
 });
+
+export const link = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
