@@ -1,7 +1,8 @@
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { imageWrapper, categoryImage, categoryName, circle, bordered, link } from './categoryItem.css';
+import { imageWrapper, categoryImage, circle, bordered, link } from './categoryItem.css';
+import Text from '../Text/Text';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
@@ -54,7 +55,11 @@ const CategoryItem = ({
           alt={name}
         />
       </div>
-      {hasName && <span className={categoryName}>{name}</span>}
+      {hasName && (
+        <Text as="span" color="info" size="caption4" weight="semiBold">
+          {name}
+        </Text>
+      )}
     </Link>
   );
 };

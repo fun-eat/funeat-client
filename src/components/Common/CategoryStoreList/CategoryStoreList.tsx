@@ -8,28 +8,11 @@ interface CategoryStoreListProps {
   hasName?: boolean;
   isCircular?: boolean;
   isBordered?: boolean;
-  location?: 'home' | 'products';
 }
 
 const categoryType = CATEGORY_TYPE.STORE;
 
-const imgSize = {
-  home: {
-    width: 78,
-    height: 58,
-  },
-  products: {
-    width: 76,
-    height: 58,
-  },
-};
-
-const CategoryStoreList = ({
-  hasName = false,
-  isCircular = false,
-  isBordered = false,
-  location = 'home',
-}: CategoryStoreListProps) => {
+const CategoryStoreList = ({ hasName = false, isCircular = false, isBordered = false }: CategoryStoreListProps) => {
   const { data: categories } = useCategoryStoreQuery();
 
   return (
@@ -38,8 +21,8 @@ const CategoryStoreList = ({
         <CategoryItem
           key={category.id}
           category={category}
-          width={imgSize[location].width}
-          height={imgSize[location].height}
+          width={68}
+          height={51}
           categoryType={categoryType}
           hasName={hasName}
           isCircular={isCircular}
