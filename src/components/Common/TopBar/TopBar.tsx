@@ -1,6 +1,7 @@
+import type { ComponentPropsWithoutRef } from 'react';
 import { Link } from 'react-router-dom';
 
-import { LeftNavigationWrapper, container, headerTitle, leftTitle } from './topBar.css';
+import { LeftNavigationWrapper, container, headerTitle, leftTitle, register } from './topBar.css';
 import SvgIcon from '../Svg/SvgIcon';
 import Text from '../Text/Text';
 
@@ -8,13 +9,14 @@ import LogoImage from '@/assets/logo.svg';
 import { PATH } from '@/constants/path';
 import { vars } from '@/styles/theme.css';
 
-
 interface TopBarProps {
   children?: React.ReactNode;
   title?: string;
   link?: string;
   state?: unknown;
 }
+
+type RegisterButtonProps = ComponentPropsWithoutRef<'button'>;
 
 const TopBar = ({ children }: TopBarProps) => {
   return <header className={container}>{children}</header>;
@@ -58,13 +60,13 @@ const SearchLink = () => {
   );
 };
 
-const RegisterLink = ({ link = '' }: TopBarProps) => {
+const RegisterButton = ({ ...props }: RegisterButtonProps) => {
   return (
-    <Link to={link}>
-      <Text size="caption1" color="disabled" weight="semiBold">
+    <button {...props}>
+      <Text as="span" size="caption1" weight="semiBold" className={register}>
         등록
       </Text>
-    </Link>
+    </button>
   );
 };
 
@@ -85,7 +87,7 @@ TopBar.BackLink = BackLink;
 TopBar.LeftNavigationGroup = LeftNavigationGroup;
 TopBar.Title = Title;
 TopBar.SearchLink = SearchLink;
-TopBar.RegisterLink = RegisterLink;
+TopBar.RegisterButton = RegisterButton;
 TopBar.CloseButton = CloseButton;
 TopBar.Spacer = Spacer;
 

@@ -8,7 +8,6 @@ import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
 import { ImageUploader, SvgIcon, Text } from '@/components/Common';
-import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
@@ -16,30 +15,20 @@ import { useReviewRegisterFormMutation } from '@/hooks/queries/review';
 import { vars } from '@/styles/theme.css';
 import type { ReviewRequest } from '@/types/review';
 
-const MIN_RATING_SCORE = 0;
-const MIN_CONTENT_LENGTH = 0;
-
 interface ReviewRegisterFormProps {
   productId: number;
   openBottomSheet: () => void;
 }
 
 const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormProps) => {
-  const { isImageUploading, previewImage, imageFile, uploadImage, deleteImage } = useImageUploader();
+  const { previewImage, imageFile, uploadImage, deleteImage } = useImageUploader();
   const navigate = useNavigate();
 
-  const reviewFormValue = useReviewFormValueContext();
+  const { formValue: reviewFormValue } = useReviewFormValueContext();
   const { handleReviewFormValue, resetReviewFormValue } = useReviewFormActionContext();
   const { toast } = useToastActionContext();
 
   const { mutate } = useReviewRegisterFormMutation(productId);
-
-  const isValid =
-    reviewFormValue.rating > MIN_RATING_SCORE &&
-    reviewFormValue.tags.length >= MIN_DISPLAYED_TAGS_LENGTH &&
-    reviewFormValue.tags.length <= MAX_DISPLAYED_TAGS_LENGTH &&
-    reviewFormValue.content.length > MIN_CONTENT_LENGTH &&
-    !isImageUploading;
 
   const formValue: ReviewRequest = { ...reviewFormValue, tagIds: reviewFormValue.tags.map(({ id }) => id) };
 
@@ -81,7 +70,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="review-form" onSubmit={handleSubmit}>
       <div>
         <h2 className={itemTitle} tabIndex={0}>
           사진 등록
@@ -105,7 +94,9 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
           {reviewFormValue.tags.map((tag) => (
             <li key={tag.id}>
               <button type="button" onClick={handleTagSelect(tag)} className={tagButton}>
-                <Text as="span">{tag.name}</Text>
+                <Text as="span" size="caption2" weight="medium">
+                  {tag.name}
+                </Text>
                 <SvgIcon variant="close2" width={8} height={8} fill="none" stroke={vars.colors.gray4} />
               </button>
             </li>

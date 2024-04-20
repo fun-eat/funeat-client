@@ -1,6 +1,9 @@
-import { container, moreItem } from './productRecipeList.css';
+import { Link } from 'react-router-dom';
 
-import { ShowAllButton } from '@/components/Common';
+import { container, moreItem, notFound, recipeLink } from './productRecipeList.css';
+
+import SearchNotFoundImage from '@/assets/search-notfound.png';
+import { Text, ShowAllButton } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useInfiniteProductRecipesQuery } from '@/hooks/queries/product';
@@ -19,7 +22,20 @@ const ProductRecipeList = ({ productId, productName }: ProductRecipeListProps) =
   const recipeToDisplay = displaySlice(true, recipes, 3);
 
   if (recipes.length === 0) {
-    return null;
+    return (
+      <div className={notFound}>
+        <img src={SearchNotFoundImage} width={335} alt="검색 결과 없음" />
+        <Text color="disabled" size="caption4">
+          아직 작성된 꿀조합이 없어요
+        </Text>
+        <div style={{ height: '6px' }} />
+        <Link to={PATH.RECIPE} className={recipeLink}>
+          <Text as="span" color="sub" weight="semiBold" size="caption2">
+            꿀조합 작성하러 가기
+          </Text>
+        </Link>
+      </div>
+    );
   }
 
   return (

@@ -10,7 +10,9 @@ import { useReviewTagsQuery } from '@/hooks/queries/review';
 
 const ReviewTagList = () => {
   const { data: tagsData } = useReviewTagsQuery();
-  const { tags: selectedTags } = useReviewFormValueContext();
+  const {
+    formValue: { tags: selectedTags },
+  } = useReviewFormValueContext();
   const { handleReviewFormValue } = useReviewFormActionContext();
 
   const isChecked = (tag: TagValue) => selectedTags.some(({ id }) => id === tag.id);

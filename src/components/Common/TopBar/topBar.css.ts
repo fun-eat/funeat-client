@@ -34,3 +34,11 @@ export const headerTitle = style({
   fontSize: 18,
   fontWeight: 600,
 });
+
+export const register = style({
+  selectors: {
+    'button:disabled > &': {
+      color: vars.colors.text.disabled,
+    },
+  },
+});

@@ -10,12 +10,7 @@ import type { ReviewFavoriteRequestBody } from '@/types/review';
 
 export const reviewHandlers = [
   rest.get('/api/products/:productId/reviews', (req, res, ctx) => {
-    const { mockSessionId } = req.cookies;
     const sortOptions = req.url.searchParams.get('sort');
-
-    if (!mockSessionId) {
-      return res(ctx.status(401));
-    }
 
     if (sortOptions === null) {
       return res(ctx.status(400));

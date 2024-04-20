@@ -37,8 +37,6 @@ export const tagButton = style({
   gap: 4,
   height: 28,
   padding: '0 6px',
-  fontSize: '1.3rem',
-  fontWeight: 500,
   borderRadius: 4,
   backgroundColor: vars.colors.gray2,
 });
