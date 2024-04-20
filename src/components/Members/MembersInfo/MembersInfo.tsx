@@ -7,6 +7,7 @@ import { SvgIcon, Text } from '@/components/Common';
 import { PATH } from '@/constants/path';
 import { useLogoutMutation, useMemberQuery } from '@/hooks/queries/members';
 import { vars } from '@/styles/theme.css';
+import PostCounterBox from '../PostCounterBox/PostCounterBox';
 
 const MembersInfo = () => {
   const { data: member } = useMemberQuery();
@@ -16,7 +17,7 @@ const MembersInfo = () => {
     return null;
   }
 
-  const { nickname, profileImage } = member;
+  const { nickname, profileImage, recipeCount, reviewCount } = member;
 
   const handleLogout = () => {
     mutate();
@@ -48,6 +49,9 @@ const MembersInfo = () => {
           <SvgIcon variant="pencil" width={12} height={12} fill={vars.colors.white} />
         </Link>
       </div>
+      <div style={{ height: '24px' }} />
+
+      <PostCounterBox recipeCount={recipeCount} reviewCount={reviewCount} />
     </>
   );
 };

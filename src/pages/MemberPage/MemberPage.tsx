@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { container } from './memberPage.css';
 
 import { ErrorBoundary, ErrorComponent, Loading, SectionHeader, TopBar } from '@/components/Common';
-import { MembersInfo, PostCounterBox } from '@/components/Members';
+import { MembersInfo } from '@/components/Members';
 import { PATH } from '@/constants/path';
 
 export const MemberPage = () => {
@@ -22,9 +22,6 @@ export const MemberPage = () => {
       <Suspense fallback={<Loading />}>
         <MembersInfo />
       </Suspense>
-      <div style={{ height: '24px' }} />
-
-      <PostCounterBox recipeCount={5} reviewCount={5} />
       <div style={{ height: '32px' }} />
 
       <SectionHeader name="저장한 꿀조합" link={`${PATH.MEMBER}/recipe`} />
