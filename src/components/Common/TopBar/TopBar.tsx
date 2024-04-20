@@ -25,7 +25,7 @@ const TopBar = ({ children }: TopBarProps) => {
 const Logo = () => {
   return (
     <Link to={PATH.HOME}>
-      <LogoImage width={120} />
+      <LogoImage />
     </Link>
   );
 };

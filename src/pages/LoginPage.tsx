@@ -28,7 +28,7 @@ export const LoginPage = () => {
       </Button>
       <Spacing size={60} />
       <LoginSection>
-        <Logo width={250} />
+        <Logo />
         <Spacing size={24} />
         <Text size="lg" lineHeight="xl" weight="bold">
           {SLOGAN}
