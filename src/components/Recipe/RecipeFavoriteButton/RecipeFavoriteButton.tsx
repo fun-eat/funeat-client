@@ -1,18 +1,19 @@
-import { theme, Button, Text } from '@fun-eat/design-system';
-import styled from 'styled-components';
+import { container } from './recipeFavoriteButton.css';
 
-import { SvgIcon } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
+import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
 
 interface RecipeFavoriteProps {
-  favorite: boolean;
-  favoriteCount: number;
   recipeId: number;
+  favorite: boolean;
+  favoriteCount?: number;
 }
 
 const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavoriteProps) => {
   const { mutate } = useRecipeFavoriteMutation(Number(recipeId));
+  const { data: member } = useMemberQuery();
 
   const handleToggleFavorite = async () => {
     mutate({ favorite: !favorite });
@@ -21,23 +22,21 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
   const [debouncedToggleFavorite] = useTimeout(handleToggleFavorite, 200);
 
   return (
-    <FavoriteButton type="button" variant="transparent" onClick={debouncedToggleFavorite}>
-      <SvgIcon
-        variant={favorite ? 'favoriteFilled' : 'favorite'}
-        color={favorite ? 'red' : theme.colors.gray4}
-        width={18}
-      />
-      <Text weight="bold" size="lg">
+    <div className={container}>
+      {member ? (
+        <button type="button" onClick={debouncedToggleFavorite}>
+          <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
+        </button>
+      ) : (
+        <div>
+          <SvgIcon variant="heartEmpty" width={24} height={24} />
+        </div>
+      )}
+      <Text as="span" size="caption1" weight="medium" color="sub">
         {favoriteCount}
       </Text>
-    </FavoriteButton>
+    </div>
   );
 };
 
 export default RecipeFavoriteButton;
-
-const FavoriteButton = styled(Button)`
-  display: flex;
-  gap: 8px;
-  align-items: center;
-`;

@@ -5,20 +5,45 @@
       "productId": 1,
       "productName": "구운감자슬림명란마요",
       "content": "할머니가 먹을 거 같은 맛입니다. 1960년 전쟁 때 맛 보고 싶었는데 그때는 너무 가난해서 먹을 수 없었는데요 이것보다 긴 리뷰도 잘려 보인답니다",
-      "rating": 4.0,
-      "favoriteCount": 1256,
+      "image": null,
       "categoryType": "food",
-      "createdAt": "2023-08-09T10:10:10"
+      "tags": [
+        {
+          "id": 5,
+          "name": "😋 맛있어요",
+          "tagType": "TASTE"
+        },
+        {
+          "id": 1,
+          "name": "🍭 달달해요",
+          "tagType": "TASTE"
+        }
+      ]
     },
     {
-      "reviewId": 1,
-      "productId": 2,
-      "productName": "하얀짜파게티큰사발",
-      "content": "하얀 짜파게티라니 말이 안된다고 생각했었죠. 실제로 맛을 보니까 까만 짜파게티랑 맛이 뭔가 다를게 없네요.",
-      "rating": 4.4,
-      "favoriteCount": 870,
+      "reviewId": 2,
+      "productId": 1,
+      "productName": "구운감자슬림명란마요",
+      "content": "할머니가 먹을 거 같은 맛입니다. 1960년 전쟁 때 맛 보고 싶었는데 그때는 너무 가난해서 먹을 수 없었는데요 이것보다 긴 리뷰도 잘려 보인답니다",
+      "image": null,
       "categoryType": "food",
-      "createdAt": "2023-08-09T10:10:10"
+      "tags": [
+        {
+          "id": 5,
+          "name": "👶 초딩입맛",
+          "tagType": "TASTE"
+        },
+        {
+          "id": 1,
+          "name": "🍺 속풀려요",
+          "tagType": "TASTE"
+        },
+        {
+          "id": 6,
+          "name": "🍳 아침식사",
+          "tagType": "TASTE"
+        }
+      ]
     }
   ]
 }

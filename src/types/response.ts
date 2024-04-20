@@ -1,7 +1,7 @@
 import type { Product } from './product';
-import type { ProductRanking, RecipeRanking, ReviewRanking } from './ranking';
+import type { ProductRanking, ReviewRanking } from './ranking';
 import type { Comment, MemberRecipe, Recipe } from './recipe';
-import type { Review } from './review';
+import type { MemberReview, Review } from './review';
 import type { ProductSearchResult, ProductSearchAutocomplete } from './search';
 
 export interface Page {
@@ -44,7 +44,7 @@ export interface RecipeResponse {
 
 export interface MemberReviewResponse {
   page: Page;
-  reviews: ReviewRanking[];
+  reviews: MemberReview[];
 }
 
 export interface MemberRecipeResponse {
@@ -61,5 +61,5 @@ export interface ProductRankingResponse {
 }
 
 export interface RecipeRankingResponse {
-  recipes: RecipeRanking[];
+  recipes: Recipe[];
 }

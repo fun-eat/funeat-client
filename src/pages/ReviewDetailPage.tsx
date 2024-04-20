@@ -4,7 +4,6 @@ import styled from 'styled-components';
 
 import { SectionTitle, SvgIcon, TagList } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
-import { PATH } from '@/constants/path';
 import { useReviewDetailQuery } from '@/hooks/queries/review';
 import { getRelativeDate } from '@/utils/date';
 
@@ -31,7 +30,7 @@ export const ReviewDetailPage = () => {
 
   return (
     <ReviewDetailPageContainer>
-      <SectionTitle name={productName} link={`${PATH.PRODUCT_LIST}/${categoryType}/${productId}`} />
+      <SectionTitle name={productName} />
       <Spacing size={24} />
       <ReviewItemContainer>
         <ReviewerWrapper>
@@ -50,7 +49,7 @@ export const ReviewDetailPage = () => {
                   <SvgIcon
                     key={`rating-${index}`}
                     variant="star"
-                    color={index < rating ? theme.colors.secondary : theme.colors.gray2}
+                    fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
                     width={16}
                     height={16}
                   />
@@ -71,7 +70,7 @@ export const ReviewDetailPage = () => {
         <TagList tags={tags} />
         <ReviewContent>{content}</ReviewContent>
         <FavoriteWrapper>
-          <SvgIcon variant="favoriteFilled" color="red" />
+          <SvgIcon variant="favoriteFilled" fill="red" />
           <Text as="span" weight="bold">
             {favoriteCount}
           </Text>

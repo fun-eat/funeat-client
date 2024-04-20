@@ -3,49 +3,23 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { ErrorBoundary, ErrorComponent, Loading } from '@/components/Common';
-import { MinimalLayout, DefaultLayout, HeaderOnlyLayout, SimpleHeaderLayout } from '@/components/Layout';
+import { Layout } from '@/components/Layout';
 import { useRouteChangeTracker } from '@/hooks/common';
 
 interface AppProps {
-  layout?: 'default' | 'headerOnly' | 'minimal' | 'simpleHeader';
+  hasLayout?: boolean;
 }
 
-const App = ({ layout = 'default' }: AppProps) => {
+const App = ({ hasLayout = false }: AppProps) => {
   const { reset } = useQueryErrorResetBoundary();
 
   useRouteChangeTracker();
 
-  if (layout === 'minimal') {
+  if (!hasLayout) {
     return (
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>
-          <MinimalLayout>
-            <Outlet />
-          </MinimalLayout>
-        </Suspense>
-      </ErrorBoundary>
-    );
-  }
-
-  if (layout === 'headerOnly') {
-    return (
-      <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-        <Suspense fallback={<Loading />}>
-          <HeaderOnlyLayout>
-            <Outlet />
-          </HeaderOnlyLayout>
-        </Suspense>
-      </ErrorBoundary>
-    );
-  }
-
-  if (layout === 'simpleHeader') {
-    return (
-      <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-        <Suspense fallback={<Loading />}>
-          <SimpleHeaderLayout>
-            <Outlet />
-          </SimpleHeaderLayout>
+          <Outlet />
         </Suspense>
       </ErrorBoundary>
     );
@@ -54,9 +28,9 @@ const App = ({ layout = 'default' }: AppProps) => {
   return (
     <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
       <Suspense fallback={<Loading />}>
-        <DefaultLayout>
+        <Layout>
           <Outlet />
-        </DefaultLayout>
+        </Layout>
       </Suspense>
     </ErrorBoundary>
   );

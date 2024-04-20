@@ -1,27 +1,36 @@
-import styled from 'styled-components';
-
+import { categoryStoreListWrapper } from './categoryStoreList.css';
 import CategoryItem from '../CategoryItem/CategoryItem';
 
 import { CATEGORY_TYPE } from '@/constants';
 import { useCategoryStoreQuery } from '@/hooks/queries/product';
 
+interface CategoryStoreListProps {
+  hasName?: boolean;
+  isCircular?: boolean;
+  isBordered?: boolean;
+}
+
 const categoryType = CATEGORY_TYPE.STORE;
 
-const CategoryStoreList = () => {
-  const { data: categories } = useCategoryStoreQuery(categoryType);
+const CategoryStoreList = ({ hasName = false, isCircular = false, isBordered = false }: CategoryStoreListProps) => {
+  const { data: categories } = useCategoryStoreQuery();
 
   return (
-    <CategoryStoreListWrapper>
-      {categories.map(({ id, name, image }) => (
-        <CategoryItem key={id} categoryId={id} name={name} image={image} categoryType={categoryType} />
+    <div className={categoryStoreListWrapper}>
+      {categories.map((category) => (
+        <CategoryItem
+          key={category.id}
+          category={category}
+          width={68}
+          height={51}
+          categoryType={categoryType}
+          hasName={hasName}
+          isCircular={isCircular}
+          isBordered={isBordered}
+        />
       ))}
-    </CategoryStoreListWrapper>
+    </div>
   );
 };
 
 export default CategoryStoreList;
-
-const CategoryStoreListWrapper = styled.div`
-  display: flex;
-  gap: 16px;
-`;

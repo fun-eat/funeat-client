@@ -39,7 +39,7 @@ const BestReviewItem = ({ productId }: BestReviewItemProps) => {
                   <SvgIcon
                     key={`rating-${index}`}
                     variant="star"
-                    color={index < rating ? theme.colors.secondary : theme.colors.gray2}
+                    fill={index < rating ? theme.colors.secondary : theme.colors.gray2}
                     width={16}
                     height={16}
                   />
@@ -47,7 +47,7 @@ const BestReviewItem = ({ productId }: BestReviewItemProps) => {
               </div>
             </ReviewerInfoWrapper>
             <FavoriteWrapper>
-              <SvgIcon variant="favoriteFilled" color="red" width={13} height={13} />
+              <SvgIcon variant="favoriteFilled" fill="red" width={13} height={13} />
               <Text size="xs" color={theme.textColors.default} weight="bold">
                 {favoriteCount}
               </Text>

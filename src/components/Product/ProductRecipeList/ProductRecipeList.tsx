@@ -1,77 +1,57 @@
-import { Link, Text } from '@fun-eat/design-system';
-import { useRef } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { RecipeItem } from '@/components/Recipe';
+import { container, moreItem, notFound, recipeLink } from './productRecipeList.css';
+
+import SearchNotFoundImage from '@/assets/search-notfound.png';
+import { Text, ShowAllButton } from '@/components/Common';
+import { DefaultRecipeItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
-import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductRecipesQuery } from '@/hooks/queries/product';
-import type { SortOption } from '@/types/common';
+import displaySlice from '@/utils/displaySlice';
 
 interface ProductRecipeListProps {
   productId: number;
   productName: string;
-  selectedOption: SortOption;
 }
 
-const ProductRecipeList = ({ productId, productName, selectedOption }: ProductRecipeListProps) => {
-  const scrollRef = useRef<HTMLDivElement>(null);
-  const { fetchNextPage, hasNextPage, data } = useInfiniteProductRecipesQuery(productId, selectedOption.value);
-  useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
+const ProductRecipeList = ({ productId, productName }: ProductRecipeListProps) => {
+  // 상품에서 보여줄 꿀조합 정렬 조건
+  const { data } = useInfiniteProductRecipesQuery(productId, 'favoriteCount,desc');
 
   const recipes = data.pages.flatMap((page) => page.recipes);
+  const recipeToDisplay = displaySlice(true, recipes, 3);
 
   if (recipes.length === 0) {
     return (
-      <ErrorContainer>
-        <ErrorDescription align="center" weight="bold" size="lg">
-          {productName}을/를 {'\n'}사용한 꿀조합을 만들어보세요 🍯
-        </ErrorDescription>
-        <RecipeLink as={RouterLink} to={`${PATH.RECIPE}`} block>
-          꿀조합 작성하러 가기
-        </RecipeLink>
-      </ErrorContainer>
+      <div className={notFound}>
+        <img src={SearchNotFoundImage} width={335} alt="검색 결과 없음" />
+        <Text color="disabled" size="caption4">
+          아직 작성된 꿀조합이 없어요
+        </Text>
+        <div style={{ height: '6px' }} />
+        <Link to={PATH.RECIPE} className={recipeLink}>
+          <Text as="span" color="sub" weight="semiBold" size="caption2">
+            꿀조합 작성하러 가기
+          </Text>
+        </Link>
+      </div>
     );
   }
 
   return (
-    <>
-      <ProductRecipeListContainer>
-        {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <Link as={RouterLink} to={`${PATH.RECIPE}/${recipe.id}`}>
-              <RecipeItem recipe={recipe} />
-            </Link>
-          </li>
-        ))}
-      </ProductRecipeListContainer>
-      <div ref={scrollRef} aria-hidden />
-    </>
+    <ul className={container}>
+      {recipeToDisplay.map((recipe) => (
+        <li key={recipe.id}>
+          <DefaultRecipeItem recipe={recipe} />
+        </li>
+      ))}
+      {recipeToDisplay.length < recipes.length && (
+        <li className={moreItem}>
+          <ShowAllButton link={`${PATH.SEARCH}/recipes?query=${productName}`} />
+        </li>
+      )}
+    </ul>
   );
 };
 
 export default ProductRecipeList;
-
-const ProductRecipeListContainer = styled.ul`
-  & > li + li {
-    margin-top: 40px;
-  }
-`;
-
-const ErrorContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const ErrorDescription = styled(Text)`
-  padding: 20px 0;
-  white-space: pre-wrap;
-`;
-
-const RecipeLink = styled(Link)`
-  padding: 16px 24px;
-  border: 1px solid ${({ theme }) => theme.colors.gray4};
-  border-radius: 8px;
-`;

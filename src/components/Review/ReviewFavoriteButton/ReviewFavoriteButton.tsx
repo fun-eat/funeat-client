@@ -1,10 +1,11 @@
-import { Text, Button, useTheme } from '@fun-eat/design-system';
 import { useState } from 'react';
-import styled from 'styled-components';
 
-import { SvgIcon } from '@/components/Common';
+import { favoriteButton } from './reviewFavoriteButton.css';
+
+import { SvgIcon, Text } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
 import { useReviewFavoriteMutation } from '@/hooks/queries/review';
+import { vars } from '@/styles/theme.css';
 
 interface ReviewFavoriteButtonProps {
   productId: number;
@@ -14,8 +15,6 @@ interface ReviewFavoriteButtonProps {
 }
 
 const ReviewFavoriteButton = ({ productId, reviewId, favorite, favoriteCount }: ReviewFavoriteButtonProps) => {
-  const theme = useTheme();
-
   const initialFavoriteState = {
     isFavorite: favorite,
     currentFavoriteCount: favoriteCount,
@@ -45,25 +44,18 @@ const ReviewFavoriteButton = ({ productId, reviewId, favorite, favoriteCount }: 
   const [debouncedToggleFavorite] = useTimeout(handleToggleFavorite, 200);
 
   return (
-    <FavoriteButton
+    <button
       type="button"
-      variant="transparent"
+      className={favoriteButton}
       onClick={debouncedToggleFavorite}
       aria-label={`좋아요 ${currentFavoriteCount}개`}
     >
-      <SvgIcon variant={isFavorite ? 'favoriteFilled' : 'favorite'} color={isFavorite ? 'red' : theme.colors.gray4} />
-      <Text as="span" weight="bold">
+      <SvgIcon variant="favorite2" width={16} fill={isFavorite ? vars.colors.semantic.red : vars.colors.icon.light} />
+      <Text as="span" color={isFavorite ? 'sub' : 'info'} size="caption1" weight="medium">
         {currentFavoriteCount}
       </Text>
-    </FavoriteButton>
+    </button>
   );
 };
 
 export default ReviewFavoriteButton;
-
-const FavoriteButton = styled(Button)`
-  display: flex;
-  align-items: center;
-  padding: 0;
-  column-gap: 8px;
-`;

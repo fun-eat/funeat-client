@@ -1,54 +1,34 @@
-import { Button, Heading, Link, theme } from '@fun-eat/design-system';
-import { Link as RouterLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { SvgIcon } from '@/components/Common';
-import { useRoutePage } from '@/hooks/common';
+import { container, wrapper } from './sectionTitle.css';
+
+import { SvgIcon, Text } from '@/components/Common';
+import { PATH } from '@/constants/path';
+import { vars } from '@/styles/theme.css';
 
 interface SectionTitleProps {
   name: string;
-  link?: string;
+  hasSearchLink?: boolean;
 }
 
-const SectionTitle = ({ name, link }: SectionTitleProps) => {
-  const { routeBack } = useRoutePage();
-
+const SectionTitle = ({ name, hasSearchLink }: SectionTitleProps) => {
   return (
-    <SectionTitleContainer>
-      <SectionTitleWrapper>
-        <Button type="button" variant="transparent" onClick={routeBack} aria-label="뒤로 가기">
-          <SvgIcon variant="arrow" color={theme.colors.gray5} width={15} height={15} />
-        </Button>
-        {link ? (
-          <Link as={RouterLink} to={link} block>
-            <ProductName size="xl">{name}</ProductName>
-          </Link>
-        ) : (
-          <ProductName size="xl">{name}</ProductName>
-        )}
-        {link && <SvgIcon variant="link" width={20} height={20} />}
-      </SectionTitleWrapper>
-    </SectionTitleContainer>
+    <div className={container}>
+      <div className={wrapper}>
+        <Link to=".." relative="path">
+          <SvgIcon variant="arrowLeft" stroke={vars.colors.black} height={24} />
+        </Link>
+        <Text size="headline" weight="semiBold">
+          {name}
+        </Text>
+      </div>
+      {hasSearchLink && (
+        <Link to={PATH.SEARCH}>
+          <SvgIcon variant="search2" stroke={vars.colors.black} width={20} height={20} />
+        </Link>
+      )}
+    </div>
   );
 };
 
 export default SectionTitle;
-
-const SectionTitleContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const SectionTitleWrapper = styled.div`
-  display: flex;
-  align-items: center;
-
-  svg {
-    padding-top: 2px;
-  }
-`;
-
-const ProductName = styled(Heading)`
-  margin: 0 5px 0 16px;
-`;

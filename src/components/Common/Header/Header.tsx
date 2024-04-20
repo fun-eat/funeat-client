@@ -1,54 +1,23 @@
-import { Link } from '@fun-eat/design-system';
-import { Link as RouterLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
+import { container, link } from './header.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import Logo from '@/assets/logo.svg';
 import { PATH } from '@/constants/path';
+import { vars } from '@/styles/theme.css';
 
-interface HeaderProps {
-  hasSearch?: boolean;
-}
-
-const Header = ({ hasSearch = true }: HeaderProps) => {
-  if (hasSearch) {
-    return (
-      <HeaderWithSearchContainer>
-        <Link as={RouterLink} to={PATH.HOME}>
-          <Logo width={160} />
-        </Link>
-        <Link as={RouterLink} to={`${PATH.SEARCH}/integrated`}>
-          <SvgIcon variant="search" />
-        </Link>
-      </HeaderWithSearchContainer>
-    );
-  }
-
+const Header = () => {
   return (
-    <HeaderContainer>
-      <Link as={RouterLink} to={PATH.HOME}>
-        <Logo width={180} />
+    <header className={container}>
+      <Link to={PATH.HOME} className={link}>
+        <Logo />
       </Link>
-    </HeaderContainer>
+      <Link to={PATH.SEARCH} className={link}>
+        <SvgIcon variant="search2" width={20} height={20} fill={vars.colors.black} />
+      </Link>
+    </header>
   );
 };
 
 export default Header;
-
-const HeaderWithSearchContainer = styled.header`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: calc(100% - 40px);
-  height: 60px;
-  margin: 0 auto;
-`;
-
-const HeaderContainer = styled.header`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 60px;
-`;

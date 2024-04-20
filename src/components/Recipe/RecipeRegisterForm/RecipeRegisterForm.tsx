@@ -67,7 +67,7 @@ const RecipeRegisterForm = ({ closeRecipeDialog }: RecipeRegisterFormProps) => {
     <RecipeRegisterFormContainer>
       <RecipeHeading tabIndex={0}>나만의 꿀조합 만들기🍯</RecipeHeading>
       <CloseButton variant="transparent" aria-label="닫기" onClick={closeRecipeDialog}>
-        <SvgIcon variant="close" color={theme.colors.black} width={20} height={20} />
+        <SvgIcon variant="close" fill={theme.colors.black} width={20} height={20} />
       </CloseButton>
       <Divider />
       <Spacing size={36} />

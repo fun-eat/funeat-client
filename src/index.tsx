@@ -9,7 +9,8 @@ import { RouterProvider } from 'react-router-dom';
 import { SvgSprite } from './components/Common';
 import { ENVIRONMENT } from './constants';
 import router from './router';
-import GlobalStyle from './styles/globalStyle';
+
+import './styles/index.css';
 
 const initializeReactGA = () => {
   if (process.env.NODE_ENV === 'development') return;
@@ -41,7 +42,6 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <FunEatProvider>
         <SvgSprite />
-        <GlobalStyle />
         <RouterProvider router={router} fallbackElement={<p>...loading</p>} />
       </FunEatProvider>
       <ReactQueryDevtools initialIsOpen={false} />

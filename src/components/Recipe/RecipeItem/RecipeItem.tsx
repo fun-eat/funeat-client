@@ -1,112 +1,237 @@
-import { Heading, Text, Skeleton, useTheme } from '@fun-eat/design-system';
-import { Fragment, memo, useState } from 'react';
-import styled from 'styled-components';
+import { Skeleton } from '@fun-eat/design-system';
+import type { PropsWithChildren } from 'react';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import PreviewImage from '@/assets/plate.svg';
-import { SvgIcon } from '@/components/Common';
-import { MemberImage } from '@/components/Members';
-import type { MemberRecipe, Recipe } from '@/types/recipe';
-import { getFormattedDate } from '@/utils/date';
+import {
+  ellipsis,
+  favoriteButtonWrapper,
+  imageWrapper,
+  productButtonWrapper,
+  productCircleListWrapper,
+  productCircleWrapper,
+  productImage,
+  recipeImage,
+  recipeProductsCount,
+  thirdProductImage,
+} from './recipeItem.css';
+import RecipeFavoriteButton from '../RecipeFavoriteButton/RecipeFavoriteButton';
+import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
+
+import { Text } from '@/components/Common';
+import {
+  RECIPE_CARD_DEFAULT_IMAGE_URL_1,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_2,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_3,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_4,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_5,
+} from '@/constants/image';
+import { PATH } from '@/constants/path';
+import RecipeItemProvider from '@/contexts/RecipeItemContext';
+import { useRecipeItemValueContext } from '@/hooks/context';
+import type { Recipe } from '@/types/recipe';
+import { getRelativeDate } from '@/utils/date';
+import displaySlice from '@/utils/displaySlice';
+
+const defaultImages = [
+  RECIPE_CARD_DEFAULT_IMAGE_URL_1,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_2,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_3,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_4,
+  RECIPE_CARD_DEFAULT_IMAGE_URL_5,
+];
 
 interface RecipeItemProps {
-  recipe: Recipe | MemberRecipe;
-  isMemberPage?: boolean;
+  recipe: Recipe;
+  children?: React.ReactNode;
 }
 
-const RecipeItem = ({ recipe, isMemberPage = false }: RecipeItemProps) => {
-  const { image, title, createdAt, favoriteCount, products } = recipe;
-  const author = 'author' in recipe ? recipe.author : null;
+const RecipeItem = ({ recipe, children }: RecipeItemProps) => {
+  const { id } = recipe;
+
+  return (
+    <RecipeItemProvider recipe={recipe}>
+      <Link to={`${PATH.RECIPE}/${id}`}>{children}</Link>
+    </RecipeItemProvider>
+  );
+};
+
+const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
+  const {
+    recipe: { id, image, title, favorite },
+  } = useRecipeItemValueContext();
   const [isImageLoading, setIsImageLoading] = useState(true);
-  const theme = useTheme();
+
+  const randomIndex = Math.floor(Math.random() * defaultImages.length);
+  const defaultImage = defaultImages[randomIndex];
+
+  return (
+    <div className={imageWrapper}>
+      <img
+        className={recipeImage}
+        src={image ?? defaultImage}
+        alt={`조리된 ${title}`}
+        loading="lazy"
+        onLoad={() => image && setIsImageLoading(false)}
+      />
+      {isImageLoading && image && <Skeleton width={163} height={200} />}
+      <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
+        <RecipeFavoriteButton recipeId={id} favorite={favorite} />
+      </div>
+      {children}
+    </div>
+  );
+};
+
+const ProductButton = () => {
+  const {
+    recipe: { products },
+  } = useRecipeItemValueContext();
+
+  if (!products) {
+    return null;
+  }
 
   return (
     <>
-      {!isMemberPage && (
-        <ImageWrapper>
-          {image !== null ? (
-            <>
-              <RecipeImage src={image} alt={`조리된 ${title}`} loading="lazy" onLoad={() => setIsImageLoading(false)} />
-              {isImageLoading && <Skeleton width="100%" height={160} />}
-            </>
-          ) : (
-            <PreviewImage width={160} height={160} />
-          )}
-          {author && (
-            <MemberImage
-              src={author.profileImage}
-              alt={`${author.nickname}의 프로필`}
-              width={60}
-              height={60}
-              css={{ position: `absolute`, bottom: `-20px`, right: `16px` }}
-            />
-          )}
-        </ImageWrapper>
-      )}
-      <RecipeInfoWrapper>
-        <Text color={theme.textColors.sub}>
-          {author && `${author.nickname} 님 | `}
-          {getFormattedDate(createdAt)}
-        </Text>
-        <Heading as="h3" size="xl" weight="bold">
-          {title}
-        </Heading>
-        <RecipeProductText>
-          {products.map(({ id, name }) => (
-            <Text as="span" key={id} color={theme.textColors.info}>
-              #{name}
-            </Text>
-          ))}
-        </RecipeProductText>
-        <FavoriteWrapper>
-          <SvgIcon variant="favoriteFilled" width={16} height={16} color={theme.colors.error} />
-          <Text as="span" weight="bold">
-            {favoriteCount}
-          </Text>
-        </FavoriteWrapper>
-      </RecipeInfoWrapper>
+      <div className={productButtonWrapper} onClick={(e) => e.preventDefault()}>
+        <RecipeProductButton isTranslucent products={products} />
+      </div>
     </>
   );
 };
 
-export default memo(RecipeItem);
+const ProductCircleButton = () => {
+  const {
+    recipe: { products },
+  } = useRecipeItemValueContext();
 
-const ImageWrapper = styled.div`
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 160px;
-`;
+  if (!products) {
+    return null;
+  }
 
-const RecipeImage = styled.img`
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  object-fit: cover;
-`;
+  return (
+    <ul className={productCircleWrapper}>
+      {displaySlice(true, products, 3).map(({ id, image }, idx) => (
+        <li key={id} className={productCircleListWrapper}>
+          <img
+            src={image}
+            alt="사용한 상품"
+            className={products.length > 3 && idx === 2 ? thirdProductImage : productImage}
+          />
+          {idx === 2 && (
+            <Text size="caption3" weight="medium" className={recipeProductsCount}>
+              +{products.length - 3}
+            </Text>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+};
 
-const RecipeInfoWrapper = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100px;
-  margin-top: 10px;
-`;
+const Title = () => {
+  const {
+    recipe: { title },
+  } = useRecipeItemValueContext();
 
-const FavoriteWrapper = styled.div`
-  position: absolute;
-  top: 50%;
-  bottom: 50%;
-  right: 0;
-  display: flex;
-  gap: 4px;
-  align-items: center;
-  transform: translateY(-50%);
-`;
+  return (
+    <Text className={ellipsis} size="caption1" weight="semiBold" color="default">
+      {title}
+    </Text>
+  );
+};
 
-const RecipeProductText = styled(Text)`
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-`;
+const Author = () => {
+  const {
+    recipe: { author },
+  } = useRecipeItemValueContext();
+
+  return <Text size="caption3" color="sub">{`${author.nickname} 님`}</Text>;
+};
+
+const AuthorAndCreatedDate = () => {
+  const {
+    recipe: { author, createdAt },
+  } = useRecipeItemValueContext();
+
+  return (
+    <Text size="caption3" color="sub">
+      {`${author.nickname} 님 · ${getRelativeDate(createdAt)}`}
+    </Text>
+  );
+};
+
+const Content = () => {
+  const {
+    recipe: { content },
+  } = useRecipeItemValueContext();
+
+  return (
+    <Text className={ellipsis} size="caption4" color="disabled">
+      {content}
+    </Text>
+  );
+};
+
+RecipeItem.ImageAndFavoriteButton = ImageAndFavoriteButton;
+RecipeItem.ProductButton = ProductButton;
+RecipeItem.ProductCircleButton = ProductCircleButton;
+RecipeItem.Title = Title;
+RecipeItem.Author = Author;
+RecipeItem.AuthorAndCreatedDate = AuthorAndCreatedDate;
+RecipeItem.Content = Content;
+
+export default RecipeItem;
+
+export const DefaultRecipeItem = ({ recipe }: RecipeItemProps) => {
+  return (
+    <RecipeItem recipe={recipe}>
+      <RecipeItem.ImageAndFavoriteButton />
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.AuthorAndCreatedDate />
+    </RecipeItem>
+  );
+};
+
+export const RecipeItemWithDiskIcon = ({ recipe }: RecipeItemProps) => {
+  return (
+    <RecipeItem recipe={recipe}>
+      <RecipeItem.ImageAndFavoriteButton>
+        <RecipeItem.ProductButton />
+      </RecipeItem.ImageAndFavoriteButton>
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.AuthorAndCreatedDate />
+    </RecipeItem>
+  );
+};
+
+export const RecipeItemWithProductDetailImage = ({ recipe }: RecipeItemProps) => {
+  return (
+    <RecipeItem recipe={recipe}>
+      <RecipeItem.ImageAndFavoriteButton>
+        <RecipeItem.ProductCircleButton />
+      </RecipeItem.ImageAndFavoriteButton>
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.Author />
+      <RecipeItem.Content />
+    </RecipeItem>
+  );
+};
+
+export const RecipeItemWithDiskIconAndContent = ({ recipe }: RecipeItemProps) => {
+  return (
+    <RecipeItem recipe={recipe}>
+      <RecipeItem.ImageAndFavoriteButton>
+        <RecipeItem.ProductButton />
+      </RecipeItem.ImageAndFavoriteButton>
+      <div style={{ height: '8px' }} />
+      <RecipeItem.Title />
+      <RecipeItem.AuthorAndCreatedDate />
+      <RecipeItem.Content />
+    </RecipeItem>
+  );
+};

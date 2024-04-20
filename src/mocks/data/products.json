@@ -5,7 +5,7 @@
       "id": 1,
       "name": "꼬북칩",
       "price": 1500,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
       "averageRating": 4.5,
       "reviewCount": 100
     },
@@ -13,7 +13,15 @@
       "id": 2,
       "name": "새우깡",
       "price": 1000,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.0,
+      "reviewCount": 55
+    },
+    {
+      "id": 3,
+      "name": "감자깡",
+      "price": 1000,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
       "averageRating": 4.0,
       "reviewCount": 55
     }

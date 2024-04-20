@@ -15,7 +15,7 @@ export type CategoryVariant = 'food' | 'store';
 export type Food = (typeof CATEGORY_TYPE)['FOOD'];
 export type Store = (typeof CATEGORY_TYPE)['STORE'];
 
-export const isCategoryVariant = (value: string): value is CategoryVariant => {
+export const isCategoryVariant = (value: string | undefined): value is CategoryVariant => {
   return value === 'store' || value === 'food';
 };
 export interface Category {
@@ -32,7 +32,7 @@ export interface Tag {
 
 export interface NavigationMenu {
   variant: SvgIconVariant;
-  name: '검색' | '목록' | '홈' | '꿀조합' | '마이';
+  name: '상품' | '홈' | '조합실' | '마이';
   path: (typeof PATH)[keyof typeof PATH] | '/products/food' | '/products/store';
 }
 
@@ -53,3 +53,13 @@ export type SortOption =
   | (typeof RECIPE_SORT_OPTIONS)[number];
 
 export type TagVariants = keyof typeof TAG_TITLE;
+
+export interface Tab<T = string> {
+  value: T;
+  label: string;
+}
+
+export interface Option {
+  label: string | number;
+  value: string | number;
+}

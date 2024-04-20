@@ -5,6 +5,9 @@ import CommentList from './CommentList';
 const meta: Meta<typeof CommentList> = {
   title: 'recipe/CommentList',
   component: CommentList,
+  args: {
+    recipeId: 1,
+  },
 };
 
 export default meta;

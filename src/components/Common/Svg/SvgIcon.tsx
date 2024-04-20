@@ -2,6 +2,19 @@ import { theme } from '@fun-eat/design-system';
 import type { ComponentPropsWithoutRef, CSSProperties } from 'react';
 
 export const SVG_ICON_VARIANTS = [
+  'search2',
+  'home2',
+  'recipe2',
+  'forkSpoon2',
+  'camera2',
+  'favorite2',
+  'category2',
+  'member2',
+  'pencil2',
+  'star2',
+  'review2',
+  'check2',
+  'picture',
   'recipe',
   'list',
   'member',
@@ -25,6 +38,16 @@ export const SVG_ICON_VARIANTS = [
   'plane',
   'info',
   'trashcan',
+  'arrowUp',
+  'arrowLeft',
+  'arrowRight',
+  'arrowUpDown',
+  'heartEmpty',
+  'heartFilled',
+  'box',
+  'close2',
+  'disk',
+  'error',
 ] as const;
 export type SvgIconVariant = (typeof SVG_ICON_VARIANTS)[number];
 
@@ -34,9 +57,13 @@ interface SvgIconProps extends ComponentPropsWithoutRef<'svg'> {
    */
   variant: SvgIconVariant;
   /**
-   * SvgIcon의 색상입니다. (기본값 gray4)
+   * SvgIcon의 면 색상입니다. (기본값 none)
    */
-  color?: CSSProperties['color'];
+  fill?: CSSProperties['fill'];
+  /**
+   * SvgIcon의 선 색상입니다. (기본값 gray4)
+   */
+  stroke?: CSSProperties['stroke'];
   /**
    * SvgIcon의 너비입니다. (기본값 24)
    */
@@ -47,9 +74,16 @@ interface SvgIconProps extends ComponentPropsWithoutRef<'svg'> {
   height?: number;
 }
 
-const SvgIcon = ({ variant, width = 24, height = 24, color = theme.colors.gray4, ...props }: SvgIconProps) => {
+const SvgIcon = ({
+  variant,
+  width = 24,
+  height = 24,
+  fill = theme.colors.gray4,
+  stroke = 'none',
+  ...props
+}: SvgIconProps) => {
   return (
-    <svg width={width} height={height} fill={color} {...props}>
+    <svg width={width} height={height} fill={fill} stroke={stroke} {...props}>
       <use href={`#${variant}`} />
     </svg>
   );

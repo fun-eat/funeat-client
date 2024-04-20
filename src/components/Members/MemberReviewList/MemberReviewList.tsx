@@ -8,7 +8,7 @@ import MemberReviewItem from '../MemberReviewItem/MemberReviewItem';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberReviewQuery } from '@/hooks/queries/members';
-import useDisplaySlice from '@/utils/displaySlice';
+import displaySlice from '@/utils/displaySlice';
 
 interface MemberReviewListProps {
   isPreview?: boolean;
@@ -18,7 +18,7 @@ const MemberReviewList = ({ isPreview = false }: MemberReviewListProps) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const { fetchNextPage, hasNextPage, data } = useInfiniteMemberReviewQuery();
   const memberReviews = data.pages.flatMap((page) => page.reviews);
-  const reviewsToDisplay = useDisplaySlice(isPreview, memberReviews);
+  const reviewsToDisplay = displaySlice(isPreview, memberReviews);
 
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 
