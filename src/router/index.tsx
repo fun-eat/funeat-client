@@ -5,6 +5,7 @@ import App from './App';
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
 import CategoryProvider from '@/contexts/CategoryContext';
+import ReviewFormProvider from '@/contexts/ReviewFormContext';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 const router = createBrowserRouter([
@@ -171,15 +172,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
-        async lazy() {
-          const { ReviewRegisterPage } = await import(
-            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
-          );
-          return { Component: ReviewRegisterPage };
-        },
-      },
-      {
         path: PATH.SEARCH,
         async lazy() {
           const { SearchPage } = await import(/* webpackChunkName: "SearchPage" */ '@/pages/SearchPage/SearchPage');
@@ -202,6 +194,35 @@ const router = createBrowserRouter([
             /* webpackChunkName: "ProductSearchListPage" */ '@/pages/ProductSearchListPage/ProductSearchListPage'
           );
           return { Component: ProductSearchListPage };
+        },
+      },
+      {
+        path: `${PATH.SEARCH}/recipes`,
+        async lazy() {
+          const { RecipeSearchListPage } = await import(
+            /* webpackChunkName: "RecipeSearchListPage" */ '@/pages/RecipeSearchListPage/RecipeSearchListPage'
+          );
+          return { Component: RecipeSearchListPage };
+        },
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: (
+      <ReviewFormProvider>
+        <App layout="minimal" />
+      </ReviewFormProvider>
+    ),
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
+        async lazy() {
+          const { ReviewRegisterPage } = await import(
+            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
+          );
+          return { Component: ReviewRegisterPage };
         },
       },
     ],

@@ -1,7 +1,8 @@
 import { style } from '@vanilla-extract/css';
 
-export const container = style({
+export const listWrapper = style({
   display: 'flex',
+  gap: 10,
   alignItems: 'center',
-  gap: 6,
+  overflowY: 'scroll',
 });

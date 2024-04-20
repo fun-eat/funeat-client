@@ -27,3 +27,4 @@ export { default as WriteButton } from './WriteButton/WriteButton';
 export { default as Text } from './Text/Text';
 export { default as TopBar } from './TopBar/TopBar';
 export { default as StarRating } from './StarRating/StarRating';
+export { default as ShowAllButton } from './ShowAllButton/ShowAllButton';

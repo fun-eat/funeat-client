@@ -6,6 +6,6 @@ export const container = style({
 });
 
 export const title = style({
-  fontSize: '1.8rem',
-  fontWeight: 600,
+  fontSize: '1.6rem',
+  fontWeight: 700,
 });

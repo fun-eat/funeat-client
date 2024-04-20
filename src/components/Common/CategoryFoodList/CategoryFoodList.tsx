@@ -14,12 +14,12 @@ const categoryType = CATEGORY_TYPE.FOOD;
 
 const imgSize = {
   home: {
-    width: 51,
-    height: 51,
+    width: 52,
+    height: 52,
   },
   products: {
-    width: 68,
-    height: 68,
+    width: 56,
+    height: 56,
   },
 };
 
