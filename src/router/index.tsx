@@ -4,6 +4,7 @@ import App from './App';
 
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
+import ReviewFormProvider from '@/contexts/ReviewFormContext';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 const router = createBrowserRouter([
@@ -146,15 +147,6 @@ const router = createBrowserRouter([
           return { Component: ProductDetailPage };
         },
       },
-      {
-        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
-        async lazy() {
-          const { ReviewRegisterPage } = await import(
-            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
-          );
-          return { Component: ReviewRegisterPage };
-        },
-      },
     ],
   },
   /** 검색 페이지 */
@@ -186,6 +178,36 @@ const router = createBrowserRouter([
             /* webpackChunkName: "ProductSearchListPage" */ '@/pages/ProductSearchListPage/ProductSearchListPage'
           );
           return { Component: ProductSearchListPage };
+        },
+      },
+      {
+        path: `${PATH.SEARCH}/recipes`,
+        async lazy() {
+          const { RecipeSearchListPage } = await import(
+            /* webpackChunkName: "RecipeSearchListPage" */ '@/pages/RecipeSearchListPage/RecipeSearchListPage'
+          );
+          return { Component: RecipeSearchListPage };
+        },
+      },
+    ],
+  },
+  /** 상품 리뷰 페이지 */
+  {
+    path: '/',
+    element: (
+      <ReviewFormProvider>
+        <App />
+      </ReviewFormProvider>
+    ),
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
+        async lazy() {
+          const { ReviewRegisterPage } = await import(
+            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
+          );
+          return { Component: ReviewRegisterPage };
         },
       },
     ],

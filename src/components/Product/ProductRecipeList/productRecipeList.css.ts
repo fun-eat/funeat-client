@@ -15,24 +15,20 @@ export const moreItem = style({
   minWidth: 108,
 });
 
-export const moreLink = style({
+export const notFound = style({
   display: 'flex',
   flexDirection: 'column',
-  justifyContent: 'center',
   alignItems: 'center',
+  gap: 6,
+  textAlign: 'center',
 });
 
-export const moreIconWrapper = style({
+export const recipeLink = style({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  width: 40,
-  height: 40,
-  marginBottom: 12,
-  borderRadius: '50%',
-  background: vars.colors.secondary1,
-});
-
-export const moreIcon = style({
-  transform: 'rotate(180deg)',
+  height: 34,
+  padding: '0 16px',
+  backgroundColor: vars.colors.gray2,
+  borderRadius: 44,
 });

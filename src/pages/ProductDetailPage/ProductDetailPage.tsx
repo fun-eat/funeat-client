@@ -1,9 +1,9 @@
 import { BottomSheet, useBottomSheet } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import { useParams, useLocation, useNavigate } from 'react-router-dom';
+import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 
-import { main, registerButton, registerButtonWrapper, section, sortWrapper } from './productDetailPage.css';
+import { link, linkWrapper, main, section, sortWrapper } from './productDetailPage.css';
 import NotFoundPage from '../NotFoundPage';
 
 import {
@@ -66,7 +66,7 @@ export const ProductDetailPage = () => {
           <div style={{ height: '24px' }} />
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
             <Suspense fallback={<Loading />}>
-              <ProductRecipeList productId={Number(productId)} />
+              <ProductRecipeList productId={Number(productId)} productName={productDetail.name} />
             </Suspense>
           </ErrorBoundary>
         </section>
@@ -86,11 +86,16 @@ export const ProductDetailPage = () => {
           </ErrorBoundary>
         </section>
 
-        {/*로그인 여부에 따라 링크 경로*/}
-        <div className={registerButtonWrapper}>
-          <button type="button" className={member ? registerButton.active : registerButton.disabled}>
-            {member ? '리뷰 작성하기' : '로그인하고 리뷰 작성하기'}
-          </button>
+        <div className={linkWrapper}>
+          {member ? (
+            <Link to="review-register" className={link}>
+              리뷰 작성하기
+            </Link>
+          ) : (
+            <button type="button" onClick={handleLoginButtonClick} className={link}>
+              로그인하고 리뷰 작성하기
+            </button>
+          )}
         </div>
       </main>
 
