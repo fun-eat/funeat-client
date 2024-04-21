@@ -3,6 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const imageWrapper = style({
   position: 'relative',
+  lineHeight: 0,
 });
 
 export const recipeImage = style({
