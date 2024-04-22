@@ -3,6 +3,7 @@ import { memo, useState } from 'react';
 
 import {
   container,
+  imageWrapper,
   preview,
   previewWrapper,
   productImage,
@@ -25,19 +26,21 @@ const ProductItem = ({ product }: ProductItemProps) => {
 
   return (
     <div className={container}>
-      <img
-        src={image}
-        className={productImage}
-        alt={`${name}사진`}
-        loading="lazy"
-        onLoad={() => setIsImageLoading(false)}
-      />
-      {/*스켈레톤 디자인시스템에서 수정*/}
-      {isImageLoading && (
-        <div style={{ position: 'absolute', top: 0, left: 0 }}>
-          <Skeleton width={163} height={163} />
-        </div>
-      )}
+      <div className={imageWrapper}>
+        <img
+          src={image}
+          className={productImage}
+          alt={`${name}사진`}
+          loading="lazy"
+          onLoad={() => setIsImageLoading(false)}
+        />
+        {/*스켈레톤 디자인시스템에서 수정*/}
+        {isImageLoading && (
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+            <Skeleton width="100%" height="100%" />
+          </div>
+        )}
+      </div>
       <div style={{ height: '8px' }} />
       <p className={productName}>{name}</p>
       <div style={{ height: '2px' }} />

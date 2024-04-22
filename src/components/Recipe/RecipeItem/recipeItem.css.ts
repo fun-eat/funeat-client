@@ -3,6 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const imageWrapper = style({
   position: 'relative',
+  width: '100%',
   lineHeight: 0,
 });
 
