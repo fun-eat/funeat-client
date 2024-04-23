@@ -4,6 +4,7 @@ import { reviewImage, tagList, tag, tagName, reviewContent } from './reviewRanki
 
 import { Text } from '@/components/Common';
 import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
+import { ellipsis } from '@/styles/common.css';
 import type { ReviewRanking } from '@/types/ranking';
 import displaySlice from '@/utils/displaySlice';
 
@@ -23,7 +24,7 @@ const ReviewRankingItem = ({ productName, content, tags, image }: ReviewRankingI
     <div>
       <img src={image ?? REVIEW_CARD_DEFAULT_IMAGE_URL} className={reviewImage} alt={productName} />
       <div style={{ height: '8px' }} />
-      <Text color="sub" size="caption2" weight="semiBold">
+      <Text className={ellipsis} color="sub" size="caption2" weight="semiBold">
         {productName}
       </Text>
       <div style={{ height: '4px' }} />
