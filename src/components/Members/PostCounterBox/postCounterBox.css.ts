@@ -4,11 +4,11 @@ import { style } from '@vanilla-extract/css';
 export const container = style({
   display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
+  justifyContent: 'space-evenly',
   width: '100%',
   height: 80,
-
   background: vars.colors.border.light,
+  borderRadius: 6,
 });
 
 export const box = style({
@@ -21,6 +21,5 @@ export const box = style({
 export const border = style({
   width: 1,
   height: 53,
-  margin: '0 49.5px',
   background: vars.colors.border.default,
 });

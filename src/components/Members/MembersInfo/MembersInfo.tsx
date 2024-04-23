@@ -30,7 +30,7 @@ const MembersInfo = () => {
           로그아웃
         </Text>
       </button>
-      {/* 디자인 확정 후 spacing 추가 */}
+
       <div className={wrapper}>
         <MemberImage
           src={profileImage}
