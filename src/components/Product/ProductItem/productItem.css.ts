@@ -17,19 +17,6 @@ export const productImage = style({
   aspectRatio: '1 / 1',
 });
 
-export const productName = style({
-  fontWeight: 600,
-  lineHeight: 1.4,
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-});
-
-export const productPrice = style({
-  fontWeight: 500,
-  lineHeight: 1.4,
-});
-
 export const summaryWrapper = style({
   display: 'flex',
   gap: 12,

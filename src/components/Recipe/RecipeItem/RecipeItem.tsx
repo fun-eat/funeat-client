@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  ellipsis,
   favoriteButtonWrapper,
   imageWrapper,
   productButtonWrapper,
@@ -29,6 +28,7 @@ import {
 import { PATH } from '@/constants/path';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
+import { ellipsis } from '@/styles/common.css';
 import type { Recipe } from '@/types/recipe';
 import { getRelativeDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
