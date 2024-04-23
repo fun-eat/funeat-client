@@ -5,3 +5,7 @@ export const container = style({
   gap: 10,
   padding: '0 20px',
 });
+
+export const reviewItemWrapper = style({
+  minWidth: 164,
+});
