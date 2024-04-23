@@ -7,7 +7,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import { categoryButton, listSection, main, selectButton, selectSection, sortButton } from './productListPage.css';
 import NotFoundPage from '../NotFoundPage';
 
-import { ErrorBoundary, ErrorComponent, Loading, PageHeader, SelectOptionList, SvgIcon } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, SelectOptionList, SvgIcon, TopBar } from '@/components/Common';
 import { ProductList } from '@/components/Product';
 import { CATEGORY_TYPE, PAGE_TITLE, PRODUCT_SORT_OPTIONS } from '@/constants';
 import { useSelect } from '@/hooks/common';
@@ -46,7 +46,11 @@ export const ProductListPage = () => {
 
   return (
     <>
-      <PageHeader title={pageTitle} hasBackLink hasSearchLink state={category} />
+      <TopBar>
+        <TopBar.BackLink state={category} />
+        <TopBar.Title title={pageTitle} />
+        <TopBar.SearchLink />
+      </TopBar>
 
       <main className={main}>
         <section className={selectSection}>
