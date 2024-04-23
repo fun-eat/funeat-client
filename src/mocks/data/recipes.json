@@ -19,7 +19,7 @@
       "createdAt": "2023-08-05T10:10:10",
       "favoriteCount": 154,
       "favorite": true,
-      "content": "곰탕과 짜장면을 같이 먹을 수 있어요!",
+      "content": "곰탕과 짜장면을 같이 먹을 수 있어요! 곰탕과 짜장면을 같이 먹을 수 있어요! 곰탕과 짜장면을 같이 먹을 수 있어요! 곰탕과 짜장면을 같이 먹을 수 있어요!",
       "products": [
         {
           "id": 1,
@@ -204,7 +204,7 @@
     {
       "id": 5,
       "image": null,
-      "title": "초특급불닭콘치즈",
+      "title": "초특급불닭콘치즈 초특급불닭콘치즈 초특급불닭콘치즈 초특급불닭콘치즈 초특급불닭콘치즈",
       "author": {
         "nickname": "5번 글",
         "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/84a20dae-4770-4497-ae25-2dd552261aab"

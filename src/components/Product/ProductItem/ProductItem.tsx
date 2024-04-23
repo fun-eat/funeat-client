@@ -1,17 +1,10 @@
 import { Skeleton } from '@fun-eat/design-system';
 import { memo, useState } from 'react';
 
-import {
-  container,
-  preview,
-  previewWrapper,
-  productImage,
-  productName,
-  productPrice,
-  summaryWrapper,
-} from './productItem.css';
+import { container, previewWrapper, productImage, summaryWrapper } from './productItem.css';
 
-import { SvgIcon } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
+import { ellipsis } from '@/styles/common.css';
 import { vars } from '@/styles/theme.css';
 import type { Product } from '@/types/product';
 
@@ -39,22 +32,27 @@ const ProductItem = ({ product }: ProductItemProps) => {
         </div>
       )}
       <div style={{ height: '8px' }} />
-      <p className={productName}>{name}</p>
+      <Text className={ellipsis} size="caption3" weight="semiBold" color="sub">
+        {name}
+      </Text>
       <div style={{ height: '2px' }} />
-      <p className={productPrice}>{price.toLocaleString('ko-KR')}원</p>
+      {/* 추후 bold로 변경 */}
+      <Text size="caption2" weight="semiBold" color="sub">
+        {price.toLocaleString('ko-KR')}원
+      </Text>
       <div style={{ height: '8px' }} />
       <div className={summaryWrapper}>
         <div className={previewWrapper}>
           <SvgIcon variant="star2" width={11} height={11} fill={vars.colors.gray2} />
-          <span className={preview} aria-label={`${averageRating}점`}>
+          <Text as="span" size="caption3" color="disabled" aria-label={`${averageRating}점`}>
             {averageRating.toFixed(1)}
-          </span>
+          </Text>
         </div>
         <div className={previewWrapper}>
           <SvgIcon variant="review2" width={11} height={11} />
-          <span className={preview} aria-label={`리뷰 ${reviewCount}개`}>
+          <Text as="span" size="caption3" color="disabled" aria-label={`리뷰 ${reviewCount}개`}>
             {reviewCount}
-          </span>
+          </Text>
         </div>
       </div>
     </div>

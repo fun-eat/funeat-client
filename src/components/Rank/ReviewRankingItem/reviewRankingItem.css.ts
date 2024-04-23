@@ -4,7 +4,6 @@ import { style } from '@vanilla-extract/css';
 export const reviewImage = style({
   width: '100%',
   height: 'auto',
-  minWidth: 164,
   borderRadius: '6px',
   objectFit: 'cover',
   aspectRatio: '164 / 90',

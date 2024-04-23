@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { container } from './productPreviewList.css';
+import { container, productItemWrapper } from './productPreviewList.css';
 import ProductItem from '../ProductItem/ProductItem';
 
 import { PATH } from '@/constants/path';
@@ -23,7 +23,7 @@ const ProductPreviewList = ({ categoryId }: ProductPreviewListProps) => {
   return (
     <ul className={container}>
       {productToDisplay.map((product) => (
-        <li key={product.id}>
+        <li key={product.id} className={productItemWrapper}>
           <Link to={`${PATH.PRODUCT_LIST}/detail/${product.id}`}>
             <ProductItem product={product} />
           </Link>

@@ -6,3 +6,7 @@ export const container = style({
   padding: '0 20px',
   overflowX: 'auto',
 });
+
+export const productItemWrapper = style({
+  minWidth: 163,
+});
