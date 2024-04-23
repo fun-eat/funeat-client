@@ -20,6 +20,7 @@ import { useTabMenu } from '@/hooks/common';
 import { useCategoryQuery } from '@/hooks/queries/product';
 import { vars } from '@/styles/theme.css';
 import type { CategoryVariant, Tab } from '@/types/common';
+import { PRODUCT_BANNER, STORE_BANNER } from '@/constants/image';
 
 const TAB_MENUS: Tab<CategoryVariant>[] = [
   { value: CATEGORY_TYPE.FOOD, label: '공통 상품' },
@@ -39,6 +40,10 @@ export const ProductPage = () => {
     <>
       <TabMenu tabMenus={TAB_MENUS} selectedTabMenu={selectedTabMenu} handleTabMenuSelect={handleTabMenuClick} />
 
+      {selectedTabMenu === TAB_MENUS[1].value && (
+        <img src={STORE_BANNER} width={'100%'} height={180} alt="편의점 배너" />
+      )}
+
       <section className={categorySection}>
         <Suspense fallback={null}>
           {selectedTabMenu === TAB_MENUS[0].value ? (
@@ -49,7 +54,11 @@ export const ProductPage = () => {
         </Suspense>
       </section>
 
-      <div style={{ height: '12px', backgroundColor: vars.colors.border.light }} aria-hidden />
+      {selectedTabMenu === TAB_MENUS[0].value ? (
+        <img src={PRODUCT_BANNER} width={'100%'} height={72} alt="상품 배너" />
+      ) : (
+        <div style={{ height: '12px', backgroundColor: vars.colors.border.light }} aria-hidden />
+      )}
 
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>
