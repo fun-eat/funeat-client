@@ -64,9 +64,3 @@ export const recipeProductsCount = style({
   transform: 'translate( -50%, -50% )',
   color: vars.colors.white,
 });
-
-export const ellipsis = style({
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-});
