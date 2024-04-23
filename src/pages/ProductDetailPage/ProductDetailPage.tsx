@@ -8,12 +8,12 @@ import NotFoundPage from '../NotFoundPage';
 
 import {
   SortButton,
-  PageHeader,
   SectionHeader,
   ErrorBoundary,
   ErrorComponent,
   Loading,
   SelectOptionList,
+  TopBar,
 } from '@/components/Common';
 import { ProductDetailItem, ProductRecipeList } from '@/components/Product';
 import { ReviewList } from '@/components/Review';
@@ -55,7 +55,12 @@ export const ProductDetailPage = () => {
 
   return (
     <>
-      <PageHeader title="상세" hasBackLink />
+      <TopBar>
+        <TopBar.BackLink />
+        <TopBar.Title title="상세" />
+        <TopBar.Spacer />
+      </TopBar>
+
       <main className={main}>
         <ProductDetailItem productDetail={productDetail} />
 
