@@ -4,6 +4,11 @@ export const container = style({
   position: 'relative',
 });
 
+export const imageWrapper = style({
+  position: 'relative',
+  width: '100%',
+});
+
 export const productImage = style({
   width: '100%',
   height: 'auto',
