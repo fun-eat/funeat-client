@@ -1,7 +1,7 @@
 import { Skeleton } from '@fun-eat/design-system';
 import { memo, useState } from 'react';
 
-import { container, previewWrapper, productImage, summaryWrapper } from './productItem.css';
+import { container, imageWrapper, previewWrapper, productImage, summaryWrapper } from './productItem.css';
 
 import { SvgIcon, Text } from '@/components/Common';
 import { ellipsis } from '@/styles/common.css';
@@ -18,19 +18,21 @@ const ProductItem = ({ product }: ProductItemProps) => {
 
   return (
     <div className={container}>
-      <img
-        src={image}
-        className={productImage}
-        alt={`${name}사진`}
-        loading="lazy"
-        onLoad={() => setIsImageLoading(false)}
-      />
-      {/*스켈레톤 디자인시스템에서 수정*/}
-      {isImageLoading && (
-        <div style={{ position: 'absolute', top: 0, left: 0 }}>
-          <Skeleton width={163} height={163} />
-        </div>
-      )}
+      <div className={imageWrapper}>
+        <img
+          src={image}
+          className={productImage}
+          alt={`${name}사진`}
+          loading="lazy"
+          onLoad={() => setIsImageLoading(false)}
+        />
+        {/*스켈레톤 디자인시스템에서 수정*/}
+        {isImageLoading && (
+          <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+            <Skeleton width="100%" height="100%" />
+          </div>
+        )}
+      </div>
       <div style={{ height: '8px' }} />
       <Text className={ellipsis} size="caption3" weight="semiBold" color="sub">
         {name}
