@@ -8,3 +8,6 @@ export const RECIPE_CARD_DEFAULT_IMAGE_URL_2 = `${IMAGE_BASE_URL}recipe-card-def
 export const RECIPE_CARD_DEFAULT_IMAGE_URL_3 = `${IMAGE_BASE_URL}recipe-card-default_3.png`;
 export const RECIPE_CARD_DEFAULT_IMAGE_URL_4 = `${IMAGE_BASE_URL}recipe-card-default_4.png`;
 export const RECIPE_CARD_DEFAULT_IMAGE_URL_5 = `${IMAGE_BASE_URL}recipe-card-default_5.png`;
+
+export const PRODUCT_BANNER = `${IMAGE_BASE_URL}product-banner.png`;
+export const STORE_BANNER = `${IMAGE_BASE_URL}store-banner.png`;

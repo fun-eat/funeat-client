@@ -1,9 +1,11 @@
 import { NavLink } from 'react-router-dom';
 
 import { menuName, container, link, list } from './navigationBar.css';
+import Indicator from '../Indicator/Indicator';
 import SvgIcon from '../Svg/SvgIcon';
 
 import { NAVIGATION_MENU } from '@/constants';
+import { vars } from '@/styles/theme.css';
 
 const NavigationBar = () => {
   return (
@@ -18,8 +20,8 @@ const NavigationBar = () => {
                     variant={variant}
                     width={28}
                     height={28}
-                    fill={isActive ? '#ffb017' : '#a0a0a0'}
-                    stroke={isActive ? '#ffb017' : '#a0a0a0'}
+                    fill={isActive ? vars.colors.primary : vars.colors.gray2}
+                    stroke={isActive ? vars.colors.primary : vars.colors.gray2}
                   />
                   <span className={isActive ? menuName['active'] : menuName['default']}>{name}</span>
                 </>
@@ -28,6 +30,7 @@ const NavigationBar = () => {
           </li>
         ))}
       </ul>
+      <Indicator />
     </nav>
   );
 };

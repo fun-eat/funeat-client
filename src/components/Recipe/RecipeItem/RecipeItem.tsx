@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  ellipsis,
   favoriteButtonWrapper,
   imageWrapper,
   productButtonWrapper,
@@ -29,6 +28,7 @@ import {
 import { PATH } from '@/constants/path';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
+import { ellipsis } from '@/styles/common.css';
 import type { Recipe } from '@/types/recipe';
 import { getRelativeDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
@@ -74,7 +74,11 @@ const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
         loading="lazy"
         onLoad={() => image && setIsImageLoading(false)}
       />
-      {isImageLoading && image && <Skeleton width={163} height={200} />}
+      {isImageLoading && image && (
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+          <Skeleton width="100%" height="100%" />
+        </div>
+      )}
       <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
         <RecipeFavoriteButton recipeId={id} favorite={favorite} />
       </div>

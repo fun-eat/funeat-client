@@ -1,5 +1,5 @@
-import type { ComponentPropsWithoutRef } from 'react';
-import { Link } from 'react-router-dom';
+import type { ComponentPropsWithoutRef, MouseEventHandler } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { LeftNavigationWrapper, container, headerTitle, leftTitle, register } from './topBar.css';
 import SvgIcon from '../Svg/SvgIcon';
@@ -25,14 +25,27 @@ const TopBar = ({ children }: TopBarProps) => {
 const Logo = () => {
   return (
     <Link to={PATH.HOME}>
-      <LogoImage width={120} />
+      <LogoImage />
     </Link>
   );
 };
 
 const BackLink = ({ state }: TopBarProps) => {
+  const navigate = useNavigate();
+
+  const handleBack: MouseEventHandler<HTMLAnchorElement> = (event) => {
+    event.preventDefault();
+
+    if (state) {
+      navigate('..', { state, relative: 'path' });
+      return;
+    }
+
+    navigate(-1);
+  };
+
   return (
-    <Link to=".." relative="path" state={state}>
+    <Link to="#" onClick={handleBack}>
       <SvgIcon
         variant="arrowLeft"
         stroke={vars.colors.gray5}

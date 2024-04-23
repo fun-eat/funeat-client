@@ -4,12 +4,11 @@ import App from './App';
 
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
-import CategoryProvider from '@/contexts/CategoryContext';
 import ReviewFormProvider from '@/contexts/ReviewFormContext';
 import NotFoundPage from '@/pages/NotFoundPage';
 
 const router = createBrowserRouter([
-  /** 로그인이 안되었다면 로그인 페이지로 리다이렉트 */
+  /** 멤버 접근 페이지 */
   {
     path: '/',
     element: (
@@ -44,18 +43,6 @@ const router = createBrowserRouter([
           return { Component: MemberPostPage };
         },
       },
-    ],
-  },
-  /** 로그인이 안되었다면 로그인 페이지로 리다이렉트하면서 헤더만 있는 레이아웃 */
-  {
-    path: '/',
-    element: (
-      <AuthLayout>
-        <App layout="minimal" />
-      </AuthLayout>
-    ),
-    errorElement: <Navigate to={PATH.LOGIN} replace />,
-    children: [
       {
         path: `${PATH.RECIPE}/:recipeId`,
         async lazy() {
@@ -67,14 +54,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 헤더와 네비게이션 바가 있는 기본 레이아웃 */
+  /** 레이아웃이 있는 페이지 */
   {
     path: '/',
-    element: (
-      <CategoryProvider>
-        <App />
-      </CategoryProvider>
-    ),
+    element: <App hasLayout />,
     errorElement: <NotFoundPage />,
     children: [
       {
@@ -109,10 +92,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 헤더, 네비게이션 모두 없는 레이아웃 */
+  /** 로그인 페이지 */
   {
     path: '/',
-    element: <App layout="minimal" />,
+    element: <App />,
     errorElement: <NotFoundPage />,
     children: [
       {
@@ -131,14 +114,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 네비게이션과 헤더(검색 아이콘이 없는)가 있는 레이아웃 */
+  /** 상품 페이지 */
   {
     path: '/',
-    element: (
-      <CategoryProvider>
-        <App layout="minimal" />
-      </CategoryProvider>
-    ),
+    element: <App />,
     errorElement: <NotFoundPage />,
     children: [
       {
@@ -150,18 +129,6 @@ const router = createBrowserRouter([
           return { Component: ProductListPage };
         },
       },
-    ],
-  },
-  /** 네비게이션 바 없이 헤더만 있는 레이아웃 */
-  {
-    path: '/',
-    element: (
-      <CategoryProvider>
-        <App layout="minimal" />
-      </CategoryProvider>
-    ),
-    errorElement: <NotFoundPage />,
-    children: [
       {
         path: `${PATH.PRODUCT_LIST}/detail/:productId`,
         async lazy() {
@@ -171,6 +138,14 @@ const router = createBrowserRouter([
           return { Component: ProductDetailPage };
         },
       },
+    ],
+  },
+  /** 검색 페이지 */
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFoundPage />,
+    children: [
       {
         path: PATH.SEARCH,
         async lazy() {
@@ -207,11 +182,12 @@ const router = createBrowserRouter([
       },
     ],
   },
+  /** 상품 리뷰 페이지 */
   {
     path: '/',
     element: (
       <ReviewFormProvider>
-        <App layout="minimal" />
+        <App />
       </ReviewFormProvider>
     ),
     errorElement: <NotFoundPage />,

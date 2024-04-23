@@ -10,8 +10,23 @@ export const flexColContainer = style({
   flexDirection: 'column',
 });
 
+export const main = style({
+  paddingTop: 50,
+});
+
 export const container = style({
   padding: '0 20px',
+  margin: '10px 0',
+});
+
+export const contentSection = style({
+  padding: '0 20px',
+  margin: '12px 0 24px',
+});
+
+export const commentSection = style({
+  padding: '0 20px',
+  margin: '12px 0 32px',
 });
 
 export const authorWrapper = style({

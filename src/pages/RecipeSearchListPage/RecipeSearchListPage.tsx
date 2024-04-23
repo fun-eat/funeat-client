@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { listWrapper } from './recipeSearchListPage.css';
+import { listWrapper, main } from './recipeSearchListPage.css';
 
 import { TopBar } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
@@ -10,7 +10,7 @@ import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteRecipeSearchResultsQuery } from '@/hooks/queries/search';
 
 export const RecipeSearchListPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') || '';
 
   const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteRecipeSearchResultsQuery(searchQuery);
@@ -30,14 +30,16 @@ export const RecipeSearchListPage = () => {
         <TopBar.Title title={`'${searchQuery}'이/가 포함된 꿀조합`} />
         <TopBar.Spacer />
       </TopBar>
-      <ul className={listWrapper}>
-        {recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <DefaultRecipeItem recipe={recipe} />
-          </li>
-        ))}
-      </ul>
-      <div ref={scrollRef} aria-hidden />
+      <main className={main}>
+        <ul className={listWrapper}>
+          {recipes.map((recipe) => (
+            <li key={recipe.id}>
+              <DefaultRecipeItem recipe={recipe} />
+            </li>
+          ))}
+        </ul>
+        <div ref={scrollRef} aria-hidden />
+      </main>
     </>
   );
 };

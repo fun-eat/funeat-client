@@ -9,7 +9,7 @@ import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 
 export const ProductSearchListPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') || '';
 
   const {
@@ -29,10 +29,10 @@ export const ProductSearchListPage = () => {
         <TopBar.Title title={`'${searchQuery}'이/가 포함된 상품`} />
         <TopBar.Spacer />
       </TopBar>
-      <div className={container}>
+      <main className={container}>
         <ProductOverviewList products={products} hasBorder />
-      </div>
-      <div ref={scrollRef} aria-hidden />
+        <div ref={scrollRef} aria-hidden />
+      </main>
     </>
   );
 };

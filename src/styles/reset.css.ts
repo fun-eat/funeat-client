@@ -4,7 +4,7 @@ globalStyle('#root', {
   display: 'flex',
   flexDirection: 'column',
   height: '100vh',
-  maxWidth: 400,
+  maxWidth: 440,
   margin: '0 auto',
   lineHeight: 1.4,
 });
