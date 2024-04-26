@@ -16,11 +16,11 @@ import {
 } from '@/components/Common';
 import { ProductPreviewList } from '@/components/Product';
 import { CATEGORY_TYPE } from '@/constants';
+import { PRODUCT_BANNER, STORE_BANNER } from '@/constants/image';
 import { useTabMenu } from '@/hooks/common';
 import { useCategoryQuery } from '@/hooks/queries/product';
 import { vars } from '@/styles/theme.css';
 import type { CategoryVariant, Tab } from '@/types/common';
-import { PRODUCT_BANNER, STORE_BANNER } from '@/constants/image';
 
 const TAB_MENUS: Tab<CategoryVariant>[] = [
   { value: CATEGORY_TYPE.FOOD, label: '공통 상품' },

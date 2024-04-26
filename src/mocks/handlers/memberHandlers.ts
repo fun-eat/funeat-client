@@ -1,8 +1,8 @@
 import { rest } from 'msw';
 
-import mockMember from '../data/members.json';
 import mockMemberRecipes from '../data/memberRecipes.json';
 import mockMemberReviews from '../data/memberReviews.json';
+import mockMember from '../data/members.json';
 
 export const memberHandlers = [
   rest.get('/api/members', (req, res, ctx) => {

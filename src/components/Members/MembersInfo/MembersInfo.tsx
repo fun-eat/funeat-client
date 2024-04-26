@@ -2,12 +2,12 @@ import { Link } from 'react-router-dom';
 
 import { logoutButton, modifyButton, wrapper } from './memberInfo.css';
 import MemberImage from '../MemberImage/MemberImage';
+import PostCounterBox from '../PostCounterBox/PostCounterBox';
 
 import { SvgIcon, Text } from '@/components/Common';
 import { PATH } from '@/constants/path';
 import { useLogoutMutation, useMemberQuery } from '@/hooks/queries/members';
 import { vars } from '@/styles/theme.css';
-import PostCounterBox from '../PostCounterBox/PostCounterBox';
 
 const MembersInfo = () => {
   const { data: member } = useMemberQuery();

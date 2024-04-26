@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import { border, box, container } from './postCounterBox.css';
 
 import { Text } from '@/components/Common';
