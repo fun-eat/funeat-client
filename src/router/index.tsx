@@ -29,7 +29,7 @@ const router = createBrowserRouter([
         path: `${PATH.MEMBER}/modify`,
         async lazy() {
           const { MemberModifyPage } = await import(
-            /* webpackChunkName: "MemberModifyPage" */ '@/pages/MemberModifyPage'
+            /* webpackChunkName: "MemberModifyPage" */ '@/pages/MemberModifyPage/MemberModifyPage'
           );
           return { Component: MemberModifyPage };
         },
