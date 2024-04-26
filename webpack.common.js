@@ -36,6 +36,7 @@ module.exports = {
       },
       {
         test: /\.vanilla\.css$/i,
+        exclude: /node_modules/,
         use: [
           MiniCssExtractPlugin.loader,
           {
@@ -51,6 +52,6 @@ module.exports = {
   plugins: [
     new Dotenv(),
     new VanillaExtractPlugin({ identifiers: ({ hash }) => `prefix_${hash}` }),
-    new MiniCssExtractPlugin(),
+    new MiniCssExtractPlugin({ ignoreOrder: true }),
   ],
 };
