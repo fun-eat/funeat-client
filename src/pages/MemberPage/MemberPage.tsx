@@ -1,7 +1,7 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 
-import { container, main } from './memberPage.css';
+import { container } from './memberPage.css';
 
 import { ErrorBoundary, ErrorComponent, Loading, SectionHeader, TopBar } from '@/components/Common';
 import { MembersInfo } from '@/components/Members';
@@ -19,7 +19,7 @@ export const MemberPage = () => {
       </TopBar>
       <div style={{ height: '29px' }} />
 
-      <main className={main}>
+      <section className={container}>
         <Suspense fallback={<Loading />}>
           <MembersInfo />
         </Suspense>
@@ -30,7 +30,7 @@ export const MemberPage = () => {
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>{/* 여기에 저장한 꿀조합 컴포넌트 */}</Suspense>
         </ErrorBoundary>
-      </main>
+      </section>
     </>
   );
 };
