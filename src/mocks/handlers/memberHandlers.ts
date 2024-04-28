@@ -2,17 +2,11 @@ import { rest } from 'msw';
 
 import mockMemberRecipes from '../data/memberRecipes.json';
 import mockMemberReviews from '../data/memberReviews.json';
+import mockMember from '../data/members.json';
 
 export const memberHandlers = [
   rest.get('/api/members', (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({
-        nickname: '냐미',
-        profileImage:
-          'https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed',
-      })
-    );
+    return res(ctx.status(200), ctx.json(mockMember));
   }),
 
   rest.put('/api/members', (req, res, ctx) => {

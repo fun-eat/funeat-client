@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       {
         path: PATH.MEMBER,
         async lazy() {
-          const { MemberPage } = await import(/* webpackChunkName: "MemberPage" */ '@/pages/MemberPage');
+          const { MemberPage } = await import(/* webpackChunkName: "MemberPage" */ '@/pages/MemberPage/MemberPage');
           return { Component: MemberPage };
         },
       },
@@ -29,27 +29,18 @@ const router = createBrowserRouter([
         path: `${PATH.MEMBER}/modify`,
         async lazy() {
           const { MemberModifyPage } = await import(
-            /* webpackChunkName: "MemberModifyPage" */ '@/pages/MemberModifyPage'
+            /* webpackChunkName: "MemberModifyPage" */ '@/pages/MemberModifyPage/MemberModifyPage'
           );
           return { Component: MemberModifyPage };
         },
       },
       {
-        path: `${PATH.MEMBER}/review`,
+        path: `${PATH.MEMBER}/post`,
         async lazy() {
-          const { MemberReviewPage } = await import(
-            /* webpackChunkName: "MemberReviewPage" */ '@/pages/MemberReviewPage'
+          const { MemberPostPage } = await import(
+            /* webpackChunkName: "MemberPostPage" */ '@/pages/MemberPostPage/MemberPostPage'
           );
-          return { Component: MemberReviewPage };
-        },
-      },
-      {
-        path: `${PATH.MEMBER}/recipe`,
-        async lazy() {
-          const { MemberRecipePage } = await import(
-            /* webpackChunkName: "MemberRecipePage" */ '@/pages/MemberRecipePage'
-          );
-          return { Component: MemberRecipePage };
+          return { Component: MemberPostPage };
         },
       },
       {
