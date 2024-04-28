@@ -4,3 +4,4 @@ export { default as MemberRecipeList } from './MemberRecipeList/MemberRecipeList
 export { default as MemberModifyInput } from './MemberModifyInput/MemberModifyInput';
 export { default as MemberReviewItem } from './MemberReviewItem/MemberReviewItem';
 export { default as MemberImage } from './MemberImage/MemberImage';
+export { default as PostCounterBox } from './PostCounterBox/PostCounterBox';

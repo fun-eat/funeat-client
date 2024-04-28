@@ -3,6 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const inputContainer = style({
   position: 'relative',
+  // 추후 outline 추가
 });
 
 export const searchInput = style({

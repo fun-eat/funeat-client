@@ -46,7 +46,13 @@ const BackLink = ({ state }: TopBarProps) => {
 
   return (
     <Link to="#" onClick={handleBack}>
-      <SvgIcon variant="arrowLeft" stroke={vars.colors.gray5} width={20} height={20} />
+      <SvgIcon
+        variant="arrowLeft"
+        stroke={vars.colors.gray5}
+        width={20}
+        height={20}
+        style={{ transform: 'translateY(2px)' }}
+      />
     </Link>
   );
 };

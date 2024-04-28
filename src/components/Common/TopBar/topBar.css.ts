@@ -11,7 +11,6 @@ export const container = style({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  padding: '0 20px',
   backgroundColor: vars.colors.white,
   transform: 'translateX(-50%)',
   zIndex: 1001,

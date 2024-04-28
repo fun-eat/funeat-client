@@ -1,24 +1,26 @@
-import { useTheme, Spacing, Text, Button, useToastActionContext } from '@fun-eat/design-system';
+import { useToastActionContext } from '@fun-eat/design-system';
 import type { MouseEventHandler } from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import { SvgIcon } from '@/components/Common';
+import { titleWrapper } from './memberReviewItem.css';
+
+import { SvgIcon, Text } from '@/components/Common';
+import { ReviewItemInfo } from '@/components/Review';
+import { PATH } from '@/constants/path';
 import { useDeleteReview } from '@/hooks/queries/members';
+import { vars } from '@/styles/theme.css';
 import type { MemberReview } from '@/types/review';
 
 interface MemberReviewItemProps {
   review: MemberReview;
-  isPreview: boolean;
 }
 
-const MemberReviewItem = ({ review, isPreview }: MemberReviewItemProps) => {
-  const theme = useTheme();
-
+const MemberReviewItem = ({ review }: MemberReviewItemProps) => {
   const { mutate } = useDeleteReview();
 
   const { toast } = useToastActionContext();
 
-  const { reviewId, productName, content, rating, favoriteCount } = review;
+  const { reviewId, productId, productName, rating, createdAt, image, content, tags } = review;
 
   const handleReviewDelete: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.preventDefault();
@@ -44,79 +46,25 @@ const MemberReviewItem = ({ review, isPreview }: MemberReviewItemProps) => {
   };
 
   return (
-    <ReviewRankingItemContainer>
-      <ProductNameIconWrapper>
-        <Text size="sm" weight="bold">
-          {productName}
-        </Text>
-        {!isPreview && (
-          <Button variant="transparent" customHeight="auto" onClick={handleReviewDelete}>
-            <SvgIcon variant="trashcan" width={20} height={20} />
-          </Button>
-        )}
-      </ProductNameIconWrapper>
-      <ReviewText size="sm" color={theme.textColors.info}>
-        {content}
-      </ReviewText>
-      <Spacing size={4} />
-      <FavoriteStarWrapper>
-        <FavoriteIconWrapper aria-label={`좋아요 ${favoriteCount}개`}>
-          <SvgIcon variant="favoriteFilled" fill="red" width={11} height={13} />
-          <Text size="xs" weight="bold">
-            {favoriteCount}
+    <>
+      <div className={titleWrapper}>
+        <Link to={`${PATH.PRODUCT_LIST}/detail/${productId}`}>
+          <Text weight="semiBold">
+            {productName}
+            <SvgIcon variant="arrowRight" fill={vars.colors.gray5} width={16} height={12} />
           </Text>
-        </FavoriteIconWrapper>
-        <RatingIconWrapper aria-label={`${rating.toFixed(1)}점`}>
-          <SvgIcon variant="star" fill={theme.colors.secondary} width={16} height={16} />
-          <Text size="xs" weight="bold">
-            {rating.toFixed(1)}
+        </Link>
+        <button onClick={handleReviewDelete}>
+          <Text as="span" size="caption4" weight="medium" color="disabled">
+            삭제
           </Text>
-        </RatingIconWrapper>
-      </FavoriteStarWrapper>
-    </ReviewRankingItemContainer>
+        </button>
+      </div>
+      <div style={{ height: '11px' }} />
+
+      <ReviewItemInfo rating={rating} createdAt={createdAt} image={image} content={content} tags={tags} />
+    </>
   );
 };
 
 export default MemberReviewItem;
-
-const ReviewRankingItemContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  padding: 12px 0;
-  border-bottom: ${({ theme }) => `1px solid ${theme.borderColors.disabled}`};
-`;
-
-const ProductNameIconWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-const ReviewText = styled(Text)`
-  display: -webkit-inline-box;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-`;
-
-const FavoriteStarWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-`;
-
-const FavoriteIconWrapper = styled.div`
-  display: flex;
-  gap: 4px;
-  align-items: center;
-`;
-
-const RatingIconWrapper = styled.div`
-  display: flex;
-  gap: 2px;
-  align-items: center;
-
-  & > svg {
-    padding-bottom: 2px;
-  }
-`;

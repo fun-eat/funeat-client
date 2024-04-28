@@ -67,7 +67,7 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
 
   return (
     <div className={container}>
-      <MemberImage src={member?.profileImage || ''} width={29} height={29} alt={`${member?.nickname}의 프로필 사진`} />
+      <MemberImage src={member?.profileImage || ''} width={29} height={29} />
       <>
         <form className={commentForm} onSubmit={handleSubmitComment}>
           <textarea

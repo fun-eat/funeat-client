@@ -29,8 +29,6 @@ export interface Recipe {
   products?: RecipeProduct[];
 }
 
-export type MemberRecipe = Recipe;
-
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
 }

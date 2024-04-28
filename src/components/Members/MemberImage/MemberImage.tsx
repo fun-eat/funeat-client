@@ -1,18 +1,16 @@
 import { useState } from 'react';
-import type { CSSProp } from 'styled-components';
-import styled from 'styled-components';
+
+import { container } from './memberImage.css';
 
 import DefaultMemberImage from '@/assets/defaultProfile.png';
 
 interface MemberImageProps {
   src: string;
-  alt: string;
   width?: number;
   height?: number;
-  css?: CSSProp;
 }
 
-const MemberImage = ({ src, alt, width = 45, height = 45, css }: MemberImageProps) => {
+const MemberImage = ({ src, width = 48, height = 48 }: MemberImageProps) => {
   const [isError, setIsError] = useState(false);
 
   const handleImageError = () => {
@@ -20,23 +18,15 @@ const MemberImage = ({ src, alt, width = 45, height = 45, css }: MemberImageProp
   };
 
   return (
-    <StyledMemberImage
+    <img
+      className={container}
       src={isError ? DefaultMemberImage : src}
-      alt={alt}
+      alt="사용자 프로필"
       width={width}
       height={height}
-      css={css}
       onError={handleImageError}
     />
   );
 };
 
 export default MemberImage;
-
-const StyledMemberImage = styled.img`
-  border: 2px solid ${({ theme }) => theme.colors.primary};
-  border-radius: 50%;
-  background: ${({ theme }) => theme.backgroundColors.default};
-  object-fit: cover;
-  ${({ css }) => css};
-`;
