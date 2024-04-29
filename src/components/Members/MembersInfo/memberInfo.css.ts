@@ -1,6 +1,10 @@
 import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
+export const container = style({
+  padding: '0 20px',
+});
+
 export const logoutButton = style({
   float: 'right',
 });
