@@ -22,7 +22,9 @@ const ReviewRankingItem = ({ productName, content, tags, image }: ReviewRankingI
 
   return (
     <div>
-      <img src={image ?? REVIEW_CARD_DEFAULT_IMAGE_URL} className={reviewImage} alt={productName} />
+      {image !== null && (
+        <img src={image === '' ? REVIEW_CARD_DEFAULT_IMAGE_URL : image} className={reviewImage} alt={productName} />
+      )}
       <div style={{ height: '8px' }} />
       <Text className={ellipsis} color="sub" size="caption2" weight="semiBold">
         {productName}
