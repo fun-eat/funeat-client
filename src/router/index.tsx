@@ -44,6 +44,15 @@ const router = createBrowserRouter([
         },
       },
       {
+        path: `${PATH.MEMBER}/bookmark`,
+        async lazy() {
+          const { MemberRecipeBookmarkPage } = await import(
+            /* webpackChunkName: "MemberRecipeBookmarkPage" */ '@/pages/MemberRecipeBookmarkPage/MemberRecipeBookmarkPage'
+          );
+          return { Component: MemberRecipeBookmarkPage };
+        },
+      },
+      {
         path: `${PATH.RECIPE}/:recipeId`,
         async lazy() {
           const { RecipeDetailPage } = await import(
