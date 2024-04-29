@@ -2,6 +2,8 @@ import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 
+import { container } from './memberPostPage.css';
+
 import { ErrorBoundary, ErrorComponent, Loading, TabMenu, TopBar } from '@/components/Common';
 import { MemberRecipeList, MemberReviewList } from '@/components/Members';
 import { POST_TYPE } from '@/constants';
@@ -24,10 +26,11 @@ export const MemberPostPage = () => {
       <TopBar>
         <TopBar.LeftNavigationGroup title="작성한 글" />
       </TopBar>
+      <div style={{ paddingTop: 50 }} />
 
       <TabMenu tabMenus={TAB_MENUS} selectedTabMenu={selectedTabMenu} handleTabMenuSelect={handleTabMenuClick} />
 
-      <section ref={memberRecipeRef}>
+      <section ref={memberRecipeRef} className={container}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <div style={{ height: '20px' }} />
