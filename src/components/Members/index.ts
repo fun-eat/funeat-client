@@ -5,3 +5,4 @@ export { default as MemberModifyInput } from './MemberModifyInput/MemberModifyIn
 export { default as MemberReviewItem } from './MemberReviewItem/MemberReviewItem';
 export { default as MemberImage } from './MemberImage/MemberImage';
 export { default as PostCounterBox } from './PostCounterBox/PostCounterBox';
+export { default as MemberRecipeBookmarkList } from './MemberRecipeBookmarkList.tsx/MemberRecipeBookmarkList';
