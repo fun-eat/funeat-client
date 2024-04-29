@@ -1,14 +1,6 @@
 import { style } from '@vanilla-extract/css';
 import { calc } from '@vanilla-extract/css-utils';
 
-export const container = style({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
-  gridAutoRows: 'auto',
-  columnGap: 10,
-  rowGap: 20,
-});
-
 export const notFoundContainer = style({
   height: calc.subtract('100vh', '110px'),
 });
