@@ -1,4 +1,3 @@
-export { default as Header } from './Header/Header';
 export { default as NavigationBar } from './NavigationBar/NavigationBar';
 export { default as SortButton } from './SortButton/SortButton';
 export { default as SortOptionList } from './SortOptionList/SortOptionList';

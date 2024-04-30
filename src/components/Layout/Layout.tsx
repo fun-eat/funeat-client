@@ -1,13 +1,17 @@
 import type { PropsWithChildren } from 'react';
 
 import { main } from './layout.css';
-import Header from '../Common/Header/Header';
+import { TopBar } from '../Common';
 import NavigationBar from '../Common/NavigationBar/NavigationBar';
 
 const Layout = ({ children }: PropsWithChildren) => {
   return (
     <>
-      <Header />
+      <TopBar>
+        <TopBar.Logo />
+        <TopBar.SearchLink />
+      </TopBar>
+
       <main id="main" className={main}>
         {children}
       </main>
