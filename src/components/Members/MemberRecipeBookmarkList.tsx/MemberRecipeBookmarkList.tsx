@@ -1,8 +1,16 @@
 import { useRef } from 'react';
 
-import { container, main, moreItem, previewContainer } from './memberRecipeBookmarkList.css';
+import {
+  container,
+  main,
+  moreItem,
+  notFound,
+  notFoundContainer,
+  previewContainer,
+} from './memberRecipeBookmarkList.css';
 
-import { ShowAllButton } from '@/components/Common';
+import NotFoundImage from '@/assets/search-notfound.png';
+import { ShowAllButton, Text } from '@/components/Common';
 import { DefaultRecipeItem, RecipeItemWithProductDetailImage } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import { useIntersectionObserver } from '@/hooks/common';
@@ -20,7 +28,25 @@ const MemberRecipeBookmarkList = ({ isPreview }: MemberRecipeBookmarkListProps) 
   const memberBookmarkRecipes = data?.pages.flatMap((page) => page.recipes);
   const recipeToDisplay = displaySlice(true, memberBookmarkRecipes, 3);
 
+  const totalRecipeCount = data?.pages[0].page.totalDataCount;
+
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
+
+  if (totalRecipeCount === 0) {
+    return (
+      <div className={isPreview ? '' : notFoundContainer}>
+        <div className={notFound}>
+          <img src={NotFoundImage} width={151} alt="꿀조합이 없을 때 사진" />
+          <Text size="headline" weight="semiBold" color="sub">
+            저장한 꿀조합이 없어요
+          </Text>
+          <Text size="caption4" weight="medium" color="disabled">
+            마음에 드는 꿀조합을 저장해보세요
+          </Text>
+        </div>
+      </div>
+    );
+  }
 
   if (isPreview) {
     return (
