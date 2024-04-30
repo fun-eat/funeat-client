@@ -35,7 +35,7 @@ export const main = style({
 
 export const container = style({
   display: 'grid',
-  gridTemplateColumns: 'repeat(2, 1fr)',
+  gridTemplateColumns: 'repeat(2, minmax(0, 1fr))',
   gridAutoRows: 'auto',
   columnGap: 10,
   rowGap: 20,
