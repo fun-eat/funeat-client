@@ -1,8 +1,6 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
 
-import { container } from './memberRecipeBookmarkPage.css';
-
 import { ErrorBoundary, ErrorComponent, Loading, TopBar } from '@/components/Common';
 import { MemberRecipeBookmarkList } from '@/components/Members/';
 
@@ -16,7 +14,7 @@ export const MemberRecipeBookmarkPage = () => {
         <TopBar.LeftNavigationGroup title="저장한 꿀조합" />
       </TopBar>
 
-      <section ref={memberRecipeRef} className={container}>
+      <section ref={memberRecipeRef}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
             <div style={{ height: '20px' }} />
