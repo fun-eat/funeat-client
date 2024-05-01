@@ -5,7 +5,7 @@ export const container = style({
   position: 'relative',
 });
 
-export const reviewTextarea = style({
+export const formTextarea = style({
   width: '100%',
   padding: '12px 16px',
   fontSize: '1.2rem',

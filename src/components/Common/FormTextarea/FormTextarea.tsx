@@ -1,31 +1,31 @@
 import { useState } from 'react';
 import type { FocusEventHandler, ChangeEventHandler } from 'react';
 
-import {
-  container,
-  currentLength,
-  errorMessage,
-  errorWrapper,
-  reviewTextarea,
-  statusWrapper,
-} from './reviewTextarea.css';
-import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
+import { container, currentLength, errorMessage, errorWrapper, formTextarea, statusWrapper } from './formTextarea.css';
 
 import { SvgIcon, Text } from '@/components/Common';
-import { useReviewFormActionContext } from '@/hooks/context';
+import { useRecipeFormActionContext, useReviewFormActionContext } from '@/hooks/context';
+import { itemTitle, requiredMark } from '@/styles/form.css';
 
 const MIN_LENGTH = 10;
 const MAX_LENGTH = 500;
 
-interface ReviewTextareaProps {
+interface FormTextareaProps {
   content: string;
+  isRecipe?: boolean;
 }
 
-const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
+const FormTextarea = ({ content, isRecipe }: FormTextareaProps) => {
+  const { handleRecipeFormValue } = useRecipeFormActionContext();
   const { handleReviewFormValue } = useReviewFormActionContext();
+
   const [isTouched, setIsTouched] = useState(false);
 
-  const handleReviewText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+  const handleFormText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+    if (isRecipe) {
+      handleRecipeFormValue({ target: 'content', value: event.currentTarget.value });
+      return;
+    }
     handleReviewFormValue({ target: 'content', value: event.currentTarget.value });
   };
 
@@ -49,13 +49,13 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
       </h2>
 
       <textarea
-        className={reviewTextarea}
+        className={formTextarea}
         rows={5}
         placeholder="조합된 상품, 조리 방법 등 만든 꿀조합에 대한 설명을 자유롭게 작성해주세요"
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
         value={content}
-        onChange={handleReviewText}
+        onChange={handleFormText}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
@@ -75,4 +75,4 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
   );
 };
 
-export default ReviewTextarea;
+export default FormTextarea;
