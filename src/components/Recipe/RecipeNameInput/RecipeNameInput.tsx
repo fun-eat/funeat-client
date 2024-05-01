@@ -1,58 +1,66 @@
-import { Heading, Input, Spacing, Text, useTheme } from '@fun-eat/design-system';
-import type { ChangeEventHandler } from 'react';
-import styled from 'styled-components';
+import { useState } from 'react';
+import type { FocusEventHandler, ChangeEventHandler } from 'react';
 
+import { formInput } from './recipeNameInput.css';
+
+import { SvgIcon, Text } from '@/components/Common';
 import { useRecipeFormActionContext } from '@/hooks/context';
+import { errorMessage, errorWrapper, itemTitle, requiredMark } from '@/styles/form.css';
 
 const MIN_LENGTH = 1;
 const MAX_LENGTH = 15;
+
 interface RecipeNameInputProps {
   recipeName: string;
 }
 
 const RecipeNameInput = ({ recipeName }: RecipeNameInputProps) => {
   const { handleRecipeFormValue } = useRecipeFormActionContext();
-  const theme = useTheme();
+
+  const [isTouched, setIsTouched] = useState(false);
 
   const handleRecipeName: ChangeEventHandler<HTMLInputElement> = (e) => {
     handleRecipeFormValue({ target: 'title', value: e.currentTarget.value });
   };
 
+  const handleFocus: FocusEventHandler<HTMLInputElement> = () => {
+    setIsTouched(false);
+  };
+
+  const handleBlur: FocusEventHandler<HTMLInputElement> = () => {
+    setIsTouched(true);
+  };
+
+  const isValid = recipeName.trim().length >= MIN_LENGTH || !isTouched;
+
   return (
-    <RecipeNameInputContainer>
-      <Heading as="h2" size="xl" tabIndex={0}>
+    <>
+      <h2 className={itemTitle} tabIndex={0}>
         꿀조합 이름
-        <RequiredMark aria-label="필수 작성">*</RequiredMark>
-      </Heading>
-      <RecipeNameStatusText color={theme.textColors.info} tabIndex={0}>
-        {recipeName.length}자 / {MAX_LENGTH}자
-      </RecipeNameStatusText>
-      <Spacing size={12} />
-      <Input
+        <sup className={requiredMark} aria-label="필수 작성">
+          *
+        </sup>
+      </h2>
+      <input
+        className={formInput}
         placeholder="재치있는 이름을 지어주세요!"
-        value={recipeName}
-        onChange={handleRecipeName}
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
+        value={recipeName}
+        onChange={handleRecipeName}
+        onFocus={handleFocus}
+        onBlur={handleBlur}
       />
-    </RecipeNameInputContainer>
+      <div style={{ height: 5 }} />
+
+      <div className={isValid ? errorWrapper.hidden : errorWrapper.show}>
+        <SvgIcon variant="error" width={12} height={12} fill="currentColor" />
+        <Text size="caption4" weight="medium" className={errorMessage}>
+          {MIN_LENGTH}자 이상의 제목을 입력해주세요!
+        </Text>
+      </div>
+    </>
   );
 };
 
 export default RecipeNameInput;
-
-const RecipeNameInputContainer = styled.div`
-  position: relative;
-  width: 300px;
-`;
-
-const RequiredMark = styled.sup`
-  color: ${({ theme }) => theme.colors.error};
-`;
-
-const RecipeNameStatusText = styled(Text)`
-  position: absolute;
-  top: 0;
-  right: 0;
-  line-height: 28px;
-`;
