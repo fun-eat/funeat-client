@@ -203,6 +203,22 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.RECIPE}/recipe-register`,
+        async lazy() {
+          const { RecipeRegisterPage } = await import(
+            /* webpackChunkName: "RecipeRegisterPage" */ '@/pages/RecipeRegisterPage/RecipeRegisterPage'
+          );
+          return { Component: RecipeRegisterPage };
+        },
+      },
+    ],
+  },
 ]);
 
 export default router;
