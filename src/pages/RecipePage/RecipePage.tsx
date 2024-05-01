@@ -16,6 +16,7 @@ import {
 } from '@/components/Common';
 import { RecipeList } from '@/components/Recipe';
 import { PREVIOUS_PATH_LOCAL_STORAGE_KEY, RECIPE_SORT_OPTIONS } from '@/constants';
+import { PATH } from '@/constants/path';
 import { useGA, useSelect } from '@/hooks/common';
 import type { SortOption } from '@/types/common';
 import { setLocalStorage } from '@/utils/localStorage';
@@ -55,7 +56,7 @@ export const RecipePage = () => {
 
       <div className={floatingButtonWrapper}>
         <ScrollButton targetRef={recipeRef} />
-        <WriteButton />
+        <WriteButton link={`${PATH.RECIPE}/recipe-register`} />
       </div>
 
       <BottomSheet isOpen={isOpen} isClosing={isClosing} maxWidth="440px" close={handleCloseBottomSheet}>

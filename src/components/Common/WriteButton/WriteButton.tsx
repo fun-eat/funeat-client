@@ -1,11 +1,16 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { button, closeButton, bubble, container } from './writeButton.css';
+import { closeButton, bubble, container, ableLink, disabledLink } from './writeButton.css';
 import SvgIcon from '../Svg/SvgIcon';
 
 import { useMemberQuery } from '@/hooks/queries/members';
 
-const WriteButton = () => {
+interface WriteButtonProps {
+  link: string;
+}
+
+const WriteButton = ({ link }: WriteButtonProps) => {
   const { data: member } = useMemberQuery();
   const [isBubbleOpen, setIsBubbleOpen] = useState(true);
 
@@ -22,9 +27,15 @@ const WriteButton = () => {
             </button>
           </div>
         )}
-        <button className={button} disabled={!member}>
-          <SvgIcon variant="pencil2" fill="none" stroke="white" width={17} height={17} />
-        </button>
+        {member ? (
+          <Link to={link} className={ableLink}>
+            <SvgIcon variant="pencil2" fill="none" stroke="white" width={17} height={17} />
+          </Link>
+        ) : (
+          <div className={disabledLink}>
+            <SvgIcon variant="pencil2" fill="none" stroke="white" width={17} height={17} />
+          </div>
+        )}
       </div>
     </>
   );
