@@ -1,28 +1,22 @@
-import { Button, Divider, Heading, Spacing, Text, useTheme, useToastActionContext } from '@fun-eat/design-system';
+import { useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler } from 'react';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-import RecipeDetailTextarea from '../RecipeDetailTextarea/RecipeDetailTextarea';
-import RecipeNameInput from '../RecipeNameInput/RecipeNameInput';
-import RecipeUsedProducts from '../RecipeUsedProducts/RecipeUsedProducts';
+import { addProduct } from './recipeRegisterForm.css';
 
-import { ImageUploader, SvgIcon } from '@/components/Common';
+import { FormTextarea, ImageUploader, Text } from '@/components/Common';
+import { PATH } from '@/constants/path';
 import { useImageUploader, useFormData } from '@/hooks/common';
 import { useRecipeFormValueContext, useRecipeFormActionContext } from '@/hooks/context';
 import { useRecipeRegisterFormMutation } from '@/hooks/queries/recipe';
+import { itemTitle, requiredMark } from '@/styles/form.css';
 import type { RecipeRequest } from '@/types/recipe';
 
-interface RecipeRegisterFormProps {
-  closeRecipeDialog: () => void;
-}
-
-const RecipeRegisterForm = ({ closeRecipeDialog }: RecipeRegisterFormProps) => {
-  const theme = useTheme();
-
+const RecipeRegisterForm = () => {
   const { previewImage, imageFile, uploadImage, deleteImage } = useImageUploader();
 
   const recipeFormValue = useRecipeFormValueContext();
-  const { resetRecipeFormValue } = useRecipeFormActionContext();
+  const { resetRecipeFormValue, handleRecipeFormValue } = useRecipeFormActionContext();
   const { toast } = useToastActionContext();
 
   const formData = useFormData<RecipeRequest>({
@@ -40,7 +34,6 @@ const RecipeRegisterForm = ({ closeRecipeDialog }: RecipeRegisterFormProps) => {
   const resetAndCloseForm = () => {
     deleteImage();
     resetRecipeFormValue();
-    closeRecipeDialog();
   };
 
   const handleRecipeFormSubmit: FormEventHandler<HTMLFormElement> = async (event) => {
@@ -64,66 +57,40 @@ const RecipeRegisterForm = ({ closeRecipeDialog }: RecipeRegisterFormProps) => {
   };
 
   return (
-    <RecipeRegisterFormContainer>
-      <RecipeHeading tabIndex={0}>나만의 꿀조합 만들기🍯</RecipeHeading>
-      <CloseButton variant="transparent" aria-label="닫기" onClick={closeRecipeDialog}>
-        <SvgIcon variant="close" fill={theme.colors.black} width={20} height={20} />
-      </CloseButton>
-      <Divider />
-      <Spacing size={36} />
-      <form onSubmit={handleRecipeFormSubmit}>
-        <RecipeNameInput recipeName={recipeFormValue.title} />
-        <Spacing size={40} />
-        <RecipeUsedProducts />
-        <Spacing size={36} />
-        <Heading as="h2" size="xl" tabIndex={0}>
-          완성된 꿀조합 사진을 올려주세요.
-        </Heading>
-        <Spacing size={2} />
-        <Text color={theme.textColors.disabled} tabIndex={0}>
-          (사진은 5MB 이하, 1장까지 업로드 할 수 있어요.)
-        </Text>
-        <Spacing size={12} />
+    <form id="recipe-form" onSubmit={handleRecipeFormSubmit}>
+      <div>
+        <h2 className={itemTitle} tabIndex={0}>
+          사진 등록
+        </h2>
         <ImageUploader previewImage={previewImage} uploadImage={uploadImage} deleteImage={deleteImage} />
-        <Spacing size={40} />
-        <RecipeDetailTextarea recipeDetail={recipeFormValue.content} />
-        <Spacing size={40} />
-        <Text size="sm" color={theme.textColors.disabled}>
-          [작성시 유의사항] 신뢰성 확보에 저해되는 게시물은 삭제하거나 보이지 않게 할 수 있습니다.
+      </div>
+      <div style={{ height: 32 }} />
+
+      <h2 className={itemTitle} tabIndex={0}>
+        사용한 상품
+        <sup className={requiredMark} aria-label="필수 작성">
+          *
+        </sup>
+      </h2>
+      <div style={{ height: 8 }} />
+      <Link to={`${PATH.SEARCH}`} className={addProduct}>
+        <Text size="caption1" weight="medium" color="info">
+          상품 추가
         </Text>
-        <Spacing size={10} />
-        <FormButton customWidth="100%" customHeight="60px" size="xl" weight="bold" disabled={!isValid || isLoading}>
-          꿀조합 등록하기
-        </FormButton>
-        <Spacing size={50} />
-      </form>
-    </RecipeRegisterFormContainer>
+      </Link>
+      <div style={{ height: 32 }} />
+
+      <h2 className={itemTitle} tabIndex={0}>
+        꿀조합 이름
+        <sup className={requiredMark} aria-label="필수 작성">
+          *
+        </sup>
+      </h2>
+      <div style={{ height: 32 }} />
+
+      <FormTextarea content={recipeFormValue.content} onFormValue={handleRecipeFormValue} />
+    </form>
   );
 };
 
 export default RecipeRegisterForm;
-
-const RecipeRegisterFormContainer = styled.div`
-  position: relative;
-  height: 100%;
-  padding: 0 24px;
-`;
-
-const RecipeHeading = styled(Heading)`
-  height: 80px;
-  font-size: 2.4rem;
-  line-height: 80px;
-  text-align: center;
-`;
-
-const CloseButton = styled(Button)`
-  position: absolute;
-  top: 24px;
-  right: 32px;
-`;
-
-const FormButton = styled(Button)`
-  color: ${({ theme, disabled }) => (disabled ? theme.colors.white : theme.colors.black)};
-  background: ${({ theme, disabled }) => (disabled ? theme.colors.gray3 : theme.colors.primary)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'pointer')};
-`;

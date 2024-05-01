@@ -4,29 +4,26 @@ import type { FocusEventHandler, ChangeEventHandler } from 'react';
 import { container, currentLength, errorMessage, errorWrapper, formTextarea, statusWrapper } from './formTextarea.css';
 
 import { SvgIcon, Text } from '@/components/Common';
-import { useRecipeFormActionContext, useReviewFormActionContext } from '@/hooks/context';
 import { itemTitle, requiredMark } from '@/styles/form.css';
 
 const MIN_LENGTH = 10;
 const MAX_LENGTH = 500;
 
-interface FormTextareaProps {
-  content: string;
-  isRecipe?: boolean;
+interface FormActionParams<T> {
+  target: keyof T;
+  value: T[keyof T];
 }
 
-const FormTextarea = ({ content, isRecipe }: FormTextareaProps) => {
-  const { handleRecipeFormValue } = useRecipeFormActionContext();
-  const { handleReviewFormValue } = useReviewFormActionContext();
+interface FormTextareaProps<T> {
+  content: string;
+  onFormValue: (params: FormActionParams<T>) => void;
+}
 
+const FormTextarea = <T,>({ content, onFormValue }: FormTextareaProps<T>) => {
   const [isTouched, setIsTouched] = useState(false);
 
   const handleFormText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    if (isRecipe) {
-      handleRecipeFormValue({ target: 'content', value: event.currentTarget.value });
-      return;
-    }
-    handleReviewFormValue({ target: 'content', value: event.currentTarget.value });
+    onFormValue({ target: 'content', value: event.currentTarget.value } as FormActionParams<T>);
   };
 
   const handleFocus: FocusEventHandler<HTMLTextAreaElement> = () => {

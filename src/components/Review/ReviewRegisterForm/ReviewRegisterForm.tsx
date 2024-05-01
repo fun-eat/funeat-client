@@ -104,7 +104,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
         </ul>
       </div>
       <Spacing size={32} />
-      <FormTextarea content={reviewFormValue.content} />
+      <FormTextarea content={reviewFormValue.content} onFormValue={handleReviewFormValue} />
       <Spacing size={32} />
       <RebuyCheckbox isRebuy={reviewFormValue.rebuy} />
     </form>
