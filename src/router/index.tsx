@@ -4,6 +4,7 @@ import App from './App';
 
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
+import RecipeFormProvider from '@/contexts/RecipeFormContext';
 import ReviewFormProvider from '@/contexts/ReviewFormContext';
 import NotFoundPage from '@/pages/NotFoundPage';
 
@@ -205,7 +206,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/',
-    element: <App />,
+    element: (
+      <RecipeFormProvider>
+        <App />
+      </RecipeFormProvider>
+    ),
     errorElement: <NotFoundPage />,
     children: [
       {
