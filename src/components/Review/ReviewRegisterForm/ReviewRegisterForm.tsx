@@ -2,16 +2,16 @@ import { Spacing, useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { itemTitle, requiredMark, tagAddButton, tagButton, tagList } from './reviewRegisterForm.css';
-import ReviewTextarea from './ReviewTextarea/ReviewTextarea';
+import { tagAddButton, tagButton, tagList } from './reviewRegisterForm.css';
 import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
-import { ImageUploader, SvgIcon, Text } from '@/components/Common';
+import { FormTextarea, ImageUploader, SvgIcon, Text } from '@/components/Common';
 import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';
 import { useReviewRegisterFormMutation } from '@/hooks/queries/review';
+import { itemTitle, requiredMark } from '@/styles/form.css';
 import { vars } from '@/styles/theme.css';
 import type { ReviewRequest } from '@/types/review';
 
@@ -104,7 +104,7 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
         </ul>
       </div>
       <Spacing size={32} />
-      <ReviewTextarea content={reviewFormValue.content} />
+      <FormTextarea content={reviewFormValue.content} />
       <Spacing size={32} />
       <RebuyCheckbox isRebuy={reviewFormValue.rebuy} />
     </form>
