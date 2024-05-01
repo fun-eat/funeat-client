@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import type { FocusEventHandler, ChangeEventHandler } from 'react';
 
-import { container, currentLength, errorMessage, errorWrapper, formTextarea, statusWrapper } from './formTextarea.css';
+import { container, currentLength, formTextarea, statusWrapper } from './formTextarea.css';
 
 import { SvgIcon, Text } from '@/components/Common';
-import { itemTitle, requiredMark } from '@/styles/form.css';
+import { errorMessage, errorWrapper, itemTitle, requiredMark } from '@/styles/form.css';
 
 const MIN_LENGTH = 10;
 const MAX_LENGTH = 500;
