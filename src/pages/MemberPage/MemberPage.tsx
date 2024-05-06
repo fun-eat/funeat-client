@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { container } from './memberPage.css';
 
 import { ErrorBoundary, ErrorComponent, Loading, SectionHeader, TopBar } from '@/components/Common';
-import { MembersInfo } from '@/components/Members';
+import { MemberRecipeBookmarkList, MembersInfo } from '@/components/Members';
 import { PATH } from '@/constants/path';
 
 export const MemberPage = () => {
@@ -25,10 +25,12 @@ export const MemberPage = () => {
         </Suspense>
         <div style={{ height: '32px' }} />
 
-        <SectionHeader name="저장한 꿀조합" link={`${PATH.MEMBER}/recipe`} />
+        <SectionHeader name="저장한 꿀조합" link={`${PATH.MEMBER}/bookmark`} />
         <div style={{ height: '14px' }} />
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-          <Suspense fallback={<Loading />}>{/* 여기에 저장한 꿀조합 컴포넌트 */}</Suspense>
+          <Suspense fallback={<Loading />}>
+            <MemberRecipeBookmarkList isPreview />
+          </Suspense>
         </ErrorBoundary>
       </section>
     </>

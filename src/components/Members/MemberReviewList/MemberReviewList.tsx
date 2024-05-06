@@ -1,7 +1,10 @@
 import { useRef } from 'react';
 
+import { notFound, notFoundContainer } from './memberReviewList.css';
 import MemberReviewItem from '../MemberReviewItem/MemberReviewItem';
 
+import ReviewNotFoundImage from '@/assets/review-notfound.png';
+import { Text } from '@/components/Common';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberReviewQuery } from '@/hooks/queries/members';
 import displaySlice from '@/utils/displaySlice';
@@ -16,22 +19,25 @@ const MemberReviewList = ({ isPreview = false }: MemberReviewListProps) => {
   const memberReviews = data.pages.flatMap((page) => page.reviews);
   const reviewsToDisplay = displaySlice(isPreview, memberReviews);
 
+  const totalReviewCount = data?.pages[0].page.totalDataCount;
+
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 
-  // 추후 디자인 추가에 따라 변경 예정
-  // if (totalReviewCount === 0) {
-  //   return (
-  //     <ErrorContainer>
-  //       <Text size="lg" weight="bold">
-  //         앗, 작성한 리뷰가 없네요 🥲
-  //       </Text>
-  //       <Spacing size={16} />
-  //       <ReviewLink as={RouterLink} to={`${PATH.PRODUCT_LIST}/food`} block>
-  //         리뷰 작성하러 가기
-  //       </ReviewLink>
-  //     </ErrorContainer>
-  //   );
-  // }
+  if (totalReviewCount === 0) {
+    return (
+      <div className={notFoundContainer}>
+        <div className={notFound}>
+          <img src={ReviewNotFoundImage} width={100} alt="꿀조합이 없을 때 사진" />
+          <Text size="headline" weight="semiBold" color="sub">
+            작성한 리뷰가 없어요
+          </Text>
+          <Text size="caption4" weight="medium" color="disabled">
+            새로운 리뷰를 작성해보세요
+          </Text>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>

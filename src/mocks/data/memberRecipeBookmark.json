@@ -1,0 +1,166 @@
+{
+  "page": {
+    "totalDataCount": 99,
+    "totalPages": 10,
+    "isLastPage": false,
+    "isFirstPage": true,
+    "requestPage": 1,
+    "requestSize": 10
+  },
+  "recipes": [
+    {
+      "id": 1,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10",
+      "content": "어쩌구 저쩌구",
+      "products": [
+        {
+          "id": 5,
+          "name": "불닭",
+          "price": 3000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10",
+      "content": "어쩌구 저쩌구",
+      "products": [
+        {
+          "id": 5,
+          "name": "불닭",
+          "price": 3000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10",
+      "content": "어쩌구 저쩌구",
+      "products": [
+        {
+          "id": 5,
+          "name": "불닭",
+          "price": 3000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10",
+      "content": "어쩌구 저쩌구",
+      "products": [
+        {
+          "id": 5,
+          "name": "불닭",
+          "price": 3000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10",
+      "content": "어쩌구 저쩌구",
+      "products": [
+        {
+          "id": 5,
+          "name": "불닭",
+          "price": 3000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        },
+        {
+          "id": 5,
+          "name": "참치삼김",
+          "price": 4000,
+          "image": "https://i.namu.wiki/i/9wnvUaEa1EkDqG-M0Pbwfdf19FJQQXV_-bnlU2SYaNcG05y2wbabiIrfrGES1M4xSgDjY39RwOvLNggDd3Huuw.webp",
+          "averageRating": 4.0
+        }
+      ]
+    }
+  ]
+}
