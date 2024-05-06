@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { logoutButton, modifyButton, wrapper } from './memberInfo.css';
+import { container, logoutButton, modifyButton, wrapper } from './memberInfo.css';
 import MemberImage from '../MemberImage/MemberImage';
 import PostCounterBox from '../PostCounterBox/PostCounterBox';
 
@@ -24,7 +24,7 @@ const MembersInfo = () => {
   };
 
   return (
-    <>
+    <div className={container}>
       <button className={logoutButton} onClick={handleLogout}>
         <Text as="span" size="caption4" weight="medium" color="info">
           로그아웃
@@ -52,7 +52,7 @@ const MembersInfo = () => {
       <div style={{ height: '24px' }} />
 
       <PostCounterBox recipeCount={recipeCount} reviewCount={reviewCount} />
-    </>
+    </div>
   );
 };
 

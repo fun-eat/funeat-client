@@ -1,7 +1,9 @@
 import { useRef } from 'react';
 
-import { container } from './memberRecipeList.css';
+import { container, notFound, notFoundContainer } from './memberRecipeList.css';
 
+import RecipeNotFoundImage from '@/assets/recipe-notfound.png';
+import { Text } from '@/components/Common';
 import { DefaultRecipeItem } from '@/components/Recipe';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberRecipeQuery } from '@/hooks/queries/members';
@@ -12,22 +14,25 @@ const MemberRecipeList = () => {
   const { fetchNextPage, hasNextPage, data } = useInfiniteMemberRecipeQuery();
   const memberRecipes = data?.pages.flatMap((page) => page.recipes);
 
+  const totalRecipeCount = data?.pages[0].page.totalDataCount;
+
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
 
-  // 추후 디자인 추가에 따라 변경 예정
-  // if (totalRecipeCount === 0) {
-  //   return (
-  //     <ErrorContainer>
-  //       <Text size="lg" weight="bold">
-  //         앗, 작성한 꿀조합이 없네요 🥲
-  //       </Text>
-  //       <Spacing size={16} />
-  //       <RecipeLink as={RouterLink} to={`${PATH.RECIPE}`} block>
-  //         꿀조합 작성하러 가기
-  //       </RecipeLink>
-  //     </ErrorContainer>
-  //   );
-  // }
+  if (totalRecipeCount === 0) {
+    return (
+      <div className={notFoundContainer}>
+        <div className={notFound}>
+          <img src={RecipeNotFoundImage} width={100} alt="꿀조합이 없을 때 사진" />
+          <Text size="headline" weight="semiBold" color="sub">
+            작성한 꿀조합이 없어요
+          </Text>
+          <Text size="caption4" weight="medium" color="disabled">
+            나만의 꿀조합을 작성해보세요
+          </Text>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
