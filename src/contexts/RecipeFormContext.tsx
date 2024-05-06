@@ -13,6 +13,7 @@ interface RecipeFormActionParams {
 }
 
 interface RecipeFormValue {
+  isValid: boolean;
   formValue: FormValue;
 }
 
@@ -27,6 +28,10 @@ const initialFormValue: FormValue = {
   content: '',
 };
 
+const MIN_USED_PRODUCTS = 1;
+const MIN_TITLE_LENGTH = 2;
+const MIN_CONTENT_LENGTH = 10;
+
 const isProductValue = (value: FormValues): value is RecipeProduct => typeof value === 'object';
 
 export const RecipeFormValueContext = createContext<RecipeFormValue | null>(null);
@@ -34,6 +39,11 @@ export const RecipeFormActionContext = createContext<RecipeFormAction | null>(nu
 
 const RecipeFormProvider = ({ children }: PropsWithChildren) => {
   const [formValue, setFormValue] = useState(initialFormValue);
+
+  const isValid =
+    formValue.products.length >= MIN_USED_PRODUCTS &&
+    formValue.title.length >= MIN_TITLE_LENGTH &&
+    formValue.content.length >= MIN_CONTENT_LENGTH;
 
   const handleRecipeFormValue = ({ target, value, action }: RecipeFormActionParams) => {
     setFormValue((prev) => {
@@ -56,6 +66,7 @@ const RecipeFormProvider = ({ children }: PropsWithChildren) => {
   };
 
   const value = {
+    isValid,
     formValue,
   };
 

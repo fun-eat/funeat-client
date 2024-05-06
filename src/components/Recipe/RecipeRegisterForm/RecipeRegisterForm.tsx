@@ -1,21 +1,20 @@
 import { useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler } from 'react';
-import { Link } from 'react-router-dom';
 
-import { addProduct } from './recipeRegisterForm.css';
+import RecipeNameInput from '../RecipeNameInput/RecipeNameInput';
+import RecipeUsedProducts from '../RecipeUsedProducts/RecipeUsedProducts';
 
-import { FormTextarea, ImageUploader, Text } from '@/components/Common';
-import { PATH } from '@/constants/path';
+import { FormTextarea, ImageUploader } from '@/components/Common';
 import { useImageUploader, useFormData } from '@/hooks/common';
 import { useRecipeFormValueContext, useRecipeFormActionContext } from '@/hooks/context';
 import { useRecipeRegisterFormMutation } from '@/hooks/queries/recipe';
-import { itemTitle, requiredMark } from '@/styles/form.css';
+import { itemTitle } from '@/styles/form.css';
 import type { RecipeRequest } from '@/types/recipe';
 
 const RecipeRegisterForm = () => {
   const { previewImage, imageFile, uploadImage, deleteImage } = useImageUploader();
 
-  const recipeFormValue = useRecipeFormValueContext();
+  const { formValue: recipeFormValue } = useRecipeFormValueContext();
   const { resetRecipeFormValue, handleRecipeFormValue } = useRecipeFormActionContext();
   const { toast } = useToastActionContext();
 
@@ -26,10 +25,7 @@ const RecipeRegisterForm = () => {
     formContent: recipeFormValue,
   });
 
-  const { mutate, isLoading } = useRecipeRegisterFormMutation();
-
-  const isValid =
-    recipeFormValue.title.length > 0 && recipeFormValue.content.length > 0 && recipeFormValue.productIds.length > 0;
+  const { mutate } = useRecipeRegisterFormMutation();
 
   const resetAndCloseForm = () => {
     deleteImage();
@@ -66,26 +62,10 @@ const RecipeRegisterForm = () => {
       </div>
       <div style={{ height: 32 }} />
 
-      <h2 className={itemTitle} tabIndex={0}>
-        사용한 상품
-        <sup className={requiredMark} aria-label="필수 작성">
-          *
-        </sup>
-      </h2>
-      <div style={{ height: 8 }} />
-      <Link to={`${PATH.SEARCH}`} className={addProduct}>
-        <Text size="caption1" weight="medium" color="info">
-          상품 추가
-        </Text>
-      </Link>
+      <RecipeUsedProducts />
       <div style={{ height: 32 }} />
 
-      <h2 className={itemTitle} tabIndex={0}>
-        꿀조합 이름
-        <sup className={requiredMark} aria-label="필수 작성">
-          *
-        </sup>
-      </h2>
+      <RecipeNameInput recipeName={recipeFormValue.title} />
       <div style={{ height: 32 }} />
 
       <FormTextarea content={recipeFormValue.content} onFormValue={handleRecipeFormValue} />
