@@ -5,4 +5,4 @@ export interface ProductSearchResult extends Product {
   categoryType: CategoryVariant;
 }
 
-export type ProductSearchAutocomplete = Pick<ProductSearchResult, 'id' | 'name' | 'categoryType'>;
+export type ProductSearchAutocomplete = Omit<ProductSearchResult, 'reviewCount'>;

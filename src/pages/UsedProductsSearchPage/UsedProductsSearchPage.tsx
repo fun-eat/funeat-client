@@ -19,7 +19,6 @@ export const UsedProductsSearchPage = () => {
     isSubmitted,
     isAutocompleteOpen,
     handleSearchQuery,
-    handleSearchForm,
     handleAutocompleteClose,
     resetSearchQuery,
   } = useSearch();
@@ -47,11 +46,6 @@ export const UsedProductsSearchPage = () => {
     resetSearchQuery();
   };
 
-  // const removeUsedProducts = (id: number) => {
-  //   setUsedProducts((prev) => prev.filter((usedProduct) => usedProduct.id !== id));
-  //   handleRecipeFormValue({ target: 'products', value: id, action: 'remove' });
-  // };
-
   return (
     <>
       <TopBar>
@@ -62,15 +56,13 @@ export const UsedProductsSearchPage = () => {
 
       <main className={main}>
         <section className={searchSection}>
-          <form onSubmit={handleSearchForm}>
-            <SearchInput
-              value={searchQuery}
-              onChange={handleSearchQuery}
-              isInputSubmitted={isSubmitted}
-              placeholder="상품을 검색해보세요"
-              ref={inputRef}
-            />
-          </form>
+          <SearchInput
+            value={searchQuery}
+            onChange={handleSearchQuery}
+            isInputSubmitted={isSubmitted}
+            placeholder="상품을 검색해보세요"
+            ref={inputRef}
+          />
           {!isSubmitted && debouncedSearchQuery && isAutocompleteOpen && (
             <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
               <Suspense fallback={<Loading />}>
