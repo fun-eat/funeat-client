@@ -22,3 +22,8 @@ export const disabled = style({
   borderRadius: 6,
   cursor: 'not-allowed',
 });
+
+export const iconWrapper = style({
+  marginLeft: 4,
+  transform: 'translateY(2.5px)',
+});
