@@ -1,18 +1,28 @@
-import { container, priceRate, priceRateWrapper, rateWrapper } from './productOverviewItem.css';
+import { closeWrapper, container, priceRate, priceRateWrapper, rateWrapper, wrapper } from './productOverviewItem.css';
 
 import { SvgIcon } from '@/components/Common';
+import { useRecipeFormActionContext } from '@/hooks/context';
+import { vars } from '@/styles/theme.css';
+import type { Product } from '@/types/product';
+import type { RecipeProduct } from '@/types/recipe';
 
 interface ProductOverviewItemProps {
-  name: string;
-  image: string;
-  price: number;
-  rate: number;
+  product: Product;
+  hasRemoved?: boolean;
 }
 
-const ProductOverviewItem = ({ image, name, price, rate }: ProductOverviewItemProps) => {
+const ProductOverviewItem = ({ product, hasRemoved = false }: ProductOverviewItemProps) => {
+  const { handleRecipeFormValue } = useRecipeFormActionContext();
+
+  const { name, image, averageRating, price } = product;
+
+  const removeUsedProducts = (currentProduct: RecipeProduct) => {
+    handleRecipeFormValue({ target: 'products', value: currentProduct, action: 'remove' });
+  };
+
   return (
-    <>
-      <div className={container}>
+    <div className={container}>
+      <div className={wrapper}>
         <img src={image} width={60} height={60} alt={name} />
         <div>
           <p>{name}</p>
@@ -21,12 +31,17 @@ const ProductOverviewItem = ({ image, name, price, rate }: ProductOverviewItemPr
             <span className={priceRate}>{price}원</span>
             <div className={rateWrapper}>
               <SvgIcon variant="star2" fill="#FFB017" width={11} height={11} />
-              <span className={priceRate}>{rate}</span>
+              <span className={priceRate}>{averageRating}</span>
             </div>
           </div>
         </div>
       </div>
-    </>
+      {hasRemoved && (
+        <button className={closeWrapper} onClick={() => removeUsedProducts(product)}>
+          <SvgIcon variant="close" width={14} height={14} stroke={vars.colors.gray3} />
+        </button>
+      )}
+    </div>
   );
 };
 

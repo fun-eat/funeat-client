@@ -1,12 +1,19 @@
 import type { PropsWithChildren } from 'react';
 import { createContext, useState } from 'react';
 
-import type { RecipeRequest, RecipeRequestKey } from '@/types/recipe';
+import type { RecipeProduct, RecipeRequest } from '@/types/recipe';
+
+type FormValue = Omit<RecipeRequest, 'productIds'> & { products: RecipeProduct[] };
+type FormValues = Exclude<FormValue[keyof FormValue], RecipeProduct[]> | RecipeProduct;
 
 interface RecipeFormActionParams {
-  target: RecipeRequestKey;
-  value: string | number;
+  target: keyof FormValue;
+  value: FormValues;
   action?: 'add' | 'remove';
+}
+
+interface RecipeFormValue {
+  formValue: FormValue;
 }
 
 interface RecipeFormAction {
@@ -14,33 +21,27 @@ interface RecipeFormAction {
   resetRecipeFormValue: () => void;
 }
 
-const initialRecipeFormValue: RecipeRequest = {
+const initialFormValue: FormValue = {
   title: '',
-  productIds: [],
+  products: [],
   content: '',
 };
 
-export const RecipeFormValueContext = createContext<RecipeRequest | null>(null);
+const isProductValue = (value: FormValues): value is RecipeProduct => typeof value === 'object';
+
+export const RecipeFormValueContext = createContext<RecipeFormValue | null>(null);
 export const RecipeFormActionContext = createContext<RecipeFormAction | null>(null);
 
 const RecipeFormProvider = ({ children }: PropsWithChildren) => {
-  const [recipeFormValue, setRecipeFormValue] = useState<RecipeRequest>({
-    title: '',
-    productIds: [],
-    content: '',
-  });
+  const [formValue, setFormValue] = useState(initialFormValue);
 
   const handleRecipeFormValue = ({ target, value, action }: RecipeFormActionParams) => {
-    setRecipeFormValue((prev) => {
+    setFormValue((prev) => {
       const targetValue = prev[target];
 
-      if (Array.isArray(targetValue)) {
+      if (isProductValue(value) && Array.isArray(targetValue)) {
         if (action === 'remove') {
           return { ...prev, [target]: targetValue.filter((id) => id !== value) };
-        }
-
-        if (targetValue.includes(Number(value))) {
-          return prev;
         }
 
         return { ...prev, [target]: [...targetValue, value] };
@@ -51,7 +52,11 @@ const RecipeFormProvider = ({ children }: PropsWithChildren) => {
   };
 
   const resetRecipeFormValue = () => {
-    setRecipeFormValue(initialRecipeFormValue);
+    setFormValue(initialFormValue);
+  };
+
+  const value = {
+    formValue,
   };
 
   const recipeFormAction = {
@@ -61,7 +66,7 @@ const RecipeFormProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <RecipeFormActionContext.Provider value={recipeFormAction}>
-      <RecipeFormValueContext.Provider value={recipeFormValue}>{children}</RecipeFormValueContext.Provider>
+      <RecipeFormValueContext.Provider value={value}>{children}</RecipeFormValueContext.Provider>
     </RecipeFormActionContext.Provider>
   );
 };

@@ -3,13 +3,13 @@ import { style } from '@vanilla-extract/css';
 export const container = style({
   display: 'flex',
   alignItems: 'center',
-  gap: 12,
+  justifyContent: 'space-between',
 });
 
-export const detailWrapper = style({
+export const wrapper = style({
   display: 'flex',
-  flexDirection: 'column',
-  gap: 6,
+  alignItems: 'center',
+  gap: 12,
 });
 
 export const priceRateWrapper = style({
@@ -25,4 +25,8 @@ export const rateWrapper = style({
 export const priceRate = style({
   fontSize: 11,
   color: '#999999',
+});
+
+export const closeWrapper = style({
+  marginRight: 15,
 });
