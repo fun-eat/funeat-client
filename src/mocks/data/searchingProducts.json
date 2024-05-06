@@ -39,6 +39,30 @@
       "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
       "averageRating": 4.5,
       "categoryType": "store"
+    },
+    {
+      "id": 22,
+      "name": "PB 새우깡1",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
+      "categoryType": "store"
+    },
+    {
+      "id": 23,
+      "name": "PB 새우깡2",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
+      "categoryType": "store"
+    },
+    {
+      "id": 24,
+      "name": "PB 새우깡3",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
+      "categoryType": "store"
     }
   ]
 }
