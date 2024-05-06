@@ -2,7 +2,7 @@ import { Badge, Spacing, Text, useTheme } from '@fun-eat/design-system';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
-import { SectionTitle, SvgIcon, TagList } from '@/components/Common';
+import { SvgIcon, TagList } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
 import { useReviewDetailQuery } from '@/hooks/queries/review';
 import { getRelativeDate } from '@/utils/date';
@@ -11,37 +11,20 @@ export const ReviewDetailPage = () => {
   const { reviewId } = useParams();
   const { data: reviewDetail } = useReviewDetailQuery(Number(reviewId));
 
-  const {
-    productName,
-    categoryType,
-    productId,
-    profileImage,
-    userName,
-    rating,
-    createdAt,
-    rebuy,
-    image,
-    tags,
-    content,
-    favoriteCount,
-  } = reviewDetail;
+  const { productName, profileImage, userName, rating, createdAt, rebuy, image, tags, content, favoriteCount } =
+    reviewDetail;
 
   const theme = useTheme();
 
   return (
     <ReviewDetailPageContainer>
-      <SectionTitle name={productName} />
+      {/* 디자인 나오면 수정 */}
+      {/* <SectionTitle name={productName} /> */}
       <Spacing size={24} />
       <ReviewItemContainer>
         <ReviewerWrapper>
           <ReviewerInfoWrapper>
-            <MemberImage
-              src={profileImage}
-              width={40}
-              height={40}
-              alt={`${userName}의 프로필`}
-              css={{ objectFit: `cover` }}
-            />
+            <MemberImage src={profileImage} width={40} height={40} css={{ objectFit: `cover` }} />
             <div>
               <Text weight="bold">{userName}</Text>
               <RatingIconWrapper>
