@@ -8,22 +8,23 @@ import { Text, SvgIcon } from '@/components/Common';
 interface SearchInputProps extends ComponentPropsWithRef<'input'> {
   isInputSubmitted: boolean;
   isTagSearch?: boolean;
+  placeholder?: string;
 }
 
 const SearchInput = forwardRef(
   (
-    { value, isInputSubmitted, isTagSearch = false, ...props }: SearchInputProps,
+    {
+      value,
+      isInputSubmitted,
+      isTagSearch = false,
+      placeholder = '상품 또는 꿀!조합을 검색해보세요',
+      ...props
+    }: SearchInputProps,
     ref: ForwardedRef<HTMLInputElement>
   ) => {
     return (
       <div className={inputContainer}>
-        <input
-          className={searchInput}
-          ref={ref}
-          placeholder="상품 또는 꿀!조합을 검색해보세요"
-          value={value}
-          {...props}
-        />
+        <input className={searchInput} ref={ref} placeholder={placeholder} value={value} {...props} />
         {isTagSearch && isInputSubmitted && (
           <div className={tagInputWrapper}>
             <Text color="info" size="caption3">

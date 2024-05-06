@@ -52,11 +52,13 @@ const useSearch = () => {
     if (!trimmedSearchQuery) {
       toast.error('검색어를 입력해주세요');
       resetSearchQuery();
+      navigate(PATH.SEARCH);
       return;
     }
 
     if (isSubmitted) {
       resetSearchQuery();
+      navigate(PATH.SEARCH);
       return;
     }
 
@@ -91,7 +93,7 @@ const useSearch = () => {
     setSearchParams({});
     focusInput();
 
-    navigate(PATH.SEARCH);
+    // navigate(PATH.SEARCH);
   };
 
   return {
@@ -104,6 +106,7 @@ const useSearch = () => {
     handleSearchByClick,
     handleAutocompleteClose,
     handleTagSearch,
+    resetSearchQuery,
   };
 };
 

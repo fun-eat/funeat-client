@@ -11,21 +11,33 @@
     {
       "id": 1,
       "name": "꼬북칩",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
       "categoryType": "food"
     },
     {
       "id": 2,
       "name": "새우깡",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
       "categoryType": "food"
     },
     {
       "id": 11,
       "name": "PB 꼬북칩",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
       "categoryType": "store"
     },
     {
       "id": 12,
       "name": "PB 새우깡",
+      "price": 1500,
+      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "averageRating": 4.5,
       "categoryType": "store"
     }
   ]
