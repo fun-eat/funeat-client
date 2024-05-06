@@ -1,7 +1,7 @@
 import type { ComponentPropsWithoutRef, MouseEventHandler } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { LeftNavigationWrapper, container, headerTitle, leftTitle, register } from './topBar.css';
+import { leftNavigationWrapper, container, headerTitle, leftTitle, register, link } from './topBar.css';
 import SvgIcon from '../Svg/SvgIcon';
 import Text from '../Text/Text';
 
@@ -24,7 +24,7 @@ const TopBar = ({ children }: TopBarProps) => {
 
 const Logo = () => {
   return (
-    <Link to={PATH.HOME}>
+    <Link to={PATH.HOME} className={link}>
       <LogoImage />
     </Link>
   );
@@ -64,7 +64,7 @@ const Title = ({ title }: TopBarProps) => {
 // 왼쪽에 뒤로가기 버튼과 타이틀이 함께 있는 구역
 const LeftNavigationGroup = ({ title }: TopBarProps) => {
   return (
-    <div className={LeftNavigationWrapper}>
+    <div className={leftNavigationWrapper}>
       <BackLink />
       <h1 className={leftTitle}>{title}</h1>
     </div>
@@ -73,7 +73,7 @@ const LeftNavigationGroup = ({ title }: TopBarProps) => {
 
 const SearchLink = () => {
   return (
-    <Link to={PATH.SEARCH}>
+    <Link to={PATH.SEARCH} className={link}>
       <SvgIcon variant="search2" stroke={vars.colors.black} width={20} height={20} />
     </Link>
   );

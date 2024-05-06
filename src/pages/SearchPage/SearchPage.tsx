@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTitle, main } from './searchPage.css';
 
-import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, PageHeader } from '@/components/Common';
+import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, TopBar } from '@/components/Common';
 import {
   ProductSearchResultPreviewList,
   RecipeSearchResultPreviewList,
@@ -49,7 +49,11 @@ export const SearchPage = () => {
 
   return (
     <>
-      <PageHeader title="검색" hasBackLink />
+      <TopBar>
+        <TopBar.BackLink />
+        <TopBar.Title title="검색" />
+        <TopBar.Spacer />
+      </TopBar>
 
       <main className={main}>
         <section className={searchSection}>
