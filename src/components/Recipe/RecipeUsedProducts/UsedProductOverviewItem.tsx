@@ -5,7 +5,7 @@ import {
   priceRateWrapper,
   rateWrapper,
   wrapper,
-} from './usedProductOverviewItem.css';
+} from '../../Product/ProductOverviewItem/productOverviewItem.css';
 
 import { SvgIcon } from '@/components/Common';
 import { useRecipeFormActionContext } from '@/hooks/context';
