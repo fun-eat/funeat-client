@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { container } from './productOverviewList.css';
 import ProductOverviewItem from '../ProductOverviewItem/ProductOverviewItem';
 
+import { UsedProductOverviewItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import type { Product } from '@/types/product';
 
@@ -18,10 +19,10 @@ const ProductOverviewList = ({ products, hasBorder = false, hasRemoved = false }
       {products.map((product) => (
         <li key={product.id}>
           {hasRemoved ? (
-            <ProductOverviewItem product={product} hasRemoved={hasRemoved} />
+            <UsedProductOverviewItem product={product} />
           ) : (
             <Link to={`${PATH.PRODUCT_LIST}/detail/${product.id}`}>
-              <ProductOverviewItem product={product} hasRemoved={hasRemoved} />
+              <ProductOverviewItem product={product} />
             </Link>
           )}
           {hasBorder && (

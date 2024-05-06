@@ -1,24 +1,14 @@
-import { closeWrapper, container, priceRate, priceRateWrapper, rateWrapper, wrapper } from './productOverviewItem.css';
+import { container, priceRate, priceRateWrapper, rateWrapper, wrapper } from './productOverviewItem.css';
 
 import { SvgIcon } from '@/components/Common';
-import { useRecipeFormActionContext } from '@/hooks/context';
-import { vars } from '@/styles/theme.css';
 import type { Product } from '@/types/product';
-import type { RecipeProduct } from '@/types/recipe';
 
 interface ProductOverviewItemProps {
   product: Product;
-  hasRemoved?: boolean;
 }
 
-const ProductOverviewItem = ({ product, hasRemoved = false }: ProductOverviewItemProps) => {
-  const { handleRecipeFormValue } = useRecipeFormActionContext();
-
+const ProductOverviewItem = ({ product }: ProductOverviewItemProps) => {
   const { name, image, averageRating, price } = product;
-
-  const removeUsedProducts = (currentProduct: RecipeProduct) => {
-    handleRecipeFormValue({ target: 'products', value: currentProduct, action: 'remove' });
-  };
 
   return (
     <div className={container}>
@@ -36,11 +26,6 @@ const ProductOverviewItem = ({ product, hasRemoved = false }: ProductOverviewIte
           </div>
         </div>
       </div>
-      {hasRemoved && (
-        <button className={closeWrapper} onClick={() => removeUsedProducts(product)}>
-          <SvgIcon variant="close" width={14} height={14} stroke={vars.colors.gray3} />
-        </button>
-      )}
     </div>
   );
 };
