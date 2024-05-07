@@ -68,7 +68,11 @@ const RecipeRegisterForm = () => {
       <RecipeNameInput recipeName={recipeFormValue.title} />
       <div style={{ height: 32 }} />
 
-      <FormTextarea content={recipeFormValue.content} onFormValue={handleRecipeFormValue} />
+      <FormTextarea
+        content={recipeFormValue.content}
+        onFormValue={handleRecipeFormValue}
+        placeholder="조합된 상품, 조리 방법 등 만든 꿀조합에 대한 설명을 자유롭게 작성해주세요"
+      />
     </form>
   );
 };

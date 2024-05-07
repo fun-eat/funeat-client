@@ -17,9 +17,10 @@ interface FormActionParams<T> {
 interface FormTextareaProps<T> {
   content: string;
   onFormValue: (params: FormActionParams<T>) => void;
+  placeholder?: string;
 }
 
-const FormTextarea = <T,>({ content, onFormValue }: FormTextareaProps<T>) => {
+const FormTextarea = <T,>({ content, onFormValue, placeholder }: FormTextareaProps<T>) => {
   const [isTouched, setIsTouched] = useState(false);
 
   const handleFormText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
@@ -48,7 +49,7 @@ const FormTextarea = <T,>({ content, onFormValue }: FormTextareaProps<T>) => {
       <textarea
         className={formTextarea}
         rows={5}
-        placeholder="조합된 상품, 조리 방법 등 만든 꿀조합에 대한 설명을 자유롭게 작성해주세요"
+        placeholder={placeholder}
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
         value={content}

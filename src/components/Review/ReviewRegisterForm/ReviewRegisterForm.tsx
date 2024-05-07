@@ -104,7 +104,11 @@ const ReviewRegisterForm = ({ productId, openBottomSheet }: ReviewRegisterFormPr
         </ul>
       </div>
       <Spacing size={32} />
-      <FormTextarea content={reviewFormValue.content} onFormValue={handleReviewFormValue} />
+      <FormTextarea
+        content={reviewFormValue.content}
+        onFormValue={handleReviewFormValue}
+        placeholder="상품에 대한 솔직한 리뷰를 자유롭게 작성해주세요"
+      />
       <Spacing size={32} />
       <RebuyCheckbox isRebuy={reviewFormValue.rebuy} />
     </form>
