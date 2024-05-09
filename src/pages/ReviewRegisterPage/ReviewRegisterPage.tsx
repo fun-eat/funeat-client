@@ -2,7 +2,7 @@ import { BottomSheet, useBottomSheet } from '@fun-eat/design-system';
 import { useParams } from 'react-router-dom';
 
 import { section } from './reviewRegisterPage.css';
-import NotFoundPage from '../NotFoundPage';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 import { TopBar } from '@/components/Common';
 import { ReviewRegisterForm, ReviewTagSheet } from '@/components/Review';

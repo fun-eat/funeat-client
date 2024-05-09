@@ -5,7 +5,7 @@ import App from './App';
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
 import ReviewFormProvider from '@/contexts/ReviewFormContext';
-import NotFoundPage from '@/pages/NotFoundPage';
+import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 const router = createBrowserRouter([
   /** 멤버 접근 페이지 */

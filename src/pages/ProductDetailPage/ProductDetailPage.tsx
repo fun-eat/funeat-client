@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import { useParams, useLocation, useNavigate, Link } from 'react-router-dom';
 
 import { link, linkWrapper, main, section, sortWrapper } from './productDetailPage.css';
-import NotFoundPage from '../NotFoundPage';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 import {
   SortButton,
