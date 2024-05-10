@@ -1,32 +1,30 @@
 import { useState } from 'react';
 import type { FocusEventHandler, ChangeEventHandler } from 'react';
 
-import {
-  container,
-  currentLength,
-  errorMessage,
-  errorWrapper,
-  reviewTextarea,
-  statusWrapper,
-} from './reviewTextarea.css';
-import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
+import { container, currentLength, formTextarea, statusWrapper } from './formTextarea.css';
 
 import { SvgIcon, Text } from '@/components/Common';
-import { useReviewFormActionContext } from '@/hooks/context';
+import { errorMessage, errorWrapper, itemTitle, requiredMark } from '@/styles/form.css';
 
 const MIN_LENGTH = 10;
 const MAX_LENGTH = 500;
 
-interface ReviewTextareaProps {
-  content: string;
+interface FormActionParams<T> {
+  target: keyof T;
+  value: T[keyof T];
 }
 
-const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
-  const { handleReviewFormValue } = useReviewFormActionContext();
+interface FormTextareaProps<T> {
+  content: string;
+  onFormValue: (params: FormActionParams<T>) => void;
+  placeholder?: string;
+}
+
+const FormTextarea = <T,>({ content, onFormValue, placeholder }: FormTextareaProps<T>) => {
   const [isTouched, setIsTouched] = useState(false);
 
-  const handleReviewText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
-    handleReviewFormValue({ target: 'content', value: event.currentTarget.value });
+  const handleFormText: ChangeEventHandler<HTMLTextAreaElement> = (event) => {
+    onFormValue({ target: 'content', value: event.currentTarget.value } as FormActionParams<T>);
   };
 
   const handleFocus: FocusEventHandler<HTMLTextAreaElement> = () => {
@@ -49,13 +47,13 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
       </h2>
 
       <textarea
-        className={reviewTextarea}
+        className={formTextarea}
         rows={5}
-        placeholder="조합된 상품, 조리 방법 등 만든 꿀조합에 대한 설명을 자유롭게 작성해주세요"
+        placeholder={placeholder}
         minLength={MIN_LENGTH}
         maxLength={MAX_LENGTH}
         value={content}
-        onChange={handleReviewText}
+        onChange={handleFormText}
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
@@ -75,4 +73,4 @@ const ReviewTextarea = ({ content }: ReviewTextareaProps) => {
   );
 };
 
-export default ReviewTextarea;
+export default FormTextarea;

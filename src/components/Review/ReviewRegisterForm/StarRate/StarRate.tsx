@@ -1,9 +1,9 @@
 import { starIcon, starWrapper } from './starRate.css';
-import { itemTitle, requiredMark } from '../reviewRegisterForm.css';
 
 import { SvgIcon } from '@/components/Common';
 import { useReviewFormActionContext } from '@/hooks/context';
 import { useStarRatingHover } from '@/hooks/review';
+import { itemTitle, requiredMark } from '@/styles/form.css';
 import { vars } from '@/styles/theme.css';
 
 const starList = Array.from({ length: 5 }, (_, index) => index + 1);
