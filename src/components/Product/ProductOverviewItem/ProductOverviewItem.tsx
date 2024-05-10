@@ -1,18 +1,18 @@
-import { container, priceRate, priceRateWrapper, rateWrapper } from './productOverviewItem.css';
+import { container, priceRate, priceRateWrapper, rateWrapper, wrapper } from './productOverviewItem.css';
 
 import { SvgIcon } from '@/components/Common';
+import type { Product } from '@/types/product';
 
 interface ProductOverviewItemProps {
-  name: string;
-  image: string;
-  price: number;
-  rate: number;
+  product: Product;
 }
 
-const ProductOverviewItem = ({ image, name, price, rate }: ProductOverviewItemProps) => {
+const ProductOverviewItem = ({ product }: ProductOverviewItemProps) => {
+  const { name, image, averageRating, price } = product;
+
   return (
-    <>
-      <div className={container}>
+    <div className={container}>
+      <div className={wrapper}>
         <img src={image} width={60} height={60} alt={name} />
         <div>
           <p>{name}</p>
@@ -21,12 +21,12 @@ const ProductOverviewItem = ({ image, name, price, rate }: ProductOverviewItemPr
             <span className={priceRate}>{price}원</span>
             <div className={rateWrapper}>
               <SvgIcon variant="star2" fill="#FFB017" width={11} height={11} />
-              <span className={priceRate}>{rate}</span>
+              <span className={priceRate}>{averageRating}</span>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

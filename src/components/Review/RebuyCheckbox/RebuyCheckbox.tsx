@@ -1,11 +1,11 @@
 import type { ChangeEventHandler } from 'react';
 
 import { check, checkbox, container } from './rebuyCheckbox.css';
-import { itemTitle } from '../ReviewRegisterForm/reviewRegisterForm.css';
 
 import { SvgIcon, Text } from '@/components/Common';
 import { useEnterKeyDown } from '@/hooks/common';
 import { useReviewFormActionContext } from '@/hooks/context';
+import { itemTitle } from '@/styles/form.css';
 import { vars } from '@/styles/theme.css';
 
 interface RebuyCheckboxProps {

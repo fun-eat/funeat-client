@@ -3,7 +3,7 @@ import type { Product } from './product';
 
 export interface RecipeRequest {
   title: string;
-  productIds: number[];
+  products: RecipeProduct[];
   content: string;
 }
 

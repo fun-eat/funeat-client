@@ -1,11 +1,11 @@
 import { vars } from '@/styles/theme.css';
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css';
 
 export const container = style({
   position: 'relative',
 });
 
-export const reviewTextarea = style({
+export const formTextarea = style({
   width: '100%',
   padding: '12px 16px',
   fontSize: '1.2rem',
@@ -36,19 +36,4 @@ export const statusWrapper = style({
 export const currentLength = style({
   color: vars.colors.black,
   fontWeight: 500,
-});
-
-export const errorWrapperBase = style({
-  display: 'flex',
-  alignItems: 'center',
-  gap: 4,
-});
-
-export const errorWrapper = styleVariants({
-  show: [errorWrapperBase, { opacity: 1 }],
-  hidden: [errorWrapperBase, { opacity: 0 }],
-});
-
-export const errorMessage = style({
-  color: vars.colors.error,
 });

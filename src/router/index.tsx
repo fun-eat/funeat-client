@@ -4,6 +4,7 @@ import App from './App';
 
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
+import RecipeFormProvider from '@/contexts/RecipeFormContext';
 import ReviewFormProvider from '@/contexts/ReviewFormContext';
 import NotFoundPage from '@/pages/NotFoundPage';
 
@@ -208,6 +209,35 @@ const router = createBrowserRouter([
             /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
           );
           return { Component: ReviewRegisterPage };
+        },
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: (
+      <RecipeFormProvider>
+        <App />
+      </RecipeFormProvider>
+    ),
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.RECIPE}/recipe-register`,
+        async lazy() {
+          const { RecipeRegisterPage } = await import(
+            /* webpackChunkName: "RecipeRegisterPage" */ '@/pages/RecipeRegisterPage/RecipeRegisterPage'
+          );
+          return { Component: RecipeRegisterPage };
+        },
+      },
+      {
+        path: `${PATH.RECIPE}/used-products`,
+        async lazy() {
+          const { UsedProductsSearchPage } = await import(
+            /* webpackChunkName: "UsedProductsSearchPage" */ '@/pages/UsedProductsSearchPage/UsedProductsSearchPage'
+          );
+          return { Component: UsedProductsSearchPage };
         },
       },
     ],
