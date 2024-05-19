@@ -27,7 +27,7 @@ export const linkWrapper = style({
   height: 70,
   maxWidth: 440,
   padding: '0 20px',
-  border: `1px solid ${vars.colors.border.default}`,
+  borderTop: `1px solid ${vars.colors.border.default}`,
   backgroundColor: vars.colors.background.default,
   transform: 'translateX(-50%)',
 });
