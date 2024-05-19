@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 
-import { container } from './reviewList.css';
+import { container, notFound } from './reviewList.css';
 import ReviewItem from '../ReviewItem/ReviewItem';
 
+import SearchNotFoundImage from '@/assets/search-notfound.png';
 import { Loading, Text } from '@/components/Common';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductReviewsQuery } from '@/hooks/queries/product';
@@ -24,7 +25,14 @@ const ReviewList = ({ productId, selectedOption }: ReviewListProps) => {
   const reviews = data.pages.flatMap((page) => page.reviews);
 
   if (reviews.length === 0) {
-    return <Text>상품의 첫 리뷰를 작성해주세요</Text>;
+    return (
+      <div className={notFound}>
+        <img src={SearchNotFoundImage} width={335} alt="검색 결과 없음" />
+        <Text color="disabled" size="caption4">
+          아직 작성된 리뷰가 없어요
+        </Text>
+      </div>
+    );
   }
 
   return (
