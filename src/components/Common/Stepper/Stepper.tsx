@@ -2,19 +2,20 @@ import type { MouseEventHandler } from 'react';
 
 import { container, stepper, wrapper } from './stepper.css';
 
-import { useTabMenu } from '@/hooks/common';
+interface StepperProps {
+  selectedStepper: string;
+  handleStepperSelect: (selectedStepper: string) => void;
+}
 
-const Stepper = () => {
-  const { selectedTabMenu, handleTabMenuClick } = useTabMenu('0');
-
+const Stepper = ({ selectedStepper, handleStepperSelect }: StepperProps) => {
   const handleStepperClick: MouseEventHandler<HTMLButtonElement> = (event) => {
-    handleTabMenuClick(event.currentTarget.value);
+    handleStepperSelect(event.currentTarget.value);
   };
 
   return (
     <ul className={container}>
       {Array.from({ length: 3 }, (_, index) => {
-        const isSelected = selectedTabMenu === String(index);
+        const isSelected = selectedStepper === String(index);
 
         return (
           <li key={index} className={wrapper}>
