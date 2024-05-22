@@ -5,7 +5,9 @@ import Stepper from './Stepper';
 const meta: Meta<typeof Stepper> = {
   title: 'common/Stepper',
   component: Stepper,
-  args: {},
+  args: {
+    selectedStepper: '0',
+  },
 };
 
 export default meta;
