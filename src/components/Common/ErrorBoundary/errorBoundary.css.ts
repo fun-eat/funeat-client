@@ -1,6 +1,14 @@
 import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
+export const container = style({
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
 export const buttonWrapper = style({
   display: 'flex',
   justifyContent: 'center',

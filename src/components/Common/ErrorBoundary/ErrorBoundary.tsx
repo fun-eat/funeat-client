@@ -1,7 +1,7 @@
 import type { ComponentType, PropsWithChildren } from 'react';
 import { Component } from 'react';
 
-import { button, buttonWrapper } from './errorBoundary.css';
+import { button, buttonWrapper, container } from './errorBoundary.css';
 import Text from '../Text/Text';
 
 export interface FallbackProps {
@@ -39,7 +39,7 @@ class ErrorBoundary extends Component<PropsWithChildren<ErrorBoundaryProps>, Err
 
     if (this.state.error) {
       return (
-        <>
+        <div className={container}>
           <FallbackComponent message={this.state.error.message} />
           <div className={buttonWrapper}>
             <button type="button" className={button} onClick={this.resetError}>
@@ -48,8 +48,7 @@ class ErrorBoundary extends Component<PropsWithChildren<ErrorBoundaryProps>, Err
               </Text>
             </button>
           </div>
-          <div style={{ height: 10 }} />
-        </>
+        </div>
       );
     }
 
