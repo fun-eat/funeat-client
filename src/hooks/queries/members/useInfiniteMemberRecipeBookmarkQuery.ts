@@ -5,7 +5,7 @@ import type { MemberRecipeResponse } from '@/types/response';
 
 const fetchMemberRecipeBookmark = async (pageParam: number) => {
   const response = await memberApi.get({
-    params: 'recipes/bookmark',
+    params: '/recipes/bookmark',
     queries: `?page=${pageParam}`,
     credentials: true,
   });

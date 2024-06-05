@@ -3,7 +3,7 @@ import { container } from './recipeFavoriteButton.css';
 import { SvgIcon, Text } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
-import { useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
+import { useRecipeBookmarkMutation, useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
 
 interface RecipeFavoriteProps {
   recipeId: number;
@@ -12,11 +12,13 @@ interface RecipeFavoriteProps {
 }
 
 const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavoriteProps) => {
-  const { mutate } = useRecipeFavoriteMutation(Number(recipeId));
+  const { mutate: favoriteMutate } = useRecipeFavoriteMutation(Number(recipeId));
+  const { mutate: bookmarkMutate } = useRecipeBookmarkMutation(Number(recipeId));
   const { data: member } = useMemberQuery();
 
   const handleToggleFavorite = async () => {
-    mutate({ favorite: !favorite });
+    favoriteMutate({ favorite: !favorite });
+    bookmarkMutate({ bookmark: !favorite });
   };
 
   const [debouncedToggleFavorite] = useTimeout(handleToggleFavorite, 200);
