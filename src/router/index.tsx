@@ -6,7 +6,7 @@ import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
 import RecipeFormProvider from '@/contexts/RecipeFormContext';
 import ReviewFormProvider from '@/contexts/ReviewFormContext';
-import NotFoundPage from '@/pages/NotFoundPage';
+import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 const router = createBrowserRouter([
   /** 멤버 접근 페이지 */
@@ -111,7 +111,7 @@ const router = createBrowserRouter([
       {
         path: PATH.LOGIN,
         async lazy() {
-          const { LoginPage } = await import(/* webpackChunkName: "LoginPage" */ '@/pages/LoginPage');
+          const { LoginPage } = await import(/* webpackChunkName: "LoginPage" */ '@/pages/LoginPage/LoginPage');
           return { Component: LoginPage };
         },
       },

@@ -1,6 +1,8 @@
-import { Button } from '@fun-eat/design-system';
 import type { ComponentType, PropsWithChildren } from 'react';
 import { Component } from 'react';
+
+import { button, buttonWrapper, container } from './errorBoundary.css';
+import Text from '../Text/Text';
 
 export interface FallbackProps {
   message: string;
@@ -37,12 +39,16 @@ class ErrorBoundary extends Component<PropsWithChildren<ErrorBoundaryProps>, Err
 
     if (this.state.error) {
       return (
-        <>
+        <div className={container}>
           <FallbackComponent message={this.state.error.message} />
-          <Button type="button" onClick={this.resetError}>
-            다시 시도하기
-          </Button>
-        </>
+          <div className={buttonWrapper}>
+            <button type="button" className={button} onClick={this.resetError}>
+              <Text size="caption1" weight="semiBold" color="info">
+                다시 시도하기
+              </Text>
+            </button>
+          </div>
+        </div>
       );
     }
 
