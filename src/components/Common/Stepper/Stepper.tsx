@@ -3,7 +3,7 @@ import type { MouseEventHandler } from 'react';
 import { container, stepper, wrapper } from './stepper.css';
 
 interface StepperProps {
-  selectedStepper: string;
+  selectedStepper: number;
   handleStepperSelect: (selectedStepper: string) => void;
 }
 
@@ -15,14 +15,14 @@ const Stepper = ({ selectedStepper, handleStepperSelect }: StepperProps) => {
   return (
     <ul className={container}>
       {Array.from({ length: 3 }, (_, index) => {
-        const isSelected = selectedStepper === String(index);
+        const isSelected = selectedStepper === index;
 
         return (
           <li key={index} className={wrapper}>
             <button
               className={isSelected ? stepper['active'] : stepper['default']}
               type="button"
-              value={String(index)}
+              value={index}
               onClick={handleStepperClick}
             />
           </li>

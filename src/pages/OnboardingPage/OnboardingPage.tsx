@@ -26,12 +26,13 @@ const ONBOARDING_STEPS = [
 
 export const OnboardingPage = () => {
   const { selectedTabMenu, handleTabMenuClick } = useTabMenu('0');
-  const content = ONBOARDING_STEPS[parseInt(selectedTabMenu)];
+  const selectedStepper = parseInt(selectedTabMenu);
+  const content = ONBOARDING_STEPS[selectedStepper];
 
   return (
     <>
       <section className={container}>
-        <Stepper selectedStepper={selectedTabMenu} handleStepperSelect={handleTabMenuClick} />
+        <Stepper selectedStepper={selectedStepper} handleStepperSelect={handleTabMenuClick} />
         <div style={{ height: 50 }} />
 
         <OnboardingContent title={content.title} description={content.description} image={content.image} />

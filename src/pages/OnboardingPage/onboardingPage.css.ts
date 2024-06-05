@@ -29,3 +29,8 @@ export const link = style({
   padding: 16,
   backgroundColor: vars.colors.primary,
 });
+
+export const descriptionText = style({
+  whiteSpace: 'pre-wrap',
+  textAlign: 'center',
+});

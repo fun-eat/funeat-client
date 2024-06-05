@@ -1,4 +1,4 @@
-import { contentWrapper, titleWrapper } from './onboardingPage.css';
+import { contentWrapper, titleWrapper, descriptionText } from './onboardingPage.css';
 
 import { Text } from '@/components/Common';
 
@@ -12,13 +12,13 @@ const OnboardingContent = ({ title, description, image }: OnboardingContentProps
   return (
     <div className={contentWrapper}>
       <div className={titleWrapper}>
-        <Text weight="bold" color="yellow" style={{ fontSize: '12px' }}>
+        <Text size="caption3" weight="bold" color="yellow">
           {title}
         </Text>
       </div>
       <div style={{ height: 17 }} />
 
-      <Text size="display1" weight="semiBold" color="sub" style={{ whiteSpace: 'pre-wrap', textAlign: 'center' }}>
+      <Text size="display1" weight="semiBold" color="sub" className={descriptionText}>
         {description}
       </Text>
       <div style={{ height: 28 }} />
