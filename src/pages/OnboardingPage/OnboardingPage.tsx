@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import OnboardingContent from './OnboardingContent';
 import { container, link } from './onboardingPage.css';
@@ -9,6 +9,7 @@ import OnboardingReview from '@/assets/onboarding-review.png';
 import { Stepper, Text } from '@/components/Common';
 import { PATH } from '@/constants/path';
 import { useTabMenu } from '@/hooks/common';
+import { setLocalStorage } from '@/utils/localStorage';
 
 const ONBOARDING_STEPS = [
   {
@@ -29,6 +30,13 @@ export const OnboardingPage = () => {
   const selectedStepper = parseInt(selectedTabMenu);
   const content = ONBOARDING_STEPS[selectedStepper];
 
+  const navigate = useNavigate();
+
+  const handleCompleteOnboarding = () => {
+    setLocalStorage('isRevisit', true);
+    navigate(PATH.HOME);
+  };
+
   return (
     <>
       <section className={container}>
@@ -37,11 +45,11 @@ export const OnboardingPage = () => {
 
         <OnboardingContent title={content.title} description={content.description} image={content.image} />
       </section>
-      <Link to={PATH.HOME} className={link}>
+      <button className={link} onClick={handleCompleteOnboarding}>
         <Text size="body" weight="bold" color="white">
           시작하기
         </Text>
-      </Link>
+      </button>
     </>
   );
 };
