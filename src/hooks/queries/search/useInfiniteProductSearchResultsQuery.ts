@@ -8,7 +8,7 @@ type SearchResultEndPoint = 'tags' | 'products';
 const fetchProductSearchResults = async (query: string, endpoint: SearchResultEndPoint, pageParam: number) => {
   const response = await searchApi.get({
     params: `/${endpoint}/results`,
-    queries: `?query=${query}&lastProductId=${pageParam}`,
+    queries: `?${endpoint === 'tags' ? 'tagId' : 'query'}=${query}&lastProductId=${pageParam}`,
   });
   const data: ProductSearchResultResponse = await response.json();
 

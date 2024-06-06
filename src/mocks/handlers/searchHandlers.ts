@@ -7,19 +7,27 @@ import searchingProducts from '../data/searchingProducts.json';
 export const searchHandlers = [
   rest.get('/api/search/:searchId/results', (req, res, ctx) => {
     const { searchId } = req.params;
-    const query = req.url.searchParams.get('query');
+    const query = req.url.searchParams.get('query') || req.url.searchParams.get('tagId');
     const page = Number(req.url.searchParams.get('page'));
 
     if (query === null) {
       return res(ctx.status(400));
     }
 
-    if (searchId === 'products' || searchId === 'tags') {
+    if (searchId === 'products') {
       const filteredProducts = {
         page: { ...productSearchResults.page },
         products: productSearchResults.products
           .filter((product) => product.name.includes(query))
           .slice(page * 5, (page + 1) * 5),
+      };
+      return res(ctx.status(200), ctx.json(filteredProducts), ctx.delay(1000));
+    }
+
+    if (searchId === 'tags') {
+      const filteredProducts = {
+        page: { ...productSearchResults.page },
+        products: productSearchResults.products.slice(page * 5, (page + 1) * 5),
       };
       return res(ctx.status(200), ctx.json(filteredProducts), ctx.delay(1000));
     }

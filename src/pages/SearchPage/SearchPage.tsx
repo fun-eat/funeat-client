@@ -121,7 +121,7 @@ export const SearchPage = () => {
               </Text>
               <div className={badgeContainer}>
                 {RECOMMENDED_TAGS.map(({ id, name }) => (
-                  <button type="button" key={id} value={name} onClick={handleTagSearch}>
+                  <button type="button" key={id} value={name} onClick={() => handleTagSearch(id, name)}>
                     <Badge color="#e6e6e6" textColor="#808080">
                       {name}
                     </Badge>
