@@ -1,4 +1,5 @@
 import { Suspense } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import { form, formWrapper, searchResultTitle, searchSection } from './searchPage.css';
 
@@ -8,6 +9,9 @@ import { useSearch } from '@/hooks/search';
 
 export const TagSearchResultPage = () => {
   const { inputRef, searchQuery, isSubmitted, handleSearchQuery, handleSearchForm } = useSearch();
+
+  const [searchParams, _setSearchParams] = useSearchParams();
+  const tagId = searchParams.get('id') || '';
 
   return (
     <>
@@ -28,7 +32,7 @@ export const TagSearchResultPage = () => {
         </Text>
         <ErrorBoundary fallback={ErrorComponent}>
           <Suspense fallback={<Loading />}>
-            <TagSearchResultList searchQuery={searchQuery} />
+            <TagSearchResultList tagId={tagId} />
           </Suspense>
         </ErrorBoundary>
       </section>

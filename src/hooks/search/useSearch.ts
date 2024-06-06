@@ -79,12 +79,11 @@ const useSearch = () => {
     setIsAutocompleteOpen(false);
   };
 
-  const handleTagSearch: MouseEventHandler<HTMLButtonElement> = (event) => {
-    const { value } = event.currentTarget;
-    setSearchQuery(value);
+  const handleTagSearch = (id: number, name: string) => {
+    setSearchQuery(name);
     setIsSubmitted(true);
 
-    navigate(`${PATH.SEARCH}/tags?query=${value}`);
+    navigate(`${PATH.SEARCH}/tags?query=${name}&id=${id}`);
   };
 
   const resetSearchQuery = () => {

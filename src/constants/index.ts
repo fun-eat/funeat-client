@@ -81,7 +81,7 @@ export const PAGE_TITLE = {
 
 export const RECOMMENDED_TAGS = [
   { id: 1, name: '맛있어요', tagType: 'TASTE' },
-  { id: 2, name: '간식', tagType: 'ETC' },
-  { id: 3, name: '갓성비', tagType: 'QUANTITY' },
-  { id: 4, name: '달달해요', tagType: 'TASTE' },
+  { id: 15, name: '간식', tagType: 'ETC' },
+  { id: 11, name: '갓성비', tagType: 'QUANTITY' },
+  { id: 5, name: '달달해요', tagType: 'TASTE' },
 ];

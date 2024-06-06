@@ -10,15 +10,11 @@ import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 
 interface TagSearchResultListProps {
-  searchQuery: string;
+  tagId: string;
 }
 
-const TagSearchResultList = ({ searchQuery }: TagSearchResultListProps) => {
-  const {
-    data: searchResponse,
-    fetchNextPage,
-    hasNextPage,
-  } = useInfiniteProductSearchResultsQuery(searchQuery, 'tags');
+const TagSearchResultList = ({ tagId }: TagSearchResultListProps) => {
+  const { data: searchResponse, fetchNextPage, hasNextPage } = useInfiniteProductSearchResultsQuery(tagId, 'tags');
 
   const scrollRef = useRef<HTMLDivElement>(null);
   useIntersectionObserver<HTMLDivElement>(fetchNextPage, scrollRef, hasNextPage);
