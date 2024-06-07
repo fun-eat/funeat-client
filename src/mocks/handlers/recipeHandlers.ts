@@ -30,6 +30,10 @@ export const recipeHandlers = [
     return res(ctx.status(200));
   }),
 
+  rest.patch('/api/recipes/:recipeId/bookmark', (_, res, ctx) => {
+    return res(ctx.status(200));
+  }),
+
   rest.get('/api/recipes', (req, res, ctx) => {
     const sortOptions = req.url.searchParams.get('sort');
     const page = Number(req.url.searchParams.get('page'));

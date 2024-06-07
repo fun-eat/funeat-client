@@ -1,22 +1,12 @@
 import { memo } from 'react';
 
-import {
-  date,
-  favoriteWrapper,
-  memberImage,
-  memberInfo,
-  ratingInfo,
-  ratingNumber,
-  ratingWrapper,
-  reviewContent,
-  reviewImage,
-} from './reviewItem.css';
+import { favoriteWrapper, memberImage, memberInfo } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
+import ReviewItemInfo from '../ReviewItemInfo/ReviewItemInfo';
 
-import { Badge, SvgIcon, TagList, Text } from '@/components/Common';
+import { Badge, Text } from '@/components/Common';
 import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
-import { getRelativeDate } from '@/utils/date';
 
 interface ReviewItemProps {
   productId: number;
@@ -41,42 +31,9 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
           <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
         </div>
       </div>
-
       <div style={{ height: '12px' }} />
 
-      <div className={ratingWrapper}>
-        <div className={ratingInfo}>
-          <Text as="span" size="caption3" weight="medium" className={ratingNumber}>
-            {rating.toFixed(1)}
-          </Text>
-          {Array.from({ length: 5 }, (_, index) => (
-            <SvgIcon
-              key={`rating-${index}`}
-              variant="star2"
-              fill={index < rating ? vars.colors.icon.fill : vars.colors.icon.light}
-              width={13}
-              height={13}
-            />
-          ))}
-        </div>
-        <Text as="span" size="caption4" color="disabled" className={date}>
-          {getRelativeDate(createdAt)}
-        </Text>
-      </div>
-
-      <div style={{ height: '8px' }} />
-
-      {image && <img src={image} className={reviewImage} height={90} alt={`${userName}의 리뷰`} />}
-
-      <div style={{ height: '8px' }} />
-
-      <Text color="sub" size="caption2" className={reviewContent}>
-        {content}
-      </Text>
-
-      <div style={{ height: '8px' }} />
-
-      <TagList tags={tags} />
+      <ReviewItemInfo rating={rating} createdAt={createdAt} image={image} content={content} tags={tags} />
     </div>
   );
 };

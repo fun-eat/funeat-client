@@ -115,7 +115,7 @@ const ProductCircleButton = () => {
   }
 
   return (
-    <ul className={productCircleWrapper}>
+    <ul className={productCircleWrapper} onClick={(e) => e.preventDefault()}>
       {displaySlice(true, products, 3).map(({ id, image }, idx) => (
         <li key={id} className={productCircleListWrapper}>
           <img

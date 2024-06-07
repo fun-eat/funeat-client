@@ -3,6 +3,14 @@ import { style } from '@vanilla-extract/css';
 
 export const inputContainer = style({
   position: 'relative',
+  marginTop: 5,
+
+  selectors: {
+    '&:focus-within': {
+      outline: `1px solid ${vars.colors.primary}`,
+      borderRadius: '20px',
+    },
+  },
 });
 
 export const searchInput = style({

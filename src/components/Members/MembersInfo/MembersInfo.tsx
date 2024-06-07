@@ -1,12 +1,13 @@
-import { Button, Heading, Link, theme } from '@fun-eat/design-system';
-import { Link as RouterLink } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
+import { container, logoutButton, modifyButton, wrapper } from './memberInfo.css';
 import MemberImage from '../MemberImage/MemberImage';
+import PostCounterBox from '../PostCounterBox/PostCounterBox';
 
-import { SvgIcon } from '@/components/Common';
+import { SvgIcon, Text } from '@/components/Common';
 import { PATH } from '@/constants/path';
 import { useLogoutMutation, useMemberQuery } from '@/hooks/queries/members';
+import { vars } from '@/styles/theme.css';
 
 const MembersInfo = () => {
   const { data: member } = useMemberQuery();
@@ -16,53 +17,43 @@ const MembersInfo = () => {
     return null;
   }
 
-  const { nickname, profileImage } = member;
+  const { nickname, profileImage, recipeCount, reviewCount } = member;
 
   const handleLogout = () => {
     mutate();
   };
 
   return (
-    <MembersInfoContainer>
-      <MemberInfoWrapper>
+    <div className={container}>
+      <button className={logoutButton} onClick={handleLogout}>
+        <Text as="span" size="caption4" weight="medium" color="info">
+          로그아웃
+        </Text>
+      </button>
+
+      <div className={wrapper}>
         <MemberImage
           src={profileImage}
           width={45}
           height={45}
-          alt={`${nickname}의 프로필`}
           css={{
             marginRight: `16px`,
             objectFit: `cover`,
           }}
         />
-        <Heading size="xl" weight="bold">
-          {nickname} 님
-        </Heading>
-        <MemberModifyLink as={RouterLink} to={`${PATH.MEMBER}/modify`}>
-          <SvgIcon variant="pencil" width={20} height={24} fill={theme.colors.gray3} />
-        </MemberModifyLink>
-      </MemberInfoWrapper>
-      <Button type="button" textColor="disabled" variant="transparent" onClick={handleLogout}>
-        로그아웃
-      </Button>
-    </MembersInfoContainer>
+        <div style={{ width: '10px' }} />
+        <Text size="display1" weight="semiBold">
+          {nickname}
+        </Text>
+        <Link to={`${PATH.MEMBER}/modify`} className={modifyButton}>
+          <SvgIcon variant="pencil" width={12} height={12} fill={vars.colors.white} />
+        </Link>
+      </div>
+      <div style={{ height: '24px' }} />
+
+      <PostCounterBox recipeCount={recipeCount} reviewCount={reviewCount} />
+    </div>
   );
 };
 
 export default MembersInfo;
-
-const MembersInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const MemberInfoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const MemberModifyLink = styled(Link)`
-  margin-left: 5px;
-  transform: translateY(1px);
-`;

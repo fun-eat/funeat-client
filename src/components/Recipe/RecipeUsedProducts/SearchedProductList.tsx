@@ -1,15 +1,16 @@
-import { Button, Text } from '@fun-eat/design-system';
 import type { MouseEventHandler } from 'react';
 import { useRef } from 'react';
-import styled from 'styled-components';
 
-import { MarkedText } from '@/components/Common';
+import { MarkedText, Text } from '@/components/Common';
+import { container, backdrop, wrapper, productButton } from '@/components/Search/RecommendList/recommendList.css';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchAutocompleteQuery } from '@/hooks/queries/search';
+import { vars } from '@/styles/theme.css';
+import type { RecipeProduct } from '@/types/recipe';
 
 interface SearchedProductListProps {
   searchQuery: string;
-  addUsedProducts: (id: number, name: string) => void;
+  addUsedProducts: (product: RecipeProduct) => void;
   handleAutocompleteClose: MouseEventHandler<HTMLDivElement>;
 }
 
@@ -22,75 +23,38 @@ const SearchedProductList = ({ searchQuery, addUsedProducts, handleAutocompleteC
     return null;
   }
 
-  const products = searchResponse.pages
-    .flatMap((page) => page.products)
-    .map((product) => ({
-      id: product.id,
-      name: product.name,
-    }));
+  const products = searchResponse.pages.flatMap((page) => page.products);
 
   if (products.length === 0) {
-    return <ErrorText>검색어에 해당 하는 상품이 없습니다.</ErrorText>;
+    return <Text>검색어가 포함된 상품을 찾지 못했어요</Text>;
   }
 
   return (
-    <SearchedProductListContainer>
-      <Backdrop onClick={handleAutocompleteClose} />
-      <SearchedProductListWrapper>
-        {products.map(({ id, name }) => (
-          <li key={id}>
-            <Button type="button" variant="transparent" onClick={() => addUsedProducts(id, name)}>
-              <MarkedText text={name} mark={searchQuery} />
-            </Button>
+    <div className={container}>
+      <div className={backdrop} onClick={handleAutocompleteClose} />
+      <ul className={wrapper}>
+        {products.map((product) => (
+          <li key={product.id}>
+            <button
+              className={productButton}
+              type="button"
+              color="white"
+              value={product.name}
+              onClick={() => addUsedProducts(product)}
+            >
+              <MarkedText text={product.name} mark={searchQuery} />
+              <div style={{ width: '10px' }} />
+              <Text size="caption4" weight="semiBold" color="disabled">
+                상품
+              </Text>
+            </button>
+            <hr style={{ border: `0.5px solid ${vars.colors.border.default}` }} />
           </li>
         ))}
-      </SearchedProductListWrapper>
+      </ul>
       <div ref={scrollRef} aria-hidden />
-    </SearchedProductListContainer>
+    </div>
   );
 };
 
 export default SearchedProductList;
-
-const Backdrop = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  backround: rgba(0, 0, 0, 0.24);
-`;
-
-const SearchedProductListContainer = styled.div`
-  max-height: 150px;
-  background-color: ${({ theme }) => theme.backgroundColors.default};
-  overflow-y: auto;
-`;
-
-const SearchedProductListWrapper = styled.ul`
-  position: relative;
-  width: 300px;
-  height: 100%;
-  max-height: 150px;
-  border: 1px solid ${({ theme }) => theme.borderColors.default};
-  border-top: none;
-  border-radius: 0 0 5px 5px;
-  background: ${({ theme }) => theme.backgroundColors.default};
-  overflow: auto;
-
-  &::-webkit-scrollbar: horizontal {
-    display: none;
-  }
-
-  & > li {
-    height: 36px;
-    padding: 0 10px;
-    line-height: 36px;
-  }
-`;
-
-const ErrorText = styled(Text)`
-  height: 36px;
-  padding: 0 10px;
-  line-height: 36px;
-`;

@@ -3,7 +3,7 @@ import type { Product } from './product';
 
 export interface RecipeRequest {
   title: string;
-  productIds: number[];
+  products: RecipeProduct[];
   content: string;
 }
 
@@ -29,8 +29,6 @@ export interface Recipe {
   products?: RecipeProduct[];
 }
 
-export type MemberRecipe = Recipe;
-
 export interface RecipeFavoriteRequestBody {
   favorite: boolean;
 }
@@ -42,4 +40,8 @@ export interface Comment {
   author: Member;
   comment: string;
   createdAt: string;
+}
+
+export interface RecipeBookmarkRequestBody {
+  bookmark: boolean;
 }

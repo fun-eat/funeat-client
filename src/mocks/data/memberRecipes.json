@@ -10,54 +10,36 @@
   "recipes": [
     {
       "id": 1,
-      "title": "어쩌고저쩌고정식",
-      "createdAt": "2023-08-13T19:59:59.860393",
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "favoriteCount": 1,
-      "products": [
-        {
-          "id": 5,
-          "name": "불닭"
-        },
-        {
-          "id": 6,
-          "name": "참치삼김"
-        }
-      ]
+      "image": "https://image.funeat.site/prod/0e3ba79c-578b-42c5-b951-fb0f50ce57cdIMG_8613.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": false,
+      "createdAt": "2023-08-09T10:10:10"
     },
     {
       "id": 2,
-      "title": "어쩌고저쩌고정식",
-      "createdAt": "2023-08-13T19:59:59.860393",
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "favoriteCount": 1,
-      "products": [
-        {
-          "id": 5,
-          "name": "불닭"
-        },
-        {
-          "id": 6,
-          "name": "참치삼김"
-        }
-      ]
+      "image": "https://image.funeat.site/prod/1ff85060-4ce9-4c3f-9044-87cbb993716caaa.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10"
     },
     {
       "id": 3,
-      "title": "어쩌고저쩌고정식",
-      "createdAt": "2023-08-13T19:59:59.860393",
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "favoriteCount": 1,
-      "products": [
-        {
-          "id": 5,
-          "name": "불닭"
-        },
-        {
-          "id": 6,
-          "name": "참치삼김"
-        }
-      ]
+      "image": "https://image.funeat.site/prod/240a51fa-9fad-4199-807b-891ccfa59f8aIMG_6598.webp",
+      "title": "초특급불닭콘치즈",
+      "author": {
+        "nickname": "1번 글",
+        "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/991f7b69-53bf-4d03-96e1-988c34d010ed"
+      },
+      "favorite": true,
+      "createdAt": "2023-08-09T10:10:10"
     }
   ]
 }

@@ -17,7 +17,13 @@ export const container = style({
   zIndex: 1001,
 });
 
-export const LeftNavigationWrapper = style({
+export const link = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+export const leftNavigationWrapper = style({
   display: 'flex',
   alignItems: 'center',
 });

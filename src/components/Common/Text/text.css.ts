@@ -14,6 +14,7 @@ export const text = recipe({
       info: { color: '#808080' },
       disabled: { color: '#999999' },
       white: { color: '#FFFFFF' },
+      yellow: { color: '#FFB017' },
     },
     size: {
       caption4: { fontSize: '1.1rem' },
@@ -28,6 +29,7 @@ export const text = recipe({
       regular: { fontWeight: 400 },
       medium: { fontWeight: 500 },
       semiBold: { fontWeight: 600 },
+      bold: { fontWeight: 700 },
     },
   },
   defaultVariants: {

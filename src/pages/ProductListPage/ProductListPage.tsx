@@ -5,7 +5,7 @@ import { Suspense, useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 
 import { categoryButton, listSection, main, selectButton, selectSection, sortButton } from './productListPage.css';
-import NotFoundPage from '../NotFoundPage';
+import NotFoundPage from '../NotFoundPage/NotFoundPage';
 
 import { ErrorBoundary, ErrorComponent, Loading, SelectOptionList, SvgIcon, TopBar } from '@/components/Common';
 import { ProductList } from '@/components/Product';

@@ -12,18 +12,24 @@ export const container = style({
   gap: 6,
 });
 
-export const button = style([
+export const ableLink = style([
   flexCenter,
   {
     width: 40,
     height: 40,
     background: '#FFB017',
     borderRadius: '50%',
+  },
+]);
 
-    ':disabled': {
-      backgroundColor: '#A0A0A0',
-      cursor: 'not-allowed',
-    },
+export const disabledLink = style([
+  flexCenter,
+  {
+    width: 40,
+    height: 40,
+    backgroundColor: '#A0A0A0',
+    borderRadius: '50%',
+    cursor: 'not-allowed',
   },
 ]);
 

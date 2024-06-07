@@ -5,7 +5,8 @@
       "productId": 1,
       "productName": "구운감자슬림명란마요 구운감자슬림명란마요 구운감자슬림명란마요 구운감자슬림명란마요",
       "content": "할머니가 먹을 거 같은 맛입니다. 1960년 전쟁 때 맛 보고 싶었는데 그때는 너무 가난해서 먹을 수 없었는데요 이것보다 긴 리뷰도 잘려 보인답니다",
-      "image": null,
+      "image": "",
+      "rating": 4.5,
       "categoryType": "food",
       "tags": [
         {
@@ -18,15 +19,18 @@
           "name": "🍭 달달해요",
           "tagType": "TASTE"
         }
-      ]
+      ],
+      "rebuy": true,
+      "favoriteCount": 1320
     },
     {
       "reviewId": 2,
       "productId": 1,
       "productName": "구운감자슬림명란마요",
       "content": "할머니가 먹을 거 같은 맛입니다. 1960년 전쟁 때 맛 보고 싶었는데 그때는 너무 가난해서 먹을 수 없었는데요 이것보다 긴 리뷰도 잘려 보인답니다",
-      "image": null,
+      "image": "",
       "categoryType": "food",
+      "rating": 4.5,
       "tags": [
         {
           "id": 5,
@@ -43,7 +47,9 @@
           "name": "🍳 아침식사",
           "tagType": "TASTE"
         }
-      ]
+      ],
+      "rebuy": true,
+      "favoriteCount": 1320
     }
   ]
 }

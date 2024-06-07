@@ -5,3 +5,4 @@ export { default as ReviewRegisterForm } from './ReviewRegisterForm/ReviewRegist
 export { default as BestReviewItem } from './BestReviewItem/BestReviewItem';
 export { default as ReviewFavoriteButton } from './ReviewFavoriteButton/ReviewFavoriteButton';
 export { default as ReviewTagSheet } from './ReviewTagSheet/ReviewTagSheet';
+export { default as ReviewItemInfo } from './ReviewItemInfo/ReviewItemInfo';
