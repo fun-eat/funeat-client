@@ -42,7 +42,7 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <FunEatProvider>
         <SvgSprite />
-        <RouterProvider router={router} fallbackElement={<p>...loading</p>} />
+        <RouterProvider router={router} />
       </FunEatProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
