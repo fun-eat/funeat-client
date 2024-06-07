@@ -1,7 +1,7 @@
 import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import { categorySection, productSection } from './productPage.css';
 
@@ -17,6 +17,7 @@ import {
 import { ProductPreviewList } from '@/components/Product';
 import { CATEGORY_TYPE } from '@/constants';
 import { PRODUCT_BANNER, STORE_BANNER } from '@/constants/image';
+import { PATH } from '@/constants/path';
 import { useTabMenu } from '@/hooks/common';
 import { useCategoryQuery } from '@/hooks/queries/product';
 import { vars } from '@/styles/theme.css';
@@ -55,7 +56,9 @@ export const ProductPage = () => {
       </section>
 
       {selectedTabMenu === TAB_MENUS[0].value ? (
-        <img src={PRODUCT_BANNER} width={'100%'} height={72} alt="상품 배너" />
+        <Link to={PATH.ONBOARDING}>
+          <img src={PRODUCT_BANNER} width={'100%'} height={72} alt="상품 배너" />
+        </Link>
       ) : (
         <div style={{ height: '12px', backgroundColor: vars.colors.border.light }} aria-hidden />
       )}
