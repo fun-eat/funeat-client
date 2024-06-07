@@ -22,7 +22,7 @@ export const memberHandlers = [
     return res(ctx.status(200), ctx.json(mockMemberRecipes));
   }),
 
-  rest.get('/api/members/bookmarkRecipes', (req, res, ctx) => {
+  rest.get('/api/members/recipes/bookmark', (req, res, ctx) => {
     return res(ctx.status(200), ctx.json(mockMemberRecipeBookmark));
   }),
 

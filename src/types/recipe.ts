@@ -41,3 +41,7 @@ export interface Comment {
   comment: string;
   createdAt: string;
 }
+
+export interface RecipeBookmarkRequestBody {
+  bookmark: boolean;
+}

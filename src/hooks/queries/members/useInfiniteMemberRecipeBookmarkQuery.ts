@@ -5,8 +5,7 @@ import type { MemberRecipeResponse } from '@/types/response';
 
 const fetchMemberRecipeBookmark = async (pageParam: number) => {
   const response = await memberApi.get({
-    // 임시로 적은거라 params 확정되면 수정할 것 (json도 수정해야 함)
-    params: '/bookmarkRecipes',
+    params: '/recipes/bookmark',
     queries: `?page=${pageParam}`,
     credentials: true,
   });
@@ -16,7 +15,7 @@ const fetchMemberRecipeBookmark = async (pageParam: number) => {
 
 const useInfiniteMemberRecipeBookmarkQuery = () => {
   return useSuspendedInfiniteQuery(
-    ['member', 'bookmarkRecipes'],
+    ['member', 'bookmark'],
     ({ pageParam = 0 }) => fetchMemberRecipeBookmark(pageParam),
     {
       getNextPageParam: (prevResponse: MemberRecipeResponse) => {
