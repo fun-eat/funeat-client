@@ -53,7 +53,7 @@ export const RecipeDetailPage = () => {
       <main className={main}>
         <section className={container}>
           <div className={authorWrapper}>
-            <MemberImage src={author.profileImage} alt={`${author.nickname}님의 프로필`} width={34} height={34} />
+            <MemberImage src={author.profileImage} width={34} height={34} />
             <div>
               <Text size="caption2" weight="semiBold">
                 {author.nickname}

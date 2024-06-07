@@ -30,7 +30,7 @@ const BestReviewItem = ({ productId }: BestReviewItemProps) => {
         <BestReviewItemContainer>
           <ReviewRateFavoriteWrapper>
             <ReviewerInfoWrapper>
-              <MemberImage src={profileImage} width={32} height={32} alt={`${userName}의 프로필`} />
+              <MemberImage src={profileImage} width={32} height={32} />
               <div>
                 <Text size="sm" weight="bold">
                   {userName} 님

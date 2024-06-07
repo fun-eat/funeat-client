@@ -1,4 +1,4 @@
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import { buttonWrapper, container, imageWrapper, kakaoButton, main, wrapper } from './loginPage.css';
 
@@ -40,12 +40,12 @@ export const LoginPage = () => {
           </div>
 
           <div className={buttonWrapper}>
-            <Link to={loginLink} className={kakaoButton}>
+            <a href={loginLink} className={kakaoButton}>
               <SvgIcon variant="kakao" width={20} height={20} />
               <Text as="span" size="caption1" weight="semiBold">
                 카카오 로그인
               </Text>
-            </Link>
+            </a>
           </div>
         </section>
       </main>
