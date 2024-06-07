@@ -85,15 +85,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.REVIEW}/:reviewId`,
-        async lazy() {
-          const { ReviewDetailPage } = await import(
-            /* webpackChunkName: "ReviewDetailPage" */ '@/pages/ReviewDetailPage'
-          );
-          return { Component: ReviewDetailPage };
-        },
-      },
-      {
         path: PATH.RECIPE,
         async lazy() {
           const { RecipePage } = await import(/* webpackChunkName: "RecipePage" */ '@/pages/RecipePage/RecipePage');
