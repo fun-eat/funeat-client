@@ -27,3 +27,4 @@ export { default as TopBar } from './TopBar/TopBar';
 export { default as StarRating } from './StarRating/StarRating';
 export { default as ShowAllButton } from './ShowAllButton/ShowAllButton';
 export { default as FormTextarea } from './FormTextarea/FormTextarea';
+export { default as Stepper } from './Stepper/Stepper';

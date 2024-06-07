@@ -242,6 +242,23 @@ const router = createBrowserRouter([
       },
     ],
   },
+  // 온보딩 페이지
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.ONBOARDING}`,
+        async lazy() {
+          const { OnboardingPage } = await import(
+            /* webpackChunkName: "OnboardingPage" */ '@/pages/OnboardingPage/OnboardingPage'
+          );
+          return { Component: OnboardingPage };
+        },
+      },
+    ],
+  },
 ]);
 
 export default router;
