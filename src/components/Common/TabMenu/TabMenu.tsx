@@ -3,12 +3,12 @@ import { forwardRef } from 'react';
 
 import { container, menuName, tabMenu } from './tabMenu.css';
 
-import type { Tab } from '@/types/common';
+import type { Tab, TabVariant } from '@/types/common';
 
 interface TabMenuProps {
-  tabMenus: Tab[];
-  selectedTabMenu: string;
-  handleTabMenuSelect: (selectedMenu: any) => void;
+  tabMenus: Tab<TabVariant>[];
+  selectedTabMenu: TabVariant;
+  handleTabMenuSelect: (selectedMenu: TabVariant) => void;
 }
 
 const TabMenu = (
@@ -16,7 +16,7 @@ const TabMenu = (
   ref: ForwardedRef<HTMLUListElement>
 ) => {
   const handleTabMenuClick: MouseEventHandler<HTMLButtonElement> = (event) => {
-    handleTabMenuSelect(event.currentTarget.value);
+    handleTabMenuSelect(event.currentTarget.value as TabVariant);
   };
 
   return (
