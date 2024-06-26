@@ -1,10 +1,11 @@
 import { memo } from 'react';
 
-import { favoriteWrapper, memberImage, memberInfo } from './reviewItem.css';
+import { favoriteWrapper, memberInfo } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 import ReviewItemInfo from '../ReviewItemInfo/ReviewItemInfo';
 
 import { Badge, Text } from '@/components/Common';
+import { MemberImage } from '@/components/Members';
 import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
 
@@ -20,7 +21,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
   return (
     <div>
       <div className={memberInfo}>
-        <img src={profileImage} className={memberImage} width={36} height={36} alt={`${userName}의 프로필`} />
+        <MemberImage src={profileImage} width={36} height={36} />
         <Text weight="semiBold">{userName}</Text>
         {rebuy && (
           <Badge color={vars.colors.black} textColor={vars.colors.secondary1}>
