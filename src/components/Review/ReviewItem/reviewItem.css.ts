@@ -6,11 +6,6 @@ export const memberInfo = style({
   gap: 8,
 });
 
-export const memberImage = style({
-  borderRadius: '50%',
-  objectFit: 'cover',
-});
-
 export const favoriteWrapper = style({
   marginLeft: 'auto',
 });

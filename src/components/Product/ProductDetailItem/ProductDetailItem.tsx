@@ -9,6 +9,7 @@ import {
   summaryWrapper,
 } from './productDetailItem.css';
 
+import ProductNotFoundImage from '@/assets/product-notfound.png';
 import { SvgIcon, TagList, Text } from '@/components/Common';
 import type { ProductDetail } from '@/types/product';
 
@@ -21,7 +22,7 @@ const ProductDetailItem = ({ productDetail }: ProductDetailItemProps) => {
 
   return (
     <section>
-      <img src={image} className={productImage} height={328} alt={name} />
+      <img src={image ?? ProductNotFoundImage} className={productImage} height={328} alt={name} />
 
       <div className={productOverview}>
         <div className={productInfo}>
