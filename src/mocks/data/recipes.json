@@ -159,7 +159,7 @@
       "products": [
         {
           "id": 11,
-          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "image": null,
           "name": "불닭볶음면",
           "price": 1500,
           "averageRating": 4.0
@@ -173,14 +173,14 @@
         },
         {
           "id": 13,
-          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "image": null,
           "name": "콘치즈",
           "price": 1500,
           "averageRating": 5.0
         },
         {
           "id": 14,
-          "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+          "image": null,
           "name": "치즈",
           "price": 1500,
           "averageRating": 3.0
