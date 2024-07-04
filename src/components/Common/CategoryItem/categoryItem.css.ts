@@ -1,4 +1,3 @@
-import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const link = style({
@@ -21,8 +20,4 @@ export const categoryImage = style({
 
 export const circle = style({
   borderRadius: '50%',
-});
-
-export const bordered = style({
-  border: `1px solid ${vars.colors.border.default}`,
 });

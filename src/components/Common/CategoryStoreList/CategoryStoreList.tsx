@@ -12,7 +12,7 @@ interface CategoryStoreListProps {
 
 const categoryType = CATEGORY_TYPE.STORE;
 
-const CategoryStoreList = ({ hasName = false, isCircular = false, isBordered = false }: CategoryStoreListProps) => {
+const CategoryStoreList = ({ hasName = false, isCircular = false }: CategoryStoreListProps) => {
   const { data: categories } = useCategoryStoreQuery();
 
   return (
@@ -26,7 +26,6 @@ const CategoryStoreList = ({ hasName = false, isCircular = false, isBordered = f
           categoryType={categoryType}
           hasName={hasName}
           isCircular={isCircular}
-          isBordered={isBordered}
         />
       ))}
     </div>
