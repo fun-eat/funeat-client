@@ -52,11 +52,13 @@ const useSearch = () => {
     if (!trimmedSearchQuery) {
       toast.error('검색어를 입력해주세요');
       resetSearchQuery();
+      navigate(PATH.SEARCH);
       return;
     }
 
     if (isSubmitted) {
       resetSearchQuery();
+      navigate(PATH.SEARCH);
       return;
     }
 
@@ -77,12 +79,11 @@ const useSearch = () => {
     setIsAutocompleteOpen(false);
   };
 
-  const handleTagSearch: MouseEventHandler<HTMLButtonElement> = (event) => {
-    const { value } = event.currentTarget;
-    setSearchQuery(value);
+  const handleTagSearch = (id: number, name: string) => {
+    setSearchQuery(name);
     setIsSubmitted(true);
 
-    navigate(`${PATH.SEARCH}/tags?query=${value}`);
+    navigate(`${PATH.SEARCH}/tags?query=${name}&id=${id}`);
   };
 
   const resetSearchQuery = () => {
@@ -91,7 +92,7 @@ const useSearch = () => {
     setSearchParams({});
     focusInput();
 
-    navigate(PATH.SEARCH);
+    // navigate(PATH.SEARCH);
   };
 
   return {
@@ -104,6 +105,7 @@ const useSearch = () => {
     handleSearchByClick,
     handleAutocompleteClose,
     handleTagSearch,
+    resetSearchQuery,
   };
 };
 

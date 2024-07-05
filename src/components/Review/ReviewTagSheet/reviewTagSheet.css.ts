@@ -5,9 +5,17 @@ export const container = style({
   height: '100vh',
 });
 
+export const closeWrapper = style({
+  padding: '0 20px',
+  display: 'flex',
+  height: 50,
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+});
+
 export const section = style({
-  padding: '50px 20px 70px',
-  marginBottom: 32,
+  padding: '0 20px',
+  margin: '16px 0 32px',
 });
 
 export const registerButtonWrapper = style({
@@ -19,7 +27,7 @@ export const registerButtonWrapper = style({
   alignItems: 'flex-end',
   width: '100%',
   height: 70,
-  maxWidth: 400,
+  maxWidth: 440,
   padding: '0 20px',
   borderTop: `1px solid ${vars.colors.border.default}`,
   backgroundColor: vars.colors.background.default,

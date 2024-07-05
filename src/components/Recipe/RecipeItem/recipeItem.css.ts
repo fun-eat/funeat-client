@@ -3,6 +3,7 @@ import { style } from '@vanilla-extract/css';
 
 export const imageWrapper = style({
   position: 'relative',
+  width: '100%',
   lineHeight: 0,
 });
 
@@ -63,10 +64,4 @@ export const recipeProductsCount = style({
   left: '50%',
   transform: 'translate( -50%, -50% )',
   color: vars.colors.white,
-});
-
-export const ellipsis = style({
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
 });

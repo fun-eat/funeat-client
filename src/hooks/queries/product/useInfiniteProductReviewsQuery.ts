@@ -7,7 +7,6 @@ const fetchProductReviews = async (pageParam: number, productId: number, sort: s
   const res = await productApi.get({
     params: `/${productId}/reviews`,
     queries: `?sort=${sort}&lastReviewId=${pageParam}`,
-    credentials: true,
   });
 
   const data: ProductReviewResponse = await res.json();

@@ -1,27 +1,36 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Suspense, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 import { ErrorBoundary, ErrorComponent, Loading } from '@/components/Common';
-import { MinimalLayout, DefaultLayout } from '@/components/Layout';
+import { Layout } from '@/components/Layout';
+import { PATH } from '@/constants/path';
 import { useRouteChangeTracker } from '@/hooks/common';
+import { getLocalStorage } from '@/utils/localStorage';
 
 interface AppProps {
-  layout?: 'default' | 'minimal';
+  hasLayout?: boolean;
 }
 
-const App = ({ layout = 'default' }: AppProps) => {
+const App = ({ hasLayout = false }: AppProps) => {
   const { reset } = useQueryErrorResetBoundary();
+  const navigate = useNavigate();
 
   useRouteChangeTracker();
 
-  if (layout === 'minimal') {
+  useEffect(() => {
+    const isRevisit = getLocalStorage('isRevisit');
+
+    if (!isRevisit) {
+      navigate(PATH.ONBOARDING, { replace: true });
+    }
+  }, [navigate]);
+
+  if (!hasLayout) {
     return (
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>
-          <MinimalLayout>
-            <Outlet />
-          </MinimalLayout>
+          <Outlet />
         </Suspense>
       </ErrorBoundary>
     );
@@ -30,9 +39,9 @@ const App = ({ layout = 'default' }: AppProps) => {
   return (
     <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
       <Suspense fallback={<Loading />}>
-        <DefaultLayout>
+        <Layout>
           <Outlet />
-        </DefaultLayout>
+        </Layout>
       </Suspense>
     </ErrorBoundary>
   );

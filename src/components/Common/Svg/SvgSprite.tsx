@@ -40,19 +40,19 @@ const SvgSprite = () => {
           </clipPath>
         </defs>
       </symbol>
-      <symbol id="camera2" viewBox="0 0 14 14">
-        <path
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M13.5 5a1 1 0 0 0-1-1h-2L9 2H5L3.5 4h-2a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h11a1 1 0 0 0 1-1V5z"
-        />
-        <path
-          fill="none"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M7 9.75a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5z"
-        />
+      <symbol id="camera2" viewBox="0 0 13 12">
+        <g clipPath="url(#a)">
+          <path
+            fillRule="evenodd"
+            d="M4.443 1.457a.429.429 0 0 1 .343-.171h3.428c.135 0 .262.063.343.171L9.714 3h1.5A1.286 1.286 0 0 1 12.5 4.286v5.143a1.286 1.286 0 0 1-1.286 1.285H1.786A1.285 1.285 0 0 1 .5 9.43V4.286A1.286 1.286 0 0 1 1.786 3h1.5l1.157-1.543zM8.61 6.61a2.11 2.11 0 1 1-4.22 0 2.11 2.11 0 0 1 4.22 0z"
+            clipRule="evenodd"
+          />
+        </g>
+        <defs>
+          <clipPath id="a">
+            <path fill="#fff" d="M0 0h12v12H0z" transform="translate(.5)" />
+          </clipPath>
+        </defs>
       </symbol>
       <symbol id="favorite2" viewBox="0 0 14 14">
         <path
@@ -230,8 +230,8 @@ const SvgSprite = () => {
           clipRule="evenodd"
         />
       </symbol>
-      <symbol id="close" viewBox="0 0 20 20">
-        <path d="M20 2.014L17.986 0 10 7.986 2.014 0 0 2.014 7.986 10 0 17.986 2.014 20 10 12.014 17.986 20 20 17.986 12.014 10 20 2.014z" />
+      <symbol id="close" viewBox="0 0 15 15">
+        <path strokeLinecap="round" strokeLinejoin="round" d="M14.313 1.169l-13 13m0-13l13 13" />
       </symbol>
       <symbol id="triangle" viewBox="0 0 22 16">
         <path d="M0 16L11 0l11 16H0z" />

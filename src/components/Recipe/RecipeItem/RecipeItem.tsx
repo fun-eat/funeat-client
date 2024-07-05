@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import {
-  ellipsis,
   favoriteButtonWrapper,
   imageWrapper,
   productButtonWrapper,
@@ -26,8 +25,10 @@ import {
   RECIPE_CARD_DEFAULT_IMAGE_URL_4,
   RECIPE_CARD_DEFAULT_IMAGE_URL_5,
 } from '@/constants/image';
+import { PATH } from '@/constants/path';
 import RecipeItemProvider from '@/contexts/RecipeItemContext';
 import { useRecipeItemValueContext } from '@/hooks/context';
+import { ellipsis } from '@/styles/common.css';
 import type { Recipe } from '@/types/recipe';
 import { getRelativeDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
@@ -50,7 +51,7 @@ const RecipeItem = ({ recipe, children }: RecipeItemProps) => {
 
   return (
     <RecipeItemProvider recipe={recipe}>
-      <Link to={`${id}`}>{children}</Link>
+      <Link to={`${PATH.RECIPE}/${id}`}>{children}</Link>
     </RecipeItemProvider>
   );
 };
@@ -73,7 +74,11 @@ const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
         loading="lazy"
         onLoad={() => image && setIsImageLoading(false)}
       />
-      {isImageLoading && image && <Skeleton width={163} height={200} />}
+      {isImageLoading && image && (
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+          <Skeleton width="100%" height="100%" />
+        </div>
+      )}
       <div className={favoriteButtonWrapper} onClick={(e) => e.preventDefault()}>
         <RecipeFavoriteButton recipeId={id} favorite={favorite} />
       </div>
@@ -110,7 +115,7 @@ const ProductCircleButton = () => {
   }
 
   return (
-    <ul className={productCircleWrapper}>
+    <ul className={productCircleWrapper} onClick={(e) => e.preventDefault()}>
       {displaySlice(true, products, 3).map(({ id, image }, idx) => (
         <li key={id} className={productCircleListWrapper}>
           <img

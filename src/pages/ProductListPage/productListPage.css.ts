@@ -3,6 +3,10 @@ import { createVar, style, styleVariants } from '@vanilla-extract/css';
 const categoryBorder = createVar();
 const categoryColor = createVar();
 
+export const main = style({
+  paddingTop: 50,
+});
+
 export const selectSection = style({
   display: 'flex',
   gap: 8,

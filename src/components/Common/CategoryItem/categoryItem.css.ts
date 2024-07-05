@@ -1,3 +1,4 @@
+import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
 export const link = style({
@@ -23,10 +24,5 @@ export const circle = style({
 });
 
 export const bordered = style({
-  border: '1px solid #e6e6e6',
-});
-
-export const categoryName = style({
-  fontSize: '1.2rem',
-  lineHeight: 1.4,
+  border: `1px solid ${vars.colors.border.default}`,
 });

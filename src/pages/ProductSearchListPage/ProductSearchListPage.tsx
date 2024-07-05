@@ -3,13 +3,13 @@ import { useSearchParams } from 'react-router-dom';
 
 import { container } from './productSearchListPage.css';
 
-import { PageHeader } from '@/components/Common';
+import { TopBar } from '@/components/Common';
 import { ProductOverviewList } from '@/components/Product';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchResultsQuery } from '@/hooks/queries/search';
 
 export const ProductSearchListPage = () => {
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const searchQuery = searchParams.get('query') || '';
 
   const {
@@ -24,11 +24,15 @@ export const ProductSearchListPage = () => {
 
   return (
     <>
-      <PageHeader title={`'${searchQuery}'이/가 포함된 상품`} hasBackLink />
-      <div className={container}>
+      <TopBar>
+        <TopBar.BackLink />
+        <TopBar.Title title={`'${searchQuery}'이/가 포함된 상품`} />
+        <TopBar.Spacer />
+      </TopBar>
+      <main className={container}>
         <ProductOverviewList products={products} hasBorder />
-      </div>
-      <div ref={scrollRef} aria-hidden />
+        <div ref={scrollRef} aria-hidden />
+      </main>
     </>
   );
 };

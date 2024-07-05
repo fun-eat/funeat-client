@@ -4,3 +4,4 @@ export { default as useRecipeFavoriteMutation } from './useRecipeFavoriteMutatio
 export { default as useInfiniteRecipesQuery } from './useInfiniteRecipesQuery';
 export { default as useInfiniteRecipeCommentQuery } from './useInfiniteRecipeCommentQuery';
 export { default as useRecipeCommentMutation } from './useRecipeCommentMutation';
+export { default as useRecipeBookmarkMutation } from './useRecipeBookmarkMutation';

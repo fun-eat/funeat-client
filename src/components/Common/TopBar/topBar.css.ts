@@ -6,7 +6,7 @@ export const container = style({
   top: 0,
   left: '50%',
   width: '100%',
-  maxWidth: 400,
+  maxWidth: 440,
   height: 50,
   display: 'flex',
   justifyContent: 'space-between',
@@ -17,7 +17,13 @@ export const container = style({
   zIndex: 1001,
 });
 
-export const LeftNavigationWrapper = style({
+export const link = style({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
+
+export const leftNavigationWrapper = style({
   display: 'flex',
   alignItems: 'center',
 });
@@ -33,4 +39,12 @@ export const headerTitle = style({
   color: vars.colors.black,
   fontSize: 18,
   fontWeight: 600,
+});
+
+export const register = style({
+  selectors: {
+    'button:disabled > &': {
+      color: vars.colors.text.disabled,
+    },
+  },
 });

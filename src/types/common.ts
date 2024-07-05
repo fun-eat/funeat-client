@@ -11,6 +11,7 @@ import type {
 import type { PATH } from '@/constants/path';
 
 export type CategoryVariant = 'food' | 'store';
+export type MemberPostVariant = 'recipe' | 'review';
 
 export type Food = (typeof CATEGORY_TYPE)['FOOD'];
 export type Store = (typeof CATEGORY_TYPE)['STORE'];

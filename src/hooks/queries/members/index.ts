@@ -4,3 +4,4 @@ export { default as useInfiniteMemberRecipeQuery } from './useInfiniteMemberReci
 export { default as useMemberModifyMutation } from './useMemberModifyMutation';
 export { default as useLogoutMutation } from './useLogoutMutation';
 export { default as useDeleteReview } from './useDeleteReview';
+export { default as useInfiniteMemberRecipeBookmarkQuery } from './useInfiniteMemberRecipeBookmarkQuery';

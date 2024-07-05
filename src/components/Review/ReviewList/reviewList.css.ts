@@ -6,3 +6,11 @@ export const container = style({
   rowGap: 40,
   padding: '0 20px',
 });
+
+export const notFound = style({
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  gap: 6,
+  textAlign: 'center',
+});

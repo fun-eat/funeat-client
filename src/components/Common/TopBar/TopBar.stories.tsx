@@ -71,7 +71,7 @@ export const LeftTitleAndRegister: Story = {
     return (
       <TopBar {...args}>
         <TopBar.LeftNavigationGroup title="타이틀" />
-        <TopBar.RegisterLink />
+        <TopBar.RegisterButton />
       </TopBar>
     );
   },

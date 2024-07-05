@@ -14,6 +14,7 @@ export const typography = recipe({
       info: { color: '#808080' },
       disabled: { color: '#999999' },
       white: { color: '#FFFFFF' },
+      yellow: { color: '#FFB017' },
     },
     size: {
       caption4: { fontSize: '1.1rem' },

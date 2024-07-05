@@ -1,16 +1,6 @@
 import { vars } from '@/styles/theme.css';
 import { style } from '@vanilla-extract/css';
 
-export const itemTitle = style({
-  fontSize: '1.3rem',
-  fontWeight: 600,
-  marginBottom: 8,
-});
-
-export const requiredMark = style({
-  color: vars.colors.error,
-});
-
 export const tagAddButton = style({
   display: 'flex',
   alignItems: 'center',
@@ -37,8 +27,6 @@ export const tagButton = style({
   gap: 4,
   height: 28,
   padding: '0 6px',
-  fontSize: '1.3rem',
-  fontWeight: 500,
   borderRadius: 4,
   backgroundColor: vars.colors.gray2,
 });

@@ -1,13 +1,27 @@
 import { globalStyle, style } from '@vanilla-extract/css';
 
+export const main = style({
+  paddingTop: 50,
+});
+
+export const formWrapper = style({
+  display: 'flex',
+  alignItems: 'center',
+  height: 50,
+  padding: '0 20px',
+});
+
+export const form = style({
+  flexGrow: 1,
+});
+
 export const searchSection = style({
   padding: '0 20px',
 });
 
 export const searchWrapper = style({
   padding: '0 20px',
-  marginTop: 60,
-  marginBottom: 20,
+  margin: '24px 0 27px',
 });
 
 export const tagSearchWrapper = style({
@@ -16,7 +30,7 @@ export const tagSearchWrapper = style({
 });
 
 export const subTitle = style({
-  marginTop: 28,
+  marginTop: 24,
 });
 
 export const searchResultTitle = style({

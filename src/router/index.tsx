@@ -4,11 +4,12 @@ import App from './App';
 
 import { AuthLayout } from '@/components/Layout';
 import { PATH } from '@/constants/path';
-import CategoryProvider from '@/contexts/CategoryContext';
-import NotFoundPage from '@/pages/NotFoundPage';
+import RecipeFormProvider from '@/contexts/RecipeFormContext';
+import ReviewFormProvider from '@/contexts/ReviewFormContext';
+import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 const router = createBrowserRouter([
-  /** 로그인이 안되었다면 로그인 페이지로 리다이렉트 */
+  /** 멤버 접근 페이지 */
   {
     path: '/',
     element: (
@@ -21,7 +22,7 @@ const router = createBrowserRouter([
       {
         path: PATH.MEMBER,
         async lazy() {
-          const { MemberPage } = await import(/* webpackChunkName: "MemberPage" */ '@/pages/MemberPage');
+          const { MemberPage } = await import(/* webpackChunkName: "MemberPage" */ '@/pages/MemberPage/MemberPage');
           return { Component: MemberPage };
         },
       },
@@ -29,41 +30,29 @@ const router = createBrowserRouter([
         path: `${PATH.MEMBER}/modify`,
         async lazy() {
           const { MemberModifyPage } = await import(
-            /* webpackChunkName: "MemberModifyPage" */ '@/pages/MemberModifyPage'
+            /* webpackChunkName: "MemberModifyPage" */ '@/pages/MemberModifyPage/MemberModifyPage'
           );
           return { Component: MemberModifyPage };
         },
       },
       {
-        path: `${PATH.MEMBER}/review`,
+        path: `${PATH.MEMBER}/post`,
         async lazy() {
-          const { MemberReviewPage } = await import(
-            /* webpackChunkName: "MemberReviewPage" */ '@/pages/MemberReviewPage'
+          const { MemberPostPage } = await import(
+            /* webpackChunkName: "MemberPostPage" */ '@/pages/MemberPostPage/MemberPostPage'
           );
-          return { Component: MemberReviewPage };
+          return { Component: MemberPostPage };
         },
       },
       {
-        path: `${PATH.MEMBER}/recipe`,
+        path: `${PATH.MEMBER}/bookmark`,
         async lazy() {
-          const { MemberRecipePage } = await import(
-            /* webpackChunkName: "MemberRecipePage" */ '@/pages/MemberRecipePage'
+          const { MemberRecipeBookmarkPage } = await import(
+            /* webpackChunkName: "MemberRecipeBookmarkPage" */ '@/pages/MemberRecipeBookmarkPage'
           );
-          return { Component: MemberRecipePage };
+          return { Component: MemberRecipeBookmarkPage };
         },
       },
-    ],
-  },
-  /** 로그인이 안되었다면 로그인 페이지로 리다이렉트하면서 헤더만 있는 레이아웃 */
-  {
-    path: '/',
-    element: (
-      <AuthLayout>
-        <App layout="minimal" />
-      </AuthLayout>
-    ),
-    errorElement: <Navigate to={PATH.LOGIN} replace />,
-    children: [
       {
         path: `${PATH.RECIPE}/:recipeId`,
         async lazy() {
@@ -75,14 +64,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 헤더와 네비게이션 바가 있는 기본 레이아웃 */
+  /** 레이아웃이 있는 페이지 */
   {
     path: '/',
-    element: (
-      <CategoryProvider>
-        <App />
-      </CategoryProvider>
-    ),
+    element: <App hasLayout />,
     errorElement: <NotFoundPage />,
     children: [
       {
@@ -100,15 +85,6 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: `${PATH.REVIEW}/:reviewId`,
-        async lazy() {
-          const { ReviewDetailPage } = await import(
-            /* webpackChunkName: "ReviewDetailPage" */ '@/pages/ReviewDetailPage'
-          );
-          return { Component: ReviewDetailPage };
-        },
-      },
-      {
         path: PATH.RECIPE,
         async lazy() {
           const { RecipePage } = await import(/* webpackChunkName: "RecipePage" */ '@/pages/RecipePage/RecipePage');
@@ -117,16 +93,16 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 헤더, 네비게이션 모두 없는 레이아웃 */
+  /** 로그인 페이지 */
   {
     path: '/',
-    element: <App layout="minimal" />,
+    element: <App />,
     errorElement: <NotFoundPage />,
     children: [
       {
         path: PATH.LOGIN,
         async lazy() {
-          const { LoginPage } = await import(/* webpackChunkName: "LoginPage" */ '@/pages/LoginPage');
+          const { LoginPage } = await import(/* webpackChunkName: "LoginPage" */ '@/pages/LoginPage/LoginPage');
           return { Component: LoginPage };
         },
       },
@@ -139,14 +115,10 @@ const router = createBrowserRouter([
       },
     ],
   },
-  /** 네비게이션과 헤더(검색 아이콘이 없는)가 있는 레이아웃 */
+  /** 상품 페이지 */
   {
     path: '/',
-    element: (
-      <CategoryProvider>
-        <App layout="minimal" />
-      </CategoryProvider>
-    ),
+    element: <App />,
     errorElement: <NotFoundPage />,
     children: [
       {
@@ -158,18 +130,6 @@ const router = createBrowserRouter([
           return { Component: ProductListPage };
         },
       },
-    ],
-  },
-  /** 네비게이션 바 없이 헤더만 있는 레이아웃 */
-  {
-    path: '/',
-    element: (
-      <CategoryProvider>
-        <App layout="minimal" />
-      </CategoryProvider>
-    ),
-    errorElement: <NotFoundPage />,
-    children: [
       {
         path: `${PATH.PRODUCT_LIST}/detail/:productId`,
         async lazy() {
@@ -179,15 +139,14 @@ const router = createBrowserRouter([
           return { Component: ProductDetailPage };
         },
       },
-      {
-        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
-        async lazy() {
-          const { ReviewRegisterPage } = await import(
-            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
-          );
-          return { Component: ReviewRegisterPage };
-        },
-      },
+    ],
+  },
+  /** 검색 페이지 */
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFoundPage />,
+    children: [
       {
         path: PATH.SEARCH,
         async lazy() {
@@ -211,6 +170,82 @@ const router = createBrowserRouter([
             /* webpackChunkName: "ProductSearchListPage" */ '@/pages/ProductSearchListPage/ProductSearchListPage'
           );
           return { Component: ProductSearchListPage };
+        },
+      },
+      {
+        path: `${PATH.SEARCH}/recipes`,
+        async lazy() {
+          const { RecipeSearchListPage } = await import(
+            /* webpackChunkName: "RecipeSearchListPage" */ '@/pages/RecipeSearchListPage/RecipeSearchListPage'
+          );
+          return { Component: RecipeSearchListPage };
+        },
+      },
+    ],
+  },
+  /** 상품 리뷰 페이지 */
+  {
+    path: '/',
+    element: (
+      <ReviewFormProvider>
+        <App />
+      </ReviewFormProvider>
+    ),
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.PRODUCT_LIST}/detail/:productId/review-register`,
+        async lazy() {
+          const { ReviewRegisterPage } = await import(
+            /* webpackChunkName: "ReviewRegisterPage" */ '@/pages/ReviewRegisterPage/ReviewRegisterPage'
+          );
+          return { Component: ReviewRegisterPage };
+        },
+      },
+    ],
+  },
+  {
+    path: '/',
+    element: (
+      <RecipeFormProvider>
+        <App />
+      </RecipeFormProvider>
+    ),
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.RECIPE}/recipe-register`,
+        async lazy() {
+          const { RecipeRegisterPage } = await import(
+            /* webpackChunkName: "RecipeRegisterPage" */ '@/pages/RecipeRegisterPage/RecipeRegisterPage'
+          );
+          return { Component: RecipeRegisterPage };
+        },
+      },
+      {
+        path: `${PATH.RECIPE}/used-products`,
+        async lazy() {
+          const { UsedProductsSearchPage } = await import(
+            /* webpackChunkName: "UsedProductsSearchPage" */ '@/pages/UsedProductsSearchPage/UsedProductsSearchPage'
+          );
+          return { Component: UsedProductsSearchPage };
+        },
+      },
+    ],
+  },
+  // 온보딩 페이지
+  {
+    path: '/',
+    element: <App />,
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        path: `${PATH.ONBOARDING}`,
+        async lazy() {
+          const { OnboardingPage } = await import(
+            /* webpackChunkName: "OnboardingPage" */ '@/pages/OnboardingPage/OnboardingPage'
+          );
+          return { Component: OnboardingPage };
         },
       },
     ],

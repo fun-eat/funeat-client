@@ -1,6 +1,8 @@
-import { Heading, Spacing, Text, Input, useTheme } from '@fun-eat/design-system';
 import type { ChangeEventHandler } from 'react';
-import styled from 'styled-components';
+
+import { container, inputWrapper, letterCount } from './memberModifyInput.css';
+
+import { Text } from '@/components/Common';
 
 const MIN_LENGTH = 1;
 const MAX_LENGTH = 10;
@@ -11,36 +13,26 @@ interface MemberModifyInputProps {
 }
 
 const MemberModifyInput = ({ nickname, modifyNickname }: MemberModifyInputProps) => {
-  const theme = useTheme();
-
   return (
-    <MemberModifyInputContainer>
-      <Heading as="h2" size="xl" tabIndex={0}>
+    <>
+      <Text size="caption2" weight="semiBold">
         닉네임
-      </Heading>
-      <NicknameStatusText color={theme.textColors.info} tabIndex={0}>
-        {nickname.length}자 / {MAX_LENGTH}자
-      </NicknameStatusText>
-      <Spacing size={12} />
-      <Input
-        value={nickname}
-        customWidth="100%"
-        onChange={modifyNickname}
-        minLength={MIN_LENGTH}
-        maxLength={MAX_LENGTH}
-      />
-    </MemberModifyInputContainer>
+      </Text>
+      <div style={{ height: 8 }} />
+      <div className={container}>
+        <Text className={letterCount} as="span" size="caption4" weight="medium" color="disabled">
+          {nickname.length} / {MAX_LENGTH}
+        </Text>
+        <input
+          className={inputWrapper}
+          value={nickname}
+          onChange={modifyNickname}
+          minLength={MIN_LENGTH}
+          maxLength={MAX_LENGTH}
+        />
+      </div>
+    </>
   );
 };
 
 export default MemberModifyInput;
-
-const MemberModifyInputContainer = styled.div`
-  position: relative;
-`;
-
-const NicknameStatusText = styled(Text)`
-  position: absolute;
-  top: 0;
-  right: 0;
-`;

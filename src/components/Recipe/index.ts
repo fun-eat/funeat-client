@@ -9,6 +9,8 @@ export { default as CommentItem } from './CommentItem/CommentItem';
 export { default as CommentForm } from './CommentForm/CommentForm';
 export { default as CommentList } from './CommentList/CommentList';
 export { default as RecipeProductButton } from './RecipeProductButton/RecipeProductButton';
+export { default as SearchedProductList } from './RecipeUsedProducts/SearchedProductList';
+export { default as UsedProductOverviewItem } from './RecipeUsedProducts/UsedProductOverviewItem';
 
 export { DefaultRecipeItem } from './RecipeItem/RecipeItem';
 export { RecipeItemWithDiskIcon } from './RecipeItem/RecipeItem';
