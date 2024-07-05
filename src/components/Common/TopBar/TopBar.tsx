@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 import { leftNavigationWrapper, container, headerTitle, leftTitle, register, link } from './topBar.css';
 import SvgIcon from '../Svg/SvgIcon';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import LogoImage from '@/assets/logo.svg';
 import { PATH } from '@/constants/path';
