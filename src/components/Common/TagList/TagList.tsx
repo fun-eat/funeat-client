@@ -1,5 +1,5 @@
 import { tag, tagList } from './tagList.css';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import type { Tag } from '@/types/common';
 

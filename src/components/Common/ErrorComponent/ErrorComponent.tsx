@@ -1,5 +1,5 @@
 import { container } from './errorComponent.css';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import Error from '@/assets/error.png';
 

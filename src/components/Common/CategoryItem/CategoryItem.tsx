@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { imageWrapper, categoryImage, circle, bordered, link } from './categoryItem.css';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
