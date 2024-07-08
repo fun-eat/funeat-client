@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
-import { imageWrapper, categoryImage, circle, bordered, link } from './categoryItem.css';
+import { categoryImage, circle, link } from './categoryItem.css';
 import Text from '../Typography/Text/Text';
 
 import { PATH } from '@/constants/path';
@@ -14,7 +14,6 @@ interface CategoryItemProps {
   height?: number;
   isCircular?: boolean;
   hasName?: boolean;
-  isBordered?: boolean;
   categoryType: 'food' | 'store';
 }
 
@@ -25,7 +24,6 @@ const CategoryItem = ({
   categoryType,
   hasName = false,
   isCircular = false,
-  isBordered = false,
 }: CategoryItemProps) => {
   const { id: categoryId, name, image } = category;
 
@@ -46,9 +44,9 @@ const CategoryItem = ({
       state={categoryId}
       onClick={handleCategoryItemClick}
     >
-      <div className={cx(imageWrapper, { [bordered]: isBordered })}>
+      <div>
         <img
-          className={cx(categoryImage, { [circle]: isCircular })}
+          className={cx(category, { [circle]: isCircular })}
           src={image}
           width={width}
           height={height}
