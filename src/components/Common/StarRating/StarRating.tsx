@@ -1,6 +1,6 @@
 import { date, ratingInfo, ratingNumber, ratingWrapper } from './starRating.css';
 import SvgIcon from '../Svg/SvgIcon';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import { vars } from '@/styles/theme.css';
 import { getRelativeDate } from '@/utils/date';

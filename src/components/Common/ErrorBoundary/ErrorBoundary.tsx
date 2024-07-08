@@ -2,8 +2,7 @@ import type { ComponentType, PropsWithChildren } from 'react';
 import { Component } from 'react';
 
 import { button, buttonWrapper, container } from './errorBoundary.css';
-import Text from '../Text/Text';
-
+import Text from '../Typography/Text/Text';
 export interface FallbackProps {
   message: string;
 }

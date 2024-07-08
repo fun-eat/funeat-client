@@ -3,7 +3,7 @@ import type { ChangeEventHandler } from 'react';
 
 import { container, deleteButton, image, imageWrapper, uploadInput, uploadLabel } from './imageUploader.css';
 import SvgIcon from '../Svg/SvgIcon';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import { IMAGE_MAX_SIZE } from '@/constants';
 import { useEnterKeyDown } from '@/hooks/common';

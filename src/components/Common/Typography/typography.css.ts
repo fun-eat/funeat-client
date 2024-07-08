@@ -5,7 +5,7 @@ const baseText = style({
   lineHeight: 1.4,
 });
 
-export const text = recipe({
+export const typography = recipe({
   base: baseText,
   variants: {
     color: {

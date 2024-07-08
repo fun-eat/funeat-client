@@ -2,7 +2,7 @@ import cx from 'classnames';
 import { Link } from 'react-router-dom';
 
 import { categoryImage, circle, link } from './categoryItem.css';
-import Text from '../Text/Text';
+import Text from '../Typography/Text/Text';
 
 import { PATH } from '@/constants/path';
 import { useGA } from '@/hooks/common';
@@ -46,7 +46,7 @@ const CategoryItem = ({
     >
       <div>
         <img
-          className={cx(categoryImage, { [circle]: isCircular })}
+          className={cx(category, { [circle]: isCircular })}
           src={image}
           width={width}
           height={height}
