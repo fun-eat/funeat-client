@@ -22,7 +22,6 @@ export const productRank = style({
   position: 'absolute',
   top: 0,
   left: 10,
-  color: '#808080',
   fontSize: 36,
   fontFamily: 'Poppins, sans-serif',
   fontStyle: 'italic',
