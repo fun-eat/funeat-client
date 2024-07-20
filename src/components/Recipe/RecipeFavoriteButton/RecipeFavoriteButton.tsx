@@ -34,6 +34,7 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
           <SvgIcon variant="heartEmpty" width={24} height={24} />
         </div>
       )}
+      {favoriteCount && <div style={{ width: 6 }} />}
       <Text as="span" size="caption1" weight="medium" color="sub">
         {favoriteCount}
       </Text>
