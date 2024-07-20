@@ -11,9 +11,9 @@ export const container = style({
 export const commentForm = style({
   display: 'flex',
   gap: 8,
-  alignItems: 'flex-end',
+  alignItems: 'center',
   width: '100%',
-  padding: '6px 16px 9px 16px',
+  padding: '6px 16px 6px 16px',
   background: vars.colors.background.category,
   borderRadius: 20,
 });
