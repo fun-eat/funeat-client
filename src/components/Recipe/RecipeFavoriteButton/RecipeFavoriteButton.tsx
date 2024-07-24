@@ -1,4 +1,4 @@
-import { container } from './recipeFavoriteButton.css';
+import { container, countWrapper } from './recipeFavoriteButton.css';
 
 import HeartEmpty from '@/assets/heart-empty.png';
 import { SvgIcon, Text } from '@/components/Common';
@@ -39,9 +39,14 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
           <img src={HeartEmpty} alt="좋아요" width={24} height={24} />
         </div>
       )}
-      <Text as="span" size="caption1" weight="medium" color="sub">
-        {favoriteCount}
-      </Text>
+
+      {favoriteCount && (
+        <div className={countWrapper}>
+          <Text as="span" size="caption1" weight="medium" color="sub">
+            {favoriteCount}
+          </Text>
+        </div>
+      )}
     </div>
   );
 };
