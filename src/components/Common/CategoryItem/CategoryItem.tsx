@@ -46,7 +46,7 @@ const CategoryItem = ({
     >
       <div>
         <img
-          className={cx(category, { [circle]: isCircular })}
+          className={cx(categoryImage, { [circle]: isCircular })}
           src={image}
           width={width}
           height={height}
