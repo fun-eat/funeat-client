@@ -1,5 +1,6 @@
 import { container } from './recipeFavoriteButton.css';
 
+import HeartEmpty from '@/assets/heart-empty.png';
 import { SvgIcon, Text } from '@/components/Common';
 import { useTimeout } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
@@ -27,11 +28,15 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
     <div className={container}>
       {member ? (
         <button type="button" onClick={debouncedToggleFavorite}>
-          <SvgIcon variant={favorite ? 'heartFilled' : 'heartEmpty'} width={24} height={24} />
+          {favorite ? (
+            <SvgIcon variant="heartFilled" width={24} height={24} />
+          ) : (
+            <img src={HeartEmpty} alt="좋아요" width={24} height={24} />
+          )}
         </button>
       ) : (
         <div>
-          <SvgIcon variant="heartEmpty" width={24} height={24} />
+          <img src={HeartEmpty} alt="좋아요" width={24} height={24} />
         </div>
       )}
       <Text as="span" size="caption1" weight="medium" color="sub">
