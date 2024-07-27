@@ -13,7 +13,7 @@ export const productImage = style({
   width: '100%',
   height: 'auto',
   minWidth: 163,
-  borderRadius: '6px',
+  borderRadius: 6,
   objectFit: 'cover',
   aspectRatio: '1 / 1',
 });
