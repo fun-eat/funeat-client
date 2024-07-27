@@ -16,6 +16,7 @@ export const imageWrapper = style({
 
 export const categoryImage = style({
   objectFit: 'cover',
+  borderRadius: 4,
 });
 
 export const circle = style({
