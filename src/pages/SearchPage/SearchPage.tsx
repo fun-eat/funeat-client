@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from 'react';
 
 import { badgeContainer, searchWrapper, searchResultTitle, searchSection, subTitle, main } from './searchPage.css';
 
-import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, TopBar } from '@/components/Common';
+import { Text, Badge, ErrorBoundary, ErrorComponent, Loading, TopBar, Divider } from '@/components/Common';
 import {
   ProductSearchResultPreviewList,
   RecipeSearchResultPreviewList,
@@ -13,7 +13,6 @@ import {
 import { RECOMMENDED_TAGS } from '@/constants';
 import { useDebounce } from '@/hooks/common';
 import { useSearch } from '@/hooks/search';
-import { vars } from '@/styles/theme.css';
 import { getLocalStorage } from '@/utils/localStorage';
 
 export const SearchPage = () => {
@@ -90,7 +89,7 @@ export const SearchPage = () => {
                   </Suspense>
                 </ErrorBoundary>
               </div>
-              <hr style={{ border: `6px solid ${vars.colors.border.light}` }} />
+              <Divider height="6px" variant="light" />
               <div className={searchWrapper}>
                 <Text size="caption3" color="info" weight="semiBold" className={searchResultTitle}>
                   꿀!조합 바로가기

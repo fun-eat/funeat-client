@@ -22,12 +22,11 @@ import {
   commentSection,
 } from './recipeDetailPage.css';
 
-import { ErrorBoundary, ErrorComponent, Loading, Spacing, SvgIcon, Text, TopBar } from '@/components/Common';
+import { Divider, ErrorBoundary, ErrorComponent, Loading, Spacing, SvgIcon, Text, TopBar } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
 import { ProductOverviewList } from '@/components/Product';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';
 import { useRecipeDetailQuery } from '@/hooks/queries/recipe';
-import { vars } from '@/styles/theme.css';
 import { getFormattedDate } from '@/utils/date';
 import displaySlice from '@/utils/displaySlice';
 
@@ -106,7 +105,7 @@ export const RecipeDetailPage = () => {
           </div>
         </section>
 
-        <hr style={{ height: '1px', background: vars.colors.border.default, border: 0 }} />
+        <Divider variant="default" />
 
         <section className={contentSection}>
           <RecipeFavoriteButton recipeId={id} favorite={favorite} favoriteCount={favoriteCount} />
@@ -116,7 +115,7 @@ export const RecipeDetailPage = () => {
           </Text>
         </section>
 
-        <hr style={{ height: '12px', background: vars.colors.border.light, border: 0 }} />
+        <Divider height="12px" variant="light" />
 
         <section className={commentSection}>
           <CommentForm recipeId={Number(recipeId)} scrollTargetRef={scrollTargetRef} />

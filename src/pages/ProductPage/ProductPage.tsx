@@ -13,6 +13,7 @@ import {
   TabMenu,
   SectionHeader,
   Spacing,
+  Divider,
 } from '@/components/Common';
 import { ProductPreviewList } from '@/components/Product';
 import { CATEGORY_TYPE } from '@/constants';
@@ -20,7 +21,6 @@ import { PRODUCT_BANNER, STORE_BANNER } from '@/constants/image';
 import { PATH } from '@/constants/path';
 import { useTabMenu } from '@/hooks/common';
 import { useCategoryQuery } from '@/hooks/queries/product';
-import { vars } from '@/styles/theme.css';
 import type { CategoryVariant, Tab } from '@/types/common';
 
 const TAB_MENUS: Tab<CategoryVariant>[] = [
@@ -60,7 +60,7 @@ export const ProductPage = () => {
           <img src={PRODUCT_BANNER} width={'100%'} height={72} alt="상품 배너" />
         </Link>
       ) : (
-        <div style={{ height: '12px', backgroundColor: vars.colors.border.light }} aria-hidden />
+        <Divider height="12px" variant="light" />
       )}
 
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>

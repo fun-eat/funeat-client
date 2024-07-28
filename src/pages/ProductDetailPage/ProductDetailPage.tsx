@@ -15,6 +15,7 @@ import {
   SelectOptionList,
   TopBar,
   Spacing,
+  Divider,
 } from '@/components/Common';
 import { ProductDetailItem, ProductRecipeList } from '@/components/Product';
 import { ReviewList } from '@/components/Review';
@@ -65,7 +66,7 @@ export const ProductDetailPage = () => {
       <main className={main}>
         <ProductDetailItem productDetail={productDetail} />
 
-        <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+        <Divider height="12px" variant="light" />
 
         <section className={section}>
           <SectionHeader name="이 상품이 포함된 꿀조합!" />
@@ -77,7 +78,7 @@ export const ProductDetailPage = () => {
           </ErrorBoundary>
         </section>
 
-        <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+        <Divider height="12px" variant="light" />
 
         <section className={section}>
           <SectionHeader name="리뷰" />
