@@ -30,3 +30,4 @@ export { default as ShowAllButton } from './ShowAllButton/ShowAllButton';
 export { default as FormTextarea } from './FormTextarea/FormTextarea';
 export { default as Stepper } from './Stepper/Stepper';
 export { default as Spacing } from './Spacing/Spacing';
+export { default as Divider } from './Divider/Divider';
