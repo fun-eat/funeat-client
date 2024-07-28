@@ -4,7 +4,7 @@ import { useLocation } from 'react-router-dom';
 
 import { container } from './memberPostPage.css';
 
-import { ErrorBoundary, ErrorComponent, Loading, TabMenu, TopBar } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, Spacing, TabMenu, TopBar } from '@/components/Common';
 import { MemberRecipeList, MemberReviewList } from '@/components/Members';
 import { POST_TYPE } from '@/constants';
 import { useTabMenu } from '@/hooks/common';
@@ -33,7 +33,7 @@ export const MemberPostPage = () => {
       <section ref={memberRecipeRef} className={container}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <div style={{ height: '20px' }} />
+            <Spacing size={20} />
             {selectedTabMenu === TAB_MENUS[0].value ? <MemberRecipeList /> : <MemberReviewList />}
           </Suspense>
         </ErrorBoundary>

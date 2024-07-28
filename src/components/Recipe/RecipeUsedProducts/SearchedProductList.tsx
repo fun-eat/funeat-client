@@ -1,7 +1,7 @@
 import type { MouseEventHandler } from 'react';
 import { useRef } from 'react';
 
-import { MarkedText, Text } from '@/components/Common';
+import { MarkedText, Spacing, Text } from '@/components/Common';
 import { container, backdrop, wrapper, productButton } from '@/components/Search/RecommendList/recommendList.css';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchAutocompleteQuery } from '@/hooks/queries/search';
@@ -43,7 +43,7 @@ const SearchedProductList = ({ searchQuery, addUsedProducts, handleAutocompleteC
               onClick={() => addUsedProducts(product)}
             >
               <MarkedText text={product.name} mark={searchQuery} />
-              <div style={{ width: '10px' }} />
+              <Spacing direction="horizontal" size={10} />
               <Text size="caption4" weight="semiBold" color="disabled">
                 상품
               </Text>

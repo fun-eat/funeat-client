@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { container } from './productOverviewList.css';
 import ProductOverviewItem from '../ProductOverviewItem/ProductOverviewItem';
 
+import { Spacing } from '@/components/Common';
 import { UsedProductOverviewItem } from '@/components/Recipe';
 import { PATH } from '@/constants/path';
 import type { Product } from '@/types/product';
@@ -27,7 +28,7 @@ const ProductOverviewList = ({ products, hasBorder = false, hasRemoved = false }
           )}
           {hasBorder && (
             <>
-              <div style={{ height: '20px' }} />
+              <Spacing size={20} />
               <hr style={{ border: '0.5px solid #e6e6e6' }} />
             </>
           )}

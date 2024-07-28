@@ -1,4 +1,3 @@
-import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -13,6 +12,7 @@ import {
   CategoryStoreList,
   TabMenu,
   SectionHeader,
+  Spacing,
 } from '@/components/Common';
 import { ProductPreviewList } from '@/components/Product';
 import { CATEGORY_TYPE } from '@/constants';

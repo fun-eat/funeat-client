@@ -7,6 +7,8 @@ import {
   productPrice,
 } from './productRankingItem.css';
 
+import { Spacing } from '@/components/Common';
+
 interface ProductRankingItemProps {
   name: string;
   image: string;
@@ -21,9 +23,9 @@ const ProductRankingItem = ({ name, image, rank, price }: ProductRankingItemProp
         <img className={productImage} src={image} alt={name} />
         <p className={productRank}>{rank}</p>
       </div>
-      <div style={{ height: '5px' }} />
+      <Spacing size={5} />
       <p className={productTitle}>{name}</p>
-      <div style={{ height: '2px' }} />
+      <Spacing size={2} />
       <p className={productPrice}>{price.toLocaleString('ko-KR')}원</p>
     </div>
   );

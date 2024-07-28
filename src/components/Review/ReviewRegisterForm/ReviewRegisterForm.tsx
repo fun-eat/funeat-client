@@ -1,4 +1,4 @@
-import { Spacing, useToastActionContext } from '@fun-eat/design-system';
+import { useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import { tagAddButton, tagButton, tagList } from './reviewRegisterForm.css';
 import StarRate from './StarRate/StarRate';
 import RebuyCheckbox from '../RebuyCheckbox/RebuyCheckbox';
 
-import { FormTextarea, ImageUploader, SvgIcon, Text } from '@/components/Common';
+import { FormTextarea, ImageUploader, Spacing, SvgIcon, Text } from '@/components/Common';
 import type { TagValue } from '@/contexts/ReviewFormContext';
 import { useFormData, useImageUploader } from '@/hooks/common';
 import { useReviewFormActionContext, useReviewFormValueContext } from '@/hooks/context';

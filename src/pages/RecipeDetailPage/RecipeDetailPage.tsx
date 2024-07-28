@@ -1,4 +1,4 @@
-import { BottomSheet, Spacing, useBottomSheet } from '@fun-eat/design-system';
+import { BottomSheet, useBottomSheet } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
 import { useParams } from 'react-router-dom';
@@ -22,7 +22,7 @@ import {
   commentSection,
 } from './recipeDetailPage.css';
 
-import { ErrorBoundary, ErrorComponent, Loading, SvgIcon, Text, TopBar } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, Spacing, SvgIcon, Text, TopBar } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
 import { ProductOverviewList } from '@/components/Product';
 import { CommentForm, CommentList, RecipeFavoriteButton } from '@/components/Recipe';

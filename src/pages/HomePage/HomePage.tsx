@@ -1,4 +1,3 @@
-import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,6 +13,7 @@ import {
   SvgIcon,
   Banner,
   SectionHeader,
+  Spacing,
 } from '@/components/Common';
 import { ProductRankingList, ReviewRankingList, RecipeRankingList } from '@/components/Rank';
 import { PATH } from '@/constants/path';

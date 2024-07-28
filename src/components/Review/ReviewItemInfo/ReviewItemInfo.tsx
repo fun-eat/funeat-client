@@ -1,6 +1,6 @@
 import { reviewImage } from './reviewItemInfo.css';
 
-import { StarRating, TagList, Text } from '@/components/Common';
+import { Spacing, StarRating, TagList, Text } from '@/components/Common';
 import type { Tag } from '@/types/common';
 
 interface ReviewItemInfoProps {
@@ -15,15 +15,15 @@ const ReviewItemInfo = ({ rating, createdAt, image, content, tags }: ReviewItemI
   return (
     <>
       <StarRating rating={rating} createdAt={createdAt} />
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
 
       {image && <img className={reviewImage} src={image} alt="작성한 리뷰" />}
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
 
       <Text size="caption2" color="sub">
         {content}
       </Text>
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
 
       <TagList tags={tags} />
     </>

@@ -4,7 +4,7 @@ import { container, logoutButton, modifyButton, wrapper } from './memberInfo.css
 import MemberImage from '../MemberImage/MemberImage';
 import PostCounterBox from '../PostCounterBox/PostCounterBox';
 
-import { SvgIcon, Text } from '@/components/Common';
+import { Spacing, SvgIcon, Text } from '@/components/Common';
 import { PATH } from '@/constants/path';
 import { useLogoutMutation, useMemberQuery } from '@/hooks/queries/members';
 import { vars } from '@/styles/theme.css';
@@ -41,7 +41,7 @@ const MembersInfo = () => {
             objectFit: `cover`,
           }}
         />
-        <div style={{ width: '10px' }} />
+        <Spacing direction="horizontal" size={10} />
         <Text size="display1" weight="semiBold">
           {nickname}
         </Text>
@@ -49,7 +49,7 @@ const MembersInfo = () => {
           <SvgIcon variant="pencil" width={12} height={12} fill={vars.colors.white} />
         </Link>
       </div>
-      <div style={{ height: '24px' }} />
+      <Spacing size={24} />
 
       <PostCounterBox recipeCount={recipeCount} reviewCount={reviewCount} />
     </div>

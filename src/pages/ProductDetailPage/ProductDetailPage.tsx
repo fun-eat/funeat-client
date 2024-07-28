@@ -14,6 +14,7 @@ import {
   Loading,
   SelectOptionList,
   TopBar,
+  Spacing,
 } from '@/components/Common';
 import { ProductDetailItem, ProductRecipeList } from '@/components/Product';
 import { ReviewList } from '@/components/Review';
@@ -68,7 +69,7 @@ export const ProductDetailPage = () => {
 
         <section className={section}>
           <SectionHeader name="이 상품이 포함된 꿀조합!" />
-          <div style={{ height: '24px' }} />
+          <Spacing size={24} />
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
             <Suspense fallback={<Loading />}>
               <ProductRecipeList productId={Number(productId)} productName={productDetail.name} />
@@ -83,7 +84,7 @@ export const ProductDetailPage = () => {
           <div className={sortWrapper}>
             <SortButton option={currentSortOption} onClick={handleOpenSortOptionSheet} />
           </div>
-          <div style={{ height: '24px' }} />
+          <Spacing size={24} />
           <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
             <Suspense fallback={<Loading />}>
               <ReviewList productId={Number(productId)} selectedOption={currentSortOption} />

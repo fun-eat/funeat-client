@@ -1,7 +1,8 @@
-import { Heading, Spacing, Textarea, Text, useTheme } from '@fun-eat/design-system';
+import { Heading, Textarea, Text, useTheme } from '@fun-eat/design-system';
 import type { ChangeEventHandler } from 'react';
 import styled from 'styled-components';
 
+import { Spacing } from '@/components/Common';
 import { useRecipeFormActionContext } from '@/hooks/context';
 
 const MAX_LENGTH = 500;

@@ -4,7 +4,7 @@ import { notFound, notFoundContainer } from './memberReviewList.css';
 import MemberReviewItem from '../MemberReviewItem/MemberReviewItem';
 
 import ReviewNotFoundImage from '@/assets/review-notfound.png';
-import { Text } from '@/components/Common';
+import { Spacing, Text } from '@/components/Common';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteMemberReviewQuery } from '@/hooks/queries/members';
 import displaySlice from '@/utils/displaySlice';
@@ -47,7 +47,7 @@ const MemberReviewList = ({ isPreview = false }: MemberReviewListProps) => {
             <li key={review.reviewId}>
               <MemberReviewItem review={review} />
             </li>
-            <div style={{ height: '40px' }} />
+            <Spacing size={40} />
           </>
         ))}
       </ul>

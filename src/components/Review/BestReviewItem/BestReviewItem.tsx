@@ -1,7 +1,7 @@
-import { Spacing, Text, useTheme } from '@fun-eat/design-system';
+import { Text, useTheme } from '@fun-eat/design-system';
 import styled from 'styled-components';
 
-import { SvgIcon } from '@/components/Common';
+import { Spacing, SvgIcon } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
 import { useBestReviewQuery } from '@/hooks/queries/rank';
 

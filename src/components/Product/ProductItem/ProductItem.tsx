@@ -3,7 +3,7 @@ import { memo, useState } from 'react';
 
 import { container, imageWrapper, previewWrapper, productImage, summaryWrapper } from './productItem.css';
 
-import { SvgIcon, Text } from '@/components/Common';
+import { Spacing, SvgIcon, Text } from '@/components/Common';
 import { ellipsis } from '@/styles/common.css';
 import { vars } from '@/styles/theme.css';
 import type { Product } from '@/types/product';
@@ -33,16 +33,16 @@ const ProductItem = ({ product }: ProductItemProps) => {
           </div>
         )}
       </div>
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <Text className={ellipsis} size="caption3" weight="semiBold" color="sub">
         {name}
       </Text>
-      <div style={{ height: '2px' }} />
+      <Spacing size={2} />
       {/* 추후 bold로 변경 */}
       <Text size="caption2" weight="semiBold" color="sub">
         {price.toLocaleString('ko-KR')}원
       </Text>
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <div className={summaryWrapper}>
         <div className={previewWrapper}>
           <SvgIcon variant="star2" width={11} height={11} fill={vars.colors.gray2} />

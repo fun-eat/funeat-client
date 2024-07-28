@@ -4,7 +4,7 @@ import { favoriteWrapper, memberInfo } from './reviewItem.css';
 import ReviewFavoriteButton from '../ReviewFavoriteButton/ReviewFavoriteButton';
 import ReviewItemInfo from '../ReviewItemInfo/ReviewItemInfo';
 
-import { Badge, Text } from '@/components/Common';
+import { Badge, Spacing, Text } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
 import { vars } from '@/styles/theme.css';
 import type { Review } from '@/types/review';
@@ -32,7 +32,7 @@ const ReviewItem = ({ productId, review }: ReviewItemProps) => {
           <ReviewFavoriteButton productId={productId} reviewId={id} favorite={favorite} favoriteCount={favoriteCount} />
         </div>
       </div>
-      <div style={{ height: '12px' }} />
+      <Spacing size={12} />
 
       <ReviewItemInfo rating={rating} createdAt={createdAt} image={image} content={content} tags={tags} />
     </div>
