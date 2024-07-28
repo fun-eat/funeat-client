@@ -13,6 +13,7 @@ import {
 } from '../src/mocks/handlers';
 import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import ToastProvider from '../src/components/Common/Toast/context/ToastContext';
 
 initialize({
   serviceWorker: {
@@ -27,7 +28,9 @@ export const decorators = [
     <QueryClientProvider client={queryClient}>
       <FunEatProvider>
         <BrowserRouter>
-          <Story />
+          <ToastProvider>
+            <Story />
+          </ToastProvider>
         </BrowserRouter>
       </FunEatProvider>
     </QueryClientProvider>
