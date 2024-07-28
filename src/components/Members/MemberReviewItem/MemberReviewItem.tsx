@@ -1,10 +1,10 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { MouseEventHandler } from 'react';
 import { Link } from 'react-router-dom';
 
 import { titleWrapper } from './memberReviewItem.css';
 
 import { SvgIcon, Text } from '@/components/Common';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { ReviewItemInfo } from '@/components/Review';
 import { PATH } from '@/constants/path';
 import { useDeleteReview } from '@/hooks/queries/members';
@@ -40,7 +40,7 @@ const MemberReviewItem = ({ review }: MemberReviewItemProps) => {
           return;
         }
 
-        toast.error('리뷰 좋아요를 다시 시도해주세요.');
+        toast.error('리뷰 삭제를 다시 시도해주세요.');
       },
     });
   };

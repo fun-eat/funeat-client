@@ -1,7 +1,7 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { PropsWithChildren } from 'react';
 import { createContext, useState } from 'react';
 
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { MAX_DISPLAYED_TAGS_LENGTH, MIN_DISPLAYED_TAGS_LENGTH } from '@/constants';
 import type { ReviewRequest } from '@/types/review';
 

@@ -1,10 +1,10 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, RefObject } from 'react';
 import { useRef, useState } from 'react';
 
 import { commentForm, commentTextarea, container, sendButton } from './commentForm.css';
 
 import { SvgIcon, Text } from '@/components/Common';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { MemberImage } from '@/components/Members';
 import { useScroll } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
