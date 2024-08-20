@@ -53,15 +53,6 @@ const router = createBrowserRouter([
           return { Component: MemberRecipeBookmarkPage };
         },
       },
-      {
-        path: `${PATH.RECIPE}/:recipeId`,
-        async lazy() {
-          const { RecipeDetailPage } = await import(
-            /* webpackChunkName: "RecipeDetailPage" */ '@/pages/RecipeDetailPage/RecipeDetailPage'
-          );
-          return { Component: RecipeDetailPage };
-        },
-      },
     ],
   },
   /** 레이아웃이 있는 페이지 */
@@ -140,6 +131,16 @@ const router = createBrowserRouter([
         },
       },
     ],
+  },
+  /** 레시피 상세 페이지 */
+  {
+    path: `${PATH.RECIPE}/:recipeId`,
+    async lazy() {
+      const { RecipeDetailPage } = await import(
+        /* webpackChunkName: "RecipeDetailPage" */ '@/pages/RecipeDetailPage/RecipeDetailPage'
+      );
+      return { Component: RecipeDetailPage };
+    },
   },
   /** 검색 페이지 */
   {
