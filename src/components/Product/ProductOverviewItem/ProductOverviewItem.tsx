@@ -1,6 +1,6 @@
 import { container, priceRate, priceRateWrapper, rateWrapper, wrapper } from './productOverviewItem.css';
 
-import { SvgIcon } from '@/components/Common';
+import { Spacing, SvgIcon } from '@/components/Common';
 import {
   PRODUCT_OVERVIEW_DEFAULT_IMAGE_URL_1,
   PRODUCT_OVERVIEW_DEFAULT_IMAGE_URL_2,
@@ -34,7 +34,7 @@ const ProductOverviewItem = ({ product }: ProductOverviewItemProps) => {
         <img src={image ?? defaultImage} width={60} height={60} alt={name} />
         <div>
           <p>{name}</p>
-          <div style={{ height: '6px' }} />
+          <Spacing size={6} />
           <div className={priceRateWrapper}>
             <span className={priceRate}>{price}원</span>
             <div className={rateWrapper}>

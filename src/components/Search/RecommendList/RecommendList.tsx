@@ -3,10 +3,9 @@ import { useRef } from 'react';
 
 import { backdrop, container, productButton, wrapper } from './recommendList.css';
 
-import { MarkedText, Text } from '@/components/Common';
+import { Divider, MarkedText, Spacing, Text } from '@/components/Common';
 import { useIntersectionObserver } from '@/hooks/common';
 import { useInfiniteProductSearchAutocompleteQuery } from '@/hooks/queries/search';
-import { vars } from '@/styles/theme.css';
 
 interface RecommendListProps {
   searchQuery: string;
@@ -33,12 +32,12 @@ const RecommendList = ({ searchQuery, handleSearchClick, handleAutocompleteClose
           <li key={id}>
             <button className={productButton} type="button" color="white" value={name} onClick={handleSearchClick}>
               <MarkedText text={name} mark={searchQuery} />
-              <div style={{ width: '10px' }} />
+              <Spacing direction="horizontal" size={10} />
               <Text size="caption4" weight="semiBold" color="disabled">
                 상품
               </Text>
             </button>
-            <hr style={{ border: `0.5px solid ${vars.colors.border.default}` }} />
+            <Divider variant="default" />
           </li>
         ))}
       </ul>

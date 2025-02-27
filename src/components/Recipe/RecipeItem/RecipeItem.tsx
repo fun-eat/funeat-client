@@ -17,7 +17,7 @@ import {
 import RecipeFavoriteButton from '../RecipeFavoriteButton/RecipeFavoriteButton';
 import RecipeProductButton from '../RecipeProductButton/RecipeProductButton';
 
-import { Text } from '@/components/Common';
+import { Spacing, Text } from '@/components/Common';
 import {
   RECIPE_CARD_DEFAULT_IMAGE_URL_1,
   RECIPE_CARD_DEFAULT_IMAGE_URL_2,
@@ -192,7 +192,7 @@ export const DefaultRecipeItem = ({ recipe }: RecipeItemProps) => {
   return (
     <RecipeItem recipe={recipe}>
       <RecipeItem.ImageAndFavoriteButton />
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <RecipeItem.Title />
       <RecipeItem.AuthorAndCreatedDate />
     </RecipeItem>
@@ -205,7 +205,7 @@ export const RecipeItemWithDiskIcon = ({ recipe }: RecipeItemProps) => {
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductButton />
       </RecipeItem.ImageAndFavoriteButton>
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <RecipeItem.Title />
       <RecipeItem.AuthorAndCreatedDate />
     </RecipeItem>
@@ -218,7 +218,7 @@ export const RecipeItemWithProductDetailImage = ({ recipe }: RecipeItemProps) =>
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductCircleButton />
       </RecipeItem.ImageAndFavoriteButton>
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <RecipeItem.Title />
       <RecipeItem.Author />
       <RecipeItem.Content />
@@ -232,7 +232,7 @@ export const RecipeItemWithDiskIconAndContent = ({ recipe }: RecipeItemProps) =>
       <RecipeItem.ImageAndFavoriteButton>
         <RecipeItem.ProductButton />
       </RecipeItem.ImageAndFavoriteButton>
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <RecipeItem.Title />
       <RecipeItem.AuthorAndCreatedDate />
       <RecipeItem.Content />

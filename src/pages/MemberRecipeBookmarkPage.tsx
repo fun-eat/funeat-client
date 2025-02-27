@@ -1,7 +1,7 @@
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense, useRef } from 'react';
 
-import { ErrorBoundary, ErrorComponent, Loading, TopBar } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, Spacing, TopBar } from '@/components/Common';
 import { MemberRecipeBookmarkList } from '@/components/Members/';
 
 export const MemberRecipeBookmarkPage = () => {
@@ -17,7 +17,7 @@ export const MemberRecipeBookmarkPage = () => {
       <section ref={memberRecipeRef}>
         <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
           <Suspense fallback={<Loading />}>
-            <div style={{ height: '20px' }} />
+            <Spacing size={20} />
             <MemberRecipeBookmarkList />
           </Suspense>
         </ErrorBoundary>

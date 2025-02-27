@@ -2,7 +2,7 @@ import type { ChangeEventHandler } from 'react';
 
 import { container, inputWrapper, letterCount } from './memberModifyInput.css';
 
-import { Text } from '@/components/Common';
+import { Spacing, Text } from '@/components/Common';
 
 const MIN_LENGTH = 1;
 const MAX_LENGTH = 10;
@@ -18,7 +18,7 @@ const MemberModifyInput = ({ nickname, modifyNickname }: MemberModifyInputProps)
       <Text size="caption2" weight="semiBold">
         닉네임
       </Text>
-      <div style={{ height: 8 }} />
+      <Spacing size={8} />
       <div className={container}>
         <Text className={letterCount} as="span" size="caption4" weight="medium" color="disabled">
           {nickname.length} / {MAX_LENGTH}

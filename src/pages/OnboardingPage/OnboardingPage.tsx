@@ -6,7 +6,7 @@ import { container, link } from './onboardingPage.css';
 import OnboardingMember from '@/assets/onboarding-member.png';
 import OnboardingRecipe from '@/assets/onboarding-recipe.png';
 import OnboardingReview from '@/assets/onboarding-review.png';
-import { Stepper, Text } from '@/components/Common';
+import { Spacing, Stepper, Text } from '@/components/Common';
 import { PATH } from '@/constants/path';
 import { useTabMenu } from '@/hooks/common';
 import { setLocalStorage } from '@/utils/localStorage';
@@ -41,7 +41,7 @@ export const OnboardingPage = () => {
     <>
       <section className={container}>
         <Stepper selectedStepper={selectedStepper} handleStepperSelect={handleTabMenuClick} />
-        <div style={{ height: 50 }} />
+        <Spacing size={50} />
 
         <OnboardingContent title={content.title} description={content.description} image={content.image} />
       </section>

@@ -3,7 +3,7 @@ import type { FocusEventHandler, ChangeEventHandler } from 'react';
 
 import { formInput } from './recipeNameInput.css';
 
-import { SvgIcon, Text } from '@/components/Common';
+import { Spacing, SvgIcon, Text } from '@/components/Common';
 import { useRecipeFormActionContext } from '@/hooks/context';
 import { errorMessage, errorWrapper, itemTitle, requiredMark } from '@/styles/form.css';
 
@@ -51,7 +51,7 @@ const RecipeNameInput = ({ recipeName }: RecipeNameInputProps) => {
         onFocus={handleFocus}
         onBlur={handleBlur}
       />
-      <div style={{ height: 5 }} />
+      <Spacing size={5} />
 
       <div className={isValid ? errorWrapper.hidden : errorWrapper.show}>
         <SvgIcon variant="error" width={12} height={12} fill="currentColor" />

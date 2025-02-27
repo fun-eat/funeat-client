@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { titleWrapper } from './memberReviewItem.css';
 
-import { SvgIcon, Text } from '@/components/Common';
+import { Spacing, SvgIcon, Text } from '@/components/Common';
 import { ReviewItemInfo } from '@/components/Review';
 import { PATH } from '@/constants/path';
 import { useDeleteReview } from '@/hooks/queries/members';
@@ -60,7 +60,7 @@ const MemberReviewItem = ({ review }: MemberReviewItemProps) => {
           </Text>
         </button>
       </div>
-      <div style={{ height: '11px' }} />
+      <Spacing size={11} />
 
       <ReviewItemInfo rating={rating} createdAt={createdAt} image={image} content={content} tags={tags} />
     </>

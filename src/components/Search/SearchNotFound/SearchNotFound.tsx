@@ -1,7 +1,7 @@
 import { container } from './searchNotFound.css';
 
 import SearchNotFoundImage from '@/assets/search-notfound.png';
-import { Text } from '@/components/Common';
+import { Spacing, Text } from '@/components/Common';
 
 const SearchNotFound = () => {
   return (
@@ -10,7 +10,7 @@ const SearchNotFound = () => {
       <Text color="sub" size="headline" weight="semiBold">
         검색 결과가 없어요
       </Text>
-      <div style={{ height: '6px' }} />
+      <Spacing size={6} />
       <Text color="disabled" size="caption4">
         다른 키워드로 검색해보세요!
       </Text>

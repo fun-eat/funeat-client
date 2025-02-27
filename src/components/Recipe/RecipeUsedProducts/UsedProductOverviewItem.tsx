@@ -7,7 +7,7 @@ import {
   wrapper,
 } from '../../Product/ProductOverviewItem/productOverviewItem.css';
 
-import { SvgIcon } from '@/components/Common';
+import { Spacing, SvgIcon } from '@/components/Common';
 import { useRecipeFormActionContext } from '@/hooks/context';
 import { vars } from '@/styles/theme.css';
 import type { Product } from '@/types/product';
@@ -32,7 +32,7 @@ const UsedProductOverviewItem = ({ product }: ProductOverviewItemProps) => {
         <img src={image} width={60} height={60} alt={name} />
         <div>
           <p>{name}</p>
-          <div style={{ height: '6px' }} />
+          <Spacing size={6} />
           <div className={priceRateWrapper}>
             <span className={priceRate}>{price}원</span>
             <div className={rateWrapper}>

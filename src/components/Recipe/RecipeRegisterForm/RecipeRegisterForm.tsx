@@ -4,7 +4,7 @@ import type { FormEventHandler } from 'react';
 import RecipeNameInput from '../RecipeNameInput/RecipeNameInput';
 import RecipeUsedProducts from '../RecipeUsedProducts/RecipeUsedProducts';
 
-import { FormTextarea, ImageUploader } from '@/components/Common';
+import { FormTextarea, ImageUploader, Spacing } from '@/components/Common';
 import { useImageUploader, useFormData } from '@/hooks/common';
 import { useRecipeFormValueContext, useRecipeFormActionContext } from '@/hooks/context';
 import { useRecipeRegisterFormMutation } from '@/hooks/queries/recipe';
@@ -60,13 +60,13 @@ const RecipeRegisterForm = () => {
         </h2>
         <ImageUploader previewImage={previewImage} uploadImage={uploadImage} deleteImage={deleteImage} />
       </div>
-      <div style={{ height: 32 }} />
+      <Spacing size={32} />
 
       <RecipeUsedProducts />
-      <div style={{ height: 32 }} />
+      <Spacing size={32} />
 
       <RecipeNameInput recipeName={recipeFormValue.title} />
-      <div style={{ height: 32 }} />
+      <Spacing size={32} />
 
       <FormTextarea
         content={recipeFormValue.content}

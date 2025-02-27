@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { reviewImage, tagList, tag, tagName, reviewContent } from './reviewRankingItem.css';
 
-import { Text } from '@/components/Common';
+import { Spacing, Text } from '@/components/Common';
 import { REVIEW_CARD_DEFAULT_IMAGE_URL } from '@/constants/image';
 import { ellipsis } from '@/styles/common.css';
 import type { ReviewRanking } from '@/types/ranking';
@@ -25,15 +25,15 @@ const ReviewRankingItem = ({ productName, content, tags, image }: ReviewRankingI
       {image !== null && (
         <img src={image === '' ? REVIEW_CARD_DEFAULT_IMAGE_URL : image} className={reviewImage} alt={productName} />
       )}
-      <div style={{ height: '8px' }} />
+      <Spacing size={8} />
       <Text className={ellipsis} color="sub" size="caption2" weight="semiBold">
         {productName}
       </Text>
-      <div style={{ height: '4px' }} />
+      <Spacing size={4} />
       <Text color="info" size="caption4" className={reviewContent}>
         {content}
       </Text>
-      <div style={{ height: '10px' }} />
+      <Spacing size={10} />
       <ul className={tagList}>
         {tagToDisplay.map(({ id, name }) => (
           <li key={id} className={tag}>

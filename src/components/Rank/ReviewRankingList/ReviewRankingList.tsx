@@ -5,11 +5,10 @@ import { Link } from 'react-router-dom';
 import { bottomSheetWrapper, container, productLink, reviewItemWrapper } from './reviewRankingList.css';
 import ReviewRankingItem from '../ReviewRankingItem/ReviewRankingItem';
 
-import { Text } from '@/components/Common';
+import { Divider, Spacing, Text } from '@/components/Common';
 import { ReviewItem } from '@/components/Review';
 import { PATH } from '@/constants/path';
 import { useReviewRankingQuery } from '@/hooks/queries/rank';
-import { vars } from '@/styles/theme.css';
 import type { ReviewDetail } from '@/types/review';
 
 const ReviewRankingList = () => {
@@ -47,7 +46,8 @@ const ReviewRankingList = () => {
         <BottomSheet isOpen={isOpen} isClosing={isClosing} close={handleCloseBottomSheet}>
           <div className={bottomSheetWrapper}>
             <ReviewItem productId={selectedReview.productId} review={selectedReview.review} />
-            <hr style={{ height: '1px', background: `${vars.colors.border.default}`, border: 0, margin: '12px 0' }} />
+            <Spacing size={12} />
+            <Divider variant="default" />
             <Link to={`${PATH.PRODUCT_LIST}/detail/${selectedReview?.productId}`} className={productLink}>
               <Text weight="semiBold" color="white">
                 상품 바로가기

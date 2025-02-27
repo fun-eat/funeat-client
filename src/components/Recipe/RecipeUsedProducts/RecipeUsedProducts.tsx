@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { addProduct, disabled, iconWrapper } from './recipeUsedProducts.css';
 
-import { ErrorBoundary, ErrorComponent, Loading, SvgIcon, Text } from '@/components/Common';
+import { ErrorBoundary, ErrorComponent, Loading, Spacing, SvgIcon, Text } from '@/components/Common';
 import { ProductOverviewList } from '@/components/Product';
 import { PATH } from '@/constants/path';
 import { useRecipeFormValueContext } from '@/hooks/context';
@@ -27,7 +27,7 @@ const RecipeUsedProducts = () => {
           *
         </sup>
       </h2>
-      <div style={{ height: 8 }} />
+      <Spacing size={8} />
 
       {isValid ? (
         <Link to={`${PATH.RECIPE}/used-products`} className={addProduct}>
@@ -43,7 +43,7 @@ const RecipeUsedProducts = () => {
           </Text>
         </div>
       )}
-      <div style={{ height: 8 }} />
+      <Spacing size={8} />
 
       <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
         <Suspense fallback={<Loading />}>

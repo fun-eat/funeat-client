@@ -16,7 +16,7 @@ import {
   profileImageWrapper,
 } from './memberModifyPage.css';
 
-import { SvgIcon, TopBar } from '@/components/Common';
+import { Spacing, SvgIcon, TopBar } from '@/components/Common';
 import { MemberModifyInput } from '@/components/Members';
 import { IMAGE_MAX_SIZE } from '@/constants';
 import { useFormData, useImageUploader } from '@/hooks/common';
@@ -99,7 +99,7 @@ export const MemberModifyPage = () => {
       <TopBar>
         <TopBar.BackLink />
       </TopBar>
-      <div style={{ height: '24px' }} />
+      <Spacing size={24} />
 
       <section className={container}>
         <form onSubmit={handleSubmit}>
@@ -126,7 +126,7 @@ export const MemberModifyPage = () => {
               </label>
             </div>
           </div>
-          <div style={{ height: 20 }} />
+          <Spacing size={20} />
 
           <MemberModifyInput nickname={nickname} modifyNickname={modifyNickname} />
           <div className={buttonWrapper}>

@@ -1,4 +1,3 @@
-import { Spacing } from '@fun-eat/design-system';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import { Suspense } from 'react';
 import { Link } from 'react-router-dom';
@@ -14,6 +13,8 @@ import {
   SvgIcon,
   Banner,
   SectionHeader,
+  Spacing,
+  Divider,
 } from '@/components/Common';
 import { ProductRankingList, ReviewRankingList, RecipeRankingList } from '@/components/Rank';
 import { PATH } from '@/constants/path';
@@ -58,7 +59,7 @@ export const HomePage = () => {
         </ErrorBoundary>
       </section>
 
-      <div style={{ height: '12px', backgroundColor: '#f9f9f9' }} aria-hidden />
+      <Divider height="12px" variant="light" />
 
       <section className={sectionWrapper}>
         <SectionHeader name="상품 랭킹" />

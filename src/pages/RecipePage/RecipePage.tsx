@@ -12,6 +12,7 @@ import {
   ScrollButton,
   SelectOptionList,
   SortButton,
+  Spacing,
   WriteButton,
 } from '@/components/Common';
 import { RecipeList } from '@/components/Recipe';
@@ -48,7 +49,7 @@ export const RecipePage = () => {
             <div className={sortButtonWrapper}>
               <SortButton option={currentSortOption} onClick={handleOpenSortOptionSheet} />
             </div>
-            <div style={{ height: '8px' }} />
+            <Spacing size={8} />
             <RecipeList selectedOption={currentSortOption} />
           </section>
         </Suspense>

@@ -24,4 +24,5 @@ export const productLink = style({
   height: 56,
   background: vars.colors.primary,
   borderRadius: 6,
+  marginTop: 12,
 });
