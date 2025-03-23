@@ -1,8 +1,8 @@
 import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, RefObject } from 'react';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
-import { commentForm, commentTextarea, container, sendButton } from './commentForm.css';
+import { buttonWrapper, commentForm, commentTextarea, container, sendButton } from './commentForm.css';
 
 import { SvgIcon, Text } from '@/components/Common';
 import { MemberImage } from '@/components/Members';
@@ -65,26 +65,32 @@ const CommentForm = ({ recipeId, scrollTargetRef }: CommentFormProps) => {
     );
   };
 
+  useEffect(() => {
+    autoResizeTextarea();
+  }, [commentValue]);
+
   return (
     <div className={container}>
-      <MemberImage src={member?.profileImage || ''} width={29} height={29} />
+      <MemberImage src={member?.profileImage || ''} width={33} height={33} />
       <>
         <form className={commentForm} onSubmit={handleSubmitComment}>
           <textarea
             className={commentTextarea}
-            placeholder="댓글을 남겨보세요! (200자)"
+            placeholder="댓글을 남겨보세요!"
             value={commentValue}
             onChange={handleCommentInput}
             maxLength={MAX_COMMENT_LENGTH}
             rows={1}
             ref={textAreaRef}
           />
-          <Text size="caption4" color="disabled">
-            {commentValue.length}/200
-          </Text>
-          <button className={commentValue.length === 0 ? sendButton['disabled'] : sendButton['active']}>
-            <SvgIcon variant="plane" width={14} height={14} fill={vars.colors.white} />
-          </button>
+          <div className={buttonWrapper}>
+            <Text size="caption4" color="disabled">
+              {commentValue.length}/200
+            </Text>
+            <button className={commentValue.length === 0 ? sendButton['disabled'] : sendButton['active']}>
+              <SvgIcon variant="plane" width={14} height={14} fill={vars.colors.white} />
+            </button>
+          </div>
         </form>
       </>
     </div>

@@ -8,6 +8,12 @@ export const container = style({
   overflowX: 'auto',
 });
 
+export const wrapper = style({
+  height: '100%',
+  display: 'flex',
+  flex: '0 0 160px',
+});
+
 export const moreItem = style({
   display: 'flex',
   justifyContent: 'center',
