@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { container, moreItem, notFound, recipeLink } from './productRecipeList.css';
+import { container, moreItem, notFound, recipeLink, wrapper } from './productRecipeList.css';
 
 import SearchNotFoundImage from '@/assets/search-notfound.png';
 import { Text, ShowAllButton } from '@/components/Common';
@@ -41,7 +41,7 @@ const ProductRecipeList = ({ productId, productName }: ProductRecipeListProps) =
   return (
     <ul className={container}>
       {recipeToDisplay.map((recipe) => (
-        <li key={recipe.id}>
+        <li key={recipe.id} className={wrapper}>
           <DefaultRecipeItem recipe={recipe} />
         </li>
       ))}

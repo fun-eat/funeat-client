@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-import { listWrapper } from './recipeSearchResultPreviewList.css';
+import { container, wrapper } from './recipeSearchResultPreviewList.css';
 import SearchNotFound from '../SearchNotFound/SearchNotFound';
 
 import { ShowAllButton } from '@/components/Common';
@@ -26,9 +26,9 @@ const RecipeSearchResultPreviewList = ({ searchQuery }: RecipeSearchResultPrevie
   }
 
   return (
-    <ul className={listWrapper}>
+    <ul className={container}>
       {displaySlice(false, recipes, 4).map((recipe, idx) => (
-        <li key={recipe.id}>
+        <li key={recipe.id} className={wrapper}>
           {idx < 4 ? (
             <DefaultRecipeItem recipe={recipe} />
           ) : (
