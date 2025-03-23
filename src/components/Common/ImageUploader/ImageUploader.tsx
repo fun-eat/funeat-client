@@ -1,8 +1,8 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler } from 'react';
 
 import { container, deleteButton, image, imageWrapper, uploadInput, uploadLabel } from './imageUploader.css';
 import SvgIcon from '../Svg/SvgIcon';
+import { useToastActionContext } from '../Toast/context';
 import Text from '../Typography/Text/Text';
 
 import { IMAGE_MAX_SIZE } from '@/constants';

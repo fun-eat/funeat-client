@@ -2,6 +2,7 @@ import { container, countWrapper } from './recipeFavoriteButton.css';
 
 import HeartEmpty from '@/assets/heart-empty.png';
 import { SvgIcon, Text } from '@/components/Common';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { useTimeout } from '@/hooks/common';
 import { useMemberQuery } from '@/hooks/queries/members';
 import { useRecipeBookmarkMutation, useRecipeFavoriteMutation } from '@/hooks/queries/recipe';
@@ -17,9 +18,37 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
   const { mutate: bookmarkMutate } = useRecipeBookmarkMutation(Number(recipeId));
   const { data: member } = useMemberQuery();
 
+  const { toast } = useToastActionContext();
+
   const handleToggleFavorite = async () => {
-    favoriteMutate({ favorite: !favorite });
-    bookmarkMutate({ bookmark: !favorite });
+    favoriteMutate(
+      { favorite: !favorite },
+      {
+        onError: (error) => {
+          console.log(error);
+          if (error instanceof Error) {
+            toast.error(error.message);
+            return;
+          }
+
+          toast.error('좋아요를 다시 시도해주세요.');
+        },
+      }
+    );
+    bookmarkMutate(
+      { bookmark: !favorite },
+      {
+        onError: (error) => {
+          console.log(error);
+          if (error instanceof Error) {
+            toast.error(error.message);
+            return;
+          }
+
+          toast.error('북마크를 다시 시도해주세요.');
+        },
+      }
+    );
   };
 
   const [debouncedToggleFavorite] = useTimeout(handleToggleFavorite, 200);

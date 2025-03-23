@@ -1,10 +1,10 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler, MouseEventHandler } from 'react';
 import { useRef, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { useGA } from '../common';
 
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { PATH } from '@/constants/path';
 import { getLocalStorage, setLocalStorage } from '@/utils/localStorage';
 

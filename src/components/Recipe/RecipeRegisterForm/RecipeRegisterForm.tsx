@@ -1,10 +1,10 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { FormEventHandler } from 'react';
 
 import RecipeNameInput from '../RecipeNameInput/RecipeNameInput';
 import RecipeUsedProducts from '../RecipeUsedProducts/RecipeUsedProducts';
 
 import { FormTextarea, ImageUploader } from '@/components/Common';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { useImageUploader, useFormData } from '@/hooks/common';
 import { useRecipeFormValueContext, useRecipeFormActionContext } from '@/hooks/context';
 import { useRecipeRegisterFormMutation } from '@/hooks/queries/recipe';

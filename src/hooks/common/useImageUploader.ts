@@ -1,6 +1,7 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import imageCompression from 'browser-image-compression';
 import { useState } from 'react';
+
+import { useToastActionContext } from '@/components/Common/Toast/context';
 
 const isImageFile = (file: File) => file.type !== 'image/png' && file.type !== 'image/jpeg';
 
