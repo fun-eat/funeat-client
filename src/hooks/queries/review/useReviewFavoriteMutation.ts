@@ -1,4 +1,3 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { productApi } from '@/apis';
@@ -12,20 +11,11 @@ const patchReviewFavorite = (productId: number, reviewId: number, body: ReviewFa
 
 const useReviewFavoriteMutation = (productId: number, reviewId: number) => {
   const queryClient = useQueryClient();
-  const { toast } = useToastActionContext();
 
   const queryKey = ['product', productId, 'review'];
 
   return useMutation({
     mutationFn: (body: ReviewFavoriteRequestBody) => patchReviewFavorite(productId, reviewId, body),
-    onError: (error) => {
-      if (error instanceof Error) {
-        toast.error(error.message);
-        return;
-      }
-
-      toast.error('좋아요를 다시 시도해주세요.');
-    },
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKey }),
   });
 };

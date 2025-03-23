@@ -37,13 +37,6 @@ const useRecipeFavoriteMutation = (recipeId: number) => {
     },
     onError: (error, _, context) => {
       queryClient.setQueryData(queryKey, context?.previousRequest);
-
-      if (error instanceof Error) {
-        toast.error(error.message);
-        return;
-      }
-
-      toast.error('좋아요를 다시 시도해주세요.');
     },
     onSettled: () => {
       queryClient.invalidateQueries({ queryKey: queryKey });

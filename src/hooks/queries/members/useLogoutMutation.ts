@@ -1,8 +1,8 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 
 import { logoutApi } from '@/apis';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { PATH } from '@/constants/path';
 
 const useLogoutMutation = () => {

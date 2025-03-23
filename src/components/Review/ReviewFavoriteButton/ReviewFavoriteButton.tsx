@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { favoriteButton } from './reviewFavoriteButton.css';
 
 import { SvgIcon, Text } from '@/components/Common';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { useTimeout } from '@/hooks/common';
 import { useReviewFavoriteMutation } from '@/hooks/queries/review';
 import { vars } from '@/styles/theme.css';
@@ -23,6 +24,7 @@ const ReviewFavoriteButton = ({ productId, reviewId, favorite, favoriteCount }: 
   const [favoriteInfo, setFavoriteInfo] = useState(initialFavoriteState);
   const { isFavorite, currentFavoriteCount } = favoriteInfo;
 
+  const { toast } = useToastActionContext();
   const { mutate } = useReviewFavoriteMutation(productId, reviewId);
 
   const handleToggleFavorite = async () => {
@@ -34,8 +36,14 @@ const ReviewFavoriteButton = ({ productId, reviewId, favorite, favoriteCount }: 
     mutate(
       { favorite: !isFavorite },
       {
-        onError: () => {
+        onError: (error) => {
           setFavoriteInfo(initialFavoriteState);
+          if (error instanceof Error) {
+            toast.error(error.message);
+            return;
+          }
+
+          toast.error('좋아요를 다시 시도해주세요.');
         },
       }
     );

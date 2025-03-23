@@ -7,6 +7,7 @@ import ReactGA from 'react-ga4';
 import { RouterProvider } from 'react-router-dom';
 
 import { SvgSprite } from './components/Common';
+import { ToastProvider } from './components/Common/Toast/context/ToastContext';
 import { ENVIRONMENT } from './constants';
 import router from './router';
 
@@ -41,8 +42,10 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <FunEatProvider>
-        <SvgSprite />
-        <RouterProvider router={router} />
+        <ToastProvider>
+          <SvgSprite />
+          <RouterProvider router={router} />
+        </ToastProvider>
       </FunEatProvider>
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>

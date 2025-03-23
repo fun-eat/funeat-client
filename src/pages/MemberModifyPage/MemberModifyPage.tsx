@@ -1,4 +1,3 @@
-import { useToastActionContext } from '@fun-eat/design-system';
 import type { ChangeEventHandler, FormEventHandler } from 'react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +16,7 @@ import {
 } from './memberModifyPage.css';
 
 import { SvgIcon, TopBar } from '@/components/Common';
+import { useToastActionContext } from '@/components/Common/Toast/context';
 import { MemberModifyInput } from '@/components/Members';
 import { IMAGE_MAX_SIZE } from '@/constants';
 import { useFormData, useImageUploader } from '@/hooks/common';
