@@ -1,5 +1,4 @@
 import { useCallback } from 'react';
-import ReactGA from 'react-ga4';
 
 interface GAEventProps {
   category: string;
@@ -11,7 +10,7 @@ const useGA = () => {
   // TODO: navigate event tracking
 
   const gaEvent = useCallback((eventProps: GAEventProps) => {
-    ReactGA.event(eventProps);
+    // ReactGA.event(eventProps);
   }, []);
 
   return { gaEvent };

@@ -19,7 +19,7 @@ const initializeReactGA = () => {
 
   ReactGA.initialize(process.env.GOOGLE_ANALYTICS_ID as string);
 };
-initializeReactGA();
+// initializeReactGA();
 
 const main = async () => {
   const { worker } = await import('./mocks/browser');
