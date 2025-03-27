@@ -22,7 +22,7 @@ jobs:
         with:
           source-directory: 'output'
           destination-github-username: hae-on
-          destination-repository-name: funeat-client
+          destination-repository-name: funeat
           user-email: ${{ secrets.SOLBI_EMAIL }}
           commit-message: ${{ github.event.commits[0].message }}
           target-branch: feat/v2
