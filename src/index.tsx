@@ -13,6 +13,7 @@ import router from './router';
 
 import './styles/index.css';
 
+// vercel 배포를 위한 GA 주석 처리
 const initializeReactGA = () => {
   if (process.env.NODE_ENV === 'development') return;
   if (ENVIRONMENT === 'dev') return;
@@ -21,6 +22,7 @@ const initializeReactGA = () => {
 };
 // initializeReactGA();
 
+// prod에도 msw 모킹하도록 수정
 const main = async () => {
   const { worker } = await import('./mocks/browser');
   await worker.start();
