@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/mockServiceWorker.js",
+      "headers": [
+        {
+          "key": "Service-Worker-Allowed",
+          "value": "/"
+        }
+      ]
+    }
+  ]
+}
