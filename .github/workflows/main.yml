@@ -1,0 +1,30 @@
+name: git push into another repo to deploy to vercel
+
+on:
+  push:
+    branches: [deploy]  # 팀 레포의 deploy 브랜치에서 push 될 때
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: pandoc/latex
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install mustache (to update the date)
+        run: apk add ruby && gem install mustache
+      - name: creates output
+        run: sh ./build.sh
+      - name: Pushes to another repository
+        id: push_directory
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.SOLBI_GITHUB_KEY }}
+        with:
+          source-directory: 'output'  # 빌드한 output 디렉터리
+          destination-github-username: hae-on  # 내 GitHub 아이디
+          destination-repository-name: funeat-client  # 내 레포 이름
+          user-email: ${{ secrets.SOLBI_EMAIL }}  # 내 이메일
+          commit-message: ${{ github.event.commits[0].message }}  # 커밋 메시지
+          target-branch: deploy  # 내 레포의 deploy 브랜치에 푸시
+      - name: Test get variable exported by push-to-another-repository
+        run: echo $DESTINATION_CLONED_DIRECTORY
