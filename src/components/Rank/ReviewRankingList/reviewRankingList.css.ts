@@ -3,14 +3,14 @@ import { style } from '@vanilla-extract/css';
 
 export const container = style({
   display: 'flex',
-  justifyContent: 'space-between',
   gap: 10,
   padding: '0 20px',
   overflowX: 'auto',
 });
 
 export const reviewItemWrapper = style({
-  maxWidth: 164,
+  flex: 1,
+  minWidth: 0,
 });
 
 export const bottomSheetWrapper = style({

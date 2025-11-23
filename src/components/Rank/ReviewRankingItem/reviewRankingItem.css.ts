@@ -15,6 +15,8 @@ export const reviewContent = style({
   overflow: 'hidden',
   WebkitLineClamp: 2,
   WebkitBoxOrient: 'vertical',
+  minHeight: '2.8em',
+  lineHeight: '1.4',
 });
 
 export const tagList = style({
