@@ -2,13 +2,16 @@ import { rest } from 'msw';
 
 import { isProductSortOption, isSortOrder } from './utils';
 import foodCategory from '../data/foodCategory.json';
-import pbProducts from '../data/pbProducts.json';
 import productDetails from '../data/productDetails.json';
 import instantfoodProducts from '../data/instantfoodProducts.json';
 import snackProducts from '../data/snackProducts.json';
 import icecreamProducts from '../data/icecreamProducts.json';
 import foodProducts from '../data/foodProducts.json';
 import drinkProducts from '../data/drinkProducts.json';
+import cuProducts from '../data/cuProducts.json';
+import gs25Products from '../data/gs25Products.json';
+import emart24Products from '../data/emart24Products.json';
+import sevenelevenProducts from '../data/sevenelevenProducts.json';
 import storeCategory from '../data/storeCategory.json';
 
 export const productHandlers = [
@@ -44,10 +47,10 @@ export const productHandlers = [
       '3': icecreamProducts,
       '4': foodProducts,
       '5': drinkProducts,
-      '6': pbProducts,
-      '7': pbProducts,
-      '8': pbProducts,
-      '9': pbProducts,
+      '6': cuProducts,
+      '7': gs25Products,
+      '8': emart24Products,
+      '9': sevenelevenProducts,
     };
 
     const products = categoryProductMap[categoryId] || instantfoodProducts;
@@ -76,7 +79,10 @@ export const productHandlers = [
       ...icecreamProducts.products,
       ...foodProducts.products,
       ...drinkProducts.products,
-      ...pbProducts.products,
+      ...cuProducts.products,
+      ...gs25Products.products,
+      ...emart24Products.products,
+      ...sevenelevenProducts.products,
     ];
 
     const isProductIdValid = allProducts.some(({ id }: { id: number }) => id === Number(productId));

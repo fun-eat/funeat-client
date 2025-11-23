@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 16,
+      "name": "고소한 치즈팝콘",
+      "price": 1700,
+      "image": "/assets/cu1.png",
+      "averageRating": 4.5,
+      "reviewCount": 120
+    },
+    {
+      "id": 17,
+      "name": "청양고추라면컵",
+      "price": 1800,
+      "image": "/assets/cu2.jpg",
+      "averageRating": 4.3,
+      "reviewCount": 95
+    },
+    {
+      "id": 18,
+      "name": "맥앤치즈그라탕",
+      "price": 5300,
+      "image": "/assets/cu3.jpg",
+      "averageRating": 4.2,
+      "reviewCount": 80
+    }
+  ]
+}

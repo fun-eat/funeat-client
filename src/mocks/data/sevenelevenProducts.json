@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 25,
+      "name": "앙리마티스 바닐라라떼 250ml",
+      "price": 3300,
+      "image": "/assets/seven1.jpg",
+      "averageRating": 4.7,
+      "reviewCount": 140
+    },
+    {
+      "id": 26,
+      "name": "앙리마티스 카페라떼 250ml",
+      "price": 3300,
+      "image": "/assets/seven2.jpg",
+      "averageRating": 4.4,
+      "reviewCount": 105
+    },
+    {
+      "id": 27,
+      "name": "오구초코타임 200ml",
+      "price": 1300,
+      "image": "/assets/seven3.jpg",
+      "averageRating": 4.2,
+      "reviewCount": 85
+    }
+  ]
+}

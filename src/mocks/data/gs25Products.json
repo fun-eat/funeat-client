@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 19,
+      "name": "우유크림소금빵",
+      "price": 3500,
+      "image": "/assets/gs1.jpg",
+      "averageRating": 4.4,
+      "reviewCount": 130
+    },
+    {
+      "id": 20,
+      "name": "초코칩파인트 474ml",
+      "price": 9900,
+      "image": "/assets/gs2.jpg",
+      "averageRating": 4.6,
+      "reviewCount": 85
+    },
+    {
+      "id": 21,
+      "name": "튀김우동",
+      "price": 2900,
+      "image": "/assets/gs3.jpg",
+      "averageRating": 4.1,
+      "reviewCount": 95
+    }
+  ]
+}

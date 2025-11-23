@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 22,
+      "name": "파르페 스트로베리 320ml",
+      "price": 3500,
+      "image": "/assets/emart1.jpeg",
+      "averageRating": 4.3,
+      "reviewCount": 130
+    },
+    {
+      "id": 23,
+      "name": "성수 310 초코머핀",
+      "price": 2000,
+      "image": "/assets/emart2.jpeg",
+      "averageRating": 4.5,
+      "reviewCount": 65
+    },
+    {
+      "id": 24,
+      "name": "참치김치 삼각김밥",
+      "price": 1300,
+      "image": "/assets/emart3.jpeg",
+      "averageRating": 4.0,
+      "reviewCount": 70
+    }
+  ]
+}
