@@ -15,5 +15,5 @@ export const PRODUCT_OVERVIEW_DEFAULT_IMAGE_URL_3 = `${IMAGE_BASE_URL}product-ov
 export const PRODUCT_OVERVIEW_DEFAULT_IMAGE_URL_4 = `${IMAGE_BASE_URL}product-overview-default_4.png`;
 export const PRODUCT_OVERVIEW_DEFAULT_IMAGE_URL_5 = `${IMAGE_BASE_URL}product-overview-default_5.png`;
 
-export const PRODUCT_BANNER = `${IMAGE_BASE_URL}product-banner.png`;
-export const STORE_BANNER = `${IMAGE_BASE_URL}store-banner.png`;
+export const PRODUCT_BANNER = '/assets/store-banner.png';
+export const STORE_BANNER = '/assets/recipe-banner.png';
