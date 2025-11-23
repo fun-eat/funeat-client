@@ -75,7 +75,7 @@ const ImageAndFavoriteButton = ({ children }: PropsWithChildren) => {
         onLoad={() => image && setIsImageLoading(false)}
       />
       {isImageLoading && image && (
-        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', borderRadius: '6px', overflow: 'hidden' }}>
           <Skeleton width="100%" height="100%" />
         </div>
       )}

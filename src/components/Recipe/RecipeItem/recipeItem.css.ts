@@ -5,6 +5,7 @@ export const imageWrapper = style({
   position: 'relative',
   width: '100%',
   lineHeight: 0,
+  aspectRatio: '4 / 5',
 });
 
 export const recipeImage = style({
