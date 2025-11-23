@@ -1,4 +1,4 @@
-import { container, countWrapper } from './recipeFavoriteButton.css';
+import { container, countWrapper, iconWrapper } from './recipeFavoriteButton.css';
 
 import HeartEmpty from '@/assets/heart-empty.png';
 import { SvgIcon, Text } from '@/components/Common';
@@ -56,7 +56,7 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
   return (
     <div className={container}>
       {member ? (
-        <button type="button" onClick={debouncedToggleFavorite}>
+        <button type="button" onClick={debouncedToggleFavorite} className={iconWrapper}>
           {favorite ? (
             <SvgIcon variant="heartFilled" width={24} height={24} />
           ) : (
@@ -64,7 +64,7 @@ const RecipeFavoriteButton = ({ recipeId, favorite, favoriteCount }: RecipeFavor
           )}
         </button>
       ) : (
-        <div>
+        <div className={iconWrapper}>
           <img src={HeartEmpty} alt="좋아요" width={24} height={24} />
         </div>
       )}
