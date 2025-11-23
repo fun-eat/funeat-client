@@ -1,17 +1,17 @@
 import { rest } from 'msw';
 
 import { isProductSortOption, isSortOrder } from './utils';
-import foodCategory from '../data/foodCategory.json';
-import productDetails from '../data/productDetails.json';
-import instantfoodProducts from '../data/instantfoodProducts.json';
-import snackProducts from '../data/snackProducts.json';
-import icecreamProducts from '../data/icecreamProducts.json';
-import foodProducts from '../data/foodProducts.json';
-import drinkProducts from '../data/drinkProducts.json';
 import cuProducts from '../data/cuProducts.json';
-import gs25Products from '../data/gs25Products.json';
+import drinkProducts from '../data/drinkProducts.json';
 import emart24Products from '../data/emart24Products.json';
+import foodCategory from '../data/foodCategory.json';
+import foodProducts from '../data/foodProducts.json';
+import gs25Products from '../data/gs25Products.json';
+import icecreamProducts from '../data/icecreamProducts.json';
+import instantfoodProducts from '../data/instantfoodProducts.json';
+import productDetail from '../data/productDetail.json';
 import sevenelevenProducts from '../data/sevenelevenProducts.json';
+import snackProducts from '../data/snackProducts.json';
 import storeCategory from '../data/storeCategory.json';
 
 export const productHandlers = [
@@ -70,33 +70,7 @@ export const productHandlers = [
     return res(ctx.status(200), ctx.json(sortedProducts), ctx.delay(500));
   }),
 
-  rest.get('/api/products/:productId', (req, res, ctx) => {
-    const { productId } = req.params;
-
-    const allProducts = [
-      ...instantfoodProducts.products,
-      ...snackProducts.products,
-      ...icecreamProducts.products,
-      ...foodProducts.products,
-      ...drinkProducts.products,
-      ...cuProducts.products,
-      ...gs25Products.products,
-      ...emart24Products.products,
-      ...sevenelevenProducts.products,
-    ];
-
-    const isProductIdValid = allProducts.some(({ id }: { id: number }) => id === Number(productId));
-
-    if (!isProductIdValid) {
-      return res(ctx.status(400), ctx.json({ message: '존재하지 않는 상품입니다.' }));
-    }
-
-    const targetProduct = productDetails.find(({ id }: { id: number }) => id === Number(productId));
-
-    if (!targetProduct) {
-      return res(ctx.status(400));
-    }
-
-    return res(ctx.status(200), ctx.json(targetProduct), ctx.delay(1000));
+  rest.get('/api/products/:productId', (_, res, ctx) => {
+    return res(ctx.status(200), ctx.json(productDetail), ctx.delay(1000));
   }),
 ];

@@ -3,14 +3,13 @@
   "reviews": [
     {
       "id": 1,
-      "userName": "과자러버",
-      "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "userName": "조버즈",
+      "profileImage": "/assets/profile2.png",
       "image": "/assets/reviews1.jpg",
       "rating": 5,
       "tags": [
         {
           "id": 1,
-
           "name": "바삭바삭"
         },
         {
@@ -27,7 +26,7 @@
     {
       "id": 2,
       "userName": "간식왕",
-      "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "profileImage": "/assets/profile.png",
       "image": null,
       "rating": 4,
       "tags": [
@@ -42,14 +41,14 @@
       ],
       "content": "거북이 모양이 귀엽고 맛도 좋아요. 한번 뜯으면 끝까지 먹게 되네요",
       "createdAt": "2025-11-18T10:20:00",
-      "rebuy": true,
+      "rebuy": false,
       "favoriteCount": 32,
       "favorite": true
     },
     {
       "id": 3,
       "userName": "스낵매니아",
-      "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "profileImage": "/assets/profile.png",
       "image": null,
       "rating": 5,
       "tags": [

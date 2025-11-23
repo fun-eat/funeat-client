@@ -67,7 +67,13 @@ export const SearchPage = () => {
           </form>
           {!isSubmitted && debouncedSearchQuery && isAutocompleteOpen && (
             <ErrorBoundary fallback={ErrorComponent} handleReset={reset}>
-              <Suspense fallback={<Loading />}>
+              <Suspense
+                fallback={
+                  <div style={{ marginTop: '36px' }}>
+                    <Loading />
+                  </div>
+                }
+              >
                 <RecommendList
                   searchQuery={debouncedSearchQuery}
                   handleSearchClick={handleSearchByClick}
@@ -107,15 +113,21 @@ export const SearchPage = () => {
               <Text size="caption1" weight="medium" className={subTitle}>
                 최근 검색어
               </Text>
-              <div className={badgeContainer}>
-                {recentSearchedKeywords?.map((keyword, index) => (
-                  <button type="button" key={index} value={keyword} onClick={handleSearchByClick}>
-                    <Badge color="#e6e6e6" textColor="#808080" outlined>
-                      {keyword}
-                    </Badge>
-                  </button>
-                ))}
-              </div>
+              {recentSearchedKeywords && recentSearchedKeywords.length > 0 ? (
+                <div className={badgeContainer}>
+                  {recentSearchedKeywords.map((keyword, index) => (
+                    <button type="button" key={index} value={keyword} onClick={handleSearchByClick}>
+                      <Badge color="#e6e6e6" textColor="#808080" outlined>
+                        {keyword}
+                      </Badge>
+                    </button>
+                  ))}
+                </div>
+              ) : (
+                <Text size="caption3" color="disabled" style={{ marginTop: '10px' }}>
+                  최근 검색어가 없습니다
+                </Text>
+              )}
               <Text size="caption1" weight="medium" className={subTitle}>
                 추천 태그
               </Text>

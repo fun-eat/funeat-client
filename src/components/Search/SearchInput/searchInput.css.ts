@@ -14,11 +14,11 @@ export const inputContainer = style({
 });
 
 export const searchInput = style({
-  width: '90%',
+  width: '100%',
   height: 40,
   padding: '10px 0 10px 18px',
   background: vars.colors.background.category,
-  borderRadius: '20px 0 0 20px',
+  borderRadius: '20px',
   fontSize: '1.4rem',
   outline: 'none',
 

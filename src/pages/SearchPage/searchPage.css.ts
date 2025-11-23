@@ -16,6 +16,7 @@ export const form = style({
 });
 
 export const searchSection = style({
+  position: 'relative',
   padding: '0 20px',
 });
 

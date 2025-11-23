@@ -22,14 +22,18 @@ const RecommendList = ({ searchQuery, handleSearchClick, handleAutocompleteClose
   const products = searchResponse.pages.flatMap((page) => page.products);
 
   if (products.length === 0) {
-    return <Text>검색어가 포함된 상품을 찾지 못했어요</Text>;
+    return (
+      <div style={{ marginTop: '36px' }}>
+        <img src="/assets/no-search.png" alt="검색 결과 없음" width={335} />
+      </div>
+    );
   }
 
   return (
     <div className={container}>
       <div className={backdrop} onClick={handleAutocompleteClose} />
       <ul className={wrapper}>
-        {products.map(({ id, name }) => (
+        {products.map(({ id, name }, index) => (
           <li key={id}>
             <button className={productButton} type="button" color="white" value={name} onClick={handleSearchClick}>
               <MarkedText text={name} mark={searchQuery} />
@@ -38,7 +42,7 @@ const RecommendList = ({ searchQuery, handleSearchClick, handleAutocompleteClose
                 상품
               </Text>
             </button>
-            <hr style={{ border: `0.5px solid ${vars.colors.border.default}` }} />
+            {index !== products.length - 1 && <hr style={{ border: `0.5px solid ${vars.colors.border.default}` }} />}
           </li>
         ))}
       </ul>

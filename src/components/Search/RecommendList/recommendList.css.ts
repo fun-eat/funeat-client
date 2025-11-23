@@ -3,9 +3,11 @@ import { style } from '@vanilla-extract/css';
 
 export const container = style({
   position: 'absolute',
-  minWidth: 360,
-  maxHeight: 150,
+  left: 20,
+  right: 20,
+  minHeight: 150,
   padding: '10px 0',
+  top: 46,
   background: vars.colors.background.default,
   overflowY: 'auto',
 });
