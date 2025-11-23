@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 13,
+      "name": "펩시콜라 제로 캔 355ml",
+      "price": 2200,
+      "image": "/assets/ranking1.png",
+      "averageRating": 4.6,
+      "reviewCount": 200
+    },
+    {
+      "id": 14,
+      "name": "가나디 자몽드링크",
+      "price": 2300,
+      "image": "/assets/drink2.jpg",
+      "averageRating": 4.4,
+      "reviewCount": 140
+    },
+    {
+      "id": 15,
+      "name": "마카다미아초코190ml",
+      "price": 1600,
+      "image": "/assets/drink3.jpg",
+      "averageRating": 4.8,
+      "reviewCount": 180
+    }
+  ]
+}

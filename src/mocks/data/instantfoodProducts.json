@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 1,
+      "name": "백종원)제육한판",
+      "price": 4500,
+      "image": "/assets/instantfood1.png",
+      "averageRating": 4.5,
+      "reviewCount": 100
+    },
+    {
+      "id": 2,
+      "name": "스팸)김치볶음김밥",
+      "price": 6500,
+      "image": "/assets/instantfood2.png",
+      "averageRating": 4.3,
+      "reviewCount": 85
+    },
+    {
+      "id": 3,
+      "name": "정성가득제육한상",
+      "price": 5500,
+      "image": "/assets/instantfood3.jpg",
+      "averageRating": 4.0,
+      "reviewCount": 65
+    }
+  ]
+}

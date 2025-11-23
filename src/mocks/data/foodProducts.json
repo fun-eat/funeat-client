@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 10,
+      "name": "맛밤80g",
+      "price": 3900,
+      "image": "/assets/food1.jpg",
+      "averageRating": 4.4,
+      "reviewCount": 80
+    },
+    {
+      "id": 11,
+      "name": "순후추란",
+      "price": 2500,
+      "image": "/assets/food2.jpg",
+      "averageRating": 4.1,
+      "reviewCount": 40
+    },
+    {
+      "id": 12,
+      "name": "삼양1963",
+      "price": 1900,
+      "image": "/assets/food3.jpg",
+      "averageRating": 4.0,
+      "reviewCount": 60
+    }
+  ]
+}

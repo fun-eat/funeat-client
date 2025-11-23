@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 4,
+      "name": "파이리의 화르륵 핫소스팡",
+      "price": 1500,
+      "image": "/assets/snack1.png",
+      "averageRating": 4.5,
+      "reviewCount": 100
+    },
+    {
+      "id": 5,
+      "name": "쁘띠몽쉘",
+      "price": 6000,
+      "image": "/assets/snack2.png",
+      "averageRating": 4.0,
+      "reviewCount": 55
+    },
+    {
+      "id": 6,
+      "name": "뿌셔뿌셔 구운양파맛",
+      "price": 1500,
+      "image": "/assets/snack3.jpg",
+      "averageRating": 4.2,
+      "reviewCount": 50
+    }
+  ]
+}

@@ -4,7 +4,11 @@ import { isProductSortOption, isSortOrder } from './utils';
 import foodCategory from '../data/foodCategory.json';
 import pbProducts from '../data/pbProducts.json';
 import productDetails from '../data/productDetails.json';
-import commonProducts from '../data/products.json';
+import instantfoodProducts from '../data/instantfoodProducts.json';
+import snackProducts from '../data/snackProducts.json';
+import icecreamProducts from '../data/icecreamProducts.json';
+import foodProducts from '../data/foodProducts.json';
+import drinkProducts from '../data/drinkProducts.json';
 import storeCategory from '../data/storeCategory.json';
 
 export const productHandlers = [
@@ -34,11 +38,19 @@ export const productHandlers = [
       return res(ctx.status(400));
     }
 
-    let products = commonProducts;
+    const categoryProductMap: Record<string, any> = {
+      '1': instantfoodProducts,
+      '2': snackProducts,
+      '3': icecreamProducts,
+      '4': foodProducts,
+      '5': drinkProducts,
+      '6': pbProducts,
+      '7': pbProducts,
+      '8': pbProducts,
+      '9': pbProducts,
+    };
 
-    if (Number(categoryId) >= 6 && Number(categoryId) <= 9) {
-      products = pbProducts;
-    }
+    const products = categoryProductMap[categoryId] || instantfoodProducts;
 
     const [key, sortOrder] = sortOptions.split(',');
 
@@ -58,13 +70,22 @@ export const productHandlers = [
   rest.get('/api/products/:productId', (req, res, ctx) => {
     const { productId } = req.params;
 
-    const isProductIdValid = commonProducts.products.some(({ id }) => id === Number(productId));
+    const allProducts = [
+      ...instantfoodProducts.products,
+      ...snackProducts.products,
+      ...icecreamProducts.products,
+      ...foodProducts.products,
+      ...drinkProducts.products,
+      ...pbProducts.products,
+    ];
+
+    const isProductIdValid = allProducts.some(({ id }: { id: number }) => id === Number(productId));
 
     if (!isProductIdValid) {
       return res(ctx.status(400), ctx.json({ message: '존재하지 않는 상품입니다.' }));
     }
 
-    const targetProduct = productDetails.find(({ id }) => id === Number(productId));
+    const targetProduct = productDetails.find(({ id }: { id: number }) => id === Number(productId));
 
     if (!targetProduct) {
       return res(ctx.status(400));

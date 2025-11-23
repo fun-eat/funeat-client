@@ -1,0 +1,29 @@
+{
+  "hasNext": false,
+  "products": [
+    {
+      "id": 7,
+      "name": "말차크림파르페",
+      "price": 3500,
+      "image": "/assets/icecream3.jpg",
+      "averageRating": 4.3,
+      "reviewCount": 155
+    },
+    {
+      "id": 8,
+      "name": "프로즌팝소르베믹스",
+      "price": 5900,
+      "image": "/assets/icecream2.jpg",
+      "averageRating": 4.5,
+      "reviewCount": 120
+    },
+    {
+      "id": 9,
+      "name": "쿠앤크",
+      "price": 1500,
+      "image": "/assets/icecream1.jpg",
+      "averageRating": 4.7,
+      "reviewCount": 90
+    }
+  ]
+}
