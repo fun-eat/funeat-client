@@ -3,69 +3,69 @@
   "reviews": [
     {
       "id": 1,
-      "userName": "우가우가",
-      "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_1280.jpg",
+      "userName": "과자러버",
+      "profileImage": "/assets/profile2.png",
+      "image": "/assets/reviews1.jpg",
       "rating": 5,
       "tags": [
         {
-          "id": 5,
-          "name": "단짠단짠"
+          "id": 1,
+          "name": "바삭바삭"
         },
         {
-          "id": 1,
-          "name": "망고망고"
+          "id": 2,
+          "name": "달콤해요"
         }
       ],
-      "content": "우가우가~!~!",
-      "createdAt": "2023-08-03T13:10:06.379389",
+      "content": "꼬북칩 진짜 맛있어요! 바삭한 식감이 좋고 초코맛이 달달해서 자꾸 손이 가요",
+      "createdAt": "2025-11-20T15:30:00",
       "rebuy": true,
-      "favoriteCount": 150,
+      "favoriteCount": 45,
       "favorite": false
     },
     {
       "id": 2,
-      "userName": "펀잇",
-      "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_1280.jpg",
+      "userName": "간식왕",
+      "profileImage": "/assets/profile1.png",
+      "image": null,
       "rating": 4,
       "tags": [
         {
-          "id": 5,
-          "name": "단짠단짠"
+          "id": 1,
+          "name": "바삭바삭"
         },
         {
-          "id": 1,
-          "name": "망고망고"
+          "id": 3,
+          "name": "중독성"
         }
       ],
-      "content": "할머니가 먹을 거 같은 맛입니다.\n\n1960년 전쟁 때 맛 보고 싶었는데 그때는 너무 가난해서 먹을 수 없었는데, 맛있어요.",
-      "createdAt": "2023-08-02T13:43:06.379389",
-      "rebuy": false,
-      "favoriteCount": 1320,
+      "content": "거북이 모양이 귀엽고 맛도 좋아요. 한번 뜯으면 끝까지 먹게 되네요",
+      "createdAt": "2025-11-18T10:20:00",
+      "rebuy": true,
+      "favoriteCount": 32,
       "favorite": true
     },
     {
       "id": 3,
-      "userName": "펀잇",
-      "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "userName": "스낵매니아",
+      "profileImage": "/assets/profile1.png",
       "image": null,
-      "rating": 3,
+      "rating": 5,
       "tags": [
         {
-          "id": 5,
-          "name": "단짠단짠"
+          "id": 2,
+          "name": "달콤해요"
         },
         {
-          "id": 1,
-          "name": "망고망고"
+          "id": 3,
+          "name": "중독성"
         }
       ],
-      "content": "할머니가 먹을 거 같은 맛입니다. 1960년 전쟁 때 맛 보고 싶었는데 그때는 너무 가난해서 먹을 수 없었는데, 맛있어요. 하얀 짜파게티라니 말이 안된다고 생각했었죠. 실제로 맛을 보니까 까만 짜파게티랑 맛이 뭔가 다를게 없네요.",
-      "createdAt": "2023-07-03T13:43:06.379389",
-      "rebuy": false,
-      "favoriteCount": 1321,
-      "favorite": true
+      "content": "꼬북칩 초코맛 최고! 겉은 바삭하고 속은 부드러워요. 우유랑 같이 먹으면 더 맛있어요",
+      "createdAt": "2025-11-15T14:15:00",
+      "rebuy": true,
+      "favoriteCount": 28,
+      "favorite": false
     }
   ]
 }
