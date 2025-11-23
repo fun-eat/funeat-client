@@ -40,6 +40,7 @@ export const recipeImageContainer = style([
   {
     gap: 20,
     alignItems: 'center',
+    marginTop: 20,
   },
 ]);
 

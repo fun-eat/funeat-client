@@ -1,44 +1,37 @@
 {
-  "id": 3,
-  "images": ["https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34"],
-  "title": "초특급불닭콘치즈",
-  "content": "맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고 3번 맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고\n\n 3번맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고 3번맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고 3번맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고 3번맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고 3번맛있는 불닭콘치즈덮밥을 만들기 위해서는 1번. 어쩌고저쩌고 2번. 어쩌고저쩌고 3번",
+  "id": 1,
+  "images": ["/assets/recipe3.jpg"],
+  "title": "도리토스 나초",
+  "content": "편의점에서 쉽게 구할 수 있는 재료로 만드는 멕시코 스타일 나초!\n\n1. 도리토스를 접시에 펼쳐 담아주세요\n2. 치즈소스를 도리토스 위에 골고루 뿌려주세요\n3. 살사소스를 기호에 맞게 추가해주세요\n4. 전자레인지에 30초~1분 정도 데워서 치즈가 살짝 녹으면 완성!\n\n팁: 할라피뇨나 사워크림을 추가하면 더욱 맛있어요. 영화 보면서 먹기 딱 좋은 야식입니다!",
   "author": {
-    "profileImage": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-    "nickname": "funeat"
+    "profileImage": "/assets/profile.png",
+    "nickname": "야식킬러"
   },
   "products": [
     {
-      "id": 1,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "name": "불닭",
-      "price": 3000,
-      "averageRating": 4.5
-    },
-    {
-      "id": 2,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "name": "참치삼김",
-      "price": 4000,
-      "averageRating": 4.5
-    },
-    {
-      "id": 3,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "name": "바나나 우유",
+      "id": 11,
+      "image": "/assets/ranking3.png",
+      "name": "도리토스",
       "price": 1700,
-      "averageRating": 4.5
+      "averageRating": 4.4
     },
     {
-      "id": 4,
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "name": "하리보",
-      "price": 1200,
+      "id": 12,
+      "image": "/assets/ranking2.png",
+      "name": "치즈소스",
+      "price": 3000,
       "averageRating": 4.3
+    },
+    {
+      "id": 13,
+      "image": "/assets/ranking1.png",
+      "name": "살사소스",
+      "price": 2500,
+      "averageRating": 4.1
     }
   ],
-  "totalPrice": 7000,
-  "favoriteCount": 153,
-  "favorite": false,
-  "createdAt": "2023-08-02T13:43:06.379389"
+  "totalPrice": 7200,
+  "favoriteCount": 1531,
+  "favorite": true,
+  "createdAt": "2025-11-20T08:00:00"
 }
