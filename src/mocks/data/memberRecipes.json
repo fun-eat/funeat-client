@@ -21,7 +21,7 @@
     },
     {
       "id": 2,
-      "image": "/assets/recipe2.JPG",
+      "image": "/assets/recipe2.jpg",
       "title": "초특급불닭콘치즈",
       "author": {
         "nickname": "1번 글",
@@ -32,7 +32,7 @@
     },
     {
       "id": 3,
-      "image": "/assets/recipe3.JPG",
+      "image": "/assets/recipe3.jpg",
       "title": "초특급불닭콘치즈",
       "author": {
         "nickname": "1번 글",
