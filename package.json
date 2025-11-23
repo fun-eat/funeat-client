@@ -11,7 +11,7 @@
     "build": "NODE_OPTIONS='--localstorage-file=.localstorage' webpack --config webpack.prod.js",
     "build-dev": "NODE_OPTIONS='--localstorage-file=.localstorage' webpack --config webpack.dev.js",
     "storybook": "NODE_OPTIONS='--localstorage-file=.localstorage' storybook dev -p 6006",
-    "build-storybook": "NODE_OPTIONS='--localstorage-file=.localstorage' storybook build",
+    "build-storybook": "storybook build",
     "lint:styled": "stylelint 'src/**/*.tsx' --fix",
     "test": "jest",
     "test:coverage": "jest --watchAll --coverage",
