@@ -18,7 +18,7 @@ const meta: Meta<typeof CategoryItem> = {
     category: {
       id: 1,
       name: '즉석 식품',
-      image: 'https://image.funeat.site/prod/food.png',
+      image: '/assets/food.png',
     },
     width: 51,
     height: 51,
