@@ -22,6 +22,11 @@ export const previewContainer = style({
   overflowX: 'auto',
 });
 
+export const previewItem = style({
+  minWidth: 163,
+  width: 163,
+});
+
 export const moreItem = style({
   display: 'flex',
   justifyContent: 'center',

@@ -10,7 +10,6 @@ export const imageWrapper = style({
 
 export const recipeImage = style({
   width: '100%',
-  height: 'auto',
   minWidth: 163,
   borderRadius: '6px',
   objectFit: 'cover',

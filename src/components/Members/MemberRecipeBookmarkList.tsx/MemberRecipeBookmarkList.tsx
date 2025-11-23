@@ -7,6 +7,7 @@ import {
   notFound,
   notFoundContainer,
   previewContainer,
+  previewItem,
 } from './memberRecipeBookmarkList.css';
 
 import NotFoundImage from '@/assets/search-notfound.png';
@@ -52,7 +53,7 @@ const MemberRecipeBookmarkList = ({ isPreview }: MemberRecipeBookmarkListProps) 
     return (
       <ul className={previewContainer}>
         {recipeToDisplay.map((recipe) => (
-          <li key={recipe.id}>
+          <li key={recipe.id} className={previewItem}>
             <RecipeItemWithProductDetailImage recipe={recipe} />
           </li>
         ))}
