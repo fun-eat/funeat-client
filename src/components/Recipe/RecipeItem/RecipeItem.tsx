@@ -1,7 +1,7 @@
 import { Skeleton } from '@fun-eat/design-system';
 import type { PropsWithChildren } from 'react';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, startTransition } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 
 import {
   favoriteButtonWrapper,
@@ -48,10 +48,20 @@ interface RecipeItemProps {
 
 const RecipeItem = ({ recipe, children }: RecipeItemProps) => {
   const { id } = recipe;
+  const navigate = useNavigate();
+
+  const handleClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    startTransition(() => {
+      navigate(`${PATH.RECIPE}/${id}`);
+    });
+  };
 
   return (
     <RecipeItemProvider recipe={recipe}>
-      <Link to={`${PATH.RECIPE}/${id}`}>{children}</Link>
+      <Link to={`${PATH.RECIPE}/${id}`} onClick={handleClick}>
+        {children}
+      </Link>
     </RecipeItemProvider>
   );
 };
