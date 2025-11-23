@@ -6,7 +6,7 @@ const meta: Meta<typeof ProductRankingItem> = {
   title: 'product/ProductRankingItem',
   component: ProductRankingItem,
   args: {
-    image: 'https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg',
+    image: '/assets/ranking1.png',
     name: '펩시제로콜라',
     rank: 1,
     price: 2200,

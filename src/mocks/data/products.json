@@ -5,7 +5,7 @@
       "id": 1,
       "name": "꼬북칩 꼬북칩 꼬북칩 꼬북칩 꼬북칩 꼬북칩 꼬북칩 ",
       "price": 1500,
-      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "image": "/assets/ranking1.png",
       "averageRating": 4.5,
       "reviewCount": 100
     },
@@ -13,7 +13,7 @@
       "id": 2,
       "name": "새우깡",
       "price": 1000,
-      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "image": "/assets/ranking2.png",
       "averageRating": 4.0,
       "reviewCount": 55
     },
@@ -21,7 +21,7 @@
       "id": 3,
       "name": "감자깡",
       "price": 1000,
-      "image": "https://arqachylpmku8348141.cdn.ntruss.com/app/product/mst_product/8801056232979_L.jpg",
+      "image": "/assets/ranking3.png",
       "averageRating": 4.0,
       "reviewCount": 55
     }
