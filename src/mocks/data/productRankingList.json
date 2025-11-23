@@ -1,25 +1,25 @@
 {
   "products": [
     {
-      "id": 3,
-      "name": "구운감자슬림명란마요요요요요요요요요요요요용요요용요요ㅛ",
-      "image": "https://t3.ftcdn.net/jpg/06/06/91/70/240_F_606917032_4ujrrMV8nspZDX8nTgGrTpJ69N9JNxOL.jpg",
+      "id": 1,
+      "name": "펩시콜라 제로 캔 355ml",
+      "image": "/assets/ranking1.png",
       "categoryType": "food",
-      "price": 1200
+      "price": 2200
     },
     {
       "id": 2,
-      "name": "삼립)보름달피치문",
-      "image": "https://t3.ftcdn.net/jpg/06/06/91/70/240_F_606917032_4ujrrMV8nspZDX8nTgGrTpJ69N9JNxOL.jpg",
-      "categoryType": "store",
-      "price": 1200
+      "name": "이클립스 피치",
+      "image": "/assets/ranking2.png",
+      "categoryType": "food",
+      "price": 3000
     },
     {
-      "id": 4,
-      "name": "하얀짜파게티큰사발",
-      "image": "https://t3.ftcdn.net/jpg/06/06/91/70/240_F_606917032_4ujrrMV8nspZDX8nTgGrTpJ69N9JNxOL.jpg",
+      "id": 3,
+      "name": "포키 극세사",
+      "image": "/assets/ranking3.png",
       "categoryType": "food",
-      "price": 1200
+      "price": 1700
     }
   ]
 }
