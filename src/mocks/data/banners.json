@@ -2,11 +2,11 @@
   {
     "id": 2,
     "link": "/products",
-    "image": "/src/assets/banner2.png"
+    "image": "/assets/banner2.png"
   },
   {
     "id": 1,
     "link": "/recipes",
-    "image": "/src/assets/banner1.png"
+    "image": "/assets/banner1.png"
   }
 ]
