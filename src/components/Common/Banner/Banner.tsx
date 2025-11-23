@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import { bannerImage } from './banner.css';
 
 import { useBannerQuery } from '@/hooks/queries/banner';
@@ -11,9 +13,9 @@ const Banner = () => {
   }
 
   return (
-    <a href={link} target="_blank" rel="noopener noreferrer">
+    <Link to={link}>
       <img className={bannerImage} src={image} width={600} height={360} alt="배너" />
-    </a>
+    </Link>
   );
 };
 
