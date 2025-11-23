@@ -1,0 +1,23 @@
+{
+  "name": "펀잇",
+  "short_name": "펀잇",
+  "description": "궁금해? 맛있을걸? 먹어봐 🥄",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "/assets/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/apple-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
