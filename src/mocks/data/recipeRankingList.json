@@ -13,7 +13,7 @@
     },
     {
       "id": 2,
-      "image": "/assets/recipe2.jpg",
+      "image": "/assets/recipe2.JPG",
       "title": "짜장우동볶음",
       "author": {
         "nickname": "편의점러버",
@@ -24,7 +24,7 @@
     },
     {
       "id": 3,
-      "image": "/assets/recipe3.jpg",
+      "image": "/assets/recipe3.JPG",
       "title": "도리토스 나초",
       "author": {
         "nickname": "야식킬러",
@@ -35,7 +35,7 @@
     },
     {
       "id": 4,
-      "image": "/assets/recipe4.jpg",
+      "image": "/assets/recipe4.JPG",
       "title": "김치볶음밥",
       "author": {
         "nickname": "요리왕",
