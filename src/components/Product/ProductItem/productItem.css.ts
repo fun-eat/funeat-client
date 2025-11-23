@@ -7,6 +7,7 @@ export const container = style({
 export const imageWrapper = style({
   position: 'relative',
   width: '100%',
+  aspectRatio: '1 / 1',
 });
 
 export const productImage = style({
