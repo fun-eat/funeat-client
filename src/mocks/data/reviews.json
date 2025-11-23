@@ -26,7 +26,7 @@
     {
       "id": 2,
       "userName": "간식왕",
-      "profileImage": "/assets/profile1.png",
+      "profileImage": "/assets/profile.png",
       "image": null,
       "rating": 4,
       "tags": [
@@ -48,7 +48,7 @@
     {
       "id": 3,
       "userName": "스낵매니아",
-      "profileImage": "/assets/profile1.png",
+      "profileImage": "/assets/profile.png",
       "image": null,
       "rating": 5,
       "tags": [
