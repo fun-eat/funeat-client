@@ -16,11 +16,16 @@ module.exports = merge(common, {
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
+      templateParameters: {
+        compilation: null,
+      },
       minify: {
         collapseWhitespace: true,
         removeComments: true,
       },
       hash: true,
+      scriptLoading: 'defer',
+      inject: true,
     }),
     new CopyWebpackPlugin({
       patterns: [
