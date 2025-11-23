@@ -1,48 +1,39 @@
 {
   "page": {
-    "totalDataCount": 99,
-    "totalPages": 10,
+    "totalDataCount": 3,
+    "totalPages": 1,
     "firstPage": true,
-    "lastPage": false,
+    "lastPage": true,
     "requestPage": 1,
     "requestSize": 10
   },
   "products": [
     {
       "id": 1,
-      "name": "꼬북칩",
-      "price": 1500,
+      "name": "백종원)제육한판",
+      "price": 4500,
       "categoryType": "food",
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
+      "image": "/assets/instantfood1.png",
       "averageRating": 4.5,
       "reviewCount": 100
     },
     {
       "id": 2,
-      "name": "새우깡",
-      "price": 1000,
+      "name": "스팸)김치볶음김밥",
+      "price": 6500,
       "categoryType": "food",
-      "image": "https://github.com/woowacourse-teams/2023-fun-eat/assets/78616893/1f0fd418-131c-4cf8-b540-112d762b7c34",
-      "averageRating": 4.0,
-      "reviewCount": 55
+      "image": "/assets/instantfood2.png",
+      "averageRating": 4.3,
+      "reviewCount": 85
     },
     {
-      "id": 11,
-      "name": "PB 꼬북칩",
-      "price": 1500,
-      "categoryType": "store",
-      "image": "https://t3.ftcdn.net/jpg/06/06/91/70/240_F_606917032_4ujrrMV8nspZDX8nTgGrTpJ69N9JNxOL.jpg",
-      "averageRating": 4.5,
-      "reviewCount": 100
-    },
-    {
-      "id": 12,
-      "name": "PB 새우깡",
-      "price": 1000,
-      "categoryType": "store",
-      "image": "https://cdn.pixabay.com/photo/2016/03/23/15/00/ice-cream-1274894_1280.jpg",
+      "id": 3,
+      "name": "정성가득제육한상",
+      "price": 5500,
+      "categoryType": "food",
+      "image": "/assets/instantfood3.jpg",
       "averageRating": 4.0,
-      "reviewCount": 100
+      "reviewCount": 65
     }
   ]
 }
