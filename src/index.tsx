@@ -33,6 +33,8 @@ export const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       retry: false,
+      suspense: true,
+      networkMode: 'always',
     },
   },
 });
